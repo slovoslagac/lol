@@ -1,0 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: petar
+ * Date: 13.3.2017
+ * Time: 13:11
+ */
+
+$db_server = "192.168.186.21";
+$db_user = "lol";
+$db_pass = "l1";
+$db_name = "lol";
+
+
+
