@@ -6,8 +6,12 @@
  * Time: 13:23
  */
 
-//require(join(DIRECTORY_SEPARATOR, array('..','includes', 'init.php')));
+include(join(DIRECTORY_SEPARATOR, array('..','includes', 'init.php')));
 
-require_once ('../includes/position.php');
-require_once ('../includes/db.php');
-//$position = new position();
+include (join(DIRECTORY_SEPARATOR, array(INC_PATH.DS.'position.php')));
+
+
+$position = new position();
+$obj = $position->getAllPositions();
+
+print_r($obj);

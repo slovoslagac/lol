@@ -8,23 +8,23 @@
  */
 
 
-class position
+class hero
 {
     private $name;
 //    private $id;
 
-    public function getAllPositions()
+    public function getAllHeros()
     {
         global $conn;
-        $sql = $conn->prepare("SELECT name, id FROM positions");
+        $sql = $conn->prepare("SELECT name, id FROM heros");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 
-    public function getPositionById($id)
+    public function getHeroById($id)
     {
-        $array = $this->getAllPositions();
+        $array = $this->getAllHeros();
         foreach ($array as $item) {
             if ($item->id == $id) {
                 return $item;
@@ -32,8 +32,8 @@ class position
         }
     }
 
-    public function getPositionByName($name) {
-        $array = $this->getAllPositions();
+    public function getHeroByName($name) {
+        $array = $this->getAllHeros();
         foreach ($array as $item) {
             if ($item->name == $name) {
                 return $item;
@@ -41,16 +41,16 @@ class position
         }
     }
 
-    public function addPosition($name){
+    public function addHero($name){
         global $conn;
-        $insertNewPosition = $conn->prepare("insert into positions (name) values (:nm)");
+        $insertNewPosition = $conn->prepare("insert into heros (name) values (:nm)");
         $insertNewPosition->bindParam(':nm',$name);
         $insertNewPosition->execute();
     }
 
-    public function deletePosition($id) {
+    public function deleteHero($id) {
         global $conn;
-        $deletePosition = $conn->prepare("delete from positions where id = :id");
+        $deletePosition = $conn->prepare("delete from heros where id = :id");
         $deletePosition->bindParam(':id',$id);
         $deletePosition->execute();
     }
