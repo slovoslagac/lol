@@ -9,7 +9,8 @@
 //win DS = "\", Mac/Linux DS = "/"
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
-defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'AppServ' . DS . 'www' . DS . 'lol');
+//defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'AppServ' . DS . 'www' . DS . 'lol');
+defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:'  . DS . 'www' . DS . 'lol');
 //defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'XAMPP' . DS . 'htdocs' . DS . 'lol');
 defined('INC_PATH') ? null : define('INC_PATH', SITE_ROOT .  DS . 'includes');
 defined('ADMIN_PATH') ? null : define('ADMIN_PATH', SITE_ROOT .  DS . 'admin');

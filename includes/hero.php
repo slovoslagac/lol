@@ -16,7 +16,7 @@ class hero
     public function getAllHeros()
     {
         global $conn;
-        $sql = $conn->prepare("SELECT name, id FROM heros");
+        $sql = $conn->prepare("SELECT name, id FROM heroes");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -43,14 +43,14 @@ class hero
 
     public function addHero($name){
         global $conn;
-        $insertNewPosition = $conn->prepare("insert into heros (name) values (:nm)");
+        $insertNewPosition = $conn->prepare("insert into heroes (name) values (:nm)");
         $insertNewPosition->bindParam(':nm',$name);
         $insertNewPosition->execute();
     }
 
     public function deleteHero($id) {
         global $conn;
-        $deletePosition = $conn->prepare("delete from heros where id = :id");
+        $deletePosition = $conn->prepare("delete from heroes where id = :id");
         $deletePosition->bindParam(':id',$id);
         $deletePosition->execute();
     }
