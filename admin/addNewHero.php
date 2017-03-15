@@ -15,7 +15,7 @@ include(join(DIRECTORY_SEPARATOR, array(INC_PATH . DS . 'hero.php')));
 
 if (isset($_POST['hero']) != '') {
     $hero = new hero();
-    if (empty($hero->getHeroByName($_POST['name'])) and ($_POST['name'] != '')) {
+    if (($hero->getHeroByName($_POST['name']) =='') and ($_POST['name'] != '')) {
         $hero->addHero($_POST['name']);
         echo $_POST['name'];
         header('location:' . $_SERVER['PHP_SELF']);

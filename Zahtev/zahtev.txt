@@ -1,1 +1,5 @@
--
+next
+-Ispis korisnika da se prikaze rank i pozicija umesto id-a.
+-Doraditi poruku kad se brise sto ne moze da se obrise.
+-Uvesti lowercase controlu da li u bazi ima podataka.
+

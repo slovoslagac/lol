@@ -17,7 +17,7 @@ include(join(DIRECTORY_SEPARATOR, array(INC_PATH . DS . 'user.php')));
 
 if (isset($_POST['position']) != '') {
     $position = new position();
-    if (empty($position->getPositionByName($_POST['name'])) and ($_POST['name'] != '')) {
+    if (($position->getPositionByName($_POST['name']) == '') and ($_POST['name'] != '')) {
         $position->addPosition($_POST['name']);
         echo $_POST['name'];
         header('location:' . $_SERVER['PHP_SELF']);
@@ -42,7 +42,7 @@ if (isset($_POST['deletePosition']) != '') {
 
 if (isset($_POST['rank']) != '') {
     $rank = new rank();
-    if (empty($rank->getRankByName($_POST['name'])) and ($_POST['name'] != '')) {
+    if (($rank->getRankByName($_POST['name']) == '') and ($_POST['name'] != '')) {
         $rank->addRank($_POST['name']);
         echo $_POST['name'];
         header('location:' . $_SERVER['PHP_SELF']);
@@ -79,7 +79,7 @@ if (isset($_POST['deleteUser']) != '') {
 
 if (isset($_POST['user']) != ''){
     $tmpusr = new user();
-    if (empty($tmpusr->getUserByUsername($_POST['username']))) {
+    if (($tmpusr->getUserByUsername($_POST['username'])) == '') {
 
         $tmpusr->addUser($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $_POST['userposition'], $_POST['phone']);
     } else {

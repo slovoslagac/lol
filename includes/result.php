@@ -18,7 +18,7 @@ class result
 from userheroresult urh, heroes h, users u
 where urh.userid = u.id
 and urh.heroid = h.id
-group by h.name, u.name, u.lastname, u.arenausername");
+group by h.name, u.name, u.lastname, u.arenausername order by 5,2,1");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -27,7 +27,7 @@ group by h.name, u.name, u.lastname, u.arenausername");
     public function insertResult($user, $hero,$date, $time)
     {
         global $conn;
-        $insertNewResult = $conn->prepare("insert into userheroresult (userid, heroid, matchdate, matchtime) values (:ui, :hi, :dt, :tm) ");
+        $insertNewResult = $conn->prepare("insert into userheroresult (userid, heroid, matchdate, matchtime) values (:ui, :hi, :dt, :tm)");
         $insertNewResult->bindParam(':ui', $user);
         $insertNewResult->bindParam(':hi', $hero);
         $insertNewResult->bindParam(':dt', $date);

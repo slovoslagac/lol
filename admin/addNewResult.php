@@ -23,6 +23,7 @@ if(isset($_POST['userResults']) != '') {
         if ($val >0 and $usr >0 and $date != '' and $time != '') {
             $res = new result();
             $res->insertResult($usr, $val, $date, $time);
+            unset($res);
         }
 //        echo "$i - $val ($usr)  - $date : $time<br>";
         $i++;
@@ -67,4 +68,37 @@ if(isset($_POST['userResults']) != '') {
 
         </table>
     </form>
+</div>
+<hr>
+
+<div>
+    <h3>Trenutne pozicije</h3>
+
+    <table>
+        <tr>
+            <th>Igrač</th>
+            <th>Heroj</th>
+            <th>Broj pobeda</th>
+        </tr>
+        <?php $result = new result();
+        $allresults = $result->getSumResult();
+        foreach ($allresults as $item) { ?>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <tr>
+                    <td><?php echo $item->uname ?></td>
+                    <td><?php echo $item->heroname ?></td>
+                    <td><?php echo $item->value ?></td>
+                    <td>
+                        <input type="hidden" value="<?php echo $item->id ?>" name="heroId">
+                        <input type="submit" name="deleteHero" value="Obriši"></td>
+                </tr>
+            </form>
+
+
+            <?php
+        }
+
+        ?>
+    </table>
+
 </div>

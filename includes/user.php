@@ -13,7 +13,7 @@ class user
     private $arenausername;
     private $summonername;
     private $rankid;
-    private $Userid;
+    private $userid;
     private $phone;
 
 
