@@ -39,7 +39,7 @@ class user
     public function getUserByName($name) {
         $array = $this->getAllUsers();
         foreach ($array as $item) {
-            if ($item->name == $name) {
+            if (strtolower($this->name) == $name) {
                 return $item;
             }
         }
@@ -48,7 +48,7 @@ class user
     public function getUserByUsername($username) {
         $array = $this->getAllUsers();
         foreach ($array as $item) {
-            if ($item->arenausername == $username) {
+            if (strtolower($this->arenausername) == $username) {
                 return $item;
             }
         }

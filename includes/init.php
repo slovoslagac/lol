@@ -18,4 +18,12 @@ defined('ADMIN_PATH') ? null : define('ADMIN_PATH', SITE_ROOT .  DS . 'admin');
 
 require INC_PATH . DS . 'config.php';
 require INC_PATH . DS . 'db.php';
+require INC_PATH . DS . 'function.php';
+require INC_PATH . DS . 'hero.php';
+require INC_PATH . DS . 'position.php';
+require INC_PATH . DS . 'rank.php';
+require INC_PATH . DS . 'result.php';
+require INC_PATH . DS . 'session.php';
+require INC_PATH . DS . 'user.php';
+require INC_PATH . DS . 'worker.php';
 

@@ -18,11 +18,14 @@ if(isset($_POST['userResults']) != '') {
     while ($i <15){
         $val = $_POST['heroid'][$i];
         $usr = $_POST['userid'];
-        $date = $_POST['date'][$i];
-        $time = $_POST['time'][$i];
-        if ($val >0 and $usr >0 and $date != '' and $time != '') {
+        $datetime = $_POST['datetime'][$i];
+        $date = strstr($datetime,"T", true);
+        $time = str_replace('T','',strstr($datetime,"T", false));
+
+        if ($val >0 and $usr >0 and $date != '' and $time != '' ) {
             $res = new result();
             $res->insertResult($usr, $val, $date, $time);
+//            echo "$date-$time";
             unset($res);
         }
 //        echo "$i - $val ($usr)  - $date : $time<br>";
@@ -30,6 +33,15 @@ if(isset($_POST['userResults']) != '') {
     }
 
 }
+
+$defDate = new DateTime();
+$formatDate = $defDate->format("Y-m-d");
+$formatDate2 = $defDate->format("Y-m-d");
+$date = $defDate->format("Y-m-d");
+$time = $defDate->format("G:i");
+$maxDate = $date."T".$time;
+//echo $maxDate2;
+//print_r($defDate);
 
 ?>
 <head>
@@ -41,7 +53,7 @@ if(isset($_POST['userResults']) != '') {
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <table>
             <tr>
-                <td><input type="submit" name="userResults" value="Sačuvaj"></td>
+                <td><input type="submit" name="userResults" value="Sačuvaj" ></td>
                 <td>
                     <select name="userid">
                         <?php  $user = new user(); $allUsers = $user->getAllUsers(); foreach ($allUsers as $item){?>
@@ -55,13 +67,14 @@ if(isset($_POST['userResults']) != '') {
                     <td><?php echo $i ?></td>
                     <td>
                         <select name="heroid[]">
+                            <option value="0"></option>
                         <?php $hero = new hero(); $allHeros = $hero->getAllHeros(); foreach ($allHeros  as $item) { ?>
                             <option value="<?php echo $item->id?>"><?php echo $item->name ?></option>
                             <?php }?>
                         </select>
                     </td>
-                    <td><input type="date" name="date[]" placeholder="Date"></td>
-                    <td><input type="time" name="time[]" placeholder="Time"></td>
+                    <td><input type="datetime-local" name="datetime[]" placeholder="Date" value="<?php echo $maxDate ?>" max="<?php echo $maxDate ?>"></td>
+<!--                    <td><input type="time" name="time[]" placeholder="Time"></td>-->
 
                 </tr>
             <?php } ?>

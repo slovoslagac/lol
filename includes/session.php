@@ -14,16 +14,30 @@ class session
     public function __construct()
     {
         session_start();
-        $this->loggedin;
+        $this->checkLogin();
     }
 
-    public function is_logged_in () {
+    public function isLoggedIn () {
         return $this->loggedin;
     }
 
-    private function chechk_login(){
-        if(isset($_SESSION["user_id"])){
-            $this->userid = $_SESSION["user_id"];
+    public function login($user){
+        if($user){
+            $this->loggedin = true;
+            $this->userid = $_SESSION["userid"] = $user->id;
+
+        }
+    }
+
+    public function logout(){
+        unset($_SESSION["userid"]);
+        unset($this->userid);
+        $this->loggedin=false;
+    }
+
+    private function checkLogin(){
+        if(isset($_SESSION["userid"])){
+            $this->userid = $_SESSION["userid"];
             $this->loggedin = true;
         } else {
             unset($user_id);

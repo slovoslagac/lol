@@ -9,14 +9,14 @@
  */
 
 include(join(DIRECTORY_SEPARATOR, array('..', 'includes', 'init.php')));
-include(join(DIRECTORY_SEPARATOR, array(INC_PATH . DS . 'worker.php')));
+
 
 //sredjivanje pozicija
 
 if (isset($_POST['worker']) != '') {
     $worker = new worker();
     if (!($worker->getWorkerByUsername($_POST['username'])) and ($_POST['username'] != '')) {
-        $worker->addWorker($_POST['name'], $_POST['lastname'], $_POST['username']);
+        $worker->addWorker($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['password']);
         header('location:' . $_SERVER['PHP_SELF']);
     } else {
         if ($_POST['username'] == '') {
@@ -46,9 +46,10 @@ if (isset($_POST['deleteWorker']) != '') {
 <div>
     <h2>Dodaj novog Radnika</h2>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-        Ime: <input type="text" name="name" min="1">
-        Prezime: <input type="text" name="lastname" min="1">
-        Username: <input type="text" name="username" min="1">
+        Ime: <input type="text" name="name" min="1" required>
+        Prezime: <input type="text" name="lastname" min="1" required>
+        Username: <input type="text" name="username" min="1" required>
+        Šifra:<input type="password" min="1" name="password" required>
         <input type="submit" name="worker" value="Sačuvaj">
     </form>
 </div>
@@ -64,6 +65,7 @@ if (isset($_POST['deleteWorker']) != '') {
                 <tr>
                     <td><?php echo $item->name ?></td>
                     <td><?php echo "($item->username)" ?></td>
+
                     <td>
                         <input type="hidden" value="<?php echo $item->id ?>" name="workerId">
                         <input type="submit" name="deleteWorker" value="Obriši"></td>
