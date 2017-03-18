@@ -9,9 +9,6 @@
  */
 
 include(join(DIRECTORY_SEPARATOR, array('..', 'includes', 'init.php')));
-include(join(DIRECTORY_SEPARATOR, array(INC_PATH . DS . 'result.php')));
-include(join(DIRECTORY_SEPARATOR, array(INC_PATH . DS . 'user.php')));
-include(join(DIRECTORY_SEPARATOR, array(INC_PATH . DS . 'hero.php')));
 
 if(isset($_POST['userResults']) != '') {
     $i =0;
@@ -36,12 +33,19 @@ if(isset($_POST['userResults']) != '') {
 
 $defDate = new DateTime();
 $formatDate = $defDate->format("Y-m-d");
-$formatDate2 = $defDate->format("Y-m-d");
 $date = $defDate->format("Y-m-d");
 $time = $defDate->format("G:i");
 $maxDate = $date."T".$time;
 //echo $maxDate2;
 //print_r($defDate);
+
+
+if (isset($_POST['deleteResult']) != '') {
+    $id = $_POST['resultId'];
+    $delResult = new result();
+    $delResult->deleteResult($id);
+    header('location:' . $_SERVER['PHP_SELF']);
+}
 
 ?>
 <head>
@@ -102,8 +106,8 @@ $maxDate = $date."T".$time;
                     <td><?php echo $item->heroname ?></td>
                     <td><?php echo $item->value ?></td>
                     <td>
-                        <input type="hidden" value="<?php echo $item->id ?>" name="heroId">
-                        <input type="submit" name="deleteHero" value="Obriši"></td>
+<!--                        <input type="hidden" value="--><?php //echo $item->id ?><!--" name="resultId">-->
+<!--                        <input type="submit" name="deleteResult" value="Obriši"></td>-->
                 </tr>
             </form>
 

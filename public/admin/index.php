@@ -34,7 +34,7 @@ if(isset($_POST["logout"])){
 
 
 </form>
-<p><a href="login.php" >Skoci na radnika</a></p>
+<p><a href="createworker.php" >Skoci na radnika</a></p>
 
 </body>
 
