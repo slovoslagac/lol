@@ -41,6 +41,17 @@ class worker
 
     }
 
+    public function getWorkerById($id)
+    {
+        $array = $this->getAllWorkers();
+        foreach ($array as $item) {
+            if ($item->id == $id) {
+                return $item;
+            }
+        }
+
+    }
+
     public function deleteWorker($id) {
         global $conn;
         $deleteWorker = $conn->prepare("delete from workers where id = :id");

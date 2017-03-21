@@ -12,3 +12,10 @@ function redirectTo($location = null) {
         exit;
     }
 }
+
+
+if (!function_exists('password_verify')){
+    function password_verify($password, $hash){
+        return (crypt($password, $hash) === $hash);
+    }
+}

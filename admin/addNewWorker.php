@@ -16,7 +16,8 @@ include(join(DIRECTORY_SEPARATOR, array('..', 'includes', 'init.php')));
 if (isset($_POST['worker']) != '') {
     $worker = new worker();
     if (!($worker->getWorkerByUsername($_POST['username'])) and ($_POST['username'] != '')) {
-        $worker->addWorker($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['password']);
+        $crypt_password = crypt($_POST['password']);
+        $worker->addWorker($_POST['name'], $_POST['lastname'], $_POST['username'], $crypt_password);
         header('location:' . $_SERVER['PHP_SELF']);
     } else {
         if ($_POST['username'] == '') {
@@ -65,6 +66,7 @@ if (isset($_POST['deleteWorker']) != '') {
                 <tr>
                     <td><?php echo $item->name ?></td>
                     <td><?php echo "($item->username)" ?></td>
+                    <td><?php echo password_verify('prada', $item->password)? 'Radi' : 'Ne radi' ;?></td>
 
                     <td>
                         <input type="hidden" value="<?php echo $item->id ?>" name="workerId">

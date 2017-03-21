@@ -18,7 +18,7 @@ class result
 from userheroresult urh, heroes h, users u
 where urh.userid = u.id
 and urh.heroid = h.id
-group by h.name, u.name, u.lastname, u.arenausername order by 5,2,1");
+group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;

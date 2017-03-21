@@ -66,7 +66,7 @@ if (isset($_POST['deleteResult']) != '') {
                     </select>
                 </td>
             </tr>
-            <?php for ($i = 1; $i < 16; $i++) { ?>
+            <?php for ($i = 1; $i < 11; $i++) { ?>
                 <tr>
                     <td><?php echo $i ?></td>
                     <td>

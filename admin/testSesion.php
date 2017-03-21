@@ -38,7 +38,7 @@ print_r($session);
 echo "<br>";
 if($session->isLoggedIn()){
     echo "do jaja";
-//    redirectTo("index.html");
+//    redirectTo("index.php");
 } else {
     echo "ne radi";
 }
