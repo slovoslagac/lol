@@ -1,9 +1,23 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
+if (!$session->isLoggedIn()) {
+    redirectTo("login.php");
+}
+
+if (isset($_POST["logout"])) {
+    echo "Izlogovali smo se <br>";
+    $session->logout();
+    header("Location:index.php");
+}
+
+
+$wrk = new worker();
+$currentWorker = $wrk->getWorkerById($session->userid);
+
 if (isset($_POST['userResults']) != '') {
     $i = 0;
-    while ($i < 15) {
+    while ($i < 10) {
         $val = $_POST['heroid'][$i];
         $usr = $_POST['userid'];
         $datetime = $_POST['datetime'][$i];
@@ -11,11 +25,12 @@ if (isset($_POST['userResults']) != '') {
         $time = str_replace('T', '', strstr($datetime, "T", false));
         if ($val > 0 and $usr > 0 and $date != '' and $time != '') {
             $res = new result();
-            $res->insertResult($usr, $val, $date, $time);
+            $res->insertResult($usr, $val, $date, $time,$session->userid);
             unset($res);
         }
         $i++;
     }
+    redirectTo("index.php");
 }
 
 $defDate = new DateTime();
@@ -63,7 +78,7 @@ if (isset($_POST['deleteResult']) != '') {
             <div class="nav-collapse">
                 <ul class="nav pull-right">
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                class="icon-user"></i> Stefan Dimitrijević <b class="caret"></b></a>
+                                class="icon-user"></i><?php echo "$currentWorker->name $currentWorker->lastname" ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="profil.html">Profil</a></li>
                             <li><a href="javascript:;">Izloguj se</a></li>
@@ -87,7 +102,7 @@ if (isset($_POST['deleteResult']) != '') {
             <ul class="mainnav">
                 <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
                 <li><a href="kraj_smene.html"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                <li><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
+                <li><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
                 <li class="active"><a href="lol_takmicenje.html"><i class="icon-trophy"></i><span>LOL takmičenje</span>
                     </a></li>
                 <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
@@ -159,7 +174,7 @@ if (isset($_POST['deleteResult']) != '') {
                         www.lolskill.net i da su sve ispravne.</label>
 				</span>
 
-                <button class="button btn btn-primary btn-large">Unesi rezultate</button>
+                <button class="button btn btn-primary btn-large" name="userResults" type="submit">Unesi rezultate</button>
 
             </div> <!-- .actions -->
 

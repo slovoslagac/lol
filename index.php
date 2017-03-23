@@ -18,6 +18,18 @@ if (isset($_POST["logout"])) {
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 
+$usr = new user();
+$allusers = $usr->getAllUsers();
+
+
+// Podaci za modal
+
+$currentId = (int) $_REQUEST['getUserData'];
+$currentUser = $usr->deleteUserById($currentId);
+
+print_r($currentUser);
+
+
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +85,7 @@ $currentWorker = $wrk->getWorkerById($session->userid);
             <ul class="mainnav">
                 <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
                 <li><a href="kraj_smene.html"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                <li><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
+                <li><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
                 <li><a href="lol_takmicenje.html"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
                 <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
                 <li><a href="bonus_sati.html"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
@@ -382,8 +394,19 @@ $currentWorker = $wrk->getWorkerById($session->userid);
                                         <h3 id="myModalLabel">Unos novog dugovanja</h3>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="text" id="user_debt" name="username" value=""
-                                               placeholder="eSports Arena Username" class="login"/><br/>
+
+                                        <select name="user">
+                                            <?php foreach ($allusers as $item) {
+                                                if ($item->creditstatus == 1) { ?>
+                                                    <option
+                                                        value="<?php echo $item->id ?>"><?php echo $item->arenausername ?></option>
+
+                                                <?php }
+                                            } ?>
+                                        </select>
+
+<!--                                        <input type="text" id="user_debt" name="username" value=""-->
+<!--                                               placeholder="eSports Arena Username" class="login"/><br/>-->
                                         <input type="text" id="amount" name="pc" value="" placeholder="Iznos dugovanja"
                                                class="login"/>
                                         <p>Izabrani igrač ukupno duguje 500 din od dozvoljenih 1.000 din.</p>
@@ -625,5 +648,32 @@ $currentWorker = $wrk->getWorkerById($session->userid);
         });
     });
 </script><!-- /Calendar -->
+
+<script>
+    $(function () {
+        $(document).on('select', '.user', function (e) {
+            e.preventDefault();
+            var userid = $(this).val();
+            var _this = $(this);
+
+
+            if(userid != '') {
+                $.ajax({
+                    url: 'index.php?getUserData=' + userid,
+                    type: 'GET',
+                    dataType: "json",
+                    success: function (data) {
+                        resultText = (data.result == '-1') ? 'Trazena vrednost je prazna' : data.result;
+
+                        console.log(resultText);
+                        // update dom
+                        _this.parent().parent().find('.suggestion').html(resultText);
+                    }
+                });
+            }
+
+        });
+    });
+</script>
 </body>
 </html>

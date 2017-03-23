@@ -20,7 +20,11 @@ class user
     public function getAllUsers()
     {
         global $conn;
-        $sql = $conn->prepare("SELECT * FROM users order by name");
+        $sql = $conn->prepare("SELECT u.name, u.lastname,arenausername, summonername, phone, discount, p.name positionname, r.name rankname, u.id, u.creditstatus
+FROM users u, positions p, ranks r
+where u.positionid = p.id
+and u.rankid = r.id
+order by 3,1,2");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -73,4 +77,7 @@ class user
         $deletePosition->bindParam(':id',$id);
         $deletePosition->execute();
     }
+
+
+
 }

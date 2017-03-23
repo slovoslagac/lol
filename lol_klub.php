@@ -1,3 +1,22 @@
+<?php
+include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
+
+if (!$session->isLoggedIn()) {
+  redirectTo("login.php");
+}
+
+if (isset($_POST["logout"])) {
+  echo "Izlogovali smo se <br>";
+  $session->logout();
+  header("Location:index.php");
+}
+
+
+$wrk = new worker();
+$currentWorker = $wrk->getWorkerById($session->userid);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +68,7 @@
       <ul class="mainnav">
         <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
         <li><a href="kraj_smene.html"><i class="icon-list-alt"></i><span>Kraj smene</span> </a> </li>
-        <li class="active"><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
+        <li class="active"><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
         <li><a href="lol_takmicenje.html"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a> </li>          
         <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a> </li>
         <li><a href="bonus_sati.html"><i class="icon-time"></i><span>Bonus sati</span> </a> </li>
@@ -94,78 +113,29 @@
                   </tr>
                 </thead>
                 <tbody>
+                <?php $usr = new user();
+        $allusers = $usr->getAllUsers(); $i=1;
+                foreach ($allusers as $item) { ?>
                   <tr>
-                    <td> 1 </td>
-                    <td> Damir </td>
-                      <td> Kokeza </td>
-                      <td> Dado </td>
-                      <td> Chumpitas </td>
-                      <td> Unranked </td>
-                      <td> 0% </td>
-                      <td> Top / Mid </td>
-                      <td> 069/650-900 </td>
+                    <td><?php echo $i ?></td>
+                    <td><?php echo $item->name ?></td>
+                    <td><?php echo $item->lastname ?></td>
+                    <td><?php echo $item->arenausername ?></td>
+                    <td><?php echo $item->summonername ?></td>
+                    <td><?php echo $item->rankname ?></td>
+                    <td><?php echo ($item->discount == null)? "0%" : "$item->discount%" ;?>
+                    <td><?php echo $item->positionname ?></td>
+                    <td><?php echo $item->phone?></td>
+                      <input type="hidden" value="<?php echo $item->id ?>" name="userId">
+                      <input type="hidden" name="deleteUser" value="Obriši">
                     <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
                   </tr>
-                    <tr>
-                    <td> 1 </td>
-                    <td> Damir </td>
-                      <td> Kokeza </td>
-                      <td> Dado </td>
-                      <td> Chumpitas </td>
-                      <td> Unranked </td>
-                      <td> 0% </td>
-                      <td> Top / Mid </td>
-                      <td> 069/650-900 </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                    <tr>
-                    <td> 1 </td>
-                    <td> Damir </td>
-                      <td> Kokeza </td>
-                      <td> Dado </td>
-                      <td> Chumpitas </td>
-                      <td> Unranked </td>
-                      <td> 0% </td>
-                      <td> Top / Mid </td>
-                      <td> 069/650-900 </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                    <tr>
-                    <td> 1 </td>
-                    <td> Damir </td>
-                      <td> Kokeza </td>
-                      <td> Dado </td>
-                      <td> Chumpitas </td>
-                      <td> Unranked </td>
-                      <td> 0% </td>
-                      <td> Top / Mid </td>
-                      <td> 069/650-900 </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                    <tr>
-                    <td> 1 </td>
-                    <td> Damir </td>
-                      <td> Kokeza </td>
-                      <td> Dado </td>
-                      <td> Chumpitas </td>
-                      <td> Unranked </td>
-                      <td> 0% </td>
-                      <td> Top / Mid </td>
-                      <td> 069/650-900 </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
-                    <tr>
-                    <td> 1 </td>
-                    <td> Damir </td>
-                      <td> Kokeza </td>
-                      <td> Dado </td>
-                      <td> Chumpitas </td>
-                      <td> Unranked </td>
-                      <td> 0% </td>
-                      <td> Top / Mid </td>
-                      <td> 069/650-900 </td>
-                    <td class="td-actions"><a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a><a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a></td>
-                  </tr>
+                </form>
+
+
+                <?php $i++;
+        } ?>
+
                   
                 
                 </tbody>

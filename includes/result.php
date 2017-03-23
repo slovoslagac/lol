@@ -36,14 +36,15 @@ and timestamp > sysdate - interval $time MINUTE ");
         $sql = execute();
     }
 
-    public function insertResult($user, $hero, $date, $time)
+    public function insertResult($user, $hero, $date, $time, $worker)
     {
         global $conn;
-        $insertNewResult = $conn->prepare("insert into userheroresult (userid, heroid, matchdate, matchtime) values (:ui, :hi, :dt, :tm)");
+        $insertNewResult = $conn->prepare("insert into userheroresult (userid, heroid, matchdate, matchtime, workerid) values (:ui, :hi, :dt, :tm, :wr)");
         $insertNewResult->bindParam(':ui', $user);
         $insertNewResult->bindParam(':hi', $hero);
         $insertNewResult->bindParam(':dt', $date);
         $insertNewResult->bindParam(':tm', $time);
+        $insertNewResult->bindParam(':wr', $worker);
         $insertNewResult->execute();
     }
 

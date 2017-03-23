@@ -73,7 +73,7 @@ if (isset($_POST['user']) != ''){
             <ul class="mainnav">
                 <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
                 <li><a href="kraj_smene.html"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                <li class="active"><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
+                <li class="active"><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
                 <li><a href="lol_takmicenje.html"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
                 <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
                 <li><a href="bonus_sati.html"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
