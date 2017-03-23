@@ -22,13 +22,16 @@ $usr = new user();
 $allusers = $usr->getAllUsers();
 
 
+if(isset($_POST["saveCredit"])){
+    echo $_POST["selectUser"].'--'.$_POST["amountChosen"];
+}
+
 // Podaci za modal
-
-$currentId = (int) $_REQUEST['getUserData'];
-$currentUser = $usr->deleteUserById($currentId);
-
-print_r($currentUser);
-
+//
+//$currentId = (int) $_REQUEST['getUserData'];
+//$currentUser = $usr->deleteUserById($currentId);
+//
+//print_r($currentUser);
 
 
 ?>
@@ -394,28 +397,28 @@ print_r($currentUser);
                                         <h3 id="myModalLabel">Unos novog dugovanja</h3>
                                     </div>
                                     <div class="modal-body">
+                                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
+                                            <select name="user" id="selectUser" name="selectUser" onchange="myFunction()">
+                                                <option value="0"></option>
+                                                <?php foreach ($allusers as $item) {
+                                                    if ($item->creditstatus == 1) { ?>
+                                                        <option
+                                                            value="<?php echo $item->id.'__1000' ?>"><?php echo $item->arenausername ?></option>
 
-                                        <select name="user">
-                                            <?php foreach ($allusers as $item) {
-                                                if ($item->creditstatus == 1) { ?>
-                                                    <option
-                                                        value="<?php echo $item->id ?>"><?php echo $item->arenausername ?></option>
-
-                                                <?php }
-                                            } ?>
-                                        </select>
-
-<!--                                        <input type="text" id="user_debt" name="username" value=""-->
-<!--                                               placeholder="eSports Arena Username" class="login"/><br/>-->
-                                        <input type="text" id="amount" name="pc" value="" placeholder="Iznos dugovanja"
-                                               class="login"/>
-                                        <p>Izabrani igrač ukupno duguje 500 din od dozvoljenih 1.000 din.</p>
+                                                    <?php }
+                                                } ?>
+                                            </select>
+                                            <input type="text" id="amountChosen" name="amountChosen" value=""
+                                                   placeholder="Iznos dugovanja"
+                                                   class="login"/>
+                                            <p id="amount"></p>
 
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
-                                        <button class="btn btn-primary">Unesi dugovanje</button>
+                                        <button class="btn btn-primary" type="submit" name="saveCredit">Unesi dugovanje</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div> <!-- /controls -->
                         </div>
@@ -650,30 +653,17 @@ print_r($currentUser);
 </script><!-- /Calendar -->
 
 <script>
-    $(function () {
-        $(document).on('select', '.user', function (e) {
-            e.preventDefault();
-            var userid = $(this).val();
-            var _this = $(this);
-
-
-            if(userid != '') {
-                $.ajax({
-                    url: 'index.php?getUserData=' + userid,
-                    type: 'GET',
-                    dataType: "json",
-                    success: function (data) {
-                        resultText = (data.result == '-1') ? 'Trazena vrednost je prazna' : data.result;
-
-                        console.log(resultText);
-                        // update dom
-                        _this.parent().parent().find('.suggestion').html(resultText);
-                    }
-                });
-            }
-
+    function myFunction() {
+        var code = document.getElementById("selectUser").value;
+        var code = code.split("__");
+        var userId = code[0];
+        var maxAmount = 1000 - code[1];
+        document.getElementById("amount").innerHTML = "Izabrani igrač ukupno duguje " + code[1] + " din od dozvoljenih 1.000 din.";
+        $("#amountChosen").attr({
+            "max": maxAmount
         });
-    });
+    }
+    ;
 </script>
 </body>
 </html>
