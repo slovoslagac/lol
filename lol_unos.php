@@ -2,6 +2,17 @@
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 
+if (!$session->isLoggedIn()) {
+    redirectTo("login.php");
+}
+
+if (isset($_POST["logout"])) {
+    echo "Izlogovali smo se <br>";
+    $session->logout();
+    header("Location:index.php");
+}
+
+
 if (isset($_POST['user']) != ''){
     $tmpusr = new user();
     if (($tmpusr->getUserByUsername($_POST['username'])) == '') {

@@ -15,7 +15,7 @@ class credit
 from users u
 left join credit c on c.userid = u.id
 where u.creditstatus = 1
-group by u.id, u.arenausername");
+group by u.id, u.arenausername order by value desc");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;

@@ -2,7 +2,6 @@
 
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-//print_r($session);
 
 if (!$session->isLoggedIn()) {
     redirectTo("login.php");
@@ -14,7 +13,6 @@ if (isset($_POST["logout"])) {
     header("Location:index.php");
 }
 
-//$currentUser = 0;
 
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
@@ -32,11 +30,15 @@ if (isset($_POST["saveCredit"])) {
 }
 
 
-if (isset($_POST['updateUser'])) {
-    $currentUser = $_POST['updateUser'];
+if (isset($_POST['reduceCredit'])) {
+    $reducedCredit = abs($_POST['amountDebit']) * -1;
+    $currentuser = $_POST['currentUserId'];
 
-    echo $currentUser;
+    $usr->addUserCredit($currentuser, $reducedCredit, $session->userid);
+    unset($usr);
+    header("Location:index.php");
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -436,7 +438,7 @@ if (isset($_POST['updateUser'])) {
                                     <th> Akcija</th>
                                 </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
 
                                 <?php $maxDay = '';
                                 $sumCredit = 0;
@@ -448,10 +450,13 @@ if (isset($_POST['updateUser'])) {
                                             <td class="center"><?php echo "$item->value Din" ?></td>
                                             <td><?php echo ($item->num_days > 1) ? "$item->num_days dana" : ($item->num_days == 1) ? "$item->num_days dan" : "Od danas" ?></td>
                                             <td class="td-actions">
-                                                <div >
+                                                <div>
                                                     <!-- Button to trigger modal -->
-                                                    <a data-toggle="modal" href="#vracanje" id="updateUser" data-id="<?php echo $item->id ?>" role="button" class="btn btn-small btn-success" onclick="updateUser()"><i class="btn-icon-only icon-ok"></i></a>
-<!--                                                    <button href="#vracanje" role="button" class="btn btn-small btn-success"data-toggle="modal"><i class="btn-icon-only icon-ok"> </i></button>-->
+                                                    <a data-toggle="modal" href="#vracanje" id="updateUser<?php echo $item->id ?>" data-id="<?php echo $item->id ?>" role="button"
+                                                       class="btn btn-small btn-success"
+                                                       onclick="updateUser('<?php echo $item->id . "__" . $item->username . "__" . $item->value ?>')">
+                                                        <i class="btn-icon-only icon-ok"></i></a>
+                                                    <!--        <button href="#vracanje" role="button" class="btn btn-small btn-success"data-toggle="modal"><i class="btn-icon-only icon-ok"> </i></button>-->
 
                                                 </div> <!-- /controls -->
                                             </td>
@@ -459,27 +464,31 @@ if (isset($_POST['updateUser'])) {
                                     <?php }
                                 } ?>
                                 <!-- Modal -->
-                                <div id="vracanje" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">×
-                                        </button>
-                                        <h3 id="myModalLabel">Unos novog dugovanja</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Vraćanje duga za korisnika <b>Palamudin</b></p>
-                                        <input type="hidden" name="currentUser" id="currentUser" value="" />
-                                        <input type="text" id="amount" name="pc" value="" placeholder="Iznos vraćenog duga" class="login"/>
-                                        <p>Nakon uplate, stanje duga je: <b>400 din</b></p>
+                                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                    <div id="vracanje" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">×
+                                            </button>
+                                            <h3 id="myModalLabel">Unos novog dugovanja</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p id="userCredit"></p>
+                                            <input type="hidden" name="currentUserName" id="currentUserName" value=""/>
+                                            <input type="hidden" name="currentUserId" id="currentUserId" value=""/>
+                                            <input type="number" id="amountDebit" name="amountDebit" value="" placeholder="Iznos vraćenog duga" class="login"
+                                                   onchange="calculate()"/>
+                                            <p id="currentDebit"></p>
 
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                                Poništi
+                                            </button>
+                                            <button class="btn btn-primary" name="reduceCredit" type="submit">Unesi izmenu</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                            Poništi
-                                        </button>
-                                        <button class="btn btn-primary">Unesi izmenu</button>
-                                    </div>
-                                </div>
+                                </form>
                                 </tbody>
                             </table>
 
@@ -679,21 +688,50 @@ if (isset($_POST['updateUser'])) {
     }
     ;
 
-//        function updateUser() {
-//            var currentvalue = document.getElementById("updateUser");
-//            console.log(currentvalue);
-//            $("#currentUser").attr({
-//                "value": currentvalue
-//            });
-//    }
+    //        function updateUser() {
+    //            var currentvalue = document.getElementById("updateUser");
+    //            console.log(currentvalue);
+    //            $("#currentUser").attr({
+    //                "value": currentvalue
+    //            });
+    //    }
 
-        function updateUser() {
-            var id = $('#updateUser').attr('data-id');
-            console.log(id);
-        }
+    function updateUser(val) {
+        var code = val.split("__");
+        var id = code[0];
+        var name = code[1];
+        var credit = code[2];
+        console.log(credit);
+        document.getElementById("userCredit").innerHTML = "Vracanje duga za korisnika " + name.bold();
+        document.getElementById("currentDebit").innerHTML = "Trenutno je korisnik " + name.bold() + " dužan " + credit.bold() + " Din.";
+        $("#currentUserName").attr({
+            "value": name
+        });
+        $("#currentUserId").attr({
+            "value": id
+        });
+        $("#currentDebit").attr({
+            "value": credit
+        });
+        $("#amountDebit").attr({
+            "max": credit
+        });
+
+    }
 
 
+    function calculate() {
+        var x = document.getElementById("amountDebit").value;
+        var y = document.getElementById("currentDebit").value;
+        var rest = y - x;
+        console.log(rest);
+        document.getElementById("currentDebit").innerHTML = "Nakon uplate stanje duga je " + rest + " Din."
+    }
+</script>
 
 </script>
-</body>
-</html>
+
+
+</
+body >
+< / html >
