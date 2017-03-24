@@ -26,5 +26,6 @@ require INC_PATH . DS . 'result.php';
 require INC_PATH . DS . 'session.php';
 require INC_PATH . DS . 'user.php';
 require INC_PATH . DS . 'worker.php';
+require INC_PATH . DS . 'credit.php';
 
 

@@ -14,25 +14,29 @@ if (isset($_POST["logout"])) {
     header("Location:index.php");
 }
 
+//$currentUser = 0;
 
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 
-$usr = new user();
-$allusers = $usr->getAllUsers();
+$usr = new credit();
+$userCredits = $usr->getAllUserCredits();
 
 
-if(isset($_POST["saveCredit"])){
-    echo $_POST["selectUser"].'--'.$_POST["amountChosen"];
+if (isset($_POST["saveCredit"])) {
+    $code = explode('__', $_POST["selectUser"]);
+    $user = $code[0];
+    $usr->addUserCredit($user, $_POST["amountChosen"], $session->userid);
+    unset($usr);
+    header("Location:index.php");
 }
 
-// Podaci za modal
-//
-//$currentId = (int) $_REQUEST['getUserData'];
-//$currentUser = $usr->deleteUserById($currentId);
-//
-//print_r($currentUser);
 
+if (isset($_POST['updateUser'])) {
+    $currentUser = $_POST['updateUser'];
+
+    echo $currentUser;
+}
 
 ?>
 <!DOCTYPE html>
@@ -385,38 +389,37 @@ if(isset($_POST["saveCredit"])){
                             <h3>Dugovanja</h3>
                             <div class="controls">
                                 <!-- Button to trigger modal -->
-                                <a href="#dugovanje" role="button" class="btn" data-toggle="modal">Dodaj novo
-                                    dugovanje</a>
+                                <a href="#dugovanje" role="button" class="btn" data-toggle="modal">Dodaj novo dugovanje</a>
 
                                 <!-- Modal -->
-                                <div id="dugovanje" class="modal hide fade" tabindex="-1" role="dialog"
-                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div id="dugovanje" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                                         </button>
                                         <h3 id="myModalLabel">Unos novog dugovanja</h3>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
-                                            <select name="user" id="selectUser" name="selectUser" onchange="myFunction()">
+                                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                            <select id="selectUser" name="selectUser" onchange="myFunction()">
                                                 <option value="0"></option>
-                                                <?php foreach ($allusers as $item) {
-                                                    if ($item->creditstatus == 1) { ?>
-                                                        <option
-                                                            value="<?php echo $item->id.'__1000' ?>"><?php echo $item->arenausername ?></option>
+                                                <?php foreach ($userCredits as $item) {
+                                                    ?>
+                                                    <option
+                                                        value="<?php $credit = ($item->value == '') ? '0' : $item->value;
+                                                        echo $item->id . '__' . $credit ?>"><?php echo $item->username ?></option>
 
-                                                    <?php }
+                                                    <?php
                                                 } ?>
                                             </select>
-                                            <input type="text" id="amountChosen" name="amountChosen" value=""
-                                                   placeholder="Iznos dugovanja"
-                                                   class="login"/>
+                                            <input type="number" id="amountChosen" name="amountChosen" value="" placeholder="Iznos dugovanja" class="login"/>
                                             <p id="amount"></p>
 
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
-                                        <button class="btn btn-primary" type="submit" name="saveCredit">Unesi dugovanje</button>
+                                        <button class="btn btn-primary" type="submit" name="saveCredit">Unesi
+                                            dugovanje
+                                        </button>
                                     </div>
                                     </form>
                                 </div>
@@ -428,48 +431,55 @@ if(isset($_POST["saveCredit"])){
                                 <thead>
                                 <tr>
                                     <th> Igrač</th>
-                                    <th> Uk. Iznos</th>
-                                    <th> Koliko dugo duguje</th>
+                                    <th data-sortable="true"> Uk. Iznos</th>
+                                    <th data-sortable="true"> Koliko dugo duguje</th>
                                     <th> Akcija</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td><b>Palamudin</b></td>
-                                    <td class="center"> 880 Din</td>
-                                    <td> 23 dana</td>
-                                    <td class="td-actions">
-                                        <div>
-                                            <!-- Button to trigger modal -->
-                                            <a href="#vracanje" role="button" class="btn btn-small btn-success"
-                                               data-toggle="modal"><i class="btn-icon-only icon-ok"> </i></a>
+                                <tbody >
 
-                                            <!-- Modal -->
-                                            <div id="vracanje" class="modal hide fade" tabindex="-1" role="dialog"
-                                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">×
-                                                    </button>
-                                                    <h3 id="myModalLabel">Unos novog dugovanja</h3>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Vraćanje duga za korisnika <b>Palamudin</b></p>
-                                                    <input type="text" id="amount" name="pc" value=""
-                                                           placeholder="Iznos vraćenog duga" class="login"/>
-                                                    <p>Nakon uplate, stanje duga je: <b>400 din</b></p>
+                                <?php $maxDay = '';
+                                $sumCredit = 0;
+                                foreach ($userCredits as $item) {
+                                    if ($item->value > 0) { ?>
+                                        <tr>
+                                            <td value="<?php echo $item->id ?>"><b><?php echo $item->username ?></b>
+                                            </td>
+                                            <td class="center"><?php echo "$item->value Din" ?></td>
+                                            <td><?php echo ($item->num_days > 1) ? "$item->num_days dana" : ($item->num_days == 1) ? "$item->num_days dan" : "Od danas" ?></td>
+                                            <td class="td-actions">
+                                                <div >
+                                                    <!-- Button to trigger modal -->
+                                                    <a data-toggle="modal" href="#vracanje" id="updateUser" data-id="<?php echo $item->id ?>" role="button" class="btn btn-small btn-success" onclick="updateUser()"><i class="btn-icon-only icon-ok"></i></a>
+<!--                                                    <button href="#vracanje" role="button" class="btn btn-small btn-success"data-toggle="modal"><i class="btn-icon-only icon-ok"> </i></button>-->
 
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                                        Poništi
-                                                    </button>
-                                                    <button class="btn btn-primary">Unesi izmenu</button>
-                                                </div>
-                                            </div>
-                                        </div> <!-- /controls -->
-                                    </td>
-                                </tr>
+                                                </div> <!-- /controls -->
+                                            </td>
+                                        </tr>
+                                    <?php }
+                                } ?>
+                                <!-- Modal -->
+                                <div id="vracanje" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">×
+                                        </button>
+                                        <h3 id="myModalLabel">Unos novog dugovanja</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Vraćanje duga za korisnika <b>Palamudin</b></p>
+                                        <input type="hidden" name="currentUser" id="currentUser" value="" />
+                                        <input type="text" id="amount" name="pc" value="" placeholder="Iznos vraćenog duga" class="login"/>
+                                        <p>Nakon uplate, stanje duga je: <b>400 din</b></p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                            Poništi
+                                        </button>
+                                        <button class="btn btn-primary">Unesi izmenu</button>
+                                    </div>
+                                </div>
                                 </tbody>
                             </table>
 
@@ -656,14 +666,34 @@ if(isset($_POST["saveCredit"])){
     function myFunction() {
         var code = document.getElementById("selectUser").value;
         var code = code.split("__");
-        var userId = code[0];
         var maxAmount = 1000 - code[1];
-        document.getElementById("amount").innerHTML = "Izabrani igrač ukupno duguje " + code[1] + " din od dozvoljenih 1.000 din.";
+        console.log(code);
+        if (code[1] < 1000) {
+            document.getElementById("amount").innerHTML = "Izabrani igrač ukupno duguje " + code[1] + " din od dozvoljenih 1.000 din.";
+        } else {
+            document.getElementById("amount").innerHTML = "Izabrani igrač vise ne moze da se zaduzuje";
+        }
         $("#amountChosen").attr({
             "max": maxAmount
         });
     }
     ;
+
+//        function updateUser() {
+//            var currentvalue = document.getElementById("updateUser");
+//            console.log(currentvalue);
+//            $("#currentUser").attr({
+//                "value": currentvalue
+//            });
+//    }
+
+        function updateUser() {
+            var id = $('#updateUser').attr('data-id');
+            console.log(id);
+        }
+
+
+
 </script>
 </body>
 </html>
