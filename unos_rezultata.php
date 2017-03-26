@@ -25,7 +25,7 @@ if (isset($_POST['userResults']) != '') {
         $time = str_replace('T', '', strstr($datetime, "T", false));
         if ($val > 0 and $usr > 0 and $date != '' and $time != '') {
             $res = new result();
-            $res->insertResult($usr, $val, $date, $time,$session->userid);
+            $res->insertResult($usr, $val, $date, $time, $session->userid);
             unset($res);
         }
         $i++;
@@ -162,16 +162,13 @@ if (isset($_POST['deleteResult']) != '') {
                 <?php } ?>
 
 
-
             </div> <!-- /login-fields -->
 
             <div class="login-actions">
 				
                 <span class="login-checkbox">
-					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice"
-                           tabindex="4"/>
-					<label class="choice" for="Field">Potvrđujem da sam proverio/la sve prijavljene partije na sajtu
-                        www.lolskill.net i da su sve ispravne.</label>
+					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" required/>
+					<label class="choice" for="Field">Potvrđujem da sam proverio/la sve prijavljene partije na sajtu www.lolskill.net i da su sve ispravne.</label>
 				</span>
 
                 <button class="button btn btn-primary btn-large" name="userResults" type="submit">Unesi rezultate</button>

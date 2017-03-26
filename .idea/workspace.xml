@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/model baze.mwb" afterPath="$PROJECT_DIR$/Zahtev/model baze.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/model baze.mwb.bak" afterPath="$PROJECT_DIR$/Zahtev/model baze.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/credit.php" afterPath="$PROJECT_DIR$/includes/credit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lol_unos.php" afterPath="$PROJECT_DIR$/lol_unos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/session.php" afterPath="$PROJECT_DIR$/includes/session.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lol_klub.php" afterPath="$PROJECT_DIR$/lol_klub.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unos_rezultata.php" afterPath="$PROJECT_DIR$/unos_rezultata.php" />
     </list>
     <ignored path="lol.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,6 +18,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -54,7 +55,6 @@
         <option value="$PROJECT_DIR$/admin/addNewHero.php" />
         <option value="$PROJECT_DIR$/admin/index.html" />
         <option value="$PROJECT_DIR$/admin/testSesion.php" />
-        <option value="$PROJECT_DIR$/includes/session.php" />
         <option value="$PROJECT_DIR$/public/admin/login.php" />
         <option value="$PROJECT_DIR$/public/admin/index.php" />
         <option value="$PROJECT_DIR$/public/admin/createworker.php" />
@@ -70,11 +70,9 @@
         <option value="$PROJECT_DIR$/includes/function.php" />
         <option value="$PROJECT_DIR$/admin/addNewData.php" />
         <option value="$PROJECT_DIR$/lol_klub.html" />
-        <option value="$PROJECT_DIR$/unos_rezultata.php" />
         <option value="$PROJECT_DIR$/includes/result.php" />
         <option value="$PROJECT_DIR$/includes/login/logout.php" />
         <option value="$PROJECT_DIR$/includes/logging.php" />
-        <option value="$PROJECT_DIR$/lol_klub.php" />
         <option value="$PROJECT_DIR$/Zahtev/zahtev.txt" />
         <option value="$PROJECT_DIR$/includes/user.php" />
         <option value="$PROJECT_DIR$/includes/init.php" />
@@ -82,14 +80,18 @@
         <option value="$PROJECT_DIR$/includes/credit.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/lol_unos.php" />
+        <option value="$PROJECT_DIR$/lol_klub.php" />
+        <option value="$PROJECT_DIR$/Zahtev/testData.sql" />
+        <option value="$PROJECT_DIR$/unos_rezultata.php" />
+        <option value="$PROJECT_DIR$/includes/session.php" />
+        <option value="$PROJECT_DIR$/includes/reservation.php" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpServers">
     <servers />
@@ -98,8 +100,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1456" />
+    <option name="height" value="854" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -126,7 +128,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -142,12 +143,41 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lol" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Zahtev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -160,20 +190,18 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\AppServ\www\lol\Zahtev" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\AppServ\www\lol" />
       <recent name="C:\AppServ\www\lol\admin" />
       <recent name="C:\AppServ\www\lol\includes" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\XAMPP\htdocs\lol\Zahtev" />
+      <recent name="C:\AppServ\www\lol\Zahtev" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -188,7 +216,6 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
@@ -199,27 +226,11 @@
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run-script" />
       <scripts />
-      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -228,7 +239,6 @@
       <changelist id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="" />
       <created>1489401835920</created>
       <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
       <updated>1489401835920</updated>
       <workItem from="1489509495917" duration="8029000" />
       <workItem from="1490304400828" duration="4847000" />
@@ -240,10 +250,10 @@
     <option name="totallyTimeSpent" value="20494000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="854" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14069591" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12013889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -280,7 +290,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/includes/init.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
@@ -288,7 +298,7 @@
     <entry file="file://$PROJECT_DIR$/includes/rank.php" />
     <entry file="file://$PROJECT_DIR$/includes/position.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="55" column="5" selection-start-line="50" selection-start-column="4" selection-end-line="55" selection-end-column="5" />
         </state>
       </provider>
@@ -305,35 +315,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/hero.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="55" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/addNewHero.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="35" selection-end-column="1" />
         </state>
       </provider>
@@ -341,7 +351,7 @@
     <entry file="file://$PROJECT_DIR$/password_resset.php" />
     <entry file="file://$PROJECT_DIR$/includes/worker.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="47" column="35" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
           <folding />
         </state>
@@ -349,11 +359,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/admin/createworker.php" />
     <entry file="file://$PROJECT_DIR$/public/admin/index.php" />
-    <entry file="file://$PROJECT_DIR$/logout.php" />
     <entry file="file://$PROJECT_DIR$/js/signin.js" />
     <entry file="file://$PROJECT_DIR$/admin/addNewWorker.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
         </state>
       </provider>
@@ -363,59 +372,43 @@
     <entry file="file://$PROJECT_DIR$/public/admin/login.php" />
     <entry file="file://$PROJECT_DIR$/admin/addNewResult.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="59" column="40" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/addNewData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="156" column="6" selection-start-line="156" selection-start-column="6" selection-end-line="156" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/result.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/logging.php" />
     <entry file="file://$PROJECT_DIR$/Zahtev/zahtev.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/testSesion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/init.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="71" column="5" selection-start-line="60" selection-start-column="4" selection-end-line="71" selection-end-column="5" />
           <folding />
         </state>
@@ -423,90 +416,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="145" column="29" selection-start-line="145" selection-start-column="29" selection-end-line="145" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/unos_rezultata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="124" column="58" selection-start-line="124" selection-start-column="14" selection-end-line="124" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lol_unos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
+        <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/credit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/testData.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.051282052">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/insert.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/insert.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4188406">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44283646">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <marker date="1490464706902" expanded="true" signature="211:474" placeholder="select h.nam... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58176553">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/result.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5701881">
+          <caret line="24" column="5" selection-start-line="13" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <marker date="1490391827911" expanded="true" signature="252:515" placeholder="select h.nam... " />
+            <marker date="1490391827911" expanded="true" signature="761:985" placeholder="select * h.n... userheroresult" />
+            <marker date="1490391827911" expanded="true" signature="1174:1282" placeholder="insert into userheroresult... " />
+            <marker date="1490391827911" expanded="true" signature="1693:1734" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unos_rezultata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2301013">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lol_klub.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="159" column="55" selection-start-line="159" selection-start-column="55" selection-end-line="159" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.3227207">
+          <caret line="129" column="70" selection-start-line="129" selection-start-column="70" selection-end-line="129" selection-end-column="70" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <marker date="1490387994315" expanded="true" signature="26332:27991" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="26399:26766" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="26501:26627" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="26831:27487" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="27554:27948" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="27659:27769" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28223:29946" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28275:28399" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28500:29919" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28569:29888" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28630:29795" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28698:29756" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28757:28896" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="28817:28890" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="29011:29151" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="29266:29402" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="29323:29396" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="29517:29658" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="29578:29652" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="30193:30259" ph="..." />
-            <marker date="1490387994315" expanded="true" signature="30700:31374" ph="{...}" />
-            <marker date="1490387994315" expanded="true" signature="30802:31367" ph="[...]" />
-            <marker date="1490387994315" expanded="true" signature="30816:31079" ph="{...}" />
-            <marker date="1490387994315" expanded="true" signature="31093:31357" ph="{...}" />
-            <marker date="1490387994315" expanded="true" signature="31505:31993" ph="{...}" />
-            <marker date="1490387994315" expanded="true" signature="31607:31986" ph="[...]" />
-            <marker date="1490387994315" expanded="true" signature="31621:31791" ph="{...}" />
-            <marker date="1490387994315" expanded="true" signature="31805:31976" ph="{...}" />
-            <marker date="1490387994315" expanded="true" signature="32029:32188" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/credit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="50" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
-          <folding>
-            <marker date="1490376977606" expanded="true" signature="201:414" ph="select u.id,... " />
-            <marker date="1490376977606" expanded="true" signature="201:434" ph="select u.id,... " />
-            <marker date="1490376977606" expanded="true" signature="671:738" ph="insert into credit... " />
-          </folding>
         </state>
       </provider>
     </entry>
