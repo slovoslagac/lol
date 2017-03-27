@@ -19,7 +19,29 @@ where r.userid = u.id order by timedate");
         return $result;
     }
 
-    public function confirmReservation($id){
+    public function confirmReservation($id, $wrk){
         global $conn;
+        $sql=$conn->prepare("update reservations set confirmed = 1, confirmworkerid = :wk where id = :id");
+        $sql->bindParam(':id', $id, PDO::PARAM_INT);
+        $sql->bindParam(':wk', $wrk, PDO::PARAM_INT);
+        $sql->execute();
+    }
+
+    public function cancelReservation($id, $wrk){
+        global $conn;
+        $sql=$conn->prepare("update reservations set confirmed = 2, confirmworkerid = :wk where id = :id");
+        $sql->bindParam(':id', $id, PDO::PARAM_INT);
+        $sql->bindParam(':wk', $wrk, PDO::PARAM_INT);
+        $sql->execute();
+    }
+
+    public function addReservation($timedate, $computers, $user, $worker){
+        global $conn;
+        $addRes=$conn->prepare("insert into reservations(timedate, computers, userid, workerid) values(:td, :cp, :us, :wr);");
+        $addRes->bindParam(':td', $timedate);
+        $addRes->bindParam(':cp', $computers);
+        $addRes->bindParam(':us', $user);
+        $addRes->bindParam(':wr', $worker);
+        $addRes->execute();
     }
 }
