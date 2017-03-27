@@ -24,6 +24,19 @@ group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1");
         return $result;
     }
 
+    public function getSumResultPagination($offset, $maxNum)
+    {
+        global $conn;
+        $sql = $conn->prepare("select h.name heroname, u.name uname, u.lastname ulastname, u.arenausername uusername, count(*) value
+from userheroresult urh, heroes h, users u
+where urh.userid = u.id
+and urh.heroid = h.id
+group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1 limit $offset, $maxNum ");
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     public function getAllResults($time = '')
     {
         global $conn;

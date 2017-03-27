@@ -27,5 +27,7 @@ require INC_PATH . DS . 'session.php';
 require INC_PATH . DS . 'user.php';
 require INC_PATH . DS . 'worker.php';
 require INC_PATH . DS . 'credit.php';
+require INC_PATH . DS . 'reservation.php';
+require INC_PATH . DS . 'pagination.php';
 
 

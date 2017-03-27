@@ -40,7 +40,6 @@ if (isset($_POST['reduceCredit'])) {
 }
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -257,38 +256,40 @@ if (isset($_POST['reduceCredit'])) {
                                 </thead>
                                 <tbody>
                                 <?php $result = new result();
-                                $page = 1;
-                                $i = 1;
-                                $step = 3;
                                 $allresults = $result->getSumResult();
+                                $page = !empty($_GET["page"]) ? (int)$_GET["page"] : 1;
+                                $perPage = 3;
+                                $count = count($allresults);
+                                $pagination = new pagination($page, $perPage, $count);
+                                $allresults = $result->getSumResultPagination($pagination->offset(), $perPage);
                                 foreach ($allresults as $item) { ?>
 
-                                    <tr id="<?php echo $i?>" >
+                                    <tr>
                                         <td class="center"> 1</td>
                                         <td><?php echo $item->uname ?></td>
                                         <td class="center"><?php echo $item->heroname ?></td>
                                         <td class="center"><?php echo $item->value ?></td>
 
                                     </tr>
-                                    <?php $i++;
+                                <?php }
+                                if ($pagination->totalPages() > 1) { ?>
+                                    <tr>
+
+                                        <?php if ($pagination->hasPreviousPage()) { ?>
+                                            <a href="index.php?page=<?php $pagination->previousPage()?>">&laquo; Prethodna</a>
+                                        <?php
+                                        } ?>
+
+                                        <?php if ($pagination->hasNextPage()) { ?>
+                                            <a href="index.php?page=<?php $pagination->nextPage()?>"> Sledeća</a>
+                                            <?php
+                                        } ?>
+                                    </tr>
+                                    <?php
                                 } ?>
+
                                 </tbody>
                             </table>
-
-                            <?php
-                            $countItems = $i;
-                            if ($countItems > $step) {
-                                $numPages = ceil($countItems / $step); ?>
-                                    <ul class="pagination pagination-sm">
-                                        <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                            <li><a href="#" onclick="pagination(<?php echo "$j,$step,$countItems"?>)"> <?php echo $j ?></a></li>
-                                        <?php } ?>
-                                    </ul>
-
-
-
-                            <?php } ?>
-
 
                         </div>
 
@@ -753,20 +754,8 @@ if (isset($_POST['reduceCredit'])) {
         console.log(rest);
         document.getElementById("currentDebit").innerHTML = "Nakon uplate stanje duga je " + rest + " Din."
     }
-
-    function pagination($page, $step, $countItems) {
-        for(var $k=1; $k<=$countItems, $k++) {
-            console.log(($page+1) * $step);
-            if ($k > $page*$step && $k <= ($page+1) * $step) {
-                document.getElementById("$k").style.display = "";
-            } else
-            {
-                document.getElementById("$k").style.display = "none";
-            }
-        }
-    }
 </script>
 
-<?php //echo ($i == 3)? "style=\"display:none;\"" : "" ?>
+
 </body>
 </html>
