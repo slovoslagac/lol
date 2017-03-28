@@ -5,10 +5,12 @@ next
 -Doraditi poruku kad se brise sto ne moze da se obrise.
 -Uvesti lowercase controlu da li u bazi ima podataka.
 
+
 reseno
 -Na unosu rez da bude default datum danasnji.
 -Zabrana da se unosi datum i vreme posle trenutnog.
 -Ispis korisnika da se prikaze rank i pozicija umesto id-a.
+-sumu dugovanja po korisniku
 
 
 

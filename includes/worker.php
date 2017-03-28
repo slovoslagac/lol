@@ -8,14 +8,15 @@
  */
 class worker
 {
-    public function addWorker($name, $lastname, $username, $password)
+    public function addWorker($name, $lastname, $email, $password, $type)
     {
         global $conn;
-        $insertNewWorker = $conn->prepare("insert into workers (name,lastname, username, password ) values (:nm, :ln, :un, :ps)");
+        $insertNewWorker = $conn->prepare("insert into workers (name,lastname, email, password, workertypeid ) values (:nm, :ln, :em, :ps, :tp)");
         $insertNewWorker->bindParam(':nm', $name);
         $insertNewWorker->bindParam(':ln', $lastname);
-        $insertNewWorker->bindParam(':un', $username);
+        $insertNewWorker->bindParam(':em', $email);
         $insertNewWorker->bindParam(':ps', $password);
+        $insertNewWorker->bindParam(':tp', $type);
         $insertNewWorker->execute();
     }
 
@@ -30,11 +31,11 @@ class worker
         }
     }
 
-    public function getWorkerByUsername($usr)
+    public function getWorkerByEmail($val)
     {
         $array = $this->getAllWorkers();
         foreach ($array as $item) {
-            if (strtolower($item->username) == strtolower($usr)) {
+            if (strtolower($item->email) == strtolower($val)) {
                 return $item;
             }
         }
@@ -63,10 +64,15 @@ class worker
         global $conn;
         $sql = $conn->prepare("select id from workertype where upper(name) = 'ADMIN'");
         $sql->execute();
-//        $result = $sql->fetchAll(PDO::FETCH_OBJ);
         $result = $sql->fetch(PDO::FETCH_OBJ);
         return $result;
+    }
 
-
+    public function getOperator(){
+        global $conn;
+        $sql = $conn->prepare("select id from workertype where upper(name) = 'OPERATER'");
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
 }

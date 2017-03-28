@@ -60,7 +60,7 @@ if (isset($_POST['cancelation'])) {
 }
 
 
-if(isset($_POST["makeReservation"])){
+if (isset($_POST["makeReservation"])) {
     $res = new reservation();
     $res->addReservation($_POST["datetime"], $_POST["pc"], $_POST["user"], $session->userid);
     unset($res);
@@ -155,7 +155,7 @@ $step = 8;
                         <div class="widget-content">
                             <ul class="news-items">
                                 <?php $info = new info();
-                                $allInfo = $info->getAllInformations(0,3);
+                                $allInfo = $info->getAllInformations(0, 3);
                                 foreach ($allInfo as $item) { ?>
                                     <li>
 
@@ -198,9 +198,10 @@ $step = 8;
                                     <tr id="<?php echo "hour$i" ?>" <?php echo ($i > $step) ? "class=\"hide\"" : "" ?>>
                                         <td class="center"> 1</td>
                                         <td> Chumpitas</td>
-                                        <td class="center"> 300</td>
-                                        <td class="center"> 20h</td>
-                                        <td class="center"> 360</td>
+                                        <td class="center"><?php echo $i * 15 ?></td>
+                                        <td class="center"><?php echo countBonus($i * 15) ?></td>
+                                        <td class="center"> <?php $tmp = countBonus($i * 15);
+                                            echo $nextBonus[$tmp]; ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
@@ -303,7 +304,7 @@ $step = 8;
                                             <h3 id="myModalLabel">Unos nove rezervacije</h3>
                                         </div>
                                         <div class="modal-body">
-                                            <input type="datetime-local" name="datetime" min="<?php echo $now?>" value="<?php echo $now?>" required/><br/>
+                                            <input type="datetime-local" name="datetime" min="<?php echo $now ?>" value="<?php echo $now ?>" required/><br/>
                                             <select name="user" required>
                                                 <?php foreach ($allusers as $item) { ?>
                                                     <option value="<?php echo $item->id ?>"><?php echo $item->arenausername ?></option>
@@ -364,49 +365,49 @@ $step = 8;
                                     }
                                 }
                                 unset($res, $allreservations); ?>
-
-                                <!-- Modal -->
-                                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                    <div id="izvrseno" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                                            </button>
-                                            <h3 id="myModalLabel">Potvrda rezervacije</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Rezervacija je izvršena i kompjuteri su izdati.</p>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                                Poništi
-                                            </button>
-                                            <button class="btn btn-primary" type="submit" name="confirmation" id="confirmation">Potvrdi</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- Modal -->
-                                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                    <div id="ponisti" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                                            </button>
-                                            <h3 id="myModalLabel">Otkazivanje rezervacije</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Rezervacija ne može biti izvršena, pa se otkazuje.</p>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                                Poništi
-                                            </button>
-                                            <button class="btn btn-primary" name="cancelation" id="cancelation">Potvrdi</button>
-                                        </div>
-                                    </div>
-                                </form>
                                 </tbody>
                             </table>
+                            <!-- Modal -->
+                            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                <div id="izvrseno" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                        </button>
+                                        <h3 id="myModalLabel">Potvrda rezervacije</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Rezervacija je izvršena i kompjuteri su izdati.</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                            Poništi
+                                        </button>
+                                        <button class="btn btn-primary" type="submit" name="confirmation" id="confirmation">Potvrdi</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Modal -->
+                            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                <div id="ponisti" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                        </button>
+                                        <h3 id="myModalLabel">Otkazivanje rezervacije</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Rezervacija ne može biti izvršena, pa se otkazuje.</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                            Poništi
+                                        </button>
+                                        <button class="btn btn-primary" name="cancelation" id="cancelation">Potvrdi</button>
+                                    </div>
+                                </div>
+                            </form>
+
 
                             <?php
                             $countItems = $i - 1;
@@ -484,7 +485,8 @@ $step = 8;
                                 $sumCredit = 0;
                                 $i = 1;
                                 foreach ($userCredits as $item) {
-                                    if ($item->value > 0) { ?>
+                                    if ($item->value > 0) {
+                                        $sumCredit = $sumCredit + $item->value; ?>
                                         <tr id="<?php echo "credit$i" ?>" <?php echo ($i > $step) ? "class=\"hide\"" : "" ?>>
                                             <td value="<?php echo $item->id ?>"><b><?php echo $item->username ?></b>
                                             </td>
@@ -505,6 +507,10 @@ $step = 8;
                                         <?php $i++;
                                     }
                                 } ?>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="center"><b><?php echo "$sumCredit Din" ?></b></td>
+                                </tr>
                                 </tbody>
                             </table>
                             <?php

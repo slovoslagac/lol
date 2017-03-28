@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
     $password = trim($_POST["password"]);
 
     $worker = new worker();
-    $currworker = $worker->getWorkerByUsername($username);
+    $currworker = $worker->getWorkerByEmail($username);
 
     if ($currworker) {
         if (password_verify($password, $currworker->password)) {
@@ -90,7 +90,7 @@ if (isset($_POST["submit"])) {
 
                 <div class="field">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" value="" placeholder="Korisničko ime"
+                    <input type="text" id="username" name="username" value="" placeholder="Vaš e-mail"
                            class="login username-field"/>
                 </div> <!-- /field -->
 
@@ -118,7 +118,7 @@ if (isset($_POST["submit"])) {
 
 
 <div class="login-extra">
-    <a href="#">Reset Password</a>
+    Nemaš nalog? <a href="signup.php">Kreiraj novi...</a>
 </div> <!-- /login-extra -->
 
 

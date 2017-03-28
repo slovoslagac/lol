@@ -1,17 +1,32 @@
+<?php
+include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
+
+
+
+if(isset($_POST["registration"])){
+    $name = $_POST["firstname"];
+    $lastname = $_POST["lastname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $confpassword = $_POST["confirm_password"];
+    $wrk = new  worker();
+    $crypt_password = crypt($password);
+    if ($wrk->getWorkerByEmail($email) == '') {
+        if ($password == $confpassword) {
+            $typeObject = $wrk->getOperator(); $type = $typeObject->id;
+            $wrk->addWorker($name, $lastname, $email, $crypt_password, $type);
+            unset($wrk);
+            redirectTo("login.php");
+        } else {
+            echo "Registracija nije uspela, molimo pokušajte ponovo!";
+        }
+    } else {
+        echo "Izabrani mail je vec u upotrebi";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-<?php
-
-
-
-
-
-
-
-
-
-
-?>
 <head>
     <meta charset="utf-8">
     <title>eSports Arena</title>
@@ -78,7 +93,7 @@
 
     <div class="content clearfix">
 
-        <form action="#" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 
             <h1>Registracija</h1>
 
@@ -99,26 +114,26 @@
 
                 <div class="field">
                     <label for="email">E-mail:</label>
-                    <input type="text" id="email" name="email" value="" placeholder="E-mail" class="login"/>
+                    <input type="email" id="email" name="email" value="" placeholder="E-mail" class="login" required/>
                 </div> <!-- /field -->
 
                 <div class="field">
                     <label for="password">Lozinka:</label>
-                    <input type="password" id="password" name="password" value="" placeholder="Lozinka" class="login"/>
+                    <input type="password" id="password" name="password" value="" placeholder="Lozinka" class="login" required/>
                 </div> <!-- /field -->
 
                 <div class="field">
                     <label for="confirm_password">Potvrda lozinke:</label>
-                    <input type="password" id="confirm_password" name="confirm_password" value=""
-                           placeholder="Potvrda lozinke" class="login"/>
+                    <input type="password" id="confirm_password" name="confirm_password" value="" placeholder="Potvrda lozinke" class="login" oninput="check(this)"/>
                 </div> <!-- /field -->
+
 
             </div> <!-- /login-fields -->
 
             <div class="login-actions">
 
 
-                <button class="button btn btn-primary btn-large">Registruj se</button>
+                <button class="button btn btn-primary btn-large" name="registration" type="submit">Registruj se</button>
 
             </div> <!-- .actions -->
 
@@ -139,6 +154,17 @@
 <script src="js/bootstrap.js"></script>
 
 <script src="js/signin.js"></script>
+
+<script language='javascript' type='text/javascript'>
+    function check(input) {
+        if (input.value != document.getElementById('password').value) {
+            input.setCustomValidity('Niste uneli iste lozinke');
+        } else {
+            // input is valid -- reset the error message
+            input.setCustomValidity('');
+        }
+    }
+</script>
 
 </body>
 
