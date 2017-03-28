@@ -36,8 +36,9 @@ if (isset($_POST['userResults']) != '') {
 $defDate = new DateTime();
 $formatDate = $defDate->format("Y-m-d");
 $date = $defDate->format("Y-m-d");
-$time = $defDate->format("G:i");
+$time = $defDate->format("H:i");
 $maxDate = $date . "T" . $time;
+
 
 if (isset($_POST['deleteResult']) != '') {
     $id = $_POST['resultId'];
@@ -101,13 +102,14 @@ if (isset($_POST['deleteResult']) != '') {
         <div class="container">
             <ul class="mainnav">
                 <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
-                <li><a href="kraj_smene.html"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
+                <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
                 <li><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-                <li class="active"><a href="lol_takmicenje.html"><i class="icon-trophy"></i><span>LOL takmičenje</span>
+                <li class="active"><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span>
                     </a></li>
                 <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
-                <li><a href="bonus_sati.html"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
-                <li><a href="magacin.html"><i class="icon-truck"></i><span>Magacin</span> </a></li>
+                <li><a href="bonus_sati.php"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
+                <li><a href="magacin.php"><i class="icon-truck"></i><span>Magacin</span> </a></li>
+                <li><a href="informacije.php"><i class="icon-truck"></i><span>Informacije</span> </a></li>
 
             </ul>
         </div>

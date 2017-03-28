@@ -30,8 +30,6 @@ class session
     }
 
     public function logout(){
-//        unset($_SESSION["userid"]);
-//        unset($this->userid);
         session_destroy();
         $this->loggedin=false;
     }
@@ -45,6 +43,8 @@ class session
             $this->loggedin = false;
         }
     }
+
+
 }
 
 $session = new session();

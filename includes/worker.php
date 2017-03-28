@@ -58,4 +58,15 @@ class worker
         $deleteWorker->bindParam(':id',$id);
         $deleteWorker->execute();
     }
+
+    public function getAdmin(){
+        global $conn;
+        $sql = $conn->prepare("select id from workertype where upper(name) = 'ADMIN'");
+        $sql->execute();
+//        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
+
+
+    }
 }

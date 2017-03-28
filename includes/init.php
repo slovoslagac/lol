@@ -29,5 +29,6 @@ require INC_PATH . DS . 'worker.php';
 require INC_PATH . DS . 'credit.php';
 require INC_PATH . DS . 'reservation.php';
 require INC_PATH . DS . 'pagination.php';
+require INC_PATH . DS . 'info.php';
 
 

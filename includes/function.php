@@ -19,3 +19,5 @@ if (!function_exists('password_verify')){
         return (crypt($password, $hash) === $hash);
     }
 }
+
+

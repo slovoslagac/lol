@@ -70,7 +70,7 @@ if(isset($_POST["makeReservation"])){
 $defDate = new DateTime();
 $formatDate = $defDate->format("Y-m-d");
 $date = $defDate->format("Y-m-d");
-$time = $defDate->format("G:i");
+$time = $defDate->format("H:i");
 $now = $date . "T" . $time;
 
 // korak u paginaciji
@@ -128,13 +128,13 @@ $step = 8;
         <div class="container">
             <ul class="mainnav">
                 <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
-                <li><a href="kraj_smene.html"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
+                <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
                 <li><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-                <li><a href="lol_takmicenje.html"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
+                <li><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
                 <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
-                <li><a href="bonus_sati.html"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
-                <li><a href="magacin.html"><i class="icon-truck"></i><span>Magacin</span> </a></li>
-
+                <li><a href="bonus_sati.php"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
+                <li><a href="magacin.php"><i class="icon-truck"></i><span>Magacin</span> </a></li>
+                <li><a href="informacije.php"><i class="icon-truck"></i><span>Informacije</span> </a></li>
             </ul>
         </div>
         <!-- /container -->
@@ -154,49 +154,22 @@ $step = 8;
                         <!-- /widget-header -->
                         <div class="widget-content">
                             <ul class="news-items">
-                                <li>
+                                <?php $info = new info();
+                                $allInfo = $info->getAllInformations(0,3);
+                                foreach ($allInfo as $item) { ?>
+                                    <li>
 
-                                    <div class="news-item-date"><span class="news-item-day">17</span> <span
-                                            class="news-item-month">Mar</span></div>
-                                    <div class="news-item-detail"><a
-                                            href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title"
-                                            target="_blank">Thursday Roundup # 40</a>
-                                        <p class="news-item-preview"> This is our web design and development news series
-                                            where we share our favorite design/development related articles, resources,
-                                            tutorials and awesome freebies. </p>
-                                    </div>
+                                        <div class="news-item-date"><span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span></div>
+                                        <div class="news-item-detail"><a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title"
+                                                                         target="_blank"><?php echo $item->tittle; ?></a>
+                                            <p class="news-item-preview"><?php echo $item->text; ?></p>
+                                        </div>
 
-                                </li>
-                                <li>
+                                    </li>
 
-                                    <div class="news-item-date"><span class="news-item-day">15</span> <span
-                                            class="news-item-month">Jun</span></div>
-                                    <div class="news-item-detail"><a
-                                            href="http://www.egrappler.com/retina-ready-responsive-app-landing-page-website-template-app-landing/"
-                                            class="news-item-title" target="_blank">Retina Ready Responsive App Landing
-                                            Page Website Template – App Landing</a>
-                                        <p class="news-item-preview"> App Landing is a retina ready responsive app
-                                            landing page website template perfect for software and application
-                                            developers and small business owners looking to promote their iPhone, iPad,
-                                            Android Apps and software products.</p>
-                                    </div>
+                                <?php }
+                                unset($allInfo, $info); ?>
 
-                                </li>
-                                <li>
-
-                                    <div class="news-item-date"><span class="news-item-day">29</span> <span
-                                            class="news-item-month">Oct</span></div>
-                                    <div class="news-item-detail"><a
-                                            href="http://www.egrappler.com/open-source-jquery-php-ajax-contact-form-templates-with-captcha-formify/"
-                                            class="news-item-title" target="_blank">Open Source jQuery PHP Ajax Contact
-                                            Form Templates With Captcha: Formify</a>
-                                        <p class="news-item-preview"> Formify is a contribution to lessen the pain of
-                                            creating contact forms. The collection contains six different forms that are
-                                            commonly used. These open source contact forms can be customized as well to
-                                            suit the need for your website/application.</p>
-                                    </div>
-
-                                </li>
                             </ul>
                         </div>
                         <!-- /widget-content -->
@@ -431,6 +404,7 @@ $step = 8;
                                             <button class="btn btn-primary" name="cancelation" id="cancelation">Potvrdi</button>
                                         </div>
                                     </div>
+                                </form>
                                 </tbody>
                             </table>
 

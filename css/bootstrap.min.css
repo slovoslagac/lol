@@ -2131,6 +2131,21 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.btn-right {
+    float:right;
+    margin:10px 0;
+}
+
+.pazar {
+    margin-bottom:0px;
+    width:95%;
+}
+
+.textarea {
+    width:98%;
+    height:413px;
+}
+
 
 /**/
 

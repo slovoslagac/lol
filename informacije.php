@@ -1,6 +1,7 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
+
 if (!$session->isLoggedIn()) {
     redirectTo("login.php");
 }
@@ -11,9 +12,19 @@ if (isset($_POST["logout"])) {
     header("Location:index.php");
 }
 
-
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
+
+
+if (isset($_POST["saveInfo"])) {
+    $newinfo = new info();
+    $newinfo->addNewInformation($_POST["date"], $_POST["tittle"], $_POST["infoText"], $session->userid);
+    unset($newinfo);
+    header("Location:informacije.php");
+}
+
+$dateNow = new DateTime();
+$dateNow = $dateNow->format("Y-m-d");
 
 
 ?>
@@ -44,10 +55,10 @@ $currentWorker = $wrk->getWorkerById($session->userid);
             <div class="nav-collapse">
                 <ul class="nav pull-right">
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                class="icon-user"></i> Stefan Dimitrijević <b class="caret"></b></a>
+                                class="icon-user"></i><?php echo "$currentWorker->name $currentWorker->lastname" ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="profil.html">Profil</a></li>
-                            <li><a href="javascript:;">Izloguj se</a></li>
+                            <li><a href="logout.php">Izloguj se</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -68,11 +79,12 @@ $currentWorker = $wrk->getWorkerById($session->userid);
             <ul class="mainnav">
                 <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
                 <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                <li class="active"><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
+                <li><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
                 <li><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
-                <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
+                <li><a href="raspored.php"><i class="icon-calendar"></i><span>Raspored</span> </a></li>
                 <li><a href="bonus_sati.php"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
                 <li><a href="magacin.php"><i class="icon-truck"></i><span>Magacin</span> </a></li>
+                <li class="active"><a href="informacije.php"><i class="icon-truck"></i><span>Informacije</span> </a></li>
 
             </ul>
         </div>
@@ -86,67 +98,94 @@ $currentWorker = $wrk->getWorkerById($session->userid);
         <div class="container">
             <div class="row">
                 <div class="span12">
+                    <?php $info = new info();
+                    $page = !empty($_GET["page"]) ? (int)$_GET["page"] : 1;
+                    $allInfo = $info->getAllInformations();
+                    $perPage=10;
+                    $count = count($allInfo);
+                    $pagination = new pagination($page, $count, $perPage);
+                    $allInfo = $info->getAllInformations($pagination->offset(), $perPage); ?>
 
-                    <div class="widget widget-table action-table">
-                        <div class="widget-header"><i class="icon-user"></i>
-                            <h3>LOL klub - članovi</h3>
+
+                    <div class="widget widget-nopad">
+                        <div class="widget-header"><i class="icon-list-alt"></i>
+                            <h3> Važne informacije
+                                <?php if ($pagination->hasPreviousPage()) { ?>
+                                    <a href="informacije.php?page=<?php echo $pagination->previousPage() ?>" value="<?php echo $pagination->previousPage() ?>" id="leftSide" name="leftSide" ><i class="icon-chevron-left"></i></a>
+                                <?php }
+                                if ($pagination->hasNextPage()) { ?>
+                                    <a href="informacije.php?page=<?php echo $pagination->nextPage() ?>" value="<?php echo $pagination->previousPage() ?>" name="rightSide" id="rightSide" ><i class="icon-chevron-right"></i></a>
+                                <?php } ?>
+                            </h3>
                             <div class="controls">
                                 <!-- Button to trigger modal -->
-                                <a href="lol_unos.php" role="button" class="btn">Dodaj novog člana</a>
+                                <a href="#info" role="button" class="btn" data-toggle="modal">Dodaj novu informaciju</a>
                             </div> <!-- /controls -->
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th> RB</th>
-                                    <th> Ime</th>
-                                    <th> Prezime</th>
-                                    <th> Arena Username</th>
-                                    <th> Summoner Name</th>
-                                    <th> Rank</th>
-                                    <th> Popust</th>
-                                    <th> Pozicija</th>
-                                    <th> Telefon</th>
-                                    <th class="td-actions"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $usr = new user();
-                                $allusers = $usr->getAllUsers();
-                                $i = 1;
-                                foreach ($allusers as $item) { ?>
-                                    <tr>
-                                        <td><?php echo $i ?></td>
-                                        <td><?php echo $item->name ?></td>
-                                        <td><?php echo $item->lastname ?></td>
-                                        <td><?php echo $item->arenausername ?></td>
-                                        <td><?php echo $item->summonername ?></td>
-                                        <td><?php echo $item->rankname ?></td>
-                                        <td><?php echo ($item->discount == null) ? "0%" : "$item->discount%"; ?>
-                                        <td><?php echo $item->positionname ?></td>
-                                        <td><?php echo $item->phone ?></td>
-                                        <input type="hidden" value="<?php echo $item->id ?>" name="userId">
-                                        <input type="hidden" name="deleteUser" value="Obriši">
-                                        <td class="td-actions">
-                                            <a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a>
-                                            <a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a>
-                                        </td>
-                                    </tr>
-                                    </form>
+                            <ul class="news-items">
+
+                                <?php
+                                foreach ($allInfo as $item) { ?>
+
+                                    <li>
+                                        <div class="news-item-date"><span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span>
+                                        </div>
+                                        <div class="news-item-detail"><a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title"
+                                                                         target="_blank"><?php echo $item->tittle; ?></a>
+                                            <p class="news-item-preview"><?php echo $item->text; ?></p>
+                                        </div>
+                                    </li>
 
 
-                                    <?php $i++;
-                                } ?>
+                                    <?php
+                                }
+                                unset($allInfo, $info); ?>
 
-
-                                </tbody>
-                            </table>
+                            </ul>
                         </div>
                         <!-- /widget-content -->
+
+                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <?php $tmpwrk = $wrk->getAdmin();
+                            if ($currentWorker->workertypeid == $tmpwrk->id) { ?>
+
+                                <div id="info" class="modal hide fade" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                        </button>
+                                        <h3 id="myModalLabel">Unos nove informacije</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="date" name="date" value="<?php echo $dateNow ?>" required/><br/>
+                                        <input type="text" name="tittle" placeholder="Naslov" required/><br/>
+                                        <input type="text" name="infoText" value="" placeholder="Text vesti" required max="1000"/>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
+                                        <button class="btn btn-primary" type="submit" name="saveInfo">Sačuvaj informaciju</button>
+                                    </div>
+                                </div>
+                            <?php } else { ?>
+                                <div id="info" class="modal hide fade" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                        </button>
+                                        <h3 id="myModalLabel">Nemate privilegije da dodajete informacije molimo Vas ulogujte se kao administrator</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
+                                    </div>
+                                </div>
+
+                            <?php }
+                            unset($tmpwrk); ?>
+                        </form>
                     </div>
-                    <!-- /widget -->
 
                 </div>
                 <!-- /span6 -->
@@ -289,6 +328,8 @@ $currentWorker = $wrk->getWorkerById($session->userid);
             ]
         });
     });
+
+
 </script><!-- /Calendar -->
 </body>
 </html>

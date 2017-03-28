@@ -12,7 +12,7 @@ class pagination
     public $perPage;
     public $count;
 
-    public function __construct($page = 1, $perPage = 10, $totalCount)
+    public function __construct($page = 1, $totalCount, $perPage = 10)
     {
         $this->currentPage = (int)$page;
         $this->perPage = (int)$perPage;
