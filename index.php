@@ -18,29 +18,39 @@ $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 
 $usr = new credit();
-$userCredits = $usr->getAllUserCredits();
+$userCredits = $usr->getSumAllUserCredits();
 
 $u = new user();
 $allusers = $u->getAllUsers();
 
 
+//sredjivanje kredita
+
 if (isset($_POST["saveCredit"])) {
     $code = explode('__', $_POST["selectUser"]);
     $user = $code[0];
-    $usr->addUserCredit($user, $_POST["amountChosen"], $session->userid);
-    unset($usr);
-    header("Location:index.php");
+    if ($user > 0) {
+        $usr->addUserCredit($user, $_POST["amountChosen"], $session->userid);
+        unset($usr);
+        header("Location:index.php");
+    }
 }
 
 
 if (isset($_POST['reduceCredit'])) {
     $reducedCredit = abs($_POST['amountDebit']) * -1;
     $currentuser = $_POST['currentUserId'];
-
     $usr->addUserCredit($currentuser, $reducedCredit, $session->userid);
-    unset($usr);
+    $currusrcredit = $usr->getSumUserCredit($currentuser);
+    if ($currusrcredit->value == 0) {
+        $usr->creditExpire($currentuser);
+    }
+    unset($usr, $currusrcredit);
     header("Location:index.php");
 }
+
+
+//Rezervacije
 
 if (isset($_POST['confirmation'])) {
 //    echo $_POST['confirmation'];
@@ -159,7 +169,8 @@ $step = 8;
                                 foreach ($allInfo as $item) { ?>
                                     <li>
 
-                                        <div class="news-item-date"><span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span></div>
+                                        <div class="news-item-date"><span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span>
+                                        </div>
                                         <div class="news-item-detail"><a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title"
                                                                          target="_blank"><?php echo $item->tittle; ?></a>
                                             <p class="news-item-preview"><?php echo $item->text; ?></p>
@@ -205,23 +216,26 @@ $step = 8;
                                     </tr>
                                 <?php } ?>
                                 </tbody>
-                            </table>
+
                             <?php
                             $countItems = $i - 1;
 
                             if ($countItems > $step) {
                                 $numPages = ceil($countItems / $step); ?>
-                                <div class="text-xs-right">
-                                    <ul class="pagination pagination-sm">
+                                <tfoot>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td colspan="2" class="center">
                                         <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                            <li><a onclick="pagination(<?php echo "$j,$step,$countItems,'hour'" ?>)"> <?php echo $j ?></a></li>
+                                            <a onclick="pagination(<?php echo "$j,$step,$countItems,'hour'" ?>)"> <?php echo $j ?></a>
                                         <?php } ?>
-                                    </ul>
-                                </div>
+                                    </td>
+                                </tr>
+                                </tfoot>
 
 
                             <?php } ?>
-
+                            </table>
                         </div>
 
                     </div>
@@ -261,23 +275,27 @@ $step = 8;
                                     <?php $i++;
                                 } ?>
                                 </tbody>
+                                <?php
+                                $countItems = $i - 1;
+
+                                if ($countItems > $step) {
+                                    $numPages = ceil($countItems / $step); ?>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="right">
+                                            <?php for ($j = 1; $j <= $numPages; $j++) { ?>
+                                                <a onclick="pagination(<?php echo "$j,$step,$countItems,'res'" ?>)"> <?php echo $j ?></a>
+                                            <?php } ?>
+                                    </td>
+                                </tr>
+                                </tfoot>
+
+
+                                <?php } ?>
+
                             </table>
 
-                            <?php
-                            $countItems = $i - 1;
-
-                            if ($countItems > $step) {
-                                $numPages = ceil($countItems / $step); ?>
-                                <div class="text-xs-right">
-                                    <ul class="pagination pagination-sm">
-                                        <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                            <li><a onclick="pagination(<?php echo "$j,$step,$countItems,'res'" ?>)"> <?php echo $j ?></a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
-
-
-                            <?php } ?>
 
 
                         </div>
@@ -285,24 +303,29 @@ $step = 8;
                     </div>
 
                 </div>
+
+
                 <div class="span6">
+
+
+                    <!--                    Pocetak rezervacija -->
+
+
                     <div class="widget widget-table action-table">
                         <div class="widget-header"><i class="icon-time"></i>
-                            <h3>Rezervacije</h3>
+                            <h3>Rezervacije </h3>
                             <div class="controls">
                                 <!-- Button to trigger modal -->
-                                <a href="#rezervacija" role="button" class="btn" data-toggle="modal">Dodaj novu
-                                    rezervaciju</a>
+                                <a href="#rezervacija" role="button" class="btn" data-toggle="modal">Dodaj novu rezervaciju</a>
 
                                 <!-- Modal -->
-                                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                    <div id="rezervacija" class="modal hide fade" tabindex="-1" role="dialog"
-                                         aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                                            </button>
-                                            <h3 id="myModalLabel">Unos nove rezervacije</h3>
-                                        </div>
+
+                                <div id="rezervacija" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h3 id="myModalLabel">Unos nove rezervacije</h3>
+                                    </div>
+                                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                                         <div class="modal-body">
                                             <input type="datetime-local" name="datetime" min="<?php echo $now ?>" value="<?php echo $now ?>" required/><br/>
                                             <select name="user" required>
@@ -311,14 +334,14 @@ $step = 8;
                                                 <?php } ?>
                                             </select>
                                             <input type="text" id="user_pc" name="pc" value="" placeholder="11,12,13,14" class="login" required/>
-
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
                                             <button class="btn btn-primary" type="submit" name="makeReservation">Napravi rezervaciju</button>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
+
                             </div> <!-- /controls -->
                             <!--<div class="add"><i class="icon-plus-sign"></i>&nbsp;&nbsp;dodaj novu rezervaciju</div>-->
                         </div>
@@ -335,13 +358,11 @@ $step = 8;
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <?php $currentdate = new DateTime();
                                 $res = new reservation();
                                 $allreservations = $res->getAllReservations();
                                 $i = 1;
                                 foreach ($allreservations as $item) {
-//                                    new DateTime($item->timedate) >= $currentdate and
                                     if ($item->confirmed == null) {
                                         ?>
                                         <tr id="<?php echo "reserv$i" ?>" <?php echo ($i > $step) ? "class=\"hide\"" : "" ?>>
@@ -365,70 +386,72 @@ $step = 8;
                                     }
                                 }
                                 unset($res, $allreservations); ?>
+
+
                                 </tbody>
+
+                                <?php
+                                $countItems = $i - 1;
+
+                                if ($countItems > $step) {
+                                    $numPages = ceil($countItems / $step); ?>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                        <td class="right">
+                                            <?php for ($j = 1; $j <= $numPages; $j++) { ?>
+                                                <a onclick="pagination(<?php echo "$j,$step,$countItems,'reserv'" ?>)"> <?php echo $j ?></a>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
+                                <?php } ?>
                             </table>
-                            <!-- Modal -->
-                            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                <div id="izvrseno" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                                        </button>
-                                        <h3 id="myModalLabel">Potvrda rezervacije</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Rezervacija je izvršena i kompjuteri su izdati.</p>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                            Poništi
-                                        </button>
-                                        <button class="btn btn-primary" type="submit" name="confirmation" id="confirmation">Potvrdi</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- Modal -->
-                            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                <div id="ponisti" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                                        </button>
-                                        <h3 id="myModalLabel">Otkazivanje rezervacije</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Rezervacija ne može biti izvršena, pa se otkazuje.</p>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                            Poništi
-                                        </button>
-                                        <button class="btn btn-primary" name="cancelation" id="cancelation">Potvrdi</button>
-                                    </div>
-                                </div>
-                            </form>
-
-
-                            <?php
-                            $countItems = $i - 1;
-
-                            if ($countItems > $step) {
-                                $numPages = ceil($countItems / $step); ?>
-                                <div class="text-xs-right">
-                                    <ul class="pagination pagination-sm">
-                                        <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                            <li><a onclick="pagination(<?php echo "$j,$step,$countItems,'reserv'" ?>)"> <?php echo $j ?></a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
-
-
-                            <?php } ?>
-
                         </div>
 
                     </div>
 
+                    <!-- Modal -->
+                    <div id="izvrseno" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Potvrda rezervacije</h3>
+                        </div>
+                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <div class="modal-body">
+                                <p>Rezervacija je izvršena i kompjuteri su izdati.</p>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true"> Poništi</button>
+                                <button class="btn btn-primary" type="submit" name="confirmation" id="confirmation">Potvrdi</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Modal -->
+                    <div id="ponisti" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Otkazivanje rezervacije</h3>
+                        </div>
+                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                            <div class="modal-body">
+                                <p>Rezervacija ne može biti izvršena, pa se otkazuje.</p>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
+                                <button class="btn btn-primary" name="cancelation" id="cancelation">Otkaži rezervaciju</button>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <!--Kraj rezervacija-->
+
+
+                    <!--Pocetak Dugovanja-->
                     <div class="widget widget-table action-table">
                         <div class="widget-header"><i class="icon-money"></i>
                             <h3>Dugovanja</h3>
@@ -439,12 +462,11 @@ $step = 8;
                                 <!-- Modal -->
                                 <div id="dugovanje" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                                        </button>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         <h3 id="myModalLabel">Unos novog dugovanja</h3>
                                     </div>
-                                    <div class="modal-body">
-                                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                        <div class="modal-body">
                                             <select id="selectUser" name="selectUser" onchange="myFunction()">
                                                 <option value="0"></option>
                                                 <?php foreach ($userCredits as $item) {
@@ -459,11 +481,11 @@ $step = 8;
                                             <input type="number" id="amountChosen" name="amountChosen" value="" placeholder="Iznos dugovanja" class="login"/>
                                             <p id="amount"></p>
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
-                                        <button class="btn btn-primary" type="submit" name="saveCredit">Unesi dugovanje</button>
-                                    </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
+                                            <button class="btn btn-primary" type="submit" name="saveCredit">Unesi dugovanje</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div> <!-- /controls -->
@@ -474,13 +496,12 @@ $step = 8;
                                 <thead>
                                 <tr>
                                     <th> Igrač</th>
-                                    <th data-sortable="true"> Uk. Iznos</th>
-                                    <th data-sortable="true"> Koliko dugo duguje</th>
+                                    <th> Uk. Iznos</th>
+                                    <th> Koliko dugo duguje</th>
                                     <th> Akcija</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <?php $maxDay = '';
                                 $sumCredit = 0;
                                 $i = 1;
@@ -512,52 +533,47 @@ $step = 8;
                                     <td class="center"><b><?php echo "$sumCredit Din" ?></b></td>
                                 </tr>
                                 </tbody>
-                            </table>
-                            <?php
-                            $countItems = $i - 1;
+                                <?php
+                                $countItems = $i - 1;
 
-                            if ($countItems > $step) {
+                                if ($countItems > $step) {
                                 $numPages = ceil($countItems / $step); ?>
-                                <div class="text-xs-right">
-                                    <ul class="pagination pagination-sm">
+                                <tfoot>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td class="right">
                                         <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                            <li><a onclick="pagination(<?php echo "$j,$step,$countItems,'credit'" ?>)"> <?php echo $j ?></a></li>
+                                            <a onclick="pagination(<?php echo "$j,$step,$countItems,'credit'" ?>)"> <?php echo $j ?></a>
                                         <?php } ?>
-                                    </ul>
-                                </div>
-
-
-                            <?php } ?>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                                <?php } ?>
+                            </table>
                         </div>
-                        <!-- Modal -->
+                    </div>
+                    <!-- Modal -->
+                    <div id="vracanje" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalLabel">Unos novog dugovanja</h3>
+                        </div>
                         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                            <div id="vracanje" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"
-                                            aria-hidden="true">×
-                                    </button>
-                                    <h3 id="myModalLabel">Unos novog dugovanja</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <p id="userCredit"></p>
-                                    <input type="hidden" name="currentUserName" id="currentUserName" value=""/>
-                                    <input type="hidden" name="currentUserId" id="currentUserId" value=""/>
-                                    <input type="number" id="amountDebit" name="amountDebit" value="" placeholder="Iznos vraćenog duga" class="login"
-                                           onchange="calculate()"/>
-                                    <p id="currentDebit"></p>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                        Poništi
-                                    </button>
-                                    <button class="btn btn-primary" name="reduceCredit" type="submit">Unesi izmenu</button>
-                                </div>
+                            <div class="modal-body">
+                                <p id="userCredit"></p>
+                                <input type="hidden" name="currentUserName" id="currentUserName" value=""/>
+                                <input type="hidden" name="currentUserId" id="currentUserId" value=""/>
+                                <input type="number" id="amountDebit" name="amountDebit" value="" placeholder="Iznos vracenog duga" class="login" onchange="calculate()"/>
+                                <p id="currentDebit"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
+                                <button class="btn btn-primary" name="reduceCredit" type="submit">Unesi izmenu</button>
                             </div>
                         </form>
-
-
                     </div>
+
+                    <!--Kraj Dugovanja-->
                     <div class="widget widget-nopad">
                         <div class="widget-header"><i class="icon-list-alt"></i>
                             <h3> Statistika za Mart 2017. </h3>
@@ -567,20 +583,16 @@ $step = 8;
                             <div class="widget big-stats-container">
                                 <div class="widget-content">
                                     <div id="big_stats" class="cf">
-                                        <div class="stat"><i class="icon-time"></i><label>Lucky numbers</label> <span
-                                                class="value">342h</span></div>
+                                        <div class="stat"><i class="icon-time"></i><label>Raspored</label> <span class="value">342h</span></div>
                                         <!-- .stat -->
 
-                                        <div class="stat"><i class="icon-thumbs-up-alt"></i><label>FB Likes</label>
-                                            <span class="value">3.423</span></div>
+                                        <div class="stat"><i class="icon-thumbs-up-alt"></i><label>FB Likes</label> <span class="value">3.423</span></div>
                                         <!-- .stat -->
 
-                                        <div class="stat"><i class="icon-time"></i><label>Bonus sati</label> <span
-                                                class="value">342h</span></div>
+                                        <div class="stat"><i class="icon-time"></i><label>Bonus sati</label> <span class="value">342h</span></div>
                                         <!-- .stat -->
 
-                                        <div class="stat"><i class="icon-user"></i><label>Broj korisnika</label> <span
-                                                class="value">2.673</span></div>
+                                        <div class="stat"><i class="icon-user"></i><label>Broj korisnika</label> <span class="value">2.673</span></div>
                                         <!-- .stat -->
                                     </div>
                                 </div>
@@ -591,6 +603,7 @@ $step = 8;
                     </div>
                     <!-- /widget -->
                 </div>
+
                 <!-- /span12 -->
 
             </div>
@@ -812,6 +825,7 @@ $step = 8;
             } else {
                 document.getElementById(currclass).setAttribute("class", "hide");
             }
+
         }
     }
 

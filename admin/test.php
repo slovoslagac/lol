@@ -18,7 +18,7 @@ $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 
 $usr = new credit();
-$userCredits = $usr->getAllUserCredits();
+$userCredits = $usr->getSumAllUserCredits();
 
 
 if (isset($_POST["saveCredit"])) {
