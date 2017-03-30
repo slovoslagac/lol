@@ -6,3 +6,13 @@ INSERT INTO `ranks` VALUES (12,'Bronze 1'),(11,'Bronze 2'),(10,'Bronze 3'),(39,'
 --Types
 insert into workertype (name) values( 'operater'),('admin');
 insert into producttype (name) values ('Hrana'), ('Grickalice'), ('Pice')
+
+
+--Magacin
+
+insert into products(name, typeid)
+values('Coca Cola 20l', 3), ('Fanta 20l',3), ('Sprite 20l', 3), ('Mars', 1)
+
+
+insert into suppliers(name, workerid)
+values ('Tempo',11), ('SuperVero',11), ('Idea',11)

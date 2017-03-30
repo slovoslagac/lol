@@ -23,17 +23,28 @@ $countprd = count($allprd);
 
 if(isset($_POST["saveDellivery"]) != ''){
     $suplierid = $_POST["selectSupplier"];
-    echo $suplierid;
-//    header("Location:unos_nabavke.php");
-    for ($j=1; $j <= $countprd; $j++){
-        $item = $_POST['item'.$j];
-        $value = $_POST['quantity'.$j];
-        $price = $_POST['order_price'.$j];
-        if($value >0 and $price >0) {
-            echo "$item - $price ($value)";
-        }
-
+    $date = new DateTime();
+    $formatDate = $date->format("Y-m-d");
+    if ($suplierid > 0) {
+        $ord = new orders();
+        $ord->addOrder($formatDate,$suplierid);
+        $maxOrder = $ord->getMaxId();
+        print_r($maxOrder);
+        unset($ord);
+        header("Location:unos_nabavke.php");
     }
+    unset($suplierid);
+//    echo $suplierid;
+//    header("Location:unos_nabavke.php");
+//    for ($j=1; $j <= $countprd; $j++){
+//        $item = $_POST['item'.$j];
+//        $value = $_POST['quantity'.$j];
+//        $price = $_POST['order_price'.$j];
+//        if($value >0 and $price >0) {
+//            echo "$item - $price ($value)";
+//        }
+//
+//    }
 
 
 }
