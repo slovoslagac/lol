@@ -217,24 +217,24 @@ $step = 8;
                                 <?php } ?>
                                 </tbody>
 
-                            <?php
-                            $countItems = $i - 1;
+                                <?php
+                                $countItems = $i - 1;
 
-                            if ($countItems > $step) {
-                                $numPages = ceil($countItems / $step); ?>
-                                <tfoot>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td colspan="2" class="center">
-                                        <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                            <a onclick="pagination(<?php echo "$j,$step,$countItems,'hour'" ?>)"> <?php echo $j ?></a>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                                </tfoot>
+                                if ($countItems > $step) {
+                                    $numPages = ceil($countItems / $step); ?>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td colspan="2" class="center">
+                                            <?php for ($j = 1; $j <= $numPages; $j++) { ?>
+                                                <a onclick="pagination(<?php echo "$j,$step,$countItems,'hour'" ?>)"> <?php echo $j ?></a>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
 
 
-                            <?php } ?>
+                                <?php } ?>
                             </table>
                         </div>
 
@@ -280,22 +280,21 @@ $step = 8;
 
                                 if ($countItems > $step) {
                                     $numPages = ceil($countItems / $step); ?>
-                                <tfoot>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td class="right">
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td class="right">
                                             <?php for ($j = 1; $j <= $numPages; $j++) { ?>
                                                 <a onclick="pagination(<?php echo "$j,$step,$countItems,'res'" ?>)"> <?php echo $j ?></a>
                                             <?php } ?>
-                                    </td>
-                                </tr>
-                                </tfoot>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
 
 
                                 <?php } ?>
 
                             </table>
-
 
 
                         </div>
@@ -537,17 +536,17 @@ $step = 8;
                                 $countItems = $i - 1;
 
                                 if ($countItems > $step) {
-                                $numPages = ceil($countItems / $step); ?>
-                                <tfoot>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td class="right">
-                                        <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                            <a onclick="pagination(<?php echo "$j,$step,$countItems,'credit'" ?>)"> <?php echo $j ?></a>
-                                        <?php } ?>
-                                    </td>
-                                </tr>
-                                </tfoot>
+                                    $numPages = ceil($countItems / $step); ?>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td class="right">
+                                            <?php for ($j = 1; $j <= $numPages; $j++) { ?>
+                                                <a onclick="pagination(<?php echo "$j,$step,$countItems,'credit'" ?>)"> <?php echo $j ?></a>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                    </tfoot>
                                 <?php } ?>
                             </table>
                         </div>

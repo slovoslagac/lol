@@ -1,3 +1,22 @@
+<?php
+
+include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
+
+
+if (!$session->isLoggedIn()) {
+  redirectTo("login.php");
+}
+
+if (isset($_POST["logout"])) {
+  echo "Izlogovali smo se <br>";
+  $session->logout();
+  header("Location:index.php");
+}
+
+
+$wrk = new worker();
+$currentWorker = $wrk->getWorkerById($session->userid);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +44,11 @@
       <div class="nav-collapse">
         <ul class="nav pull-right">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="icon-user"></i> Stefan Dimitrijević <b class="caret"></b></a>
+                  class="icon-user"></i><?php echo "$currentWorker->name $currentWorker->lastname" ?><b
+                  class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="profil.html">Profil</a></li>
-              <li><a href="javascript:;">Izloguj se</a></li>
+              <li><a href="logout.php">Izloguj se</a></li>
             </ul>
           </li>
         </ul>
@@ -49,12 +69,12 @@
       <ul class="mainnav">
         <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
         <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a> </li>
-        <li><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
+        <li><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
         <li><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a> </li>
         <li><a href="raspored.php"><i class="icon-calendar"></i><span>Raspored</span> </a> </li>
         <li><a href="bonus_sati.php"><i class="icon-time"></i><span>Bonus sati</span> </a> </li>
         <li class="active"><a href="magacin.php"><i class="icon-truck"></i><span>Magacin</span> </a> </li>
-          
+        <li><a href="informacije.php"><i class="icon-truck"></i><span>Informacije</span> </a></li>
       </ul>
     </div>
     <!-- /container --> 
@@ -73,7 +93,7 @@
               <h3>Magacin - Mart 2017.</h3>
               <div class="controls">
                     <!-- Button to trigger modal -->
-                    <a href="lol_unos.html" role="button" class="btn">Dodaj nabavku</a>
+                    <a href="unos_nabavke.php" role="button" class="btn">Dodaj nabavku</a>
                 </div> <!-- /controls -->
             </div>
             <!-- /widget-header -->

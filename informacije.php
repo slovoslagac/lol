@@ -101,7 +101,7 @@ $dateNow = $dateNow->format("Y-m-d");
                     <?php $info = new info();
                     $page = !empty($_GET["page"]) ? (int)$_GET["page"] : 1;
                     $allInfo = $info->getAllInformations();
-                    $perPage=10;
+                    $perPage = 10;
                     $count = count($allInfo);
                     $pagination = new pagination($page, $count, $perPage);
                     $allInfo = $info->getAllInformations($pagination->offset(), $perPage); ?>
@@ -111,10 +111,12 @@ $dateNow = $dateNow->format("Y-m-d");
                         <div class="widget-header"><i class="icon-list-alt"></i>
                             <h3> Važne informacije
                                 <?php if ($pagination->hasPreviousPage()) { ?>
-                                    <a href="informacije.php?page=<?php echo $pagination->previousPage() ?>" value="<?php echo $pagination->previousPage() ?>" id="leftSide" name="leftSide" ><i class="icon-chevron-left"></i></a>
+                                    <a href="informacije.php?page=<?php echo $pagination->previousPage() ?>" value="<?php echo $pagination->previousPage() ?>" id="leftSide" name="leftSide"><i
+                                            class="icon-chevron-left"></i></a>
                                 <?php }
                                 if ($pagination->hasNextPage()) { ?>
-                                    <a href="informacije.php?page=<?php echo $pagination->nextPage() ?>" value="<?php echo $pagination->previousPage() ?>" name="rightSide" id="rightSide" ><i class="icon-chevron-right"></i></a>
+                                    <a href="informacije.php?page=<?php echo $pagination->nextPage() ?>" value="<?php echo $pagination->previousPage() ?>" name="rightSide" id="rightSide"><i
+                                            class="icon-chevron-right"></i></a>
                                 <?php } ?>
                             </h3>
                             <div class="controls">
@@ -328,6 +330,7 @@ $dateNow = $dateNow->format("Y-m-d");
             ]
         });
     });
+
 
 
 </script><!-- /Calendar -->

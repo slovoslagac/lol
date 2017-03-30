@@ -30,5 +30,7 @@ require INC_PATH . DS . 'credit.php';
 require INC_PATH . DS . 'reservation.php';
 require INC_PATH . DS . 'pagination.php';
 require INC_PATH . DS . 'info.php';
+require INC_PATH . DS . 'products.php';
+require INC_PATH . DS . 'suppliers.php';
 
 
