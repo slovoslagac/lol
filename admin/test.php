@@ -87,7 +87,7 @@ if (isset($_POST['reduceCredit'])) {
                                 $page = 1;
                                 $i = 1;
                                 $step = 3;
-                                $allresults = $result->getSumResult();
+                                $allresults = $result->getSumResultByHero();
                                 foreach ($allresults as $item) { ?>
 
                                     <tr id="<?php echo $i?>" >

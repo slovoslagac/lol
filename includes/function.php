@@ -37,4 +37,28 @@ function countBonus($val){
     }
 }
 
-$nextBonus = array(0=>30,1=>60,3=>90, 6=>120, 10=> 150, 20=>180);
+
+
+
+function nextBonus($val) {
+    $date = new DateTime();
+    $day = $date->format('j');
+    $sumDays = $date->format('t');
+    $result = round($val/$day * $sumDays);
+
+    return $result;
+}
+
+function logAction($action, $message, $file = 'log.txt')
+{
+    $logfile = SITE_ROOT . DS . 'log' . DS . $file;
+
+    if ($handle = fopen($logfile, 'a')) {
+        $timestamp = strftime("%d.%m.%Y %H:%M:%S", time());
+        $content = "$timestamp | $action : $message\n";
+        fwrite($handle, $content);
+        fclose($handle);
+    } else {
+        echo "Nije uspelo logovanje";
+    }
+}

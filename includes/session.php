@@ -15,6 +15,7 @@ class session
     {
         session_start();
         $this->checkLogin();
+
     }
 
     public function isLoggedIn () {
@@ -25,6 +26,7 @@ class session
         if($user){
             $this->loggedin = true;
             $this->userid = $_SESSION["userid"] = $user->id;
+            logAction("Login", "userid = $this->userid", 'workerLogin.txt');
 
         }
     }
@@ -32,6 +34,7 @@ class session
     public function logout(){
         session_destroy();
         $this->loggedin=false;
+        logAction("Logout", "userid = $this->userid", 'workerLogin.txt');
     }
 
     private function checkLogin(){

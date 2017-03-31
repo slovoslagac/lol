@@ -1,21 +1,21 @@
 <?php
 
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
-
-
-if (!$session->isLoggedIn()) {
-    redirectTo("login.php");
-}
-
-if (isset($_POST["logout"])) {
-    echo "Izlogovali smo se <br>";
-    $session->logout();
-    header("Location:index.php");
-}
-
-
-$wrk = new worker();
-$currentWorker = $wrk->getWorkerById($session->userid);
+//
+//
+//if (!$session->isLoggedIn()) {
+//    redirectTo("login.php");
+//}
+//
+//if (isset($_POST["logout"])) {
+//    echo "Izlogovali smo se <br>";
+//    $session->logout();
+//    header("Location:index.php");
+//}
+//
+//
+//$wrk = new worker();
+//$currentWorker = $wrk->getWorkerById($session->userid);
 
 $usr = new credit();
 $userCredits = $usr->getSumAllUserCredits();
@@ -85,73 +85,12 @@ $now = $date . "T" . $time;
 
 // korak u paginaciji
 $step = 8;
+
+
+
+$currentpage =  basename($_SERVER["SCRIPT_FILENAME"]);
+include $menuLayout;
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>eSports Arena</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
-          rel="stylesheet">
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/pages/dashboard.css" rel="stylesheet">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a
-                class="brand" href="index.php">eSports Arena</a>
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                class="icon-user"></i><?php echo "$currentWorker->name $currentWorker->lastname" ?><b
-                                class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profil.html">Profil</a></li>
-                            <li><a href="logout.php">Izloguj se</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-search pull-right">
-                    <input type="text" class="search-query" placeholder="Pretraži">
-                </form>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /navbar-inner -->
-</div>
-<!-- /navbar -->
-<div class="subnavbar">
-    <div class="subnavbar-inner">
-        <div class="container">
-            <ul class="mainnav">
-                <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
-                <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                <li><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-                <li><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
-                <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
-                <li><a href="bonus_sati.php"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
-                <li><a href="magacin.php"><i class="icon-truck"></i><span>Magacin</span> </a></li>
-                <li><a href="informacije.php"><i class="icon-truck"></i><span>Informacije</span> </a></li>
-            </ul>
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /subnavbar-inner -->
-</div>
-<!-- /subnavbar -->
 <div class="main">
     <div class="main-inner">
         <div class="container">
@@ -205,14 +144,13 @@ $step = 8;
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                <?php for ($i = 1; $i <= 10; $i++) { $numHours = $i * 15;?>
                                     <tr id="<?php echo "hour$i" ?>" <?php echo ($i > $step) ? "class=\"hide\"" : "" ?>>
                                         <td class="center"> 1</td>
                                         <td> Chumpitas</td>
-                                        <td class="center"><?php echo $i * 15 ?></td>
+                                        <td class="center"><?php echo $numHours ?></td>
                                         <td class="center"><?php echo countBonus($i * 15) ?></td>
-                                        <td class="center"> <?php $tmp = countBonus($i * 15);
-                                            echo $nextBonus[$tmp]; ?></td>
+                                        <td class="center"> <?php echo nextBonus($numHours); ?></td>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
@@ -240,66 +178,7 @@ $step = 8;
 
                     </div>
 
-                    <div class="widget widget-table action-table">
-                        <div class="widget-header"><i class="icon-trophy"></i>
-                            <h3>LOL takmičenje</h3>
-                            <div class="controls">
-                                <!-- Button to trigger modal -->
-                                <a href="unos_rezultata.php" role="button" class="btn">Dodaj rezultate</a>
-                            </div> <!-- /controls -->
-                        </div>
-                        <!-- /widget-header -->
-                        <div class="widget-content">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th width="20"> RB</th>
-                                    <th> Username</th>
-                                    <th width="150" class="center"> Champion</th>
-                                    <th width="60"> Br. Pobeda</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php $result = new result();
-                                $i = 1;
-                                $allresults = $result->getSumResult();
-                                foreach ($allresults as $item) { ?>
-
-                                    <tr id="<?php echo "res$i" ?>" <?php echo ($i > $step) ? "class=\"hide\"" : "" ?>>
-                                        <td class="center"> 1</td>
-                                        <td><?php echo $item->uname ?></td>
-                                        <td class="center"><?php echo $item->heroname ?></td>
-                                        <td class="center"><?php echo $item->value ?></td>
-
-                                    </tr>
-                                    <?php $i++;
-                                } ?>
-                                </tbody>
-                                <?php
-                                $countItems = $i - 1;
-
-                                if ($countItems > $step) {
-                                    $numPages = ceil($countItems / $step); ?>
-                                    <tfoot>
-                                    <tr>
-                                        <td colspan="3"></td>
-                                        <td class="right">
-                                            <?php for ($j = 1; $j <= $numPages; $j++) { ?>
-                                                <a onclick="pagination(<?php echo "$j,$step,$countItems,'res'" ?>)"> <?php echo $j ?></a>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
-                                    </tfoot>
-
-
-                                <?php } ?>
-
-                            </table>
-
-
-                        </div>
-
-                    </div>
+                    <?php include $tableCompetitionByHero; ?>
 
                 </div>
 
@@ -811,14 +690,13 @@ $step = 8;
         var x = document.getElementById("amountDebit").value;
         var y = document.getElementById("currentDebit").value;
         var rest = y - x;
-        console.log(rest);
+//        console.log(rest);
         document.getElementById("currentDebit").innerHTML = "Nakon uplate stanje duga je " + rest + " Din."
     }
 
     function pagination($page, $step, $countItems, $type) {
         for (var $k = 1; $k <= $countItems; $k++) {
             var currclass = $type + $k;
-            console.log(currclass);
             if ($k > ($page - 1) * $step && $k <= $page * $step) {
                 document.getElementById(currclass).setAttribute("class", "");
             } else {
@@ -829,7 +707,54 @@ $step = 8;
     }
 
 
+    function leftRight(val) {
+        var code = val.split("__");
+        var table = code[1];
+        var side = code[0];
+        var maxNumPage = code[2];
+        var step = code[3];
+        var numItems = code[4]
+        var page = document.getElementById(table).value;
+        if (side == 1) {
+            if (page > 1) {
+                page = parseInt(page) - 1;
+            }
+        } else {
+            if (page < maxNumPage) {
+                page = parseInt(page) + 1;
+            }
+        }
+
+        document.getElementById(table).setAttribute("value", page);
+        for (var k = 1; k <= numItems; k++) {
+            var currclass = table + k;
+            console.log(page);
+            if (k > (page - 1) * step && k <= page * step) {
+                document.getElementById(currclass).setAttribute("class", "");
+            } else {
+                document.getElementById(currclass).setAttribute("class", "hide");
+            }
+
+        }
+
+//        var currclassleft = table +'left';
+//        var currclassright = table +'right';
+//        if(page == 1) {
+//            document.getElementById(currclassleft).setAttribute("class", "hide");
+//            document.getElementById(currclassright).setAttribute("class", "");
+//        } else if (page == maxNumPage) {
+//            document.getElementById(currclassleft).setAttribute("class", "");
+//            document.getElementById(currclassright).setAttribute("class", "hide");
+//        } else {
+//            document.getElementById(currclassleft).setAttribute("class", "");
+//            document.getElementById(currclassright).setAttribute("class", "");
+//        }
+
+    }
+
+
 </script>
+
 
 <?php //echo ($i == 3)? "style=\"display:none;\"" : "" ?>
 </body>

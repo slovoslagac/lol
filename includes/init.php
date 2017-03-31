@@ -14,7 +14,9 @@ defined('SITE_ROOT') ? null : define('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'
 //defined('SITE_ROOT') ? null : define('SITE_ROOT', 'C:' . DS . 'XAMPP' . DS . 'htdocs' . DS . 'lol');
 defined('INC_PATH') ? null : define('INC_PATH', SITE_ROOT . DS . 'includes');
 defined('ADMIN_PATH') ? null : define('ADMIN_PATH', SITE_ROOT . DS . 'admin');
+defined('LAYOUT_PATH') ? null : define('LAYOUT_PATH', SITE_ROOT . DS . 'layouts');
 
+//Clasess
 
 require INC_PATH . DS . 'config.php';
 require INC_PATH . DS . 'db.php';
@@ -35,3 +37,9 @@ require INC_PATH . DS . 'suppliers.php';
 require INC_PATH . DS . 'orders.php';
 
 
+//Layouts
+
+$menuLayout = LAYOUT_PATH.DS.'headerMenu.php';
+$tableCompetitionByHero = LAYOUT_PATH.DS.'tableCompetitionByHero.php';
+$tableCompetitionByUser = LAYOUT_PATH.DS.'tableCompetitionByUser.php';
+//Logs

@@ -98,7 +98,7 @@ if (isset($_POST['deleteResult']) != '') {
             <th>Broj pobeda</th>
         </tr>
         <?php $result = new result();
-        $allresults = $result->getSumResult();
+        $allresults = $result->getSumResultByHero();
         foreach ($allresults as $item) { ?>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <tr>

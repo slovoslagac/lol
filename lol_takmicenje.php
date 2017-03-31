@@ -1,125 +1,24 @@
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>eSports Arena</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/pages/dashboard.css" rel="stylesheet">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.php">eSports Arena</a>
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="icon-user"></i> Stefan Dimitrijević <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profil.html">Profil</a></li>
-                            <li><a href="javascript:;">Izloguj se</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-search pull-right">
-                    <input type="text" class="search-query" placeholder="Pretraži">
-                </form>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /navbar-inner -->
-</div>
-<!-- /navbar -->
-<div class="subnavbar">
-    <div class="subnavbar-inner">
-        <div class="container">
-            <ul class="mainnav">
-                <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
-                <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                <li><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-                <li><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
-                <li><a href="raspored.php"><i class="icon-calendar"></i><span>Raspored</span> </a></li>
-                <li class="active"><a href="bonus_sati.php"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
-                <li><a href="magacin.php"><i class="icon-truck"></i><span>Magacin</span> </a></li>
+<?php
+include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-            </ul>
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /subnavbar-inner -->
-</div>
-<!-- /subnavbar -->
+$step = 4;
+
+$currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
+include $menuLayout;
+?>
 <div class="main">
     <div class="main-inner">
         <div class="container">
             <div class="row">
-                <div class="span12">
-                    <div class="widget widget-table action-table">
-                        <div class="widget-header"><i class="icon-trophy"></i>
-                            <h3>LOL Takmičenje <a href="#back"><i class="icon-chevron-left"></i></a> <a href="#next"><i class="icon-chevron-right"></i></a></h3>
-                        </div>
-                        <!-- /widget-header -->
-                        <div class="widget-content">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th width="20"> RB</th>
-                                    <th> Username</th>
-                                    <th width="40"> Uk. Poena</th>
-                                    <th width="40"> Preostalo poena</th>
-                                    <th width="40"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="center"> 1</td>
-                                    <td> Chumpitas</td>
-                                    <td class="center"> 300</td>
-                                    <td class="center"> 100</td>
-                                    <td class="center"><a href="#vracanje" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="center"> 1</td>
-                                    <td> Chumpitas</td>
-                                    <td class="center"> 300</td>
-                                    <td class="center"> 100</td>
-                                    <td class="center"><a href="#vracanje" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="center"> 1</td>
-                                    <td> Chumpitas</td>
-                                    <td class="center"> 300</td>
-                                    <td class="center"> 100</td>
-                                    <td class="center"><a href="#vracanje" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="center"> 1</td>
-                                    <td> Chumpitas</td>
-                                    <td class="center"> 300</td>
-                                    <td class="center"> 100</td>
-                                    <td class="center"><a href="#vracanje" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                </tbody>
-                            </table>
+                <div class="span6">
 
-                        </div>
-
-                    </div>
-
-
+                    <?php include $tableCompetitionByUser; ?>
                 </div>
-                <!-- /span6 -->
+
+
+                <div class="span6">
+                    <?php include $tableCompetitionByHero; ?>
+                </div>
             </div>
             <!-- /row -->
 
@@ -199,13 +98,13 @@
                 var title = prompt('Event Title:');
                 if (title) {
                     calendar.fullCalendar('renderEvent',
-                            {
-                                title: title,
-                                start: start,
-                                end: end,
-                                allDay: allDay
-                            },
-                            true // make the event "stick"
+                        {
+                            title: title,
+                            start: start,
+                            end: end,
+                            allDay: allDay
+                        },
+                        true // make the event "stick"
                     );
                 }
                 calendar.fullCalendar('unselect');
@@ -259,6 +158,57 @@
             ]
         });
     });
+</script>
+<script>
+
+
+    function leftRight(val) {
+        var code = val.split("__");
+        var table = code[1];
+        var side = code[0];
+        var maxNumPage = code[2];
+        var step = code[3];
+        var numItems = code[4]
+        var page = document.getElementById(table).value;
+        if (side == 1) {
+            if (page > 1) {
+                page = parseInt(page) - 1;
+            }
+        } else {
+            if (page < maxNumPage) {
+                page = parseInt(page) + 1;
+            }
+        }
+
+        document.getElementById(table).setAttribute("value", page);
+        for (var k = 1; k <= numItems; k++) {
+            var currclass = table + k;
+            console.log(page);
+            if (k > (page - 1) * step && k <= page * step) {
+                document.getElementById(currclass).setAttribute("class", "");
+            } else {
+                document.getElementById(currclass).setAttribute("class", "hide");
+            }
+
+        }
+
+        var pagenum = table + 'PageNum';
+        document.getElementById(pagenum).innerHTML = page + '/' + maxNumPage;
+
+//        var currclassleft = table + 'left';
+//        var currclassright = table + 'right';
+//        if (page == 1) {
+//            document.getElementById(currclassleft).setAttribute("class", "hide");
+//            document.getElementById(currclassright).setAttribute("class", "");
+//        } else if (page == maxNumPage) {
+//            document.getElementById(currclassleft).setAttribute("class", "");
+//            document.getElementById(currclassright).setAttribute("class", "hide");
+//        } else {
+//            document.getElementById(currclassleft).setAttribute("class", "");
+//            document.getElementById(currclassright).setAttribute("class", "");
+//        }
+
+    }
 </script><!-- /Calendar -->
 </body>
 </html>

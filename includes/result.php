@@ -11,7 +11,8 @@ class result
     private $userid;
     private $heroid;
 
-    public function getSumResult()
+
+    public function getSumResultByHero()
     {
         global $conn;
         $sql = $conn->prepare("select h.name heroname, u.name uname, u.lastname ulastname, u.arenausername uusername, count(*) value
@@ -24,30 +25,40 @@ group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1");
         return $result;
     }
 
-    public function getSumResultPagination($offset, $maxNum)
+    public function getSumResult()
     {
         global $conn;
-        $sql = $conn->prepare("select h.name heroname, u.name uname, u.lastname ulastname, u.arenausername uusername, count(*) value
+        $sql = $conn->prepare("select uname, ulastname, uusername , sum(value) value
+from
+(
+select heroname, uname, ulastname, uusername, case when value >100 then 100 else value end value
+from
+(
+select h.name heroname, u.name uname, u.lastname ulastname, u.arenausername uusername,  count(*)  value
 from userheroresult urh, heroes h, users u
 where urh.userid = u.id
 and urh.heroid = h.id
-group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1 limit $offset, $maxNum ");
+group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1) a) b
+group by uname, ulastname, uusername
+order by 4 desc, 1");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 
-    public function getAllResults($time = '')
-    {
-        global $conn;
-        if ($time != '') {
-            $sql = $conn->prepare("select * h.name heroname, u.name uname, u.lastname ulastname, u.arenausername uusername from userheroresult urh, heroes h, users u
-where urh.userid = u.id
-and urh.heroid = h.id
-and timestamp > sysdate - interval $time MINUTE ");
-        }
-        $sql = execute();
-    }
+//    public function getSumResultPagination($offset, $maxNum)
+//    {
+//        global $conn;
+//        $sql = $conn->prepare("select h.name heroname, u.name uname, u.lastname ulastname, u.arenausername uusername, count(*) value
+//from userheroresult urh, heroes h, users u
+//where urh.userid = u.id
+//and urh.heroid = h.id
+//group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1 limit $offset, $maxNum ");
+//        $sql->execute();
+//        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+//        return $result;
+//    }
+
 
     public function insertResult($user, $hero, $date, $time, $worker)
     {
