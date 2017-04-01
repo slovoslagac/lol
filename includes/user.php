@@ -21,9 +21,9 @@ class user
     {
         global $conn;
         $sql = $conn->prepare("SELECT u.name, u.lastname,arenausername, summonername, phone, discount, p.name positionname, r.name rankname, u.id, u.creditstatus
-FROM users u, positions p, ranks r
-where u.positionid = p.id
-and u.rankid = r.id
+FROM users u
+left join positions p on u.positionid = p.id
+left join ranks r on u.rankid = r.id
 order by 3,1,2");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
@@ -69,6 +69,21 @@ order by 3,1,2");
         $insertNewUser->bindParam(':po', $pos);
         $insertNewUser->bindParam(':ph', $phone);
         $insertNewUser->execute();
+    }
+
+    public function updateUser($id, $name, $lastname, $username, $sumname, $rank, $pos, $phone, $creditstatus) {
+        global $conn;
+        $updateUser = $conn->prepare("update users set name = :nm, lastname = :ln, arenausername=:au , summonername=:sn, rankid = :rn, positionid = :po, phone =:ph, creditstatus = :cs where id= :id");
+        $updateUser->bindParam(':nm', $name);
+        $updateUser->bindParam(':ln', $lastname);
+        $updateUser->bindParam(':au', $username);
+        $updateUser->bindParam(':sn', $sumname);
+        $updateUser->bindParam(':rn', $rank);
+        $updateUser->bindParam(':po', $pos);
+        $updateUser->bindParam(':ph', $phone);
+        $updateUser->bindParam(':id', $id);
+        $updateUser->bindParam(':cs', $creditstatus);
+        $updateUser->execute();
     }
 
     public function deleteUserById($id) {

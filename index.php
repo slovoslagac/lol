@@ -21,21 +21,25 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 $u = new user();
 $allusers = $u->getAllUsers();
 
+$usr = new credit();
+$userCredits = $usr->getSumAllUserCredits();
 
 //sredjivanje kredita
 
 if (isset($_POST["saveCredit"])) {
-    try {
+
         $code = explode('__', $_POST["selectUser"]);
         $user = $code[0];
         if ($user > 0) {
+            try {
             $usr->addUserCredit($user, $_POST["amountChosen"], $session->userid);
             unset($usr);
             header("Location:index.php");
+            } catch (Exception $e) {
+                logAction("Dodavanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
+            }
         }
-    } catch (Exception $e) {
-        logAction("Dodavanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
-    }
+
 }
 
 

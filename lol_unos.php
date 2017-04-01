@@ -16,8 +16,13 @@ if (isset($_POST["logout"])) {
 if (isset($_POST['user']) != ''){
     $tmpusr = new user();
     if (($tmpusr->getUserByUsername($_POST['username'])) == '') {
-
-        $tmpusr->addUser($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $_POST['userposition'], $_POST['phone']);
+    try {
+        if (isset($_POST['userposition'])) {$positionId = $_POST['userposition'];} else {$positionId = '';}
+        $tmpusr->addUser($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $positionId , $_POST['phone']);
+        redirectTo("lol_klub.php");
+    } catch (Exception $e) {
+        logAction("Neuspelo azuriranje korisnika", "userid = $session->userid --- $e", 'error.txt');
+    }
     } else {
         echo "Izabrani username se vec koristi, izaberite neki drugi";
         header("Location:lol_unos.php");
@@ -88,7 +93,7 @@ include $menuLayout;
                         <?php $pos = new position();
                         $alltmppos = $pos->getAllPositions();
                         foreach ($alltmppos as $item) { ?>
-                            <input type="checkbox" name="userposition" value="<?php echo $item->id ?>">
+                            <input type="checkbox" name="userposition" value="<?php echo $item->id ?>" <?php echo ($item->name  == 'ADC')? "checked" : "";?>>
                             <small><?php echo $item->name ?></small>
                         <?php } ?>
                     </fieldset>

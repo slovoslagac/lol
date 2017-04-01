@@ -1,7 +1,6 @@
 <?php
 
-$usr = new credit();
-$userCredits = $usr->getSumAllUserCredits();
+
 $countItems = count($userCredits);
 $numPages = ceil($countItems / $step);
 $tableId = 'tabCredits';
