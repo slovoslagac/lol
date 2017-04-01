@@ -4,16 +4,13 @@ if (!$session->isLoggedIn()) {
     redirectTo("login.php");
 }
 
+
+
 if (isset($_POST["logout"])) {
     echo "Izlogovali smo se <br>";
     $session->logout();
     header("Location:index.php");
 }
-
-
-$wrk = new worker();
-$currentWorker = $wrk->getWorkerById($session->userid);
-
 
 $link1 = "index.php";
 $link2 = "kraj_smene.php";
@@ -23,6 +20,19 @@ $link5 = "lucky_numbers.html";
 $link6 = "bonus_sati.php";
 $link7 = "magacin.php";
 $link8 = "informacije.php";
+
+$wrk = new worker();
+$currentWorker = $wrk->getWorkerById($session->userid);
+$admin =$wrk->getAdmin();
+$availableForms = array($link1, $link3, $link4, 'login.php', 'lol_unos.php', 'unos_rezultata.php');
+$currentForm = basename($_SERVER["SCRIPT_FILENAME"]);
+
+if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm , $availableForms ))) {
+               redirectTo("index.php");
+    }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,14 +87,22 @@ $link8 = "informacije.php";
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
+                <?php if($currentWorker->workertypeid != $admin->id) {?>
+                    <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
+                    <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3?>"><i class="icon-group"></i><span>LOL klub</span> </a></li>
+                    <li <?php echo ($link4 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link4?>"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
+
+                <?php } else {?>
+
                 <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
                 <li <?php echo ($link2 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link2?>"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
                 <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3?>"><i class="icon-group"></i><span>LOL klub</span> </a></li>
                 <li <?php echo ($link4 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link4?>"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
-<!--                <li ><a href=""><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>-->
                 <li <?php echo ($link6 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link6?>"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
                 <li <?php echo ($link7 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link7?>"><i class="icon-truck"></i><span>Magacin</span> </a></li>
                 <li <?php echo ($link8 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link8?>"><i class="icon-truck"></i><span>Informacije</span> </a></li>
+
+                <?php }?>
             </ul>
         </div>
         <!-- /container -->

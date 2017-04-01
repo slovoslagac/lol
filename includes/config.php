@@ -13,3 +13,10 @@ $db_name = "lol";
 
 
 
+$db_server_old = "";
+$db_user_old = "";
+$db_pass_old = "";
+$db_name_old = "";
+
+
+

@@ -1,0 +1,45 @@
+01.04.2017 12:34:56 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-12:34:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(30): result->insertResult('5', '1', '2017-04-01', '12:34', 11)
+#2 {main}
+01.04.2017 12:41:30 | Kreiranje rezervacije - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2017-04-01 12:40:00-1-5' for key 'uniqres'' in C:\AppServ\www\lol\includes\reservation.php:45
+Stack trace:
+#0 C:\AppServ\www\lol\includes\reservation.php(45): PDOStatement->execute()
+#1 C:\AppServ\www\lol\index.php(79): reservation->addReservation('2017-04-01T12:4...', '1', '5', 11)
+#2 {main}
+01.04.2017 12:56:51 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-12:56:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(16): result->insertResult('5', '1', '2017-04-01', '12:56', 11)
+#2 {main}
+01.04.2017 16:15:32 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-16:15:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(16): result->insertResult('5', '1', '2017-04-01', '16:15', 11)
+#2 {main}
+01.04.2017 16:15:44 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-16:15:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(16): result->insertResult('5', '1', '2017-04-01', '16:15', 11)
+#2 {main}
+01.04.2017 16:17:11 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-16:15:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(17): result->insertResult('5', '1', '2017-04-01', '16:15', 11)
+#2 {main}
+01.04.2017 16:17:11 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-16:15:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(17): result->insertResult('5', '1', '2017-04-01', '16:15', 11)
+#2 {main}
+01.04.2017 16:17:11 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-16:15:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(17): result->insertResult('5', '1', '2017-04-01', '16:15', 11)
+#2 {main}
+01.04.2017 16:17:12 | Unos Rezultata - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-1-16:15:00-2017-04-01' for key 'usrherodate'' in C:\AppServ\www\lol\includes\result.php:72
+Stack trace:
+#0 C:\AppServ\www\lol\includes\result.php(72): PDOStatement->execute()
+#1 C:\AppServ\www\lol\unos_rezultata.php(17): result->insertResult('5', '1', '2017-04-01', '16:15', 11)
+#2 {main}

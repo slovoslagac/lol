@@ -2,8 +2,7 @@
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 
-
-$currentpage =  basename($_SERVER["SCRIPT_FILENAME"]);
+$currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
 ?>
 <div class="main">
@@ -44,7 +43,7 @@ include $menuLayout;
                                 foreach ($allusers as $item) { ?>
                                     <tr>
                                         <td><?php echo $i ?></td>
-                                        <td><?php echo $item->name ?></td>
+                                        <td id="<?php echo "name$i" ?>" ><?php echo $item->name ?></td>
                                         <td><?php echo $item->lastname ?></td>
                                         <td><?php echo $item->arenausername ?></td>
                                         <td><?php echo $item->summonername ?></td>
@@ -55,8 +54,8 @@ include $menuLayout;
                                         <input type="hidden" value="<?php echo $item->id ?>" name="userId">
                                         <input type="hidden" name="deleteUser" value="Obriši">
                                         <td class="td-actions">
-                                            <a href="javascript:;" class="btn btn-small btn-success"><i class="btn-icon-only icon-ok"> </i></a>
-                                            <a href="javascript:;" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a>
+                                            <a href="#edit" class="btn btn-small btn-success" data-toggle="modal" onclick="edit(<?php echo $i ?>)"><i class="btn-icon-only icon-ok"> </i></a>
+                                            <a href="#" class="btn btn-danger btn-small"><i class="btn-icon-only icon-remove"> </i></a>
                                         </td>
                                     </tr>
                                     </form>
@@ -75,6 +74,27 @@ include $menuLayout;
 
                 </div>
                 <!-- /span6 -->
+                <!-- Modal -->
+                <div id="edit" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Potvrda rezervacije</h3>
+                    </div>
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                        <div class="modal-body">
+                            <p>Obavezno popuniti sva polja:</p>
+
+                            <div class="field">
+                                <label for="firstname">Ime:</label>
+                                <input type="text" name="name" min="1" maxlength="50" placeholder="Ime" class="login" required/>
+                            </div> <!-- /field -->
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true"> Poništi</button>
+                            <button class="btn btn-primary" type="submit" name="confirmation" id="confirmation">Potvrdi</button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <!-- /row -->
 
@@ -86,134 +106,23 @@ include $menuLayout;
 <!-- /main -->
 <!-- Le javascript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/excanvas.min.js"></script>
-<script src="js/chart.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.js"></script>
-<script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
 
-<script src="js/base.js"></script>
+
+<?php
+include $footerMenuLayout;
+?>
+
 <script>
-
-    var lineChartData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                data: [65, 59, 90, 81, 56, 55, 40]
-            },
-            {
-                fillColor: "rgba(151,187,205,0.5)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                data: [28, 48, 40, 19, 96, 27, 100]
-            }
-        ]
-
-    }
-
-    var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
-
-
-    var barChartData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,1)",
-                data: [65, 59, 90, 81, 56, 55, 40]
-            },
-            {
-                fillColor: "rgba(151,187,205,0.5)",
-                strokeColor: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 96, 27, 100]
-            }
-        ]
-
-    }
-
-    $(document).ready(function () {
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-        var calendar = $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            selectable: true,
-            selectHelper: true,
-            select: function (start, end, allDay) {
-                var title = prompt('Event Title:');
-                if (title) {
-                    calendar.fullCalendar('renderEvent',
-                        {
-                            title: title,
-                            start: start,
-                            end: end,
-                            allDay: allDay
-                        },
-                        true // make the event "stick"
-                    );
-                }
-                calendar.fullCalendar('unselect');
-            },
-            editable: true,
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1)
-                },
-                {
-                    title: 'Long Event',
-                    start: new Date(y, m, d + 5),
-                    end: new Date(y, m, d + 7)
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d - 3, 16, 0),
-                    allDay: false
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d + 4, 16, 0),
-                    allDay: false
-                },
-                {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false
-                },
-                {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    allDay: false
-                },
-                {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    allDay: false
-                },
-                {
-                    title: 'EGrappler.com',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    url: 'http://EGrappler.com/'
-                }
-            ]
+    function edit(val) {
+        console.log('name' + val);
+        var name = document.getElementById('name' + val).textContent;
+        console.log(name);
+        console.log(val);
+        $(".name").attr({
+            "value": name
         });
-    });
-</script><!-- /Calendar -->
+
+    }
+</script>
 </body>
 </html>

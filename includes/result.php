@@ -28,7 +28,7 @@ group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1");
     public function getSumResult()
     {
         global $conn;
-        $sql = $conn->prepare("select uname, ulastname, uusername , sum(value) value
+        $sql = $conn->prepare("select uname, ulastname, uusername , sum(value) value, 0 used_points
 from
 (
 select heroname, uname, ulastname, uusername, case when value >100 then 100 else value end value

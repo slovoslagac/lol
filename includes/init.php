@@ -40,6 +40,10 @@ require INC_PATH . DS . 'orders.php';
 //Layouts
 
 $menuLayout = LAYOUT_PATH.DS.'headerMenu.php';
+$footerMenuLayout = LAYOUT_PATH.DS.'footerMenu.php';
 $tableCompetitionByHero = LAYOUT_PATH.DS.'tableCompetitionByHero.php';
 $tableCompetitionByUser = LAYOUT_PATH.DS.'tableCompetitionByUser.php';
+$tableBonusHours = LAYOUT_PATH.DS.'tableBonusHours.php';
+$tableReservations = LAYOUT_PATH.DS.'tableReservations.php';
+$tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
 //Logs

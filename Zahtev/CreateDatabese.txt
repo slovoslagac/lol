@@ -1,0 +1,204 @@
+CREATE TABLE `heroes` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unheroe` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `ranks` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unrank` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `positions` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unposition` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `users` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `arenausername` varchar(50) NOT NULL,
+  `summonername` varchar(50) DEFAULT NULL,
+  `rankid` int(5) NOT NULL,
+  `positionid` int(5) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  `discount` int(3) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `creditstatus` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unuser` (`arenausername`),
+  KEY `rankid_idx` (`rankid`),
+  KEY `positionid_idx` (`positionid`),
+  CONSTRAINT `positionid` FOREIGN KEY (`positionid`) REFERENCES `positions` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rankid` FOREIGN KEY (`rankid`) REFERENCES `ranks` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `workertype` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uwktype` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `workers` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `workertypeid` int(5) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unworker` (`email`),
+  KEY `fkwrktype_idx` (`workertypeid`),
+  CONSTRAINT `fkwrktype` FOREIGN KEY (`workertypeid`) REFERENCES `workertype` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `userheroresult` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `userid` int(9) NOT NULL,
+  `heroid` int(5) DEFAULT NULL,
+  `matchdate` date DEFAULT NULL,
+  `matchtime` time DEFAULT NULL,
+  `workerid` int(5) DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usrherodate` (`userid`,`heroid`,`matchtime`,`matchdate`),
+  KEY `useridfk_idx` (`userid`),
+  KEY `heroidfk_idx` (`heroid`),
+  KEY `wrkidfl_idx` (`workerid`),
+  CONSTRAINT `heroidfk` FOREIGN KEY (`heroid`) REFERENCES `heroes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `useridfk` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `wrkidfl` FOREIGN KEY (`workerid`) REFERENCES `workers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `credit` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `userid` int(9) DEFAULT NULL,
+  `value` int(4) DEFAULT NULL,
+  `workerid` int(5) DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `expired` int(2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fkuserid_idx` (`userid`),
+  KEY `fkwrkid_idx` (`workerid`),
+  CONSTRAINT `fkuserid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fkwrkid` FOREIGN KEY (`workerid`) REFERENCES `workers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `reservations` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `timedate` datetime NOT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `computers` varchar(100) NOT NULL,
+  `userid` int(9) DEFAULT NULL,
+  `workerid` int(5) DEFAULT NULL,
+  `confirmed` int(2) DEFAULT NULL,
+  `confirmworkerid` int(5) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniqres` (`timedate`,`computers`,`userid`),
+  KEY `fkresusrid_idx` (`userid`),
+  KEY `fkreswrkid_idx` (`workerid`),
+  CONSTRAINT `fkresusrid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fkreswrkid` FOREIGN KEY (`workerid`) REFERENCES `workers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='					';
+
+---------------------------------------------------------
+
+CREATE TABLE `informations` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
+  `tittle` varchar(45) DEFAULT NULL,
+  `text` text,
+  `workerid` int(5) DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `wrkidfl_idx` (`workerid`),
+  CONSTRAINT `wrkidflinf` FOREIGN KEY (`workerid`) REFERENCES `workers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `suppliers` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `workerid` int(5) DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `wrkidfkey_idx` (`workerid`),
+  CONSTRAINT `wrkidflinf00` FOREIGN KEY (`workerid`) REFERENCES `workers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `orders` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
+  `workerid` int(5) DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `supplierid` int(5) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `wrkidfl_idx` (`workerid`),
+  KEY `fkruplierid_idx` (`supplierid`),
+  CONSTRAINT `fksuplierid` FOREIGN KEY (`supplierid`) REFERENCES `suppliers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `wrkidflinf0` FOREIGN KEY (`workerid`) REFERENCES `workers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `producttype` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY `porind` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `products` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `typeid` int(5) NOT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY `porind` (`id`),
+  KEY `fkprodtype_idx` (`typeid`),
+  CONSTRAINT `fkprodtype` FOREIGN KEY (`typeid`) REFERENCES `producttype` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+---------------------------------------------------------
+
+CREATE TABLE `supplies` (
+  `id` int(5) NOT NULL,
+  `status` int(2) DEFAULT NULL COMMENT 'status: 1 - na stanju; 2-prodato.',
+  `amount` int(5) DEFAULT NULL,
+  `orderid` int(5) DEFAULT NULL,
+  `productid` int(5) DEFAULT NULL,
+  `price` float(10,2) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `uniqusupplie` (`orderid`,`productid`),
+  KEY `suppind` (`id`),
+  KEY `fkprodid_idx` (`productid`),
+  CONSTRAINT `fkorderid` FOREIGN KEY (`orderid`) REFERENCES `orders` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fkprodid` FOREIGN KEY (`productid`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

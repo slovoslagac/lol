@@ -25,80 +25,10 @@ if (isset($_POST['user']) != ''){
 }
 
 
-//if (isset($_POST['user']) != ''){
-//echo $_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $_POST['userposition'], $_POST['phone'];
-//}
+
+$currentpage =  'lol_klub.php';
+include $menuLayout;
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>eSports Arena</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/pages/signin.css" rel="stylesheet" type="text/css">
-
-</head>
-
-<body>
-
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a
-                class="brand" href="index.php">eSports Arena</a>
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                class="icon-user"></i> Stefan Dimitrijević <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profil.html">Profil</a></li>
-                            <li><a href="javascript:;">Izloguj se</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-search pull-right">
-                    <input type="text" class="search-query" placeholder="Pretraži">
-                </form>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /navbar-inner -->
-</div>
-<!-- /navbar -->
-<div class="subnavbar">
-    <div class="subnavbar-inner">
-        <div class="container">
-            <ul class="mainnav">
-                <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
-                <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                <li class="active"><a href="lol_klub.php"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-                <li><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
-                <li><a href="lucky_numbers.html"><i class="icon-gift"></i><span>Lucky Numbers</span> </a></li>
-                <li><a href="bonus_sati.php"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
-                <li><a href="magacin.php"><i class="icon-truck"></i><span>Magacin</span> </a></li>
-
-            </ul>
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /subnavbar-inner -->
-</div>
-<!-- /subnavbar -->
-
-
 <div class="account-container register">
 
     <div class="content clearfix">
@@ -186,6 +116,10 @@ if (isset($_POST['user']) != ''){
 
 <script src="js/signin.js"></script>
 
+
+<?php
+include $footerMenuLayout;
+?>
 </body>
 
 </html>

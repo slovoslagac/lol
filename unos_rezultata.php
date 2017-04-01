@@ -1,36 +1,32 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-if (!$session->isLoggedIn()) {
-    redirectTo("login.php");
-}
-
-if (isset($_POST["logout"])) {
-    echo "Izlogovali smo se <br>";
-    $session->logout();
-    header("Location:index.php");
-}
-
-
-$wrk = new worker();
-$currentWorker = $wrk->getWorkerById($session->userid);
 
 if (isset($_POST['userResults']) != '') {
-    $i = 0;
-    while ($i < 10) {
-        $val = $_POST['heroid'][$i];
-        $usr = $_POST['userid'];
-        $datetime = $_POST['datetime'][$i];
-        $date = strstr($datetime, "T", true);
-        $time = str_replace('T', '', strstr($datetime, "T", false));
-        if ($val > 0 and $usr > 0 and $date != '' and $time != '') {
-            $res = new result();
-            $res->insertResult($usr, $val, $date, $time, $session->userid);
-            unset($res);
+
+        $i = 0;
+        while ($i < 10) {
+            $val = $_POST['heroid'][$i];
+            $usr = $_POST['userid'];
+            $datetime = $_POST['datetime'][$i];
+            $date = strstr($datetime, "T", true);
+            $time = str_replace('T', '', strstr($datetime, "T", false));
+            if ($val > 0 and $usr > 0 and $date != '' and $time != '') {
+                try {
+                $res = new result();
+                $res->insertResult($usr, $val, $date, $time, $session->userid);
+                logAction("Unos Rezultata", "userid = $session->userid --- $usr, $val, $date, $time,", 'resultLog.txt');
+                unset($res);
+                }
+
+                catch(Exception $e){
+                    logAction("Unos Rezultata - error", "userid = $session->userid --- $e", 'error.txt');
+                }
+            }
+            $i++;
         }
-        $i++;
-    }
-    redirectTo("index.php");
+        redirectTo("index.php");
+
 }
 
 $defDate = new DateTime();
@@ -49,7 +45,8 @@ if (isset($_POST['deleteResult']) != '') {
 
 
 
-$currentpage =  basename($_SERVER["SCRIPT_FILENAME"]);
+//$currentpage =  basename($_SERVER["SCRIPT_FILENAME"]);
+$currentpage = 'lol_takmicenje.php';
 include $menuLayout;
 ?>
 <div class="result-container register">
@@ -115,11 +112,9 @@ include $menuLayout;
 
 </div> <!-- /account-container -->
 
-
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/bootstrap.js"></script>
-
-<script src="js/signin.js"></script>
+<?php
+include $footerMenuLayout;
+?>
 
 </body>
 

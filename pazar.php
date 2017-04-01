@@ -161,7 +161,7 @@
             </table>
                 
                 </div>
-                <a href="pazar.html" role="button" class="btn btn-large btn-danger btn-right">Kraj smene i logout <i class="btn-icon-only icon-chevron-right"> </i></a>
+                <a href="pazar.php" role="button" class="btn btn-large btn-danger btn-right">Kraj smene i logout <i class="btn-icon-only icon-chevron-right"> </i></a>
             </div>
             
             
