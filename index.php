@@ -104,7 +104,7 @@ $time = $defDate->format("H:i");
 $now = $date . "T" . $time;
 
 // korak u paginaciji
-$step = 4;
+$step = 15;
 
 
 $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);

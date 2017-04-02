@@ -13,10 +13,12 @@ $db_name = "lol";
 
 
 
-$db_server_old = "";
-$db_user_old = "";
+$db_server_old = "localhost";
+$db_user_old = "root";
 $db_pass_old = "";
-$db_name_old = "";
+$db_name_old = "smartlaunch";
+
+
 
 
 

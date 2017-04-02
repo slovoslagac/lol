@@ -35,6 +35,7 @@ require INC_PATH . DS . 'info.php';
 require INC_PATH . DS . 'products.php';
 require INC_PATH . DS . 'suppliers.php';
 require INC_PATH . DS . 'orders.php';
+require INC_PATH . DS . 'bonus.php';
 
 
 //Layouts

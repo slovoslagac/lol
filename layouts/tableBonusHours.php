@@ -6,8 +6,8 @@
  * Time: 14:02
  */
 
-
-$countItems = 10;
+$bonus = new bonus; $allbonuses = $bonus->getResults();
+$countItems = count($allbonuses);
 $numPages = ceil($countItems / $step);
 
 $tableId = 'BonusHours';
@@ -41,16 +41,17 @@ $tableId = 'BonusHours';
             </tr>
             </thead>
             <tbody>
-            <?php for ($i = 1; $i <= 10; $i++) {
-                $numHours = $i * 15; ?>
-                <tr id="<?php echo "$tableId$i" ?>" <?php echo ($i > $step) ? "class=\"hide\"" : "" ?>>
+			<?php  $i=1; foreach($allbonuses as $item) { $user = $item->Username; $hour = $item->this_month; ?>
+			<tr id="<?php echo "$tableId$i" ?>" <?php echo ($i > $step) ? "class=\"hide\"" : "" ?>>
                     <td class="center"><?php echo $i?></td>
-                    <td> Chumpitas</td>
-                    <td class="center"><?php echo $numHours ?></td>
-                    <td class="center"><?php echo countBonus($i * 15) ?></td>
-                    <td class="center"> <?php echo nextBonus($numHours); ?></td>
+                    <td><?php echo $user?></td>
+                    <td class="center"><?php echo $hour ?></td>
+                    <td class="center"><?php echo countBonus($hour) ?></td>
+                    <td class="center"> <?php echo nextBonus($hour); ?></td>
                 </tr>
-            <?php } ?>
+			
+			<?php $i++;}  ?>
+			
             </tbody>
 
 
