@@ -5,6 +5,9 @@ next
 -Doraditi poruku kad se brise sto ne moze da se obrise.
 -Uvesti lowercase controlu da li u bazi ima podataka.
 
+Da izbaci gresku na logovanju da je promasena lozinka
+
+
 
 reseno
 -Na unosu rez da bude default datum danasnji.

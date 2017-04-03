@@ -1,7 +1,7 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-$step = 2;
+$step = 3;
 
 $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;

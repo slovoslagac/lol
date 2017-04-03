@@ -1,0 +1,5 @@
+03.04.2017 12:12:55 | Kreiranje rezervacije - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '2017-04-03 12:12:00-99-9' for key 'uniqres'' in C:\AppServ\www\lol\includes\reservation.php:45
+Stack trace:
+#0 C:\AppServ\www\lol\includes\reservation.php(45): PDOStatement->execute()
+#1 C:\AppServ\www\lol\index.php(94): reservation->addReservation('2017-04-03T12:1...', '99', 9, 11)
+#2 {main}

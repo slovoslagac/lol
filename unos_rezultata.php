@@ -86,8 +86,7 @@ include $menuLayout;
                                     <option value="<?php echo $item->id ?>"><?php echo $item->name ?></option>
                                 <?php } ?>
                             </select>
-                            <input type="datetime-local" name="datetime[]" placeholder="Date"
-                                   value="<?php echo $maxDate ?>" max="<?php echo $maxDate ?>">
+                            <input type="datetime-local" name="datetime[]" placeholder="Date"    value="<?php echo $maxDate ?>" max="<?php echo $maxDate ?>">
                         </div> <!-- /field -->
                     </div> <!-- /field -->
                 <?php } ?>

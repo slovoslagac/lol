@@ -93,7 +93,23 @@ $tableId = 'tabCredits';
                     </tr>
                     <?php $i++;
                 }
-            } ?>
+            }
+
+            $rest = fmod($countItems, $step);
+            $numOfRows = $step - $rest;
+            for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+
+
+            <?php } ?>
+
+
             <tr>
                 <td colspan="3"></td>
                 <td class="center"><b><?php echo "$sumCredit Din" ?></b></td>

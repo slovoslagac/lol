@@ -50,7 +50,21 @@ $tableId = 'BonusHours';
                     <td class="center"> <?php echo nextBonus($hour); ?></td>
                 </tr>
 			
-			<?php $i++;}  ?>
+			<?php $i++;}
+
+            $rest = fmod($countItems, $step);
+            $numOfRows = $step - $rest;
+            for($k=1; $k<=$numOfRows; $k++) { ?>
+            <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+            <?php } ?>
 			
             </tbody>
 

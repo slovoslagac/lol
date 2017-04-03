@@ -43,7 +43,7 @@ order by 3,1,2");
     public function getUserByName($name) {
         $array = $this->getAllUsers();
         foreach ($array as $item) {
-            if (strtolower($this->name) == $name) {
+            if (strtolower($item->name) == $name) {
                 return $item;
             }
         }
@@ -52,7 +52,7 @@ order by 3,1,2");
     public function getUserByUsername($username) {
         $array = $this->getAllUsers();
         foreach ($array as $item) {
-            if (strtolower($this->arenausername) == $username) {
+            if ($item->arenausername == $username) {
                 return $item;
             }
         }

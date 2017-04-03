@@ -5,10 +5,11 @@ $res = new reservation();
 $allreservations = $res->getAllReservations();
 $countItems = 0;
 foreach ($allreservations as $item) {
-if ($item->confirmed == null) {
+    if ($item->confirmed == null) {
 
-    $countItems++;
-}}
+        $countItems++;
+    }
+}
 $numPages = ceil($countItems / $step);
 $tableId = 'tabReservations';
 ?>
@@ -20,7 +21,7 @@ $tableId = 'tabReservations';
                 <a href="#back" id="<?php echo $tableId ?>left">
                     <i class="icon-chevron-left" onclick="leftRight('1__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
-                <span class="center" id="<?php echo $tableId ?>PageNum">1/<?php echo $numPages?></span>
+                <span class="center" id="<?php echo $tableId ?>PageNum">1/<?php echo $numPages ?></span>
                 <a href="#next" id="<?php echo $tableId ?>right">
                     <i class="icon-chevron-right" onclick="leftRight('2__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
@@ -40,11 +41,12 @@ $tableId = 'tabReservations';
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <div class="modal-body">
                         <input type="datetime-local" name="datetime" min="<?php echo $now ?>" value="<?php echo $now ?>" required/><br/>
-                        <select name="user" required>
+                        <input type="text" list="user" name="user">
+                        <datalist id="user" required>
                             <?php foreach ($allusers as $item) { ?>
-                                <option value="<?php echo $item->id ?>"><?php echo $item->arenausername ?></option>
+                                <option value="<?php echo $item->arenausername ?>"></option>
                             <?php } ?>
-                        </select>
+                        </datalist>
                         <input type="text" id="user_pc" name="pc" value="" placeholder="11,12,13,14" class="login" required/>
                     </div>
                     <div class="modal-footer">
@@ -95,9 +97,22 @@ $tableId = 'tabReservations';
                     <?php $i++;
                 }
             }
-            unset($res, $allreservations); ?>
+            unset($res, $allreservations);
 
 
+            $rest = fmod($countItems, $step);
+            $numOfRows = $step - $rest;
+            for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+
+            <?php } ?>
             </tbody>
         </table>
     </div>

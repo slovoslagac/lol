@@ -88,8 +88,10 @@ if (isset($_POST['cancelation'])) {
 
 if (isset($_POST["makeReservation"])) {
     try {
+        $selectedUser = $u->getUserByUsername($_POST["user"]);
+        $selectedUserId = $selectedUser->id;
         $res = new reservation();
-        $res->addReservation($_POST["datetime"], $_POST["pc"], $_POST["user"], $session->userid);
+        $res->addReservation($_POST["datetime"], $_POST["pc"], $selectedUserId, $session->userid);
         unset($res);
         header("Location:index.php");
     } catch (Exception $e) {
@@ -104,7 +106,7 @@ $time = $defDate->format("H:i");
 $now = $date . "T" . $time;
 
 // korak u paginaciji
-$step = 15;
+$step = 20;
 
 
 $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
@@ -164,34 +166,7 @@ include $menuLayout;
                     include $tableCredits;
                     ?>
 
-                    <div class="widget widget-nopad">
-                        <div class="widget-header"><i class="icon-list-alt"></i>
-                            <h3> Statistika za Mart 2017. </h3>
-                        </div>
-                        <!-- /widget-header -->
-                        <div class="widget-content">
-                            <div class="widget big-stats-container">
-                                <div class="widget-content">
-                                    <div id="big_stats" class="cf">
-                                        <div class="stat"><i class="icon-time"></i><label>Raspored</label> <span class="value">342h</span></div>
-                                        <!-- .stat -->
 
-                                        <div class="stat"><i class="icon-thumbs-up-alt"></i><label>FB Likes</label> <span class="value">3.423</span></div>
-                                        <!-- .stat -->
-
-                                        <div class="stat"><i class="icon-time"></i><label>Bonus sati</label> <span class="value">342h</span></div>
-                                        <!-- .stat -->
-
-                                        <div class="stat"><i class="icon-user"></i><label>Broj korisnika</label> <span class="value">2.673</span></div>
-                                        <!-- .stat -->
-                                    </div>
-                                </div>
-                                <!-- /widget-content -->
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /widget -->
 
                 </div>
 

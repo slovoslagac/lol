@@ -197,24 +197,24 @@
         document.getElementById("currentDebit").innerHTML = "Nakon uplate stanje duga je " + rest + " Din."
     }
 
-//    function pagination($page, $step, $countItems, $type) {
-//        for (var $k = 1; $k <= $countItems; $k++) {
-//            var currclass = $type + $k;
-//            if ($k > ($page - 1) * $step && $k <= $page * $step) {
-//                document.getElementById(currclass).setAttribute("class", "");
-//            } else {
-//                document.getElementById(currclass).setAttribute("class", "hide");
-//            }
-//
-//        }
-//    }
+    //    function pagination($page, $step, $countItems, $type) {
+    //        for (var $k = 1; $k <= $countItems; $k++) {
+    //            var currclass = $type + $k;
+    //            if ($k > ($page - 1) * $step && $k <= $page * $step) {
+    //                document.getElementById(currclass).setAttribute("class", "");
+    //            } else {
+    //                document.getElementById(currclass).setAttribute("class", "hide");
+    //            }
+    //
+    //        }
+    //    }
 
 
     function leftRight(val) {
         var code = val.split("__");
         var table = code[1];
         var side = code[0];
-        var maxNumPage = code[2];
+        var maxNumPage = parseInt(code[2]);
         var step = code[3];
         var numItems = code[4]
         var page = document.getElementById(table).value;
@@ -243,6 +243,17 @@
         var pagenum = table + 'PageNum';
         document.getElementById(pagenum).innerHTML = page + '/' + maxNumPage;
 
+
+        for (var ak = 1; ak <= maxNumPage * step - numItems; ak++) {
+            var addtable = 'add' + table + ak;
+            console.log(addtable);
+            console.log(page, maxNumPage);
+            if (page == maxNumPage) {
+                document.getElementById(addtable).setAttribute("class", "");
+            } else {
+                document.getElementById(addtable).setAttribute("class", "hide");
+            }
+        }
 
 
     }
@@ -281,7 +292,7 @@
     }
 
 
-    function Supplier(){
+    function Supplier() {
 
     }
 </script>

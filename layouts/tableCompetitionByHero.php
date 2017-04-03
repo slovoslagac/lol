@@ -51,7 +51,21 @@ $tableId = 'tabByHero';
                 </tr>
                 <?php $i++;
             }
-            unset($result, $allresults, $countItems, $numPages, $tableId) ?>
+
+
+            $rest = fmod($countItems, $step);
+            $numOfRows = $step - $rest;
+            for ($k = 1; $k <= $numOfRows; $k++) { ?>
+            <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+
+
+            <?php } unset($result, $allresults, $countItems, $numPages, $tableId) ; ?>
             </tbody>
 
         </table>
