@@ -34,7 +34,7 @@ if (isset($_POST["saveCredit"])) {
             try {
             $usr->addUserCredit($user, $_POST["amountChosen"], $session->userid);
             unset($usr);
-            header("Location:index.php");
+            header("Location:index.php#credits");
             } catch (Exception $e) {
                 logAction("Dodavanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
             }
@@ -53,7 +53,7 @@ if (isset($_POST['reduceCredit'])) {
             $usr->creditExpire($currentuser);
         }
         unset($usr, $currusrcredit);
-        header("Location:index.php");
+        header("Location:index.php#credits");
     } catch (Exception $e) {
         logAction("Brisanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
     }
@@ -67,7 +67,7 @@ if (isset($_POST['confirmation'])) {
         $res = new reservation();
         $res->confirmReservation($_POST["confirmation"], $session->userid);
         unset($res);
-        header("Location:index.php");
+        header("Location:index.php#reservations");
     } catch (Exception $e) {
         logAction("Potvrda rezervacije - error", "userid = $session->userid --- $e", 'error.txt');
     }
@@ -79,7 +79,7 @@ if (isset($_POST['cancelation'])) {
         $res = new reservation();
         $res->cancelReservation($_POST["cancelation"], $session->userid);
         unset($res);
-        header("Location:index.php");
+        header("Location:index.php#reservations");
     } catch (Exception $e) {
         logAction("Ponistavanje rezervacije - error", "userid = $session->userid --- $e", 'error.txt');
     }
@@ -93,7 +93,7 @@ if (isset($_POST["makeReservation"])) {
         $res = new reservation();
         $res->addReservation($_POST["datetime"], $_POST["pc"], $selectedUserId, $session->userid);
         unset($res);
-        header("Location:index.php");
+        header("Location:index.php#reservations");
     } catch (Exception $e) {
         logAction("Kreiranje rezervacije - error", "userid = $session->userid --- $e", 'error.txt');
     }

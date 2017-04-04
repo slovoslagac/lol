@@ -7,7 +7,7 @@ $tableId = 'tabCredits';
 
 ?>
 <!--Pocetak Dugovanja-->
-<div class="widget widget-table action-table">
+<div class="widget widget-table action-table" id="credits">
     <div class="widget-header"><i class="icon-money"></i>
         <h3>Dugovanja
             <input type="hidden" id="<?php echo $tableId ?>" value="1"/>

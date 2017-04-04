@@ -24,10 +24,21 @@ class user
 FROM users u
 left join positions p on u.positionid = p.id
 left join ranks r on u.rankid = r.id
+where u.lolKlub = 1
 order by 3,1,2");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    public function transferUsers($usr, $id)
+    {
+        global $conn;
+        $sql = $conn->prepare("Insert into users (arenausername, SLuserId) values (:usr, :id) ");
+        $sql->bindParam(':usr', $usr);
+        $sql->bindParam(':id', $id);
+        $sql->execute();
+        unset($conn);
     }
 
     public function getUserById($id)
@@ -40,7 +51,8 @@ order by 3,1,2");
         }
     }
 
-    public function getUserByName($name) {
+    public function getUserByName($name)
+    {
         $array = $this->getAllUsers();
         foreach ($array as $item) {
             if (strtolower($item->name) == $name) {
@@ -49,7 +61,8 @@ order by 3,1,2");
         }
     }
 
-    public function getUserByUsername($username) {
+    public function getUserByUsername($username)
+    {
         $array = $this->getAllUsers();
         foreach ($array as $item) {
             if ($item->arenausername == $username) {
@@ -58,20 +71,23 @@ order by 3,1,2");
         }
     }
 
-    public function addUser($name, $lastname, $username, $sumname, $rank, $pos, $phone){
+    public function addUser($name, $lastname, $username, $sumname, $rank, $pos, $phone, $lol)
+    {
         global $conn;
-        $insertNewUser = $conn->prepare("insert into users (name, lastname, arenausername, summonername, rankid, positionid, phone) values (:nm, :ln, :au, :sn, :rn, :po, :ph)");
-        $insertNewUser->bindParam(':nm',$name);
+        $insertNewUser = $conn->prepare("insert into users (name, lastname, arenausername, summonername, rankid, positionid, phone, lolKlub) values (:nm, :ln, :au, :sn, :rn, :po, :ph, :lk) ");
+        $insertNewUser->bindParam(':nm', $name);
         $insertNewUser->bindParam(':ln', $lastname);
         $insertNewUser->bindParam(':au', $username);
         $insertNewUser->bindParam(':sn', $sumname);
         $insertNewUser->bindParam(':rn', $rank);
         $insertNewUser->bindParam(':po', $pos);
         $insertNewUser->bindParam(':ph', $phone);
+        $insertNewUser->bindParam(':lk', $lol);
         $insertNewUser->execute();
     }
 
-    public function updateUser($id, $name, $lastname, $username, $sumname, $rank, $pos, $phone, $creditstatus) {
+    public function updateUser($id, $name, $lastname, $username, $sumname, $rank, $pos, $phone, $creditstatus)
+    {
         global $conn;
         $updateUser = $conn->prepare("update users set name = :nm, lastname = :ln, arenausername=:au , summonername=:sn, rankid = :rn, positionid = :po, phone =:ph, creditstatus = :cs where id= :id");
         $updateUser->bindParam(':nm', $name);
@@ -86,13 +102,13 @@ order by 3,1,2");
         $updateUser->execute();
     }
 
-    public function deleteUserById($id) {
+    public function deleteUserById($id)
+    {
         global $conn;
         $deletePosition = $conn->prepare("delete from users where id = :id");
-        $deletePosition->bindParam(':id',$id);
+        $deletePosition->bindParam(':id', $id);
         $deletePosition->execute();
     }
-
 
 
 }

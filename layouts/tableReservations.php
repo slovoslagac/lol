@@ -13,7 +13,7 @@ foreach ($allreservations as $item) {
 $numPages = ceil($countItems / $step);
 $tableId = 'tabReservations';
 ?>
-<div class="widget widget-table action-table">
+<div class="widget widget-table action-table" id="reservations">
     <div class="widget-header"><i class="icon-time"></i>
         <h3>Rezervacije
             <input type="hidden" id="<?php echo $tableId ?>" value="1"/>

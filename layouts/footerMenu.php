@@ -222,7 +222,11 @@
             if (page > 1) {
                 page = parseInt(page) - 1;
             }
-        } else {
+        }
+        else if (side==0) {
+            page = 1;
+        }
+        else {
             if (page < maxNumPage) {
                 page = parseInt(page) + 1;
             }

@@ -62,3 +62,5 @@ function logAction($action, $message, $file = 'log.txt')
         echo "Nije uspelo logovanje";
     }
 }
+
+
