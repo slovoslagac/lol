@@ -65,7 +65,7 @@ include $menuLayout;
                     <label for="password">Rank:</label>
                     <select name="userid">
                         <?php $user = new user();
-                        $allUsers = $user->getAllUsers();
+                        $allUsers = $user->getAllUsersLol();
                         foreach ($allUsers as $item) { ?>
                             <option value="<?php echo $item->id ?>"><?php echo $item->arenausername ?></option>
                         <?php } ?>

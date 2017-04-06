@@ -102,6 +102,7 @@ $tableId = 'tabReservations';
 
             $rest = fmod($countItems, $step);
             $numOfRows = $step - $rest;
+            if ($rest > 0) {
             for ($k = 1; $k <= $numOfRows; $k++) { ?>
                 <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
                     <td></td>
@@ -112,7 +113,7 @@ $tableId = 'tabReservations';
                 </tr>
 
 
-            <?php } ?>
+            <?php } }?>
             </tbody>
         </table>
     </div>

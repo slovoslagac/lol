@@ -3,3 +3,20 @@ Stack trace:
 #0 C:\AppServ\www\lol\includes\reservation.php(45): PDOStatement->execute()
 #1 C:\AppServ\www\lol\index.php(94): reservation->addReservation('2017-04-03T12:1...', '99', 9, 11)
 #2 {main}
+06.04.2017 11:40:07 | Neuspelo brisanje korisnika : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`lol`.`reservations`, CONSTRAINT `fkresusrid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)' in C:\AppServ\www\lol\includes\user.php:142
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(142): PDOStatement->execute()
+#1 C:\AppServ\www\lol\lol_klub.php(57): user->deleteUserById('2279')
+#2 {main}
+06.04.2017 11:40:16 | Neuspelo brisanje korisnika : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`lol`.`reservations`, CONSTRAINT `fkresusrid` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)' in C:\AppServ\www\lol\includes\user.php:142
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(142): PDOStatement->execute()
+#1 C:\AppServ\www\lol\lol_klub.php(57): user->deleteUserById('2279')
+#2 {main}
+06.04.2017 12:23:46 | Uspesan insert usera : userid = Plavi duks, 29096 --- 
+06.04.2017 12:23:46 | Neuspesan insert usera : userid = Plavi duks, 29096 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'Plavi duks-29096' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:56
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(56): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferUsers.php(34): user->transferUsers('Plavi duks', 29096)
+#2 {main}
+06.04.2017 12:25:45 | Uspesan insert usera : userid = Plavi duks, 29096 

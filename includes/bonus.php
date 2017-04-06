@@ -9,12 +9,13 @@
 class bonus
 {
 
-    public function getResults($month)
+    public function getResults($month, $limit = 10000)
     {
         global $conn_old;
         $sql = $conn_old->prepare("SELECT users.Username, FLOOR(SUM((statisticsmain.TotalMinutes)/60)) AS this_month, statisticsmain.UserID as id
-FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(statisticsmain.StartDateTime) = :mt GROUP BY statisticsmain.UserID ORDER BY this_month DESC");
+FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(statisticsmain.StartDateTime) = :mt GROUP BY statisticsmain.UserID ORDER BY this_month DESC limit :lt");
         $sql->bindParam(':mt', $month);
+        $sql->bindParam(':lt', $limit);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -36,8 +37,6 @@ FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(sta
         $sql->bindParam(':mt',$month);
         $sql->execute();
     }
-
-
 
 
 

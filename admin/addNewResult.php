@@ -60,7 +60,7 @@ if (isset($_POST['deleteResult']) != '') {
                 <td><input type="submit" name="userResults" value="Sačuvaj" ></td>
                 <td>
                     <select name="userid">
-                        <?php  $user = new user(); $allUsers = $user->getAllUsers(); foreach ($allUsers as $item){?>
+                        <?php  $user = new user(); $allUsers = $user->getAllUsersLol(); foreach ($allUsers as $item){?>
                             <option  value="<?php echo $item->id?>"><?php echo $item->name ?></option>
                         <?php }?>
                     </select>

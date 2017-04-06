@@ -15,6 +15,7 @@ $alltmppos = $pos->getAllPositions();
 
 $usr = new user();
 $allusers = $usr->getAllUsers();
+$allusersLol = $usr->getAllUsersLol();
 
 
 $lok = basename($_SERVER["SCRIPT_FILENAME"]);
@@ -43,7 +44,7 @@ if (isset($_POST["editUser"])) {
     }
 //    echo "$rank->id $firtsname, $lastname, $sumname,$position->id, $phone, $creditId, $userid";
     try {
-        $usr->updateUser($userid, $firtsname, $lastname, $username, $sumname, $rank->id, $position->id, $phone, $creditId);
+        $usr->updateUser($userid, $firtsname, $lastname, $username, $sumname, $rank->id, $position->id, $phone, 1);
         header("Location:$lok");
     } catch (Exception $e) {
         logAction("Neuspelo azuriranje korisnika", "userid = $session->userid --- $e", 'error.txt');
@@ -98,7 +99,7 @@ include $menuLayout;
                                 <tbody>
                                 <?php
                                 $i = 1;
-                                foreach ($allusers as $item) {
+                                foreach ($allusersLol as $item) {
                                     $jsonItem = json_encode($item); ?>
                                     <tr>
                                         <td><?php echo $i ?></td>
@@ -192,18 +193,18 @@ include $menuLayout;
                                     <?php } ?>
                                 </fieldset>
                             </div> <!-- /field -->
-                            <div class="field">
-                                <label for="password">Pozicija:</label>
-                                <fieldset>
-
-                                    <legend>Zadužiаvanje</legend>
-                                    <input type="checkbox" name="credit" id="credit" value="1">
-                                    <small>Da</small>
-                                    <input type="checkbox" name="credit" id="credit" value="0">
-                                    <small>Ne</small>
-
-                                </fieldset>
-                            </div> <!-- /field -->
+<!--                            <div class="field">-->
+<!--                                <label for="password">Pozicija:</label>-->
+<!--                                <fieldset>-->
+<!---->
+<!--                                    <legend>Zadužiаvanje</legend>-->
+<!--                                    <input type="checkbox" name="credit" id="credit" value="1">-->
+<!--                                    <small>Da</small>-->
+<!--                                    <input type="checkbox" name="credit" id="credit" value="0">-->
+<!--                                    <small>Ne</small>-->
+<!---->
+<!--                                </fieldset>-->
+<!--                            </div> <!-- /field -->
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal" aria-hidden="true"> Poništi</button>

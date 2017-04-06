@@ -130,7 +130,7 @@ if (isset($_POST['user']) != ''){
 
     <table>
         <?php $usr = new user();
-        $allusers = $usr->getAllUsers();
+        $allusers = $usr->getAllUsersLol();
         foreach ($allusers as $item) { ?>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <tr>

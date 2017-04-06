@@ -4,7 +4,7 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 $user = new user;
 
-$allusers = $user->getAllUsers();
+$allusers = $user->getAllUsersLol();
 $userid = $user->getUserByUsername('prole');
 
 

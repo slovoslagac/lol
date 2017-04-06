@@ -21,12 +21,20 @@ if (isset($_POST['user']) != ''){
         $tmpusr->addUser($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $positionId , $_POST['phone'],1);
         redirectTo("lol_klub.php");
     } catch (Exception $e) {
-        logAction("Neuspelo azuriranje korisnika", "userid = $session->userid --- $e", 'error.txt');
+        logAction("Neuspelo dodavanje korisnika", "userid = $session->userid --- $e", 'error.txt');
     }
-    } else {
-        echo "Izabrani username se vec koristi, izaberite neki drugi";
-        header("Location:lol_unos.php");
+    } else { $tmu = new user(); $user = $tmu->getUserByUsername($_POST['username']); $userId = $user->id;
+        try {
+            if (isset($_POST['userposition'])) {$positionId = $_POST['userposition'];} else {$positionId = '';}
+            $tmpusr->updateUser($userId,$_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $positionId , $_POST['phone'],1);
+            redirectTo("lol_klub.php");
+        } catch (Exception $e) {
+            logAction("Neuspelo azuriranje korisnika", "userid = $session->userid --- $e", 'error.txt');
+        }
+        unset($tmu,$user);
     }
+
+    unset($tmpusr);
 }
 
 

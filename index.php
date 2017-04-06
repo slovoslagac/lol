@@ -1,21 +1,6 @@
 <?php
 
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
-//
-//
-//if (!$session->isLoggedIn()) {
-//    redirectTo("login.php");
-//}
-//
-//if (isset($_POST["logout"])) {
-//    echo "Izlogovali smo se <br>";
-//    $session->logout();
-//    header("Location:index.php");
-//}
-//
-//
-//$wrk = new worker();
-//$currentWorker = $wrk->getWorkerById($session->userid);
 
 
 $u = new user();
@@ -23,22 +8,24 @@ $allusers = $u->getAllUsers();
 
 $usr = new credit();
 $userCredits = $usr->getSumAllUserCredits();
-
+$userCreditCapable = $usr->getSumAllUserCreditsAvailable();
 //sredjivanje kredita
 
 if (isset($_POST["saveCredit"])) {
 
-        $code = explode('__', $_POST["selectUser"]);
-        $user = $code[0];
-        if ($user > 0) {
-            try {
+    $code = explode('__', $_POST["selectUser"]);
+    $user = $code[0];
+//    $selectedUser = $u->getUserByUsername($user);
+//    $tmpuser = $selectedUser->id;
+    if ($user != '') {
+        try {
             $usr->addUserCredit($user, $_POST["amountChosen"], $session->userid);
             unset($usr);
             header("Location:index.php#credits");
-            } catch (Exception $e) {
-                logAction("Dodavanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
-            }
+        } catch (Exception $e) {
+            logAction("Dodavanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
         }
+    }
 
 }
 
@@ -106,7 +93,7 @@ $time = $defDate->format("H:i");
 $now = $date . "T" . $time;
 
 // korak u paginaciji
-$step = 20;
+$step = 15;
 
 
 $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);

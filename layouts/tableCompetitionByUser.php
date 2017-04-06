@@ -41,29 +41,32 @@ $tableId = 'tabSum';
             $i = 1;
 
             foreach ($allresults as $item) { ?>
-                <tr id="<?php echo "$tableId$i" ?>" >
+                <tr id="<?php echo "$tableId$i" ?>">
                     <td class="center"><?php echo $i ?></td>
                     <td><?php echo $item->uusername ?></td>
                     <td class="center"><?php echo $item->value ?></td>
-                    <td class="center"><?php echo $item->value - $item->used_points?></td>
+                    <td class="center"><?php echo $item->value - $item->used_points ?></td>
                     <td class="center"><a href="#vracanje" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
                 </tr>
                 <?php $i++;
             }
             $rest = fmod($countItems, $step);
             $numOfRows = $step - $rest;
-            for ($k = 1; $k <= $numOfRows; $k++) { ?>
-                <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+            if ($rest > 0) {
+                for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                    <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
 
-                </tr>
+                    </tr>
 
 
-            <?php } unset($result, $allresults, $countItems, $numPages, $tableId) ; ?>
+                <?php }
+            }
+            unset($result, $allresults, $countItems, $numPages, $tableId); ?>
             </tbody>
 
         </table>

@@ -17,10 +17,10 @@ class user
     private $phone;
 
 
-    public function getAllUsers()
+    public function getAllUsersLol()
     {
         global $conn;
-        $sql = $conn->prepare("SELECT u.name, u.lastname,arenausername, summonername, phone, discount, p.name positionname, r.name rankname, u.id, u.creditstatus
+        $sql = $conn->prepare("SELECT u.name, u.lastname,arenausername, summonername, phone, discount, p.name positionname, r.name rankname, u.id, u.creditstatus, SLuserId
 FROM users u
 left join positions p on u.positionid = p.id
 left join ranks r on u.rankid = r.id
@@ -30,6 +30,22 @@ order by 3,1,2");
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
+
+
+    public function getAllUsers()
+    {
+        global $conn;
+        $sql = $conn->prepare("SELECT u.name, u.lastname,arenausername, summonername, phone, discount, p.name positionname, r.name rankname, u.id as id, u.creditstatus, SLuserId
+FROM users u
+left join positions p on u.positionid = p.id
+left join ranks r on u.rankid = r.id
+order by 3,1,2");
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+
 
     public function transferUsers($usr, $id)
     {
@@ -45,7 +61,17 @@ order by 3,1,2");
     {
         $array = $this->getAllUsers();
         foreach ($array as $item) {
-            if ($item->id == $id) {
+            if ($item->id == (int)$id) {
+                return $item;
+            }
+        }
+    }
+
+    public function getUserBySlId($id)
+    {
+        $array = $this->getAllUsers();
+        foreach ($array as $item) {
+            if ($item->SLuserId == (int)$id) {
                 return $item;
             }
         }
@@ -71,6 +97,16 @@ order by 3,1,2");
         }
     }
 
+
+    public function getLastSlId(){
+        global $conn;
+        $sql = $conn->prepare("select max(SluserId) value from users");
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+
     public function addUser($name, $lastname, $username, $sumname, $rank, $pos, $phone, $lol)
     {
         global $conn;
@@ -86,10 +122,10 @@ order by 3,1,2");
         $insertNewUser->execute();
     }
 
-    public function updateUser($id, $name, $lastname, $username, $sumname, $rank, $pos, $phone, $creditstatus)
+    public function updateUser($id, $name, $lastname, $username, $sumname, $rank, $pos, $phone, $lol)
     {
         global $conn;
-        $updateUser = $conn->prepare("update users set name = :nm, lastname = :ln, arenausername=:au , summonername=:sn, rankid = :rn, positionid = :po, phone =:ph, creditstatus = :cs where id= :id");
+        $updateUser = $conn->prepare("update users set name = :nm, lastname = :ln, arenausername=:au , summonername=:sn, rankid = :rn, positionid = :po, phone =:ph, lolKlub = :lk where id= :id");
         $updateUser->bindParam(':nm', $name);
         $updateUser->bindParam(':ln', $lastname);
         $updateUser->bindParam(':au', $username);
@@ -98,9 +134,26 @@ order by 3,1,2");
         $updateUser->bindParam(':po', $pos);
         $updateUser->bindParam(':ph', $phone);
         $updateUser->bindParam(':id', $id);
-        $updateUser->bindParam(':cs', $creditstatus);
+        $updateUser->bindParam(':lk', $lol);
         $updateUser->execute();
     }
+
+    public function resetCreditStatus($val = 0, $ar = '') {
+        global $conn;
+        $sql='';
+        if($ar == '') {
+            $sql = $conn->prepare("Update users set creditstatus = :vl");
+        } else {
+            $sql = $conn->prepare("Update users set creditstatus = :vl and SluserId in ($ar)");
+        }
+        $sql->bindParam(':vl', $val);
+
+
+        $sql->execute();
+        var_dump($sql);
+    }
+
+
 
     public function deleteUserById($id)
     {

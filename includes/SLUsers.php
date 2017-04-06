@@ -10,7 +10,7 @@ class SLUsers
 {
     public function getAllUsers(){
         global $conn_old;
-        $sql = $conn_old->prepare("select Username, id from users limit 3");
+        $sql = $conn_old->prepare("select distinct Username, id from users where  accountStatus = 1 order by id");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;

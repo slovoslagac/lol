@@ -11,22 +11,22 @@ $currentDate = new dateTime();
 $currentMonth = $currentDate->format('n');
 
 //kad se bude menjalo promeniti i u js da ne bi blesavilo switcovanje izmedju meseca.
-$month = $currentMonth -1;
+$month = $currentMonth - 1;
 
 
 $bonus = new bonus;
 $allBonusesCurrentMonth = $bonus->getResults($month);
-$allBonusesPreviousMonth = $bonus->getResults($month-1);
-$bonusHoursCurrentMonth = $bonus->getMonthlyBonus($month-1);
-$bonusHoursPreviousMonth = $bonus->getMonthlyBonus($month-2);
+$allBonusesPreviousMonth = $bonus->getResults($month - 1);
+$bonusHoursCurrentMonth = $bonus->getMonthlyBonus($month - 1);
+$bonusHoursPreviousMonth = $bonus->getMonthlyBonus($month - 2);
 
 
 //Obracun za tekuci mesec
 
 $countItemsCurr = '';
 foreach ($allBonusesCurrentMonth as $item) {
-    if ($item->this_month >0) {
-        $countItemsCurr ++;
+    if ($item->this_month > 0) {
+        $countItemsCurr++;
     }
 }
 $numPagesCurr = ceil($countItemsCurr / $step);
@@ -36,8 +36,8 @@ $numPagesCurr = ceil($countItemsCurr / $step);
 
 $countItemsPrev = '';
 foreach ($allBonusesPreviousMonth as $item) {
-    if ($item->this_month >0) {
-        $countItemsPrev ++;
+    if ($item->this_month > 0) {
+        $countItemsPrev++;
     }
 }
 $numPagesPrev = ceil($countItemsPrev / $step);
@@ -67,7 +67,8 @@ $page = 1;
 
             </h3>
             <div class="controls">
-                <a href="#CurrentMonthTable" class="btn" id="<?php echo $tableId ?>switchMonth" onclick="switchMonth('0__<?php echo $tableIdOld . '__' . $numPagesPrev . '__' . $step . '__' . $countItemsPrev ?>')">Prethodni mesec</a>
+                <a href="#CurrentMonthTable" class="btn" id="<?php echo $tableId ?>switchMonth"
+                   onclick="switchMonth('0__<?php echo $tableIdOld . '__' . $numPagesPrev . '__' . $step . '__' . $countItemsPrev ?>')">Prethodni mesec</a>
 
             </div>
         </div>
@@ -93,7 +94,7 @@ $page = 1;
                         <td class="center"><?php echo $i ?></td>
                         <td><?php echo $user ?></td>
                         <td class="center"><?php echo $hour ?></td>
-                        <td class="center"><?php echo (isset($bonusHoursCurrentMonth[$item->id]))?$bonusHoursCurrentMonth[$item->id] : "" ?></td>
+                        <td class="center"><?php echo (isset($bonusHoursCurrentMonth[$item->id])) ? $bonusHoursCurrentMonth[$item->id] : "" ?></td>
                         <td class="center"><?php echo countBonus($hour) ?></td>
                         <td class="center"> <?php echo nextBonus($hour); ?></td>
                     </tr>
@@ -103,18 +104,20 @@ $page = 1;
 
                 $rest = fmod($countItemsCurr, $step);
                 $numOfRows = $step - $rest;
-                for ($k = 1; $k <= $numOfRows; $k++) { ?>
-                    <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPagesCurr > 1) ? "class=\"hide\"" : "" ?>>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                if ($rest > 0) {
+                    for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                        <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPagesCurr > 1) ? "class=\"hide\"" : "" ?>>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
 
 
-                <?php } ?>
+                    <?php }
+                } ?>
 
                 </tbody>
 
@@ -139,7 +142,8 @@ $page = 1;
 
             </h3>
             <div class="controls">
-                <a href="#PreviousMonthTable" class="btn" id="<?php echo $tableId ?>switchMonth" onclick="switchMonth('0__<?php echo $tableId . '__' . $numPagesCurr . '__' . $step . '__' . $countItemsCurr ?>')">Tekući mesec</a>
+                <a href="#PreviousMonthTable" class="btn" id="<?php echo $tableId ?>switchMonth"
+                   onclick="switchMonth('0__<?php echo $tableId . '__' . $numPagesCurr . '__' . $step . '__' . $countItemsCurr ?>')">Tekući mesec</a>
 
             </div>
         </div>
@@ -165,7 +169,7 @@ $page = 1;
                         <td class="center"><?php echo $i ?></td>
                         <td><?php echo $user ?></td>
                         <td class="center"><?php echo $hour ?></td>
-                        <td class="center"><?php echo (isset($bonusHoursPreviousMonth[$item->id]))?$bonusHoursPreviousMonth[$item->id] : "" ?></td>
+                        <td class="center"><?php echo (isset($bonusHoursPreviousMonth[$item->id])) ? $bonusHoursPreviousMonth[$item->id] : "" ?></td>
                         <td class="center"><?php echo countBonus($hour) ?></td>
                         <td class="center">-</td>
                     </tr>
@@ -175,18 +179,20 @@ $page = 1;
 
                 $rest = fmod($countItemsPrev, $step);
                 $numOfRows = $step - $rest;
-                for ($k = 1; $k <= $numOfRows; $k++) { ?>
-                    <tr id="add<?php echo "$tableIdOld$k" ?>" <?php echo ($numPagesPrev > 1) ? "class=\"hide\"" : "" ?>>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                if ($rest > 0) {
+                    for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                        <tr id="add<?php echo "$tableIdOld$k" ?>" <?php echo ($numPagesPrev > 1) ? "class=\"hide\"" : "" ?>>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
 
 
-                <?php } ?>
+                    <?php }
+                } ?>
 
                 </tbody>
 
@@ -197,7 +203,7 @@ $page = 1;
                         var cd = parseInt(document.getElementById("currentMonth").value);
                         console.log(cd);
                         if (cd == n) {
-                            document.getElementById("currentMonth").setAttribute("value", cd -1);
+                            document.getElementById("currentMonth").setAttribute("value", cd - 1);
                             document.getElementById("PreviousMonthTable").setAttribute("class", "");
                             document.getElementById("CurrentMonthTable").setAttribute("class", "hide");
                             document.getElementById("BonusHours").setAttribute("value", "1");
@@ -205,7 +211,7 @@ $page = 1;
 
                         } else {
 
-                            document.getElementById("currentMonth").setAttribute("value", cd + 1 );
+                            document.getElementById("currentMonth").setAttribute("value", cd + 1);
                             document.getElementById("PreviousMonthTable").setAttribute("class", "hide");
                             document.getElementById("CurrentMonthTable").setAttribute("class", "");
                             document.getElementById("BonusHoursOld").setAttribute("value", "1");

@@ -30,3 +30,9 @@ ALTER TABLE `lol`.`users` ADD CONSTRAINT `rankid`
   REFERENCES `lol`.`ranks` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+------------------------------
+
+ALTER TABLE `lol`.`users`
+DROP INDEX `unuser` ,
+ADD UNIQUE INDEX `unuser` (`arenausername` ASC, `SLuserId` ASC);

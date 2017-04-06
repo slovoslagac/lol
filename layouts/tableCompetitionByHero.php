@@ -16,7 +16,7 @@ $tableId = 'tabByHero';
                 <a href="#back" id="<?php echo $tableId ?>left">
                     <i class="icon-chevron-left" onclick="leftRight('1__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
-                <span class="center" id="<?php echo $tableId ?>PageNum">1/<?php echo $numPages?></span>
+                <span class="center" id="<?php echo $tableId ?>PageNum">1/<?php echo $numPages ?></span>
                 <a href="#next" id="<?php echo $tableId ?>right">
                     <i class="icon-chevron-right" onclick="leftRight('2__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
@@ -55,17 +55,20 @@ $tableId = 'tabByHero';
 
             $rest = fmod($countItems, $step);
             $numOfRows = $step - $rest;
-            for ($k = 1; $k <= $numOfRows; $k++) { ?>
-            <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            if ($rest > 0) {
+                for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                    <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
 
-            </tr>
+                    </tr>
 
 
-            <?php } unset($result, $allresults, $countItems, $numPages, $tableId) ; ?>
+                <?php }
+            }
+            unset($result, $allresults, $countItems, $numPages, $tableId); ?>
             </tbody>
 
         </table>

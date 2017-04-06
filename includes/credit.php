@@ -15,8 +15,20 @@ class credit
         $sql = $conn->prepare("select u.id, u.arenausername username, sum(c.value) value, datediff(SYSDATE(),min(c.`timestamp`)) num_days
 from users u
 left join credit c on c.userid = u.id and expired = 0
-where u.creditstatus = 1
 group by u.id, u.arenausername order by value desc");
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    public function getSumAllUserCreditsAvailable()
+    {
+        global $conn;
+        $sql = $conn->prepare("select u.id, u.arenausername username, sum(c.value) value, datediff(SYSDATE(),min(c.`timestamp`)) num_days
+from users u
+left join credit c on c.userid = u.id and expired = 0
+where creditstatus = 1
+group by u.id, u.arenausername order by username ");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;

@@ -1,9 +1,19 @@
 <?php
 
 
-$countItems = count($userCredits);
+$countItems = 0;
+foreach ($userCredits as $item) {
+    if ($item->value > 0) {
+        $countItems++;
+    }
+}
+
 $numPages = ceil($countItems / $step);
 $tableId = 'tabCredits';
+
+
+
+
 
 ?>
 <!--Pocetak Dugovanja-->
@@ -15,7 +25,7 @@ $tableId = 'tabCredits';
                 <a href="#back" id="<?php echo $tableId ?>left">
                     <i class="icon-chevron-left" onclick="leftRight('1__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
-                <span class="center" id="<?php echo $tableId ?>PageNum">1/<?php echo $numPages ?></span>
+                <span class="center" id="<?php echo $tableId ?>PageNum"><?php echo $numPages ?></span>
                 <a href="#next" id="<?php echo $tableId ?>right">
                     <i class="icon-chevron-right" onclick="leftRight('2__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
@@ -33,24 +43,30 @@ $tableId = 'tabCredits';
                 </div>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <div class="modal-body">
-                        <select id="selectUser" name="selectUser" onchange="myFunction()">
-                            <option value="0"></option>
-                            <?php foreach ($userCredits as $item) {
-                                ?>
-                                <option
-                                    value="<?php $credit = ($item->value == '') ? '0' : $item->value;
-                                    echo $item->id . '__' . $credit ?>"><?php echo $item->username ?></option>
+                        <?php if (isset($userCreditCapable) != '') { ?>
 
-                                <?php
-                            } ?>
-                        </select>
-                        <input type="number" id="amountChosen" name="amountChosen" value="" placeholder="Iznos dugovanja" class="login"/>
-                        <p id="amount"></p>
+                            <select name="selectUser" id="selectUser" onchange="myFunction()">
+                                <option value=""></option>
+                                <?php foreach ($userCreditCapable as $item) {
+                                    ?>
+                                    <option
+                                        value="<?php $credit = ($item->value == '') ? '0' : $item->value;
+                                        echo $item->id . '__' . $credit ?>"><?php echo $item->username ?></option>
 
+                                    <?php
+                                } ?>
+                            </select>
+                            <input type="number" id="amountChosen" name="amountChosen" value="" placeholder="Iznos dugovanja" class="login"/>
+                            <p id="amount"></p>
+                        <?php } else { ?>
+                            <p>Trenutno nije dozvoljeno zaduzivanje!</p>
+                        <?php } ?>
                     </div>
                     <div class="modal-footer">
                         <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
-                        <button class="btn btn-primary" type="submit" name="saveCredit">Unesi dugovanje</button>
+                        <?php if (isset($userCreditCapable) != '') { ?>
+                            <button class="btn btn-primary" type="submit" name="saveCredit">Unesi dugovanje</button>
+                        <?php } ?>
                     </div>
                 </form>
             </div>
@@ -97,17 +113,19 @@ $tableId = 'tabCredits';
 
             $rest = fmod($countItems, $step);
             $numOfRows = $step - $rest;
-            for ($k = 1; $k <= $numOfRows; $k++) { ?>
-                <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+            if ($rest > 0) {
+                for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                    <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
 
-                </tr>
+                    </tr>
 
 
-            <?php } ?>
+                <?php }
+            } ?>
 
 
             <tr>
