@@ -1,0 +1,1 @@
+C:\xampp1\php\php.exe -f C:\AppServ\www\lol\TransferWorkers.php

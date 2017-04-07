@@ -12,9 +12,10 @@ class credit
     public function getSumAllUserCredits()
     {
         global $conn;
-        $sql = $conn->prepare("select u.id, u.arenausername username, sum(c.value) value, datediff(SYSDATE(),min(c.`timestamp`)) num_days
+        $sql = $conn->prepare("select u.id,  case when u.usertype = 1 then u.arenausername else concat(w.name, ' ', w.lastname, ' - radnik') end  username, sum(c.value) value, datediff(SYSDATE(),min(c.`timestamp`)) num_days
 from users u
 left join credit c on c.userid = u.id and expired = 0
+left join workers w on u.arenausername = w.email
 group by u.id, u.arenausername order by value desc");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
@@ -24,9 +25,10 @@ group by u.id, u.arenausername order by value desc");
     public function getSumAllUserCreditsAvailable()
     {
         global $conn;
-        $sql = $conn->prepare("select u.id, u.arenausername username, sum(c.value) value, datediff(SYSDATE(),min(c.`timestamp`)) num_days
+        $sql = $conn->prepare("select u.id, case when u.usertype = 1 then u.arenausername else concat(w.name, ' ', w.lastname, ' - radnik') end  username, sum(c.value) value, datediff(SYSDATE(),min(c.`timestamp`)) num_days
 from users u
 left join credit c on c.userid = u.id and expired = 0
+left join workers w on u.arenausername = w.email
 where creditstatus = 1
 group by u.id, u.arenausername order by username ");
         $sql->execute();

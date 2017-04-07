@@ -35,4 +35,14 @@ ALTER TABLE `lol`.`users` ADD CONSTRAINT `rankid`
 
 ALTER TABLE `lol`.`users`
 DROP INDEX `unuser` ,
-ADD UNIQUE INDEX `unuser` (`arenausername` ASC, `SLuserId` ASC);
+ADD UNIQUE INDEX `unuser` (`arenausername` ASC, `SLuserId` ASC, `usertype` ASC);
+
+-------------------------------------
+
+ALTER TABLE `lol`.`users`
+ADD COLUMN `usertype` INT(2) NOT NULL DEFAULT 1 AFTER `lolKlub`;
+
+------------------------------------
+
+ALTER TABLE `lol`.`users`
+CHANGE COLUMN `SLuserId` `SLuserId` INT(11) NULL DEFAULT 0 ;

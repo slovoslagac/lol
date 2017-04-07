@@ -57,6 +57,18 @@ order by 3,1,2");
         unset($conn);
     }
 
+
+    public function transferWorkers($usr,$credits = 1, $type = 2)
+    {
+        global $conn;
+        $sql = $conn->prepare("Insert into users (arenausername, creditstatus, usertype) values (:usr, :cs, :tp) ");
+        $sql->bindParam(':usr', $usr);
+        $sql->bindParam(':cs', $credits);
+        $sql->bindParam(':tp', $type);
+        $sql->execute();
+        unset($conn);
+    }
+
     public function getUserById($id)
     {
         $array = $this->getAllUsers();
@@ -98,14 +110,6 @@ order by 3,1,2");
     }
 
 
-    public function getLastSlId(){
-        global $conn;
-        $sql = $conn->prepare("select max(SluserId) value from users");
-        $sql->execute();
-        $result = $sql->fetch(PDO::FETCH_OBJ);
-        return $result;
-    }
-
 
     public function addUser($name, $lastname, $username, $sumname, $rank, $pos, $phone, $lol)
     {
@@ -142,9 +146,9 @@ order by 3,1,2");
         global $conn;
         $sql='';
         if($ar == '') {
-            $sql = $conn->prepare("Update users set creditstatus = :vl");
+            $sql = $conn->prepare("Update users set creditstatus = :vl where usertype = 1");
         } else {
-            $sql = $conn->prepare("Update users set creditstatus = :vl and SluserId in ($ar)");
+            $sql = $conn->prepare("Update users set creditstatus = :vl and SluserId in ($ar) usertype = 1");
         }
         $sql->bindParam(':vl', $val);
 

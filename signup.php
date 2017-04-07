@@ -15,6 +15,8 @@ if(isset($_POST["registration"])){
         if ($password == $confpassword) {
             $typeObject = $wrk->getOperator(); $type = $typeObject->id;
             $wrk->addWorker($name, $lastname, $email, $crypt_password, $type);
+            $usr = new user();
+            $usr->transferWorkers($email);
             unset($wrk);
             redirectTo("login.php");
         } else {

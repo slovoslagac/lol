@@ -10,7 +10,6 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 logAction("Transfer poceo", "", 'UserTransfer.txt');
 $u = new user();
-$maxId = $u->getLastSlId();
 $allUsers = $u->getAllUsers();
 $tmpArray = array();
 foreach ($allUsers as $item) {
@@ -33,7 +32,7 @@ foreach ($allSlUsers as $item) {
     }
 }
 
-logAction("Transfer yavrsen", "Prebaceno ukupno $i usera Novih", 'UserTransfer.txt');
+logAction("Transfer zavrsen", "Prebaceno ukupno $i usera Novih", 'UserTransfer.txt');
 
 
 unset($u);

@@ -20,3 +20,38 @@ Stack trace:
 #1 C:\AppServ\www\lol\TransferUsers.php(34): user->transferUsers('Plavi duks', 29096)
 #2 {main}
 06.04.2017 12:25:45 | Uspesan insert usera : userid = Plavi duks, 29096 
+07.04.2017 15:45:31 | Neuspesan insert radnika : userid = , 12 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'proba@gmail.com-0-2' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:68
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('proba@gmail.com')
+#2 {main}
+07.04.2017 15:46:19 | Neuspesan insert radnika : userid = , 10 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'djavo@gmail.com-0-2' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:68
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('djavo@gmail.com')
+#2 {main}
+07.04.2017 15:46:19 | Neuspesan insert radnika : userid = , 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'petar.prodanovic@gmail.com-0-2' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:68
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('petar.prodanovi...')
+#2 {main}
+07.04.2017 15:46:19 | Neuspesan insert radnika : userid = , 12 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'proba@gmail.com-0-2' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:68
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('proba@gmail.com')
+#2 {main}
+07.04.2017 15:46:54 | Neuspesan insert radnika : userid = djavo@gmail.com, 10 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'djavo@gmail.com-0-2' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:68
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('djavo@gmail.com')
+#2 {main}
+07.04.2017 15:46:54 | Neuspesan insert radnika : userid = petar.prodanovic@gmail.com, 11 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'petar.prodanovic@gmail.com-0-2' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:68
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('petar.prodanovi...')
+#2 {main}
+07.04.2017 15:46:54 | Neuspesan insert radnika : userid = proba@gmail.com, 12 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'proba@gmail.com-0-2' for key 'unuser'' in C:\AppServ\www\lol\includes\user.php:68
+Stack trace:
+#0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
+#1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('proba@gmail.com')
+#2 {main}
