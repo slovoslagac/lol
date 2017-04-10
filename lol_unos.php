@@ -15,10 +15,12 @@ if (isset($_POST["logout"])) {
 
 if (isset($_POST['user']) != ''){
     $tmpusr = new user();
+    $tmpslusr = new SLUsers();
+    $currentSluser = $tmpslusr ->getUserByName($_POST['username']);
     if (($tmpusr->getUserByUsername($_POST['username'])) == '') {
     try {
         if (isset($_POST['userposition'])) {$positionId = $_POST['userposition'];} else {$positionId = '';}
-        $tmpusr->addUser($_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $positionId , $_POST['phone'],1);
+        $tmpusr->addUser($_POST['name'], $_POST['lastname'], $currentSluser->Username, $_POST['sumname'], $_POST['userrank'], $positionId , $_POST['phone'],1,$currentSluser->id );
         redirectTo("lol_klub.php");
     } catch (Exception $e) {
         logAction("Neuspelo dodavanje korisnika", "userid = $session->userid --- $e", 'error.txt');
@@ -26,7 +28,7 @@ if (isset($_POST['user']) != ''){
     } else { $tmu = new user(); $user = $tmu->getUserByUsername($_POST['username']); $userId = $user->id;
         try {
             if (isset($_POST['userposition'])) {$positionId = $_POST['userposition'];} else {$positionId = '';}
-            $tmpusr->updateUser($userId,$_POST['name'], $_POST['lastname'], $_POST['username'], $_POST['sumname'], $_POST['userrank'], $positionId , $_POST['phone'],1);
+            $tmpusr->updateUser($userId,$_POST['name'], $_POST['lastname'], $currentSluser->Username, $_POST['sumname'], $_POST['userrank'], $positionId , $_POST['phone'],1);
             redirectTo("lol_klub.php");
         } catch (Exception $e) {
             logAction("Neuspelo azuriranje korisnika", "userid = $session->userid --- $e", 'error.txt');
@@ -68,8 +70,13 @@ include $menuLayout;
 
                 <div class="field">
                     <label for="email">eSports Arena Username:</label>
-                    <input type="text" name="username" min="1" maxlength="50" placeholder="eSports Arena username"
-                           class="login" required/>
+                    <input type="text" name="username" list="username" min="1" maxlength="50" placeholder="eSports Arena username" class="login" required/>
+                    <datalist id="username">
+                        <?php $slu = new SLUsers(); $allslu = $slu->getAllUsers();foreach($allslu as $item) {?>
+                            <option value="<?php echo $item->Username ?>"></option>
+                        <?php }?>
+                    </datalist>
+
                 </div> <!-- /field -->
 
                 <div class="field">

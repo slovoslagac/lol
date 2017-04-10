@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/model baze.mwb" afterPath="$PROJECT_DIR$/Zahtev/model baze.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/model baze.mwb.bak" afterPath="$PROJECT_DIR$/Zahtev/model baze.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TransferUsers.php" afterPath="$PROJECT_DIR$/TransferUsers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" afterPath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/credit.php" afterPath="$PROJECT_DIR$/includes/credit.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/SLUsers.php" afterPath="$PROJECT_DIR$/includes/SLUsers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/user.php" afterPath="$PROJECT_DIR$/includes/user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/UserTransfer.txt" afterPath="$PROJECT_DIR$/log/UserTransfer.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/error.txt" afterPath="$PROJECT_DIR$/log/error.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/resultLog.txt" afterPath="$PROJECT_DIR$/log/resultLog.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/workerLogin.txt" afterPath="$PROJECT_DIR$/log/workerLogin.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/signup.php" afterPath="$PROJECT_DIR$/signup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lol_unos.php" afterPath="$PROJECT_DIR$/lol_unos.php" />
     </list>
     <ignored path="lol.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +26,41 @@
     <favorites_list name="lol" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="UserTransfer.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/UserTransfer.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TransferUsers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TransferUsers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SLUsers.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/SLUsers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.26030624">
+              <caret line="13" column="59" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="59" />
+              <folding>
+                <marker date="1491816930762" expanded="true" signature="204:243" placeholder="select Usern... users" />
+                <marker date="1491816930762" expanded="true" signature="204:280" placeholder="select Usern... users" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -78,8 +105,6 @@
         <option value="$PROJECT_DIR$/CalculationBonusHours.php" />
         <option value="$PROJECT_DIR$/includes/init.php" />
         <option value="$PROJECT_DIR$/lol_klub.php" />
-        <option value="$PROJECT_DIR$/lol_unos.php" />
-        <option value="$PROJECT_DIR$/includes/SLUsers.php" />
         <option value="$PROJECT_DIR$/includes/bonus.php" />
         <option value="$PROJECT_DIR$/includes/function.php" />
         <option value="$PROJECT_DIR$/CalculateCreditStatus.php" />
@@ -91,8 +116,6 @@
         <option value="$PROJECT_DIR$/lol_takmicenje.php" />
         <option value="$PROJECT_DIR$/layouts/tableCredits.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/TransferUsers.php" />
-        <option value="$PROJECT_DIR$/includes/user.php" />
         <option value="$PROJECT_DIR$/schedulers/Transfers.bat" />
         <option value="$PROJECT_DIR$/signup.php" />
         <option value="$PROJECT_DIR$/log/workerLogin.txt" />
@@ -100,6 +123,10 @@
         <option value="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
         <option value="$PROJECT_DIR$/TransferWorkers.php" />
         <option value="$PROJECT_DIR$/log/error.txt" />
+        <option value="$PROJECT_DIR$/includes/SLUsers.php" />
+        <option value="$PROJECT_DIR$/lol_unos.php" />
+        <option value="$PROJECT_DIR$/includes/user.php" />
+        <option value="$PROJECT_DIR$/TransferUsers.php" />
       </list>
     </option>
   </component>
@@ -143,6 +170,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -233,8 +262,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,9 +336,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1034" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15405117" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15565032" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -431,20 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/unos_rezultata.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5606596">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Zahtev/zahtev.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -470,7 +483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5212264">
           <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -478,7 +490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2889151">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -529,26 +540,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lol_unos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.817217">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lol_klub.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5813679">
-          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CalculationBonusHours.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.1923075">
           <caret line="11" column="57" selection-start-line="9" selection-start-column="4" selection-end-line="11" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -572,7 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-79.76923">
           <caret line="122" column="44" selection-start-line="122" selection-start-column="44" selection-end-line="122" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -580,7 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.727273">
           <caret line="115" column="21" selection-start-line="115" selection-start-column="21" selection-end-line="115" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -588,7 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.461538">
           <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,7 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.5">
           <caret line="194" column="17" selection-start-line="194" selection-start-column="17" selection-end-line="194" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -604,7 +595,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.115385">
           <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -612,15 +602,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.9615384">
           <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CalculateCreditStatus.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24056605">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -628,7 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.303066">
           <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -654,17 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TransferUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34040046">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#85#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -672,14 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="14" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/UserTransfer.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -729,50 +690,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6808009">
-          <caret line="65" column="39" selection-start-line="65" selection-start-column="39" selection-end-line="65" selection-end-column="39" />
-          <folding>
-            <marker date="1491567453206" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
-            <marker date="1491567453206" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
-            <marker date="1491567453206" expanded="true" signature="1304:1366" placeholder="Insert into users... " />
-            <marker date="1491567453206" expanded="true" signature="1627:1708" placeholder="Insert into users... " />
-            <marker date="1491567453206" expanded="true" signature="2979:3126" placeholder="insert into users... " />
-            <marker date="1491567453206" expanded="true" signature="3743:3897" placeholder="update users... " />
-            <marker date="1491567453206" expanded="true" signature="4520:4555" placeholder="Update users... " />
-            <marker date="1491567453206" expanded="true" signature="4520:4574" placeholder="Update users... " />
-            <marker date="1491567453206" expanded="true" signature="4630:4683" placeholder="Update users... " />
-            <marker date="1491567453206" expanded="true" signature="4630:4687" placeholder="Update users... " />
-            <marker date="1491567453206" expanded="true" signature="4630:4700" placeholder="Update users... " />
-            <marker date="1491567453206" expanded="true" signature="4922:4954" placeholder="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/SLUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24028268">
-          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-          <folding>
-            <marker date="1491474339557" expanded="true" signature="199:238" placeholder="select Usern... users" />
-            <marker date="1491474339557" expanded="true" signature="199:275" placeholder="select Usern... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/error.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="87" selection-start-line="30" selection-start-column="87" selection-end-line="30" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.574074">
-          <caret line="47" column="60" selection-start-line="47" selection-start-column="60" selection-end-line="47" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -782,6 +703,102 @@
         <state vertical-scroll-proportion="0.34040046">
           <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7777777">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CalculateCreditStatus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.038462">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lol_unos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="75" column="54" selection-start-line="75" selection-start-column="54" selection-end-line="75" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lol_klub.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.615385">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/unos_rezultata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.6153846">
+          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.7031803">
+          <caret line="151" column="97" selection-start-line="151" selection-start-column="97" selection-end-line="151" selection-end-column="97" />
+          <folding>
+            <marker date="1491818914824" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
+            <marker date="1491818914824" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
+            <marker date="1491818914824" expanded="true" signature="1304:1366" placeholder="Insert into users... " />
+            <marker date="1491818914824" expanded="true" signature="1627:1708" placeholder="Insert into users... " />
+            <marker date="1491818914824" expanded="true" signature="2986:3148" placeholder="insert into users... " />
+            <marker date="1491818914824" expanded="true" signature="3814:3968" placeholder="update users... " />
+            <marker date="1491818914824" expanded="true" signature="4575:4610" placeholder="Update users... " />
+            <marker date="1491818914824" expanded="true" signature="4575:4629" placeholder="Update users... " />
+            <marker date="1491818914824" expanded="true" signature="4685:4738" placeholder="Update users... " />
+            <marker date="1491818914824" expanded="true" signature="4685:4742" placeholder="Update users... " />
+            <marker date="1491818914824" expanded="true" signature="4685:4759" placeholder="Update users... " />
+            <marker date="1491818914824" expanded="true" signature="4981:5013" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26030624">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/UserTransfer.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TransferUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/SLUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26030624">
+          <caret line="13" column="59" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="59" />
+          <folding>
+            <marker date="1491816930762" expanded="true" signature="204:243" placeholder="select Usern... users" />
+            <marker date="1491816930762" expanded="true" signature="204:280" placeholder="select Usern... users" />
+          </folding>
         </state>
       </provider>
     </entry>

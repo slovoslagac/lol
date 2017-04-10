@@ -111,10 +111,10 @@ order by 3,1,2");
 
 
 
-    public function addUser($name, $lastname, $username, $sumname, $rank, $pos, $phone, $lol)
+    public function addUser($name, $lastname, $username, $sumname, $rank, $pos, $phone, $lol, $slid)
     {
         global $conn;
-        $insertNewUser = $conn->prepare("insert into users (name, lastname, arenausername, summonername, rankid, positionid, phone, lolKlub) values (:nm, :ln, :au, :sn, :rn, :po, :ph, :lk) ");
+        $insertNewUser = $conn->prepare("insert into users (name, lastname, arenausername, summonername, rankid, positionid, phone, lolKlub, SLuserId) values (:nm, :ln, :au, :sn, :rn, :po, :ph, :lk, :sl) ");
         $insertNewUser->bindParam(':nm', $name);
         $insertNewUser->bindParam(':ln', $lastname);
         $insertNewUser->bindParam(':au', $username);
@@ -123,6 +123,7 @@ order by 3,1,2");
         $insertNewUser->bindParam(':po', $pos);
         $insertNewUser->bindParam(':ph', $phone);
         $insertNewUser->bindParam(':lk', $lol);
+        $insertNewUser->bindParam(':sl', $slid);
         $insertNewUser->execute();
     }
 
@@ -144,11 +145,11 @@ order by 3,1,2");
 
     public function resetCreditStatus($val = 0, $ar = '') {
         global $conn;
-        $sql='';
+
         if($ar == '') {
             $sql = $conn->prepare("Update users set creditstatus = :vl where usertype = 1");
         } else {
-            $sql = $conn->prepare("Update users set creditstatus = :vl and SluserId in ($ar) usertype = 1");
+            $sql = $conn->prepare("Update users set creditstatus = :vl and SluserId in ($ar) and usertype = 1");
         }
         $sql->bindParam(':vl', $val);
 
