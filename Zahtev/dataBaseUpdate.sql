@@ -1,3 +1,13 @@
+-----Ver 1.1--------
+-----------
+ALTER TABLE `lol`.`ranks`
+ADD COLUMN `order` INT(2) NULL DEFAULT NULL AFTER `name`;
+
+
+
+
+
+-----Ver 1.0-------
 CREATE TABLE IF NOT EXISTS `lol`.`BonusHours` (
   `id` INT(5) NOT NULL AUTO_INCREMENT,
   `numHours` INT(3) NOT NULL,

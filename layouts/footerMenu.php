@@ -132,9 +132,9 @@
     function myFunction() {
         var code = document.getElementById("selectUser").value;
         var code = code.split("__");
-        var maxAmount = 1000 - code[1];
+        var maxAmount = 10000 - code[1];
         console.log(code);
-        if (code[1] < 1000) {
+        if (code[1] < 10000) {
             document.getElementById("amount").innerHTML = "Izabrani igrač ukupno duguje " + code[1] + " din od dozvoljenih 1.000 din.";
         } else {
             document.getElementById("amount").innerHTML = "Izabrani igrač vise ne moze da se zaduzuje";

@@ -46,6 +46,7 @@ $footerMenuLayout = LAYOUT_PATH.DS.'footerMenu.php';
 $tableCompetitionByHero = LAYOUT_PATH.DS.'tableCompetitionByHero.php';
 $tableCompetitionByUser = LAYOUT_PATH.DS.'tableCompetitionByUser.php';
 $tableBonusHours = LAYOUT_PATH.DS.'tableBonusHours.php';
+$tableBonusHoursNPByMonth = LAYOUT_PATH.DS.'tableBonusHoursNoPagingByMonth.php';
 $tableReservations = LAYOUT_PATH.DS.'tableReservations.php';
 $tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
 //Logs
