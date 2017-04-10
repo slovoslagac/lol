@@ -41,11 +41,11 @@ $tableId = 'tabCredits';
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h3 id="myModalLabel">Unos novog dugovanja</h3>
                 </div>
-                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="submitCredit">
                     <div class="modal-body">
                         <?php if (isset($userCreditCapable) != '') { ?>
 
-                            <select name="selectUser" id="selectUser" onchange="myFunction()">
+                            <select name="selectUser" id="selectUser" onchange="myFunction()" autofocus>
                                 <option value=""></option>
                                 <?php foreach ($userCreditCapable as $item) {
                                     ?>
@@ -65,7 +65,7 @@ $tableId = 'tabCredits';
                     <div class="modal-footer">
                         <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
                         <?php if (isset($userCreditCapable) != '') { ?>
-                            <button class="btn btn-primary" type="submit" name="saveCredit">Unesi dugovanje</button>
+                            <button class="btn btn-primary" type="submit" name="saveCredit" id="saveCredit">Unesi dugovanje</button>
                         <?php } ?>
                     </div>
                 </form>
@@ -158,4 +158,19 @@ $tableId = 'tabCredits';
     </form>
 </div>
 
-<!--Kraj Dugovanja-->
+<script>
+    var el = document.getElementById('saveCredit');
+
+    el.onkeypress = function(event){
+        var key = event.keycode || event.which;
+
+        if (key === 13) {
+            document.submitCredit.submit();
+        }
+    };
+</script>
+<script>
+    $('#dugovanje').on('shown.bs.modal', function () {
+        $('#selectUser').focus();
+    })
+</script>

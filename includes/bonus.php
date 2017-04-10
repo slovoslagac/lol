@@ -13,7 +13,7 @@ class bonus
     {
         global $conn_old;
         $sql = $conn_old->prepare("SELECT users.Username, FLOOR(SUM((statisticsmain.TotalMinutes)/60)) AS this_month, statisticsmain.UserID as id
-FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(statisticsmain.StartDateTime) = :mt GROUP BY statisticsmain.UserID ORDER BY this_month DESC limit :lt");
+FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(statisticsmain.StartDateTime) = :mt GROUP BY statisticsmain.UserID ORDER BY this_month DESC, Username limit :lt");
         $sql->bindParam(':mt', $month);
         $sql->bindParam(':lt', $limit);
         $sql->execute();

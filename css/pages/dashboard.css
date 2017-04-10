@@ -130,6 +130,9 @@ Bootstrap Admin Template by EGrappler.com
 
 .news-item-detail {
 	display: table-cell;
+	font-weight:bold;
+	font-size:16px;
+	color:#000;
 }
 
 .news-item-title {

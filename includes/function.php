@@ -70,3 +70,8 @@ function cmp($a, $b){
     }
     return ($a < $b) ? -1 : 1;
 }
+
+function monthName($val){
+    $monthArray = array(1=>"JANUAR",2=>"FEBRUAR", 3=>"MART", 4=>"APRIL", 5=>"MAJ", 6=>"JUN", 7=>"JUL", 8=>"AVGUST", 9=>"SEPTEMBAR", 10=>"oKTOBAR", 11=>"NOVEMBAR", 12=>"DECEMBAR");
+    return $monthArray[$val];
+}

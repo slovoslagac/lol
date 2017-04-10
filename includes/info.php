@@ -12,7 +12,7 @@ class info
     {
         global $conn;
         $sql = $conn->prepare("select DATE_FORMAT(date, '%e') tmpdate, DATE_FORMAT(date, '%b') as month, tittle, text, date
-from informations i order by date desc, timestamp limit  $offset,$limit" );
+from informations i order by date desc, timestamp desc limit  $offset,$limit" );
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;

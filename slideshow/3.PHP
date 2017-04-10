@@ -4,7 +4,7 @@ include(join(DIRECTORY_SEPARATOR, array('..', 'includes', 'init.php')));
 
 $currentDate = new dateTime();
 $currentMonth = $currentDate->format('n');
-$month = $currentMonth - 1;
+$month = $currentMonth-2;
 $bonus = new bonus;
 $allBonusesCurrentMonth = $bonus->getResults($month, 80);
 

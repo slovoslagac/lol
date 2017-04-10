@@ -2,13 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/slideshow/3.PHP" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/slideshow/3.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" afterPath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/base-admin-responsive.css" afterPath="$PROJECT_DIR$/css/base-admin-responsive.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap-responsive.min.css" afterPath="$PROJECT_DIR$/css/bootstrap-responsive.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.css" afterPath="$PROJECT_DIR$/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font-awesome-ie7.css" afterPath="$PROJECT_DIR$/css/font-awesome-ie7.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font-awesome-ie7.min.css" afterPath="$PROJECT_DIR$/css/font-awesome-ie7.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font-awesome.css" afterPath="$PROJECT_DIR$/css/font-awesome.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/css/font-awesome.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pages/dashboard.css" afterPath="$PROJECT_DIR$/css/pages/dashboard.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pages/faq.css" afterPath="$PROJECT_DIR$/css/pages/faq.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pages/plans.css" afterPath="$PROJECT_DIR$/css/pages/plans.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pages/reports.css" afterPath="$PROJECT_DIR$/css/pages/reports.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pages/signin.css" afterPath="$PROJECT_DIR$/css/pages/signin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/init.php" afterPath="$PROJECT_DIR$/includes/init.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/bonus.php" afterPath="$PROJECT_DIR$/includes/bonus.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/function.php" afterPath="$PROJECT_DIR$/includes/function.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/info.php" afterPath="$PROJECT_DIR$/includes/info.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/footerMenu.php" afterPath="$PROJECT_DIR$/layouts/footerMenu.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/tableBonusHoursNoPagingByMonth.php" afterPath="$PROJECT_DIR$/layouts/tableBonusHoursNoPagingByMonth.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/tableCredits.php" afterPath="$PROJECT_DIR$/layouts/tableCredits.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/workerLogin.txt" afterPath="$PROJECT_DIR$/log/workerLogin.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.php" afterPath="$PROJECT_DIR$/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slideshow/1.php" afterPath="$PROJECT_DIR$/slideshow/1.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slideshow/2.html" afterPath="$PROJECT_DIR$/slideshow/2.html" />
     </list>
     <ignored path="lol.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,125 +48,7 @@
     <favorites_list name="lol" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tableBonusHours.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layouts/tableBonusHours.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-37.923077">
-              <caret line="102" column="17" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tableCredits.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layouts/tableCredits.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.23077">
-              <caret line="52" column="105" selection-start-line="52" selection-start-column="105" selection-end-line="52" selection-end-column="105" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="credit.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/includes/credit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5100118">
-              <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
-              <folding>
-                <marker date="1491833807685" expanded="true" signature="229:588" placeholder="select u.id,... " />
-                <marker date="1491833807685" expanded="true" signature="809:1188" placeholder="select u.id,... " />
-                <marker date="1491833807685" expanded="true" signature="809:1189" placeholder="select u.id,... " />
-                <marker date="1491833807685" expanded="true" signature="1427:1508" placeholder="insert into credit... " />
-                <marker date="1491833807685" expanded="true" signature="1858:1951" placeholder="select c.use... " />
-                <marker date="1491833807685" expanded="true" signature="2151:2196" placeholder="Update credi... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footerMenu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layouts/footerMenu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.076923">
-              <caret line="158" column="27" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3076923">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="66" />
-              <folding>
-                <marker date="1491486819367" expanded="true" signature="3718:3771" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bonus.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/bonus.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
-              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding>
-                <marker date="1491478069339" expanded="true" signature="237:516" placeholder="SELECT users... statisticsmain" />
-                <marker date="1491478069339" expanded="true" signature="237:526" placeholder="SELECT users... statisticsmain" />
-                <marker date="1491478069339" expanded="true" signature="827:902" placeholder="insert into bonushours... " />
-                <marker date="1491478069339" expanded="true" signature="1155:1177" placeholder="delete from " />
-                <marker date="1491478069339" expanded="true" signature="1155:1184" placeholder="delete from " />
-                <marker date="1491478069339" expanded="true" signature="1155:1198" placeholder="delete from " />
-                <marker date="1491478069339" expanded="true" signature="1374:1419" placeholder="select * fro... bonushours" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tableBonusHoursNoPagingByMonth.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layouts/tableBonusHoursNoPagingByMonth.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8461537">
-              <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="init.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/init.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075">
-              <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/slideshow/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8461537">
-              <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="1.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/slideshow/1.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.056604">
-              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -163,8 +64,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/layouts/tableByHero.php" />
-        <option value="$PROJECT_DIR$/Zahtev/testData.txt" />
         <option value="$PROJECT_DIR$/includes/config.php" />
         <option value="$PROJECT_DIR$/includes/db.php" />
         <option value="$PROJECT_DIR$/Zahtev/CreateDatabese.txt" />
@@ -183,14 +82,11 @@
         <option value="$PROJECT_DIR$/includes/session.php" />
         <option value="$PROJECT_DIR$/CalculationBonusHours.php" />
         <option value="$PROJECT_DIR$/lol_klub.php" />
-        <option value="$PROJECT_DIR$/includes/bonus.php" />
-        <option value="$PROJECT_DIR$/includes/function.php" />
         <option value="$PROJECT_DIR$/layouts/tableReservations.php" />
         <option value="$PROJECT_DIR$/layouts/tableCompetitionByHero.php" />
         <option value="$PROJECT_DIR$/layouts/tableBonusHours.php" />
         <option value="$PROJECT_DIR$/layouts/tableCompetitionByUser.php" />
         <option value="$PROJECT_DIR$/lol_takmicenje.php" />
-        <option value="$PROJECT_DIR$/layouts/tableCredits.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/schedulers/Transfers.bat" />
         <option value="$PROJECT_DIR$/signup.php" />
@@ -204,16 +100,21 @@
         <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/CalculateCreditStatus.php" />
         <option value="$PROJECT_DIR$/slideshow/2.html" />
-        <option value="$PROJECT_DIR$/slideshow/3.html" />
         <option value="$PROJECT_DIR$/slideshow/4.html" />
         <option value="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
         <option value="$PROJECT_DIR$/layouts/tableBonusHoursNoPaggingByMonth.php" />
         <option value="$PROJECT_DIR$/includes/init.php" />
         <option value="$PROJECT_DIR$/slideshow/1.html" />
-        <option value="$PROJECT_DIR$/slideshow/1.php" />
-        <option value="$PROJECT_DIR$/layouts/tableBonusHoursNoPagingByMonth.php" />
-        <option value="$PROJECT_DIR$/layouts/footerMenu.php" />
         <option value="$PROJECT_DIR$/includes/credit.php" />
+        <option value="$PROJECT_DIR$/layouts/footerMenu.php" />
+        <option value="$PROJECT_DIR$/layouts/tableCredits.php" />
+        <option value="$PROJECT_DIR$/includes/info.php" />
+        <option value="$PROJECT_DIR$/includes/bonus.php" />
+        <option value="$PROJECT_DIR$/includes/function.php" />
+        <option value="$PROJECT_DIR$/slideshow/1.php" />
+        <option value="$PROJECT_DIR$/slideshow/3.html" />
+        <option value="$PROJECT_DIR$/slideshow/3.PHP" />
+        <option value="$PROJECT_DIR$/layouts/tableBonusHoursNoPagingByMonth.php" />
       </list>
     </option>
   </component>
@@ -229,8 +130,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1034" />
+    <option name="width" value="1456" />
+    <option name="height" value="854" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -333,8 +234,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -409,14 +310,14 @@
     <option name="totallyTimeSpent" value="20494000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1034" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="854" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15724947" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19601329" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19597316" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -447,27 +348,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Zahtev/zahtev.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/statistcs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/headerMenu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5212264">
-          <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/session.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2889151">
@@ -500,12 +380,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1490681904602" expanded="true" signature="211:466" placeholder="select u.are... " />
-            <marker date="1490681904602" expanded="true" signature="678:753" placeholder="update reser... " />
-            <marker date="1490681904602" expanded="true" signature="997:1072" placeholder="update reser... " />
-            <marker date="1490681904602" expanded="true" signature="1344:1434" placeholder="insert into reservations... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -537,13 +412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.303066">
-          <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/resultLog.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -569,7 +437,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36042404">
           <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -598,7 +465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.769231">
           <caret line="75" column="54" selection-start-line="75" selection-start-column="54" selection-end-line="75" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -606,7 +472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.615385">
           <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -614,7 +479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="6.6153846">
           <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -622,20 +486,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.7031803">
           <caret line="151" column="97" selection-start-line="151" selection-start-column="97" selection-end-line="151" selection-end-column="97" />
-          <folding>
-            <marker date="1491818914824" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
-            <marker date="1491818914824" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
-            <marker date="1491818914824" expanded="true" signature="1304:1366" placeholder="Insert into users... " />
-            <marker date="1491818914824" expanded="true" signature="1627:1708" placeholder="Insert into users... " />
-            <marker date="1491818914824" expanded="true" signature="2986:3148" placeholder="insert into users... " />
-            <marker date="1491818914824" expanded="true" signature="3814:3968" placeholder="update users... " />
-            <marker date="1491818914824" expanded="true" signature="4575:4610" placeholder="Update users... " />
-            <marker date="1491818914824" expanded="true" signature="4575:4629" placeholder="Update users... " />
-            <marker date="1491818914824" expanded="true" signature="4685:4738" placeholder="Update users... " />
-            <marker date="1491818914824" expanded="true" signature="4685:4742" placeholder="Update users... " />
-            <marker date="1491818914824" expanded="true" signature="4685:4759" placeholder="Update users... " />
-            <marker date="1491818914824" expanded="true" signature="4981:5013" placeholder="delete from " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -650,10 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26030624">
           <caret line="13" column="59" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="59" />
-          <folding>
-            <marker date="1491816930762" expanded="true" signature="204:243" placeholder="select Usern... users" />
-            <marker date="1491816930762" expanded="true" signature="204:280" placeholder="select Usern... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -661,7 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40047115">
           <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -669,7 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -677,11 +522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.32155478">
           <caret line="140" column="35" selection-start-line="140" selection-start-column="35" selection-end-line="140" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#iframe#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#p#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#p#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -689,7 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.020023556">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -697,23 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154">
           <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slideshow/3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Zahtev/insert.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.12028302">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -721,15 +543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.43483555">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Zahtev/insert.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -737,7 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.7577143">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -745,7 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617">
           <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -753,7 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="390" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="390" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -761,7 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.7777777">
           <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,111 +578,161 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-72.53846">
           <caret line="141" column="39" selection-start-line="141" selection-start-column="39" selection-end-line="141" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/bonus.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding>
-            <marker date="1491478069339" expanded="true" signature="237:516" placeholder="SELECT users... statisticsmain" />
-            <marker date="1491478069339" expanded="true" signature="237:526" placeholder="SELECT users... statisticsmain" />
-            <marker date="1491478069339" expanded="true" signature="827:902" placeholder="insert into bonushours... " />
-            <marker date="1491478069339" expanded="true" signature="1155:1177" placeholder="delete from " />
-            <marker date="1491478069339" expanded="true" signature="1155:1184" placeholder="delete from " />
-            <marker date="1491478069339" expanded="true" signature="1155:1198" placeholder="delete from " />
-            <marker date="1491478069339" expanded="true" signature="1374:1419" placeholder="select * fro... bonushours" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/tableCompetitionByHero.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71024734">
-          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/init.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075">
-          <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slideshow/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
+        <state vertical-scroll-proportion="0.040520985">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="66" />
-          <folding>
-            <marker date="1491486819367" expanded="true" signature="3718:3771" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slideshow/1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.056604">
-          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/tableBonusHoursNoPagingByMonth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layouts/tableBonusHours.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-37.923077">
-          <caret line="102" column="17" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.85238785">
+          <caret line="227" column="6" selection-start-line="227" selection-start-column="6" selection-end-line="227" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/insert.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/insert.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layouts/footerMenu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.076923">
-          <caret line="158" column="27" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.76410997">
+          <caret line="155" column="30" selection-start-line="155" selection-start-column="30" selection-end-line="155" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/tableCredits.php">
+    <entry file="file://$PROJECT_DIR$/Zahtev/statisticsmain.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.23077">
-          <caret line="52" column="105" selection-start-line="52" selection-start-column="105" selection-end-line="52" selection-end-column="105" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="27" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/statisticsmain.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02463768">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/credit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5100118">
-          <caret line="34" column="49" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.7670044">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <marker date="1491833807685" expanded="true" signature="229:588" placeholder="select u.id,... " />
-            <marker date="1491833807685" expanded="true" signature="809:1188" placeholder="select u.id,... " />
-            <marker date="1491833807685" expanded="true" signature="809:1189" placeholder="select u.id,... " />
-            <marker date="1491833807685" expanded="true" signature="1427:1508" placeholder="insert into credit... " />
-            <marker date="1491833807685" expanded="true" signature="1858:1951" placeholder="select c.use... " />
-            <marker date="1491833807685" expanded="true" signature="2151:2196" placeholder="Update credi... " />
+            <marker date="1491852936994" expanded="true" signature="229:588" placeholder="select u.id,... " />
+            <marker date="1491852936994" expanded="true" signature="809:1188" placeholder="select u.id,... " />
+            <marker date="1491852936994" expanded="true" signature="1427:1508" placeholder="insert into credit... " />
+            <marker date="1491852936994" expanded="true" signature="1858:1951" placeholder="select c.use... " />
+            <marker date="1491852936994" expanded="true" signature="2151:2196" placeholder="Update credi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/tableCredits.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45875543">
+          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/tableCompetitionByHero.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.115385">
+          <caret line="69" column="13" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slideshow/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/bonus.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6923077">
+          <caret line="15" column="178" selection-start-line="15" selection-start-column="178" selection-end-line="15" selection-end-column="178" />
+          <folding>
+            <marker date="1491859040532" expanded="true" signature="237:536" placeholder="SELECT users... statisticsmain" />
+            <marker date="1491859040532" expanded="true" signature="837:912" placeholder="insert into bonushours... " />
+            <marker date="1491859040532" expanded="true" signature="1165:1208" placeholder="delete from " />
+            <marker date="1491859040532" expanded="true" signature="1384:1429" placeholder="select * fro... bonushours" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.76923">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/tableBonusHoursNoPagingByMonth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41823444">
+          <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slideshow/3.PHP">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18813314">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slideshow/1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34442836">
+          <caret line="14" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1968162">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <marker date="1491857700274" expanded="true" signature="227:390" placeholder="select DATE_... " />
+            <marker date="1491857700274" expanded="true" signature="632:712" placeholder="insert into informations... " />
           </folding>
         </state>
       </provider>
