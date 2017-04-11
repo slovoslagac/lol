@@ -11,7 +11,7 @@ insert into producttype (name) values ('Hrana'), ('Grickalice'), ('Pice');
 --Magacin
 
 insert into products(name, typeid) values('Coca Cola 20l', 3), ('Fanta 20l',3), ('Sprite 20l', 3), ('Mars', 1);
-
+insert into sellingproducts (name, typeid) values ('Coca Cola 0.3', 3), ('Coca Cola 0.5', 3), ('Fanta 0.5', 3), ('Štapići', 2), ('Čips', 2), ('Sendvič', 1)
 
 
 //

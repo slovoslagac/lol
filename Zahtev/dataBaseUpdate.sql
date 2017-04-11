@@ -2,6 +2,53 @@
 -----------
 ALTER TABLE `lol`.`ranks`
 ADD COLUMN `order` INT(2) NULL DEFAULT NULL AFTER `name`;
+-------------------------
+
+CREATE TABLE IF NOT EXISTS `lol`.`sellingproducts` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `typeid` INT(5) NOT NULL,
+  `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX `selporind` (`id` ASC),
+  INDEX `fkselprodtype_idx` (`typeid` ASC),
+  CONSTRAINT `fkprodtype0`
+    FOREIGN KEY (`typeid`)
+    REFERENCES `lol`.`producttype` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+-------------------------------
+
+CREATE TABLE `sellingproductsprices` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `selingproductid` int(5) NOT NULL,
+  `value` float(6,2) DEFAULT NULL,
+  `pricetype` varchar(45) DEFAULT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `uniqueprice` (`selingproductid`,`value`,`pricetype`),
+  KEY `selporind` (`id`),
+  KEY `fkslproductid_idx` (`selingproductid`),
+  CONSTRAINT `fkslproductid` FOREIGN KEY (`selingproductid`) REFERENCES `sellingproducts` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-------------------------------
+
+ALTER TABLE `lol`.`sellingproducts`
+ADD UNIQUE INDEX `nametypeselprod` (`name` ASC, `typeid` ASC);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

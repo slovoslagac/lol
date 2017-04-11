@@ -49,7 +49,7 @@ $topusers = $user->getAllUsersByRank();
             <div class="ranks_row">
                 <div class="ranks_rb"><?php echo $i ?></div>
                 <div class="ranks_name"><?php echo substr($item->arenausername,0,12) ?></div>
-                <div class="ranks_lane"><img src="images/top.png"> <img src="images/bot.png"></div>
+                <div class="ranks_lane <?php echo $item->positionname?>"><img src="images/top.png"> <img src="images/bot.png"></div>
                 <div class="ranks_rank"><?php echo $item->rankname ?></div>
             </div>
 

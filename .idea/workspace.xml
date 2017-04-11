@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/slideshow/2.html" afterPath="$PROJECT_DIR$/slideshow/2.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/slideshow/4.html" afterPath="$PROJECT_DIR$/slideshow/4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/model baze.mwb" afterPath="$PROJECT_DIR$/Zahtev/model baze.mwb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/model baze.mwb.bak" afterPath="$PROJECT_DIR$/Zahtev/model baze.mwb.bak" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" afterPath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/testData.txt" afterPath="$PROJECT_DIR$/Zahtev/testData.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pages/dashboard.css" afterPath="$PROJECT_DIR$/css/pages/dashboard.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/pages/signin.css" afterPath="$PROJECT_DIR$/css/pages/signin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/result.php" afterPath="$PROJECT_DIR$/includes/result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/user.php" afterPath="$PROJECT_DIR$/includes/user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/init.php" afterPath="$PROJECT_DIR$/includes/init.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kasa.php" afterPath="$PROJECT_DIR$/kasa.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/headerMenu.php" afterPath="$PROJECT_DIR$/layouts/headerMenu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/resultLog.txt" afterPath="$PROJECT_DIR$/log/resultLog.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lol_klub.php" afterPath="$PROJECT_DIR$/lol_klub.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slideshow/1.php" afterPath="$PROJECT_DIR$/slideshow/1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slideshow/3.PHP" afterPath="$PROJECT_DIR$/slideshow/3.PHP" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/workerLogin.txt" afterPath="$PROJECT_DIR$/log/workerLogin.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/slideshow/4.php" afterPath="$PROJECT_DIR$/slideshow/4.php" />
     </list>
     <ignored path="lol.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,40 +33,7 @@
     <favorites_list name="lol" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="kasa.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kasa.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5742925">
-              <caret line="141" column="13" selection-start-line="141" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
-              <folding>
-                <marker date="1491920032085" expanded="true" signature="3664:3829" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footerMenu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layouts/footerMenu.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="24.846153">
-              <caret line="155" column="30" selection-start-line="155" selection-start-column="30" selection-end-line="155" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kasa1.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kasa1.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -84,8 +49,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/magacin.php" />
-        <option value="$PROJECT_DIR$/informacije.php" />
         <option value="$PROJECT_DIR$/unos_nabavke.php" />
         <option value="$PROJECT_DIR$/bonus_sati.php" />
         <option value="$PROJECT_DIR$/layouts/reservations.php" />
@@ -113,13 +76,10 @@
         <option value="$PROJECT_DIR$/CalculateCreditStatus.php" />
         <option value="$PROJECT_DIR$/slideshow/2.html" />
         <option value="$PROJECT_DIR$/slideshow/4.html" />
-        <option value="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
         <option value="$PROJECT_DIR$/layouts/tableBonusHoursNoPaggingByMonth.php" />
-        <option value="$PROJECT_DIR$/includes/init.php" />
         <option value="$PROJECT_DIR$/slideshow/1.html" />
         <option value="$PROJECT_DIR$/includes/credit.php" />
         <option value="$PROJECT_DIR$/layouts/footerMenu.php" />
-        <option value="$PROJECT_DIR$/layouts/tableCredits.php" />
         <option value="$PROJECT_DIR$/includes/info.php" />
         <option value="$PROJECT_DIR$/includes/bonus.php" />
         <option value="$PROJECT_DIR$/includes/function.php" />
@@ -130,10 +90,15 @@
         <option value="$PROJECT_DIR$/slideshow/3.php" />
         <option value="$PROJECT_DIR$/lol_klub.php" />
         <option value="$PROJECT_DIR$/includes/user.php" />
-        <option value="$PROJECT_DIR$/slideshow/4.php" />
         <option value="$PROJECT_DIR$/includes/result.php" />
         <option value="$PROJECT_DIR$/slideshow/2.php" />
         <option value="$PROJECT_DIR$/layouts/headerMenu.php" />
+        <option value="$PROJECT_DIR$/slideshow/4.php" />
+        <option value="$PROJECT_DIR$/layouts/tableCredits.php" />
+        <option value="$PROJECT_DIR$/Zahtev/testData.txt" />
+        <option value="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
+        <option value="$PROJECT_DIR$/includes/init.php" />
+        <option value="$PROJECT_DIR$/includes/sellingproduct.php" />
         <option value="$PROJECT_DIR$/kasa.php" />
       </list>
     </option>
@@ -150,8 +115,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1034" />
+    <option name="width" value="1456" />
+    <option name="height" value="854" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -178,6 +143,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -301,7 +267,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -376,10 +341,10 @@
     <option name="totallyTimeSpent" value="20494000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1034" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="854" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15778251" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15763889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -414,21 +379,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/includes/reservation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CalculationBonusHours.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075">
-          <caret line="11" column="57" selection-start-line="9" selection-start-column="4" selection-end-line="11" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layouts/tableCompetitionByUser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.115385">
@@ -534,33 +484,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Zahtev/testBaza.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43483555">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7777777">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/init.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.040520985">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -568,7 +495,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.85238785">
           <caret line="227" column="6" selection-start-line="227" selection-start-column="6" selection-end-line="227" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -604,7 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7670044">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -619,7 +544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
           <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -627,7 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.6923077">
           <caret line="15" column="178" selection-start-line="15" selection-start-column="178" selection-end-line="15" selection-end-column="178" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -635,7 +558,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-28.76923">
           <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -643,7 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1968162">
           <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -651,7 +572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.730769">
           <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -659,7 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -667,39 +586,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36914286">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Zahtev/testData.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33028573">
-          <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slideshow/2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2803298">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slideshow/3.php">
+    <entry file="file://$PROJECT_DIR$/slideshow/3.PHP">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.021201413">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/slideshow/4.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -707,12 +600,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22025913">
           <caret line="17" column="53" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="53" />
-          <folding>
-            <marker date="1491897830441" expanded="true" signature="273:546" placeholder="select h.nam... " />
-            <marker date="1491897830441" expanded="true" signature="789:1296" placeholder="select uname... " />
-            <marker date="1491897830441" expanded="true" signature="2089:2197" placeholder="insert into userheroresult... " />
-            <marker date="1491897830441" expanded="true" signature="2608:2649" placeholder="delete from " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -720,27 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7302709">
           <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7809187">
-          <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
-          <folding>
-            <marker date="1491896730157" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
-            <marker date="1491896730157" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
-            <marker date="1491896730157" expanded="true" signature="1307:1588" placeholder="SELECT u.nam... users" />
-            <marker date="1491896730157" expanded="true" signature="1307:1600" placeholder="SELECT u.nam... users" />
-            <marker date="1491896730157" expanded="true" signature="1855:1917" placeholder="Insert into users... " />
-            <marker date="1491896730157" expanded="true" signature="2178:2259" placeholder="Insert into users... " />
-            <marker date="1491896730157" expanded="true" signature="3537:3699" placeholder="insert into users... " />
-            <marker date="1491896730157" expanded="true" signature="4365:4519" placeholder="update users... " />
-            <marker date="1491896730157" expanded="true" signature="5126:5180" placeholder="Update users... " />
-            <marker date="1491896730157" expanded="true" signature="5236:5310" placeholder="Update users... " />
-            <marker date="1491896730157" expanded="true" signature="5532:5564" placeholder="delete from " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -748,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.4628975">
           <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -756,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36042404">
           <caret line="77" column="31" selection-start-line="73" selection-start-column="20" selection-end-line="77" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -764,7 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.961538">
           <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -772,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -780,40 +643,136 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0200472">
           <caret line="115" column="21" selection-start-line="115" selection-start-column="21" selection-end-line="115" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/tableCredits.php">
+    <entry file="file://$PROJECT_DIR$/slideshow/2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4257076">
-          <caret line="51" column="16" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kasa1.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.06946454">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layouts/footerMenu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="24.846153">
+        <state vertical-scroll-proportion="0.95079595">
           <caret line="155" column="30" selection-start-line="155" selection-start-column="30" selection-end-line="155" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/kasa1.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.024602026">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.538462">
+          <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+          <folding>
+            <marker date="1491921660521" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
+            <marker date="1491921660521" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
+            <marker date="1491921660521" expanded="true" signature="1307:1600" placeholder="SELECT u.nam... users" />
+            <marker date="1491921660521" expanded="true" signature="1855:1917" placeholder="Insert into users... " />
+            <marker date="1491921660521" expanded="true" signature="2178:2259" placeholder="Insert into users... " />
+            <marker date="1491921660521" expanded="true" signature="3537:3699" placeholder="insert into users... " />
+            <marker date="1491921660521" expanded="true" signature="4365:4519" placeholder="update users... " />
+            <marker date="1491921660521" expanded="true" signature="5126:5180" placeholder="Update users... " />
+            <marker date="1491921660521" expanded="true" signature="5236:5310" placeholder="Update users... " />
+            <marker date="1491921660521" expanded="true" signature="5532:5564" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/slideshow/4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/tableCredits.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6923077">
+          <caret line="146" column="32" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/testBaza.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/testData.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="43" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.6666665">
+          <caret line="33" column="37" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.153846">
+          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/sellingproduct.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <marker date="1491945696869" expanded="true" signature="217:399" placeholder="select name,... sellingproducts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/products.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.423077">
+          <caret line="19" column="5" selection-start-line="10" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <marker date="1490886833684" expanded="true" signature="196:317" placeholder="select p.nam... products" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/kasa.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5742925">
-          <caret line="141" column="13" selection-start-line="141" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.36034733">
+          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
           <folding>
-            <marker date="1491920032085" expanded="true" signature="3664:3829" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="1619:2348" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="1653:1722" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="1933:2057" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2085:2100" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2371:2761" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2405:2451" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2480:2552" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2581:2651" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2680:2750" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2815:2913" placeholder="..." />
+            <marker date="1491946543137" expanded="true" signature="2990:3023" placeholder="{...}" />
           </folding>
         </state>
       </provider>

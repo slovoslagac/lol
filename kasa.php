@@ -4,6 +4,11 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
+
+$sellproduct = new sellingproduct();
+$allProductsRegular = $sellproduct->getAllSellingProducts('normal');
+$allProductsPopust = $sellproduct->getAllSellingProducts('popust');
+
 ?>
 
 <div class="register-round">
@@ -11,39 +16,31 @@ include $menuLayout;
     <div class="cash-register register">
 
         <div class="cash-content clearfix">
-            <h3>Piće</h3>
-            <div class="product-round" id="product121" onclick="add_product('121__90__Coca Cola 0,3');">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
+            <?php $tmptype = '';
+            foreach ($allProductsRegular as $item) {
+                if ($tmptype != $item->producttype) {
+                    $tmptype = $item->producttype;
+                    switch ($item->producttype) {
+                        case 1:
+                            echo "<h3>Hrana</h3>";
+                            break;
+                        case 2:
+                            echo "<h3>Grickalice</h3>";
+                            break;
+                        case 3:
+                            echo "<h3>Piće</h3>";
+                            break;
+                    }
+                }
+                ?>
+                <div class="product-round" id="product<?php echo $item->id?>" onclick="add_product('<?php echo $item->id.'__'.$item->value.'__'.$item->name?>');">
+                    <label><?php echo $item->name?></label>
+                    <img src="img/products/cc03.png">
+                    <p id="price<?php echo $item->id?>"><?php echo $item->value .' Din'?></p>
 
-            </div>
-            <div class="product-round" id="product25" onclick="add_product('25__40__Coca Cola 0,5');">
-                <label>Coca Cola 0,5</label>
-                <img src="img/products/cc03.png">
-                <p>40 Din</p>
+                </div>
 
-            </div>
-            <div class="product-round" id="product31" onclick="add_product('31__60__Fanta 0,3');">
-                <label>Fanta 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>60 Din</p>
-
-            </div>
-
-            <h3>Grickalice</h3>
-            <div class="product-round" id="product14" onclick="add_product('14__75__Sendvič');">
-                <label>Sendvič</label>
-                <img src="img/products/cc03.png">
-                <p>75 Din</p>
-
-            </div>
-            <div class="product-round" id="product7" onclick="add_product('7__15__Stapići');">
-                <label>Stapići</label>
-                <img src="img/products/cc03.png">
-                <p>15 Din</p>
-
-            </div>
+            <?php } ?>
 
 
         </div> <!-- /content -->
@@ -55,10 +52,10 @@ include $menuLayout;
             <span>Stefan</span>
         </div>
         <div class="bill-date">30.03.2017. <span>15:19</span></div>
-        <input type="search" placeholder="Anonymus" list="allusers" id="selectuser">
+        <input type="search" placeholder="Anonymus" list="allusers" id="selectuser" onchange="recalculate()">
         <datalist id="allusers">
-            <option onselect="recalculate(1)">Carevi</option>
-            <option onselect="recalculate(0)">Kraljevi</option>
+            <option value="popust">Carevi</option>
+            <option value="normal">Kraljevi</option>
         </datalist>
         <div id="billBody">
         </div>
@@ -126,32 +123,43 @@ include $footerMenuLayout;
     }
 
 
-    var prices = [{id: 14, name: 'DzidzaBidza', price: 13}, {id: 11, name: 'DzidzaBidza', price: 5}];
+    var pricesNormal = [<?php foreach($allProductsRegular as $item) { echo "{id: $item->id , name: '$item->name' , price: $item->value}," ;}?>];
+    var pricesPopust = [<?php foreach($allProductsPopust as $item) { echo "{id: $item->id , name: '$item->name' , price: $item->value}," ;}?>];
+    console.log(pricesPopust);
 
-    document.getElementById('selectuser').addEventListener('input', recalculate(1));
 
-    function recalculate(val) {
+    function recalculate() {
+        var val = document.getElementById('selectuser').value;
         console.log(val);
-        var length = $(prices).toArray().length;
-        if (val == 1) {
+        var length = 0;
+        if (val == 'popust') {
+            length = $(pricesPopust).toArray().length;
             for (var $i = 0; $i < length; $i++) {
-                var object = prices[$i];
+                var object = pricesPopust[$i];
                 console.log(object.price);
-                document.getElementById('product' + object.id).innerText = object.name;
+                document.getElementById('price' + object.id).innerText = String(object.price) + ' Din';
+
+            }
+        } else if (val == 'normal') {
+            length = $(pricesNormal).toArray().length;
+            for (var $j = 0; $j < length; $j++) {
+                var objectnormal = pricesNormal[$j];
+                console.log(objectnormal.price);
+                document.getElementById('price' + objectnormal.id).innerText = String(objectnormal.price) + ' Din';
 
             }
         }
-        else {
-            for (var $i = 0; $i < length; $i++) {
-                var object = prices[$i];
-                console.log(object.price);
-                document.getElementById('product' + object.id).innerText = String(object.price);
+//        else {
+//            for (var $i = 0; $i < length; $i++) {
+//                var object = prices[$i];
+//                console.log(object.price);
+//                document.getElementById('product' + object.id).innerText = String(object.price);
+//
+//            }
+//
+//        }
 
-            }
-
-        }
-
-//        console.log(length);
+        console.log(length);
 //        console.log(prices[1]);
     }
 
