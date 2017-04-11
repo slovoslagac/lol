@@ -157,7 +157,12 @@ include $menuLayout;
 
                             <div class="field">
                                 <label for="email">eSports Arena Username:</label>
-                                <input type="text" id="username" name="username" min="1" maxlength="50" class="login" required/>
+                                <input type="text" id="username" list="usernamelist" name="username" min="1" maxlength="50" class="login" required/>
+                                <datalist id="usernamelist">
+                                    <?php $slu = new SLUsers(); $allslu = $slu->getAllUsers();foreach($allslu as $item) {?>
+                                        <option value="<?php echo $item->Username ?>"></option>
+                                    <?php }?>
+                                </datalist>
                             </div> <!-- /field -->
 
                             <div class="field">

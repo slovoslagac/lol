@@ -12,14 +12,15 @@ class result
     private $heroid;
 
 
-    public function getSumResultByHero()
+    public function getSumResultByHero($limit = 10000)
     {
         global $conn;
         $sql = $conn->prepare("select h.name heroname, u.name uname, u.lastname ulastname, u.arenausername uusername, count(*) value
 from userheroresult urh, heroes h, users u
 where urh.userid = u.id
 and urh.heroid = h.id
-group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1");
+group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1 limit :lt");
+        $sql->bindParam(':lt',$limit);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;

@@ -1,71 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  
- <head>
-    <meta charset="utf-8">
-    <title>eSports Arena</title>
+<?php
+include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes"> 
-    
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
 
-<link href="css/font-awesome.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-    
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<link href="css/pages/signin.css" rel="stylesheet" type="text/css">
-
-</head>
-
-<body>
-
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">eSports Arena</a>
-      <div class="nav-collapse">
-        <ul class="nav pull-right">
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="icon-user"></i> Stefan Dimitrijević <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="profil.html">Profil</a></li>
-              <li><a href="javascript:;">Izloguj se</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="navbar-search pull-right">
-          <input type="text" class="search-query" placeholder="Pretraži">
-        </form>
-      </div>
-      <!--/.nav-collapse --> 
-    </div>
-    <!-- /container --> 
-  </div>
-  <!-- /navbar-inner --> 
-</div>
-<!-- /navbar -->
-<div class="subnavbar">
-  <div class="subnavbar-inner">
-    <div class="container">
-      <ul class="mainnav">
-        <li><a href="index.html"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-        <li class="active"><a href="kasa.html"><i class="icon-shopping-cart"></i><span>Prodaja</span> </a></li>
-        <li><a href="kraj_smene.html"><i class="icon-list-alt"></i><span>Kraj smene</span> </a> </li>
-        <li><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-        <li><a href="lol_takmicenje.html"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a> </li>          
-        <li><a href="raspored.html"><i class="icon-calendar"></i><span>Raspored</span> </a> </li>
-        <li><a href="bonus_sati.html"><i class="icon-time"></i><span>Bonus sati</span> </a> </li>
-        <li><a href="magacin.html"><i class="icon-truck"></i><span>Magacin</span> </a> </li>
-          
-      </ul>
-    </div>
-    <!-- /container --> 
-  </div>
-  <!-- /subnavbar-inner --> 
-</div>
-<!-- /subnavbar -->
+$currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
+include $menuLayout;
+?>
 
 <div class="register-round">
 
@@ -73,121 +12,64 @@
 
         <div class="cash-content clearfix">
             <h3>Piće</h3>
-            <div class="product-round">
+            <div class="product-round" id="product121" onclick="add_product('121__90__Coca Cola 0,3');">
                 <label>Coca Cola 0,3</label>
                 <img src="img/products/cc03.png">
                 <p>90 Din</p>
 
             </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
+            <div class="product-round" id="product25" onclick="add_product('25__40__Coca Cola 0,5');">
+                <label>Coca Cola 0,5</label>
                 <img src="img/products/cc03.png">
-                <p>90 Din</p>
+                <p>40 Din</p>
 
             </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
+            <div class="product-round" id="product31" onclick="add_product('31__60__Fanta 0,3');">
+                <label>Fanta 0,3</label>
                 <img src="img/products/cc03.png">
-                <p>90 Din</p>
+                <p>60 Din</p>
 
             </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
 
-            </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
-
-            </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
-
-            </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
-
-            </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
-            </div>
             <h3>Grickalice</h3>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
+            <div class="product-round" id="product14" onclick="add_product('14__75__Sendvič');">
+                <label>Sendvič</label>
                 <img src="img/products/cc03.png">
-                <p>90 Din</p>
+                <p>75 Din</p>
 
             </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
+            <div class="product-round" id="product7" onclick="add_product('7__15__Stapići');">
+                <label>Stapići</label>
                 <img src="img/products/cc03.png">
-                <p>90 Din</p>
+                <p>15 Din</p>
 
             </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
 
-            </div>
-            <div class="product-round">
-                <label>Coca Cola 0,3</label>
-                <img src="img/products/cc03.png">
-                <p>90 Din</p>
 
-            </div>
         </div> <!-- /content -->
 
     </div> <!-- /account-container -->
     <div class="bill">
         <div class="bill-header">
-        Račun #23
-        <span>Stefan</span>    
+            Račun #23
+            <span>Stefan</span>
         </div>
         <div class="bill-date">30.03.2017. <span>15:19</span></div>
-        <input type="search" placeholder="Anonymus">
-        <div class="bill-row">
-            1x <strong>Coca Cola 0,3</strong>
-            <span>90 Din</span>
-            <div class="plusminus"><i class="icon-plus"></i><i class="icon-minus"></i></div>
-        </div>
-        <div class="bill-row">
-            1x <strong>Coca Cola 0,3</strong>
-            <span>90 Din</span>
-            <div class="plusminus"><i class="icon-plus"></i><i class="icon-minus"></i></div>
-        </div>
-        <div class="bill-row">
-            1x <strong>Coca Cola 0,3</strong>
-            <span>90 Din</span>
-            <div class="plusminus"><i class="icon-plus"></i><i class="icon-minus"></i></div>
-        </div>
-        <div class="bill-row">
-            1x <strong>Coca Cola 0,3</strong>
-            <span>90 Din</span>
-            <div class="plusminus"><i class="icon-plus"></i><i class="icon-minus"></i></div>
-        </div>
-        <div class="bill-row">
-            1x <strong>Coca Cola 0,3</strong>
-            <span>90 Din</span>
-            <div class="plusminus"><i class="icon-plus"></i><i class="icon-minus"></i></div>
+        <input type="search" placeholder="Anonymus" list="allusers" id="selectuser">
+        <datalist id="allusers">
+            <option onselect="recalculate(1)">Carevi</option>
+            <option onselect="recalculate(0)">Kraljevi</option>
+        </datalist>
+        <div id="billBody">
         </div>
         <div class="bill-discount">POPUST <span>230 Din</span></div>
-        <div class="bill-sum">UKUPNO<span>1.370 Din</span></div>
+        <div class="bill-sum" name="bill-sum" id="bill-sum">UKUPNO<span>0 Din</span></div>
         <button class="button btn btn-primary btn-large pay">Plati</button>
 
     </div>
     <div class="bill">
         <div class="bill-header">
-        Prethodna 3 računa
+            Prethodna 3 računa
         </div>
         <div class="bills3">
             Račun #22
@@ -204,12 +86,78 @@
     </div>
 </div>
 
+<?php
+include $footerMenuLayout;
+?>
 
-<script src="js/jquery-1.7.2.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script>
+    var product = 0;
+    var productsID = [];
+    var productsPositions = [];
+    var position = '';
+    var checkSum = 0;
+    var popust = 0;
+    function add_product(val) {
+        var allval = val.split("__");
+        var code = allval[0];
+        var price = allval[1];
+        var articlename = allval[2];
+        checkSum = checkSum + parseInt(price);
+        if (productsID.indexOf(code) > -1) {
+            position = productsPositions.indexOf(code);
 
-<script src="js/signin.js"></script>
+        }
+        else {
+
+            productsID.push(code);
+            productsPositions[product] = code;
+            var objTo = document.getElementById('billBody')
+            var divadd = document.createElement("div");
+            divadd.setAttribute("id", "product" + product);
+            divadd.innerHTML = '<div class="bill-row" name="bill-row' + product + '" val="1"><strong>' + articlename + '</strong><span id="price' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus"></i><i class="icon-minus"></i></div></div>';
+            objTo.appendChild(divadd)
+            product++;
+        }
+//        console.log(productsID);
+//        console.log(productsPositions);
+//        console.log(productsPositions.indexOf(code));
+        console.log(checkSum);
+        document.getElementById("bill-sum").innerHTML = 'UKUPNO<span>' + checkSum + ' Din</span>';
+    }
+
+
+    var prices = [{id: 14, name: 'DzidzaBidza', price: 13}, {id: 11, name: 'DzidzaBidza', price: 5}];
+
+    document.getElementById('selectuser').addEventListener('input', recalculate(1));
+
+    function recalculate(val) {
+        console.log(val);
+        var length = $(prices).toArray().length;
+        if (val == 1) {
+            for (var $i = 0; $i < length; $i++) {
+                var object = prices[$i];
+                console.log(object.price);
+                document.getElementById('product' + object.id).innerText = object.name;
+
+            }
+        }
+        else {
+            for (var $i = 0; $i < length; $i++) {
+                var object = prices[$i];
+                console.log(object.price);
+                document.getElementById('product' + object.id).innerText = String(object.price);
+
+            }
+
+        }
+
+//        console.log(length);
+//        console.log(prices[1]);
+    }
+
+</script>
+
 
 </body>
 
- </html>
+</html>

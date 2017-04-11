@@ -45,6 +45,21 @@ order by 3,1,2");
         return $result;
     }
 
+    public function getAllUsersByRank($limit= 20)
+    {
+        global $conn;
+        $sql = $conn->prepare("SELECT u.name, u.lastname,arenausername, summonername, phone, discount, p.name positionname, r.name rankname, r.order, u.id, u.creditstatus, SLuserId
+FROM users u
+left join positions p on u.positionid = p.id
+left join ranks r on u.rankid = r.id
+where u.lolKlub = 1
+order by r.order,3 limit :lt");
+        $sql->bindParam(':lt',$limit);
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
 
 
     public function transferUsers($usr, $id)

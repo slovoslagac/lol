@@ -18,7 +18,7 @@ $allBonusesCurrentMonth = $bonus->getResults($month, 80);
 <html>
 <head>
     <title>Dimension by HTML5 UP</title>
-    <!--<meta http-equiv="refresh" content="15;2.html" />-->
+<!--    <meta http-equiv="refresh" content="15;4.php" />-->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
