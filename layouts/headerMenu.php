@@ -36,7 +36,7 @@ if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $ava
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf8">
     <title>eSports Arena</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
