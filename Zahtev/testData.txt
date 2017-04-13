@@ -11,7 +11,7 @@ insert into producttype (name) values ('Hrana'), ('Grickalice'), ('Pice');
 --Magacin
 
 insert into products(name, typeid) values('Coca Cola 20l', 3), ('Fanta 20l',3), ('Sprite 20l', 3), ('Mars', 1);
-insert into sellingproducts (name, typeid) values ('Coca Cola 0.3', 3), ('Coca Cola 0.5', 3), ('Fanta 0.5', 3), ('Štapići', 2), ('Čips', 2), ('Sendvič', 1)
+insert into sellingproducts (name, typeid) values ('Coca Cola 0.3', 3), ('Coca Cola 0.5', 3), ('Fanta 0.5', 3), ('Stapici', 2), ('Cips', 2), ('Sendvic', 1)
 insert into sellingproductsprices (selingproductid, value, pricetype)
 values (1,50,'normal'),(2,70,'normal'),(3,70,'normal'),(4,50,'normal'),(5,50,'normal'),(6,100,'normal'),(1,30,'popust'),(2,50,'popust'),(3,50,'popust'),(4,30,'popust'),(5,30,'popust'),(6,60,'popust')
 

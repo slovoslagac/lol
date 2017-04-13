@@ -10,7 +10,7 @@ class sellingproduct
 {
     public function getAllSellingProductsByType($type){
         global $conn;
-        $sql = $conn->prepare("select name, value, sp.id id, sp.typeid as producttype
+        $sql = $conn->prepare("select name, value, sp.id id, sp.typeid as producttype, spp.id as sppid
 from sellingproducts sp, sellingproductsprices spp
 where sp.id = spp.selingproductid
 and spp.pricetype = :tp order by 4 desc, 1");

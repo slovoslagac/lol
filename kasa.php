@@ -15,16 +15,39 @@ $sellproduct = new sellingproduct();
 $allProductsRegular = $sellproduct->getAllSellingProductsByType('normal');
 $allProductsPopust = $sellproduct->getAllSellingProductsByType('popust');
 $allProducts = $sellproduct->getAllSellingProducts();
+$bill = new bill();
+
+$lastBill = $bill->getLastBill();
+$maxBillID = $lastBill->id + 1;
+$data = array();
 
 
-if (isset($_POST['payment'])) {
+if (isset($_POST['payment']) and $_POST['billSum'] > 0) {
     $tmpdata = explode(' - ', $_POST['selectuser']);
-    echo $tmpdata[1];
-    foreach ($allProducts as $item) {
+
+    $user = new user();
+    $billSum = $_POST['billSum'];
+    if ($tmpdata[0] != '') {
+        $discountuser = $user->getUserByUsername($tmpdata[0]);
+        $discountuserid = $discountuser->id;
+        $pricetype = $tmpdata[1];
+    } else {
+        $discountuserid = 0;
+        $pricetype = 'normal';
+    }
+
+    $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype);
+
+//    echo "$discountuserid - $session->userid - $billSum - $pricetype";
+
+    switch($pricetype){case 'normal': $data = $allProductsRegular; break; case 'popust'; $data = $allProductsPopust; break;};
+    foreach ($data as $item) {
         if (isset($_POST['na' . $item->id])) {
-            echo $_POST['na' . $item->id];
+            echo $_POST['na' . $item->id]." - $item->name:$item->sppid ($item->value)<br>";
         }
     }
+
+//    header("Location:$currentpage");
 }
 
 
@@ -34,7 +57,7 @@ if (isset($_POST['payment'])) {
 
     <div class="cash-register register">
 
-        <div class="cash-content clearfix">
+        <div class="cash-content clearfix" oncontextmenu="return false">
             <?php $tmptype = '';
             foreach ($allProductsRegular as $item) {
                 if ($tmptype != $item->producttype) {
@@ -52,7 +75,8 @@ if (isset($_POST['payment'])) {
                     }
                 }
                 ?>
-                <div class="product-round" id="product<?php echo $item->id ?>" onclick="add_product('<?php echo $item->id ?>');">
+                <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>');">
+
                     <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
                     <img src="img/products/cc03.png">
                     <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
@@ -67,18 +91,19 @@ if (isset($_POST['payment'])) {
     </div> <!-- /account-container -->
     <div class="bill">
         <div class="bill-header">
-            Račun #23
+            Račun #<?php echo $maxBillID ;?>
             <span><?php echo "$currentWorker->name $currentWorker->lastname" ?></span>
         </div>
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
         <input type="text" name="selectuser" placeholder="Anonymus" list="allusers" id="selectuser" oninput="recalculate()">
         <datalist id="allusers">
-            <option value="Petar Prodanovic - popust"></option>
-            <option value="Marina Sarcevic - normal"></option>
+            <option value="proske - popust"></option>
+            <option value="Preletacevic - normal"></option>
         </datalist>
         <div id="billBody">
         </div>
-                <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
+        <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
+        <input type="hidden" name="billSum" id="billSum">
         <div class="bill-sum" name="bill-sum" id="bill-sum">UKUPNO<span id="sum">0 Din</span></div>
         <button class="button btn btn-primary btn-large pay" name="payment" type="submit">Plati</button>
 
@@ -89,19 +114,18 @@ if (isset($_POST['payment'])) {
         <div class="bill-header">
             Prethodna 3 računa
         </div>
-        <div class="bills3">
-            Račun #22
-            <span>1.370 Din</span>
-        </div>
-        <div class="bills3">
-            Račun #21
-            <span>990 Din</span>
-        </div>
-        <div class="bills3">
-            Račun #20
-            <span>100 Din</span>
-        </div>
+        <?php $last3bills = $bill->getLastBillsByUser(3, $session->userid);
+        foreach ($last3bills as $item) {
+            ?>
+            <div class="bills3">
+                Račun #<?php echo $item->id ?>
+                <span><?php echo $item->billsum ?> Din</span>
+            </div>
+
+        <?php } ?>
+
     </div>
+</div>
 </div>
 </form>
 <?php
@@ -124,7 +148,16 @@ include $footerMenuLayout;
     var popust = 0;
 
 
+    function articles(event, val) {
+        if (event.button == 0) {
+            add_product(val);
+        } else if (event.button == 2) {
+            removeArticle(val);
+        }
+    }
+
     function add_product(val) {
+
         var code = val;
         var price = parseInt(document.getElementById('price' + code).innerText);
         var articlename = document.getElementById('articlename' + code).innerText;
@@ -144,7 +177,65 @@ include $footerMenuLayout;
     }
 
 
+    function addArticle(val) {
+        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
+        currVal++;
+        document.getElementById('numarticle' + val).innerText = String(currVal);
+        document.getElementById('na' + val).setAttribute("value", currVal);
+        calculateSum();
+    }
 
+    function removeArticle(val) {
+        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
+        currVal--;
+        if (currVal == 0) {
+            document.getElementById('checkproduct' + val).remove();
+            productsID.splice(productsID.indexOf(String(val)), 1);
+            product--;
+        }
+        else {
+            document.getElementById('numarticle' + val).innerText = String(currVal);
+            document.getElementById('na' + val).setAttribute("value", currVal);
+        }
+        calculateSum();
+    }
+
+
+    function calculateSum() {
+        var Sum = 0;
+        var lengthArray = $(productsID).toArray().length;
+        if (lengthArray > 0) {
+
+            for (var k = 0; k < lengthArray; k++) {
+                var articleId = productsID[k];
+                var numArt = parseInt(document.getElementById('numarticle' + articleId).innerText);
+                var priceArt = parseInt(document.getElementById('checkprice' + articleId).innerText);
+                Sum = Sum + numArt * priceArt;
+            }
+        }
+        document.getElementById('sum').innerText = String(Sum) + ' Din';
+        document.getElementById('billSum').setAttribute("value", String(Sum));
+        var normalAmount = testSumCalculation();
+
+        document.getElementById('discount').innerText = String(normalAmount - Sum) + ' Din';
+    }
+
+
+    function testSumCalculation() {
+        var tmpSum = 0;
+        var la = $(pricesNormal).toArray().length;
+        for (var k = 0; k < la; k++) {
+            var tmpobject = pricesNormal[k];
+            var tmpindex = productsID.indexOf(String(tmpobject.id));
+            if (tmpindex > -1) {
+                var numArt = parseInt(document.getElementById('numarticle' + tmpobject.id).innerText);
+                var priceArt = parseInt(tmpobject.price);
+                tmpSum = tmpSum + numArt * priceArt;
+
+            }
+        }
+        return tmpSum;
+    }
 
 
     function recalculate() {
@@ -174,66 +265,6 @@ include $footerMenuLayout;
             }
         }
         calculateSum();
-    }
-
-    function addArticle(val) {
-        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal++;
-        document.getElementById('numarticle' + val).innerText = String(currVal);
-        document.getElementById('na' + val).setAttribute("value", currVal);
-        calculateSum();
-    }
-
-    function removeArticle(val) {
-        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal--;
-        if (currVal == 0) {
-            document.getElementById('checkproduct' + val).remove();
-            productsID.splice(productsID.indexOf(String(val)), 1);
-            product--;
-        }
-        else {
-            document.getElementById('numarticle' + val).innerText = String(currVal);
-            document.getElementById('na' + val).setAttribute("value", currVal);
-        }
-        calculateSum();
-    }
-
-    function testSumCalculation()  {
-        var tmpSum = 0;
-        var la =  $(pricesNormal).toArray().length;
-        for (var k = 0; k < la; k++) {
-            var tmpobject = pricesNormal[k];
-            var tmpindex = productsID.indexOf(String(tmpobject.id));
-            if (tmpindex > -1) {
-                var numArt = parseInt(document.getElementById('numarticle' + tmpobject.id).innerText);
-                var priceArt = parseInt(tmpobject.price);
-                tmpSum = tmpSum + numArt * priceArt;
-
-            }
-        }
-
-        return tmpSum;
-    }
-
-    function calculateSum() {
-        var Sum = 0;
-        var lengthArray = $(productsID).toArray().length;
-        if (lengthArray > 0) {
-
-            for (var k = 0; k < lengthArray; k++) {
-                var articleId = productsID[k];
-                var numArt = parseInt(document.getElementById('numarticle' + articleId).innerText);
-                var priceArt = parseInt(document.getElementById('checkprice' + articleId).innerText);
-                Sum = Sum + numArt * priceArt;
-            }
-        }
-        document.getElementById('sum').innerText = String(Sum) + ' Din';
-        var normalAmount = testSumCalculation();
-
-        document.getElementById('discount').innerText = String(normalAmount - Sum) + ' Din';
-
-
     }
 
 

@@ -1,3 +1,34 @@
+-----Ver 1.2--------
+-----------
+CREATE TABLE IF NOT EXISTS `lol`.`bills` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `workerid` INT(5) NULL DEFAULT NULL,
+  `userid` INT(9) NULL DEFAULT NULL,
+  `billsum` float(6,2) DEFAULT NULL,
+  `pricetype` varchar(45) DEFAULT NULL,
+  `tstamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX `billsindex` (`id` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+-----------------------------
+CREATE TABLE IF NOT EXISTS `lol`.`bills_rows` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `billrid` INT(5) NULL DEFAULT NULL,
+  `numProducts` INT(2) NULL DEFAULT NULL,
+  `sellingproductpriceid` INT(5) NULL DEFAULT NULL,
+  `price` FLOAT(6,2) NULL DEFAULT NULL,
+  INDEX `billsindex` (`id` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+
+
+
+
+
 -----Ver 1.1--------
 -----------
 ALTER TABLE `lol`.`ranks`

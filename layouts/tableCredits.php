@@ -12,9 +12,6 @@ $numPages = ceil($countItems / $step);
 $tableId = 'tabCredits';
 
 
-
-
-
 ?>
 <!--Pocetak Dugovanja-->
 <div class="widget widget-table action-table" id="credits">
@@ -25,7 +22,7 @@ $tableId = 'tabCredits';
                 <a href="#back" id="<?php echo $tableId ?>left">
                     <i class="icon-chevron-left" onclick="leftRight('1__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
-                <span class="center" id="<?php echo $tableId ?>PageNum"><?php echo $numPages ?></span>
+                <span class="center" id="<?php echo $tableId ?>PageNum">1/<?php echo $numPages ?></span>
                 <a href="#next" id="<?php echo $tableId ?>right">
                     <i class="icon-chevron-right" onclick="leftRight('2__<?php echo $tableId . '__' . $numPages . '__' . $step . '__' . $countItems ?>')"></i>
                 </a>
