@@ -13,7 +13,7 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 -----------------------------
-CREATE TABLE IF NOT EXISTS `lol`.`bills_rows` (
+CREATE TABLE IF NOT EXISTS `lol`.`billsrows` (
   `id` INT(5) NOT NULL AUTO_INCREMENT,
   `billrid` INT(5) NULL DEFAULT NULL,
   `numProducts` INT(2) NULL DEFAULT NULL,

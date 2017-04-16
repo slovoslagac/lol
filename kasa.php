@@ -18,7 +18,12 @@ $allProducts = $sellproduct->getAllSellingProducts();
 $bill = new bill();
 
 $lastBill = $bill->getLastBill();
-$maxBillID = $lastBill->id + 1;
+
+if($lastBill != '' ) {
+    $maxBillID = $lastBill->id+1;
+} else {
+     $maxBillID =1;
+}
 $data = array();
 
 
@@ -36,14 +41,20 @@ if (isset($_POST['payment']) and $_POST['billSum'] > 0) {
         $pricetype = 'normal';
     }
 
+
     $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype);
+    $tmplastbill= $bill->getLastBill();
+    $tmpid =  $tmplastbill->id;
+
 
 //    echo "$discountuserid - $session->userid - $billSum - $pricetype";
 
     switch($pricetype){case 'normal': $data = $allProductsRegular; break; case 'popust'; $data = $allProductsPopust; break;};
     foreach ($data as $item) {
         if (isset($_POST['na' . $item->id])) {
-            echo $_POST['na' . $item->id]." - $item->name:$item->sppid ($item->value)<br>";
+            $tmpbillrow = new billrows();
+            $tmpbillrow->addBillRow($tmpid, $_POST['na' . $item->id],$item->sppid,$item->value );
+//            echo $_POST['na' . $item->id]." - $item->name:$item->sppid ($item->value)<br>";
         }
     }
 
