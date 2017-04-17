@@ -20,9 +20,9 @@ $bill = new bill();
 $lastBill = $bill->getLastBill();
 
 if($lastBill != '' ) {
-    $maxBillID = $lastBill->id+1;
+    $maxBillID = $lastBill->id + 1;
 } else {
-     $maxBillID =1;
+     $maxBillID = 1;
 }
 $data = array();
 
@@ -57,13 +57,13 @@ if (isset($_POST['payment']) and $_POST['billSum'] > 0) {
 //            echo $_POST['na' . $item->id]." - $item->name:$item->sppid ($item->value)<br>";
         }
     }
-
+    unset($discountuserid, $billSum, $pricetype);
 //    header("Location:$currentpage");
 }
 
 
 ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>"
+<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" xmlns="http://www.w3.org/1999/html"/>
 <div class="register-round">
 
     <div class="cash-register register">
@@ -116,7 +116,8 @@ if (isset($_POST['payment']) and $_POST['billSum'] > 0) {
         <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
         <input type="hidden" name="billSum" id="billSum">
         <div class="bill-sum" name="bill-sum" id="bill-sum">UKUPNO<span id="sum">0 Din</span></div>
-        <button class="button btn btn-primary btn-large pay" name="payment" type="submit">Plati</button>
+        <input type="submit" class="button btn btn-primary btn-large pay" name="payment" value="Plati" onsubmit="DisableButton(this);"></input>
+<!--        <button class="button btn btn-primary btn-large pay" name="payment" type="submit" onsubmit="DisableButton(this);">Plati</button>-->
 
     </div>
 
@@ -279,6 +280,12 @@ include $footerMenuLayout;
     }
 
 
+</script>
+
+<script>
+    $("form").submit(function(){
+
+    });
 </script>
 
 

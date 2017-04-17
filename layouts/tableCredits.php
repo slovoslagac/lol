@@ -62,7 +62,8 @@ $tableId = 'tabCredits';
                     <div class="modal-footer">
                         <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
                         <?php if (isset($userCreditCapable) != '') { ?>
-                            <button class="btn btn-primary" type="submit" name="saveCredit" id="saveCredit">Unesi dugovanje</button>
+<!--                            <input type="submit" class="btn btn-primary" value="Unesi dugovanje" name="saveCredit" id="saveCredit" >-->
+                            <button class="btn btn-primary" type="submit" name="saveCredit" id="saveCredit"  >Unesi dugovanje</button>
                         <?php } ?>
                     </div>
                 </form>

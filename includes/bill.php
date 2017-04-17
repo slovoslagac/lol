@@ -22,7 +22,7 @@ class bill
 
     public function getLastBill($limit = 1) {
         global $conn;
-        $sql = $conn->prepare("select * from bills order by tstamp desc limit :lt");
+        $sql = $conn->prepare("select * from bills order by id desc limit :lt");
         $sql->bindParam(":lt", $limit);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_OBJ);

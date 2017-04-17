@@ -55,3 +55,95 @@ Stack trace:
 #0 C:\AppServ\www\lol\includes\user.php(68): PDOStatement->execute()
 #1 C:\AppServ\www\lol\TransferWorkers.php(20): user->transferWorkers('proba@gmail.com')
 #2 {main}
+17.04.2017 11:58:37 | Dodavanje dugova - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1205 Lock wait timeout exceeded; try restarting transaction' in C:\AppServ\www\lol\includes\credit.php:47
+Stack trace:
+#0 C:\AppServ\www\lol\includes\credit.php(47): PDOStatement->execute()
+#1 C:\AppServ\www\lol\index.php(22): credit->addUserCredit('376', '170', 11)
+#2 {main}
+17.04.2017 11:58:42 | Dodavanje dugova - error : userid = 11 --- exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 2006 MySQL server has gone away' in C:\AppServ\www\lol\includes\credit.php:47
+Stack trace:
+#0 C:\AppServ\www\lol\includes\credit.php(47): PDOStatement->execute()
+#1 C:\AppServ\www\lol\index.php(22): credit->addUserCredit('376', '170', 11)
+#2 {main}
+17.04.2017 14:11:02 | Dodavanje dugova - error ne prolazi user ili max amount : user - 164, adding credit - 22, maximum amount - 999 
+17.04.2017 14:11:58 | Dodavanje dugova - error ne prolazi user ili max amount : user - 164, adding credit - 22, maximum amount - 1 
+17.04.2017 14:12:17 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1080, adding credit - 550, maximum amount - 210 
+17.04.2017 14:12:18 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1080, adding credit - 550, maximum amount - 210 
+17.04.2017 14:12:18 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1080, adding credit - 550, maximum amount - 210 
+17.04.2017 14:12:18 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1080, adding credit - 550, maximum amount - 210 
+17.04.2017 14:13:51 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1080, adding credit - 550, maximum amount - 210 
+17.04.2017 14:14:08 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1599, adding credit - 999, maximum amount -  
+17.04.2017 14:14:08 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1599, adding credit - 999, maximum amount -  
+17.04.2017 14:14:08 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1599, adding credit - 999, maximum amount -  
+17.04.2017 14:14:08 | Dodavanje dugova - error ne prolazi user ili max amount : user - 1599, adding credit - 999, maximum amount -  
+17.04.2017 14:34:31 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 784, adding credit - 350, maximum amount - 50 
+17.04.2017 14:35:04 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 205, adding credit - 40, maximum amount - 10 
+17.04.2017 14:35:04 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 205, adding credit - 40, maximum amount - 10 
+17.04.2017 14:35:27 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1080, adding credit - 210, maximum amount - 0 
+17.04.2017 14:35:27 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1080, adding credit - 210, maximum amount - 0 
+17.04.2017 14:35:28 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1080, adding credit - 210, maximum amount - 0 
+17.04.2017 14:36:50 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 564, adding credit - 450, maximum amount - 0 
+17.04.2017 14:36:50 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 564, adding credit - 450, maximum amount - 0 
+17.04.2017 14:38:21 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 205, adding credit - 9, maximum amount - 1 
+17.04.2017 14:38:21 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 205, adding credit - 9, maximum amount - 1 
+17.04.2017 14:38:52 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 784, adding credit - 50, maximum amount - 0 
+17.04.2017 14:38:52 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 784, adding credit - 50, maximum amount - 0 
+17.04.2017 14:39:13 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 692, adding credit - 370, maximum amount - 0 
+17.04.2017 14:39:13 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 692, adding credit - 370, maximum amount - 0 
+17.04.2017 14:39:47 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 635, adding credit - 450, maximum amount - 0 
+17.04.2017 14:39:47 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 635, adding credit - 450, maximum amount - 0 
+17.04.2017 14:42:17 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1707, adding credit - 500, maximum amount - 0 
+17.04.2017 14:42:17 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1707, adding credit - 500, maximum amount - 0 
+17.04.2017 14:42:17 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1707, adding credit - 500, maximum amount - 0 
+17.04.2017 14:42:19 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1707, adding credit - 500, maximum amount - 0 
+17.04.2017 14:42:21 | Dodavanje dugova - error - ne proslazi user ili max amount :  user - 1707, adding credit - 500, maximum amount - 0 
+17.04.2017 15:00:37 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -900, maximum amount - 100, error - 
+17.04.2017 15:00:39 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -900, maximum amount - 100, error - 
+17.04.2017 15:00:43 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -900, maximum amount - 100, error - 
+17.04.2017 15:06:00 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1599, adding credit - -200, maximum amount - 0, error - 
+17.04.2017 15:06:00 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1599, adding credit - -200, maximum amount - 0, error - 
+17.04.2017 15:06:01 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1599, adding credit - -200, maximum amount - 0, error - 
+17.04.2017 15:06:03 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1599, adding credit - -200, maximum amount - 0, error - 
+17.04.2017 15:07:19 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1599, adding credit - -200, maximum amount - 0
+17.04.2017 15:07:36 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 205, adding credit - -50, maximum amount - 0
+17.04.2017 15:07:38 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 205, adding credit - -50, maximum amount - 0
+17.04.2017 15:07:39 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 205, adding credit - -50, maximum amount - 0
+17.04.2017 15:11:00 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 205, adding credit - -50, maximum amount - 0
+17.04.2017 15:11:26 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -65, maximum amount - 5
+17.04.2017 15:11:26 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -65, maximum amount - 5
+17.04.2017 15:11:30 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -65, maximum amount - 5
+17.04.2017 15:11:32 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -65, maximum amount - 5
+17.04.2017 15:11:36 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -65, maximum amount - 5
+17.04.2017 15:11:41 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -65, maximum amount - 5
+17.04.2017 15:11:42 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -65, maximum amount - 5
+17.04.2017 15:13:27 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -5, maximum amount - 0
+17.04.2017 15:14:18 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -5, maximum amount - 0
+17.04.2017 15:14:24 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 509, adding credit - -5, maximum amount - 0
+17.04.2017 15:16:12 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 458, adding credit - -450, maximum amount - 50
+17.04.2017 15:16:16 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 458, adding credit - -450, maximum amount - 50
+17.04.2017 15:16:17 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 458, adding credit - -450, maximum amount - 50
+17.04.2017 15:16:18 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 458, adding credit - -450, maximum amount - 50
+17.04.2017 15:16:20 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 458, adding credit - -450, maximum amount - 50
+17.04.2017 15:16:21 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 458, adding credit - -450, maximum amount - 50
+17.04.2017 15:16:44 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:44 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:44 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:44 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:45 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:46 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:47 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:48 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:49 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:49 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:49 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:50 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:51 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:51 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:16:52 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 1707, adding credit - 600, maximum amount - 400
+17.04.2017 15:17:16 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 458, adding credit - 500, maximum amount - 450
+17.04.2017 15:17:16 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 458, adding credit - 500, maximum amount - 450
+17.04.2017 15:17:31 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 509, adding credit - 600, maximum amount - 400
+17.04.2017 15:17:31 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 509, adding credit - 600, maximum amount - 400
+17.04.2017 15:17:44 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -600, maximum amount - 0
+17.04.2017 15:17:44 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -600, maximum amount - 0
+17.04.2017 15:17:44 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -600, maximum amount - 0

@@ -64,4 +64,17 @@ group by c.userid ");
         $sql->execute();
     }
 
+    public function getMaxAmountByUser($id) {
+        global $conn;
+        $sql= $conn->prepare("select 1000 - sum(value) sum, sum(value) currentSum
+from credit
+where expired = 0
+and userid = :id
+group by userid");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
 }

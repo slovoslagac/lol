@@ -6,44 +6,68 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 $u = new user();
 $allusers = $u->getAllUsers();
 
+
 $usr = new credit();
 $userCredits = $usr->getSumAllUserCredits();
 $userCreditCapable = $usr->getSumAllUserCreditsAvailable();
 //sredjivanje kredita
 
-if (isset($_POST["saveCredit"])) {
 
+if (isset($_POST["saveCredit"])) {
     $code = explode('__', $_POST["selectUser"]);
     $user = $code[0];
-//    $selectedUser = $u->getUserByUsername($user);
-//    $tmpuser = $selectedUser->id;
-    if ($user != '') {
+    $currmaxAmount = $usr->getMaxAmountByUser($user);
+    ($currmaxAmount == '') ? $tmpMaxAmount = 1000 : $tmpMaxAmount = $currmaxAmount->sum;
+    $tmpAmount = $_POST["amountChosen"];
+    if ($user != '' && $tmpAmount <= $tmpMaxAmount) {
         try {
-            $usr->addUserCredit($user, $_POST["amountChosen"], $session->userid);
+            $usr->addUserCredit($user, $tmpAmount, $session->userid);
             unset($usr);
             header("Location:index.php#credits");
         } catch (Exception $e) {
-            logAction("Dodavanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
+            logAction("Dodavanje dugova - error", "userid = $session->userid --- $e | user - $user, adding credit - $tmpAmount, maximum amount - $tmpMaxAmount ", 'error.txt');
         }
+    } else {
+
+        echo "<script type='text/javascript'>if(alert('Korisnik maksimalno moze da se zaduzi jos $tmpMaxAmount dinara!')){window.location.reload();}</script>";
+//        header("Location:index.php#credits");
+        logAction("Dodavanje dugova - error - ne proslazi user ili max amount", "worker - $session->userid, user - $user, adding credit - $tmpAmount, maximum amount - $tmpMaxAmount", 'error.txt');
     }
 
 }
 
 
 if (isset($_POST['reduceCredit'])) {
-    try {
-        $reducedCredit = abs($_POST['amountDebit']) * -1;
-        $currentuser = $_POST['currentUserId'];
-        $usr->addUserCredit($currentuser, $reducedCredit, $session->userid);
-        $currusrcredit = $usr->getSumUserCredit($currentuser);
-        if ($currusrcredit->value == 0) {
-            $usr->creditExpire($currentuser);
+
+    $reducedCredit = abs($_POST['amountDebit']) * -1;
+    $currentuser = $_POST['currentUserId'];
+    $currmaxAmount = $usr->getMaxAmountByUser($currentuser);
+    ($currmaxAmount == '') ? $tmpMaxAmount = 0 : $tmpMaxAmount = $currmaxAmount->currentSum;
+    if (abs($_POST['amountDebit']) <= $tmpMaxAmount) {
+        try {
+            $usr->addUserCredit($currentuser, $reducedCredit, $session->userid);
+            $currusrcredit = $usr->getSumUserCredit($currentuser);
+            if ($currusrcredit->value == 0) {
+                $usr->creditExpire($currentuser);
+            }
+            unset($usr, $currusrcredit);
+            header("Location:index.php#credits");
+        } catch (Exception $e) {
+            logAction("Smanjivanje dugova - error", "$currentuser, $reducedCredit, $session->userid  | worker - $session->userid, user - $currentuser, adding credit - $reducedCredit, maximum amount - $tmpMaxAmount, error - $e", 'error.txt');
         }
-        unset($usr, $currusrcredit);
-        header("Location:index.php#credits");
-    } catch (Exception $e) {
-        logAction("Brisanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
+    } else {
+        ($tmpMaxAmount > 0) ? $message = "Korisnik treba da vrati najvise $tmpMaxAmount dinara! " : $message = "Korisnik nema dugovanja !";
+
+        echo "<script type='text/javascript'>if(alert('$message')){window.location.reload();}</script>";
+        logAction("Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje", "worker - $session->userid, user - $currentuser, adding credit - $reducedCredit, maximum amount - $tmpMaxAmount", 'error.txt');
     }
+
+
+//    } catch (Exception $e) {
+//        logAction("Brisanje dugova - error", "userid = $session->userid --- $e", 'error.txt');
+//    }
+
+
 }
 
 
@@ -154,7 +178,6 @@ include $menuLayout;
                     ?>
 
 
-
                 </div>
 
                 <!-- /span12 -->
@@ -174,6 +197,7 @@ include $menuLayout;
 <?php
 include $footerMenuLayout;
 ?>
+
 
 </body>
 </html>
