@@ -1,6 +1,7 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
+
 if ($session->isLoggedIn()) {
     redirectTo("index.php");
 }
@@ -15,7 +16,7 @@ if (isset($_POST["submit"])) {
     if ($currworker) {
         if (password_verify($password, $currworker->password)) {
             $session->login($currworker);
-
+            $session->setSessionTime(time());
             unset($password, $currworker, $username);
             redirectTo("index.php");
 

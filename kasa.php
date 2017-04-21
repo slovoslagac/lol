@@ -3,7 +3,6 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 
 $currentDate = new dateTime();
-
 $currentMonth = $currentDate->format('d.m.Y');
 $currentTime = $currentDate->format('H:i');
 
@@ -16,51 +15,70 @@ $allProductsRegular = $sellproduct->getAllSellingProductsByType('normal');
 $allProductsPopust = $sellproduct->getAllSellingProductsByType('popust');
 $allProducts = $sellproduct->getAllSellingProducts();
 $bill = new bill();
-
 $lastBill = $bill->getLastBill();
+$billForEdit = 0;
 
-if($lastBill != '' ) {
+
+if ($lastBill != '') {
     $maxBillID = $lastBill->id + 1;
 } else {
-     $maxBillID = 1;
+    $maxBillID = 1;
 }
 $data = array();
 
 
-if (isset($_POST['payment']) and $_POST['billSum'] > 0) {
-    $tmpdata = explode(' - ', $_POST['selectuser']);
+if (isset($_POST['payment'])) {
+    $sumBillError = $_POST['billSum'];
+    if ($sumBillError > 0 and $billForEdit == 0) {
+        $chekingLastBill = $bill->getLastBill();
+        $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
+        $now = time();
+        if ($now - $chekingLastBillTime > 5) {
 
-    $user = new user();
-    $billSum = $_POST['billSum'];
-    if ($tmpdata[0] != '') {
-        $discountuser = $user->getUserByUsername($tmpdata[0]);
-        $discountuserid = $discountuser->id;
-        $pricetype = $tmpdata[1];
-    } else {
-        $discountuserid = 0;
-        $pricetype = 'normal';
-    }
+            $tmpdata = explode(' - ', $_POST['selectuser']);
+            $user = new user();
+            $billSum = $sumBillError;
+            if ($tmpdata[0] != '') {
+                $discountuser = $user->getUserByUsername($tmpdata[0]);
+                $discountuserid = $discountuser->id;
+                $pricetype = $tmpdata[1];
+            } else {
+                $discountuserid = 0;
+                $pricetype = 'normal';
+            }
+            try {
+                $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype);
+                $tmplastbill = $bill->getLastBill();
+                $tmpid = $tmplastbill->id;
+                switch ($pricetype) {
+                    case 'normal':
+                        $data = $allProductsRegular;
+                        break;
+                    case 'popust';
+                        $data = $allProductsPopust;
+                        break;
+                };
+                foreach ($data as $item) {
+                    if (isset($_POST['na' . $item->id])) {
+                        $tmpbillrow = new billrows();
+                        $tmpbillrow->addBillRow($tmpid, $_POST['na' . $item->id], $item->sppid, $item->value);
+                        unset($tmpbillrow);
+                    }
+                }
+            } catch (Exception $e){
+                logAction("Kucanje racuna - error", "suma - $sumBillError, Id edit - $billForEdit, details - $session->userid, addBill - $session->userid, $discountuserid, $billSum, $pricetype", 'error.txt');
+            }
 
-
-    $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype);
-    $tmplastbill= $bill->getLastBill();
-    $tmpid =  $tmplastbill->id;
-
-
-//    echo "$discountuserid - $session->userid - $billSum - $pricetype";
-
-    switch($pricetype){case 'normal': $data = $allProductsRegular; break; case 'popust'; $data = $allProductsPopust; break;};
-    foreach ($data as $item) {
-        if (isset($_POST['na' . $item->id])) {
-            $tmpbillrow = new billrows();
-            $tmpbillrow->addBillRow($tmpid, $_POST['na' . $item->id],$item->sppid,$item->value );
-//            echo $_POST['na' . $item->id]." - $item->name:$item->sppid ($item->value)<br>";
+            unset($discountuserid, $billSum, $pricetype);
+            header("Location:$currentpage");
+        } else {
+            echo "<script type='text/javascript'>alert('Morate sačekati minimum 5 sekundi između 2 uzastopna računa!')</script>";
+            logAction("Kucanje racuna - prebrzo kucanje racuna", "suma - $sumBillError, Id edit - $billForEdit, details - $session->userid", 'billTransactions.txt');
         }
+    } else {
+        logAction("Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen", "suma - $sumBillError, Id edit - $billForEdit, details - $session->userid", 'billTransactions.txt');
     }
-    unset($discountuserid, $billSum, $pricetype);
-//    header("Location:$currentpage");
 }
-
 
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" xmlns="http://www.w3.org/1999/html"/>
@@ -102,7 +120,7 @@ if (isset($_POST['payment']) and $_POST['billSum'] > 0) {
     </div> <!-- /account-container -->
     <div class="bill">
         <div class="bill-header">
-            Račun #<?php echo $maxBillID ;?>
+            Račun #<?php echo $maxBillID; ?>
             <span><?php echo "$currentWorker->name $currentWorker->lastname" ?></span>
         </div>
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
@@ -116,8 +134,8 @@ if (isset($_POST['payment']) and $_POST['billSum'] > 0) {
         <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
         <input type="hidden" name="billSum" id="billSum">
         <div class="bill-sum" name="bill-sum" id="bill-sum">UKUPNO<span id="sum">0 Din</span></div>
-        <input type="submit" class="button btn btn-primary btn-large pay" name="payment" value="Plati" onsubmit="DisableButton(this);"></input>
-<!--        <button class="button btn btn-primary btn-large pay" name="payment" type="submit" onsubmit="DisableButton(this);">Plati</button>-->
+        <!--        <input type="submit" class="button btn btn-primary btn-large pay" name="payment" value="Plati" id="payment">-->
+        <button class="button btn btn-primary btn-large pay" name="payment" id="payment" type="submit">Plati</button>
 
     </div>
 
@@ -283,9 +301,9 @@ include $footerMenuLayout;
 </script>
 
 <script>
-    $("form").submit(function(){
-
-    });
+    function disableButton(val) {
+        document.getElementById(val).disabled = true;
+    }
 </script>
 
 

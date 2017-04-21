@@ -147,3 +147,16 @@ Stack trace:
 17.04.2017 15:17:44 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -600, maximum amount - 0
 17.04.2017 15:17:44 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -600, maximum amount - 0
 17.04.2017 15:17:44 | Dodavanje dugova - error - pokusavaju da vrate vise nego sto duguje : worker - 11, user - 1707, adding credit - -600, maximum amount - 0
+19.04.2017 09:34:56 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 458, adding credit - 400, maximum amount - 50
+19.04.2017 09:34:56 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 458, adding credit - 400, maximum amount - 50
+19.04.2017 09:34:57 | Dodavanje dugova - error - ne proslazi user ili max amount : worker - 11, user - 458, adding credit - 400, maximum amount - 50
+19.04.2017 14:22:14 | Kucanje racuna - error : suma - 100, Id edit - 0, details - 11, , , 
+19.04.2017 14:24:04 | Kucanje racuna - error : suma - 80, Id edit - 0, details - 11, error - 
+19.04.2017 14:30:59 | Kucanje racuna - error : suma - 140, Id edit - 1, details - 11, error - 
+19.04.2017 14:33:39 | Kucanje racuna - error nema artikala ili je zapocet update racuna a nije zavrsen : suma - , Id edit - 1, details - 11
+19.04.2017 14:33:52 | Kucanje racuna - error nema artikala ili je zapocet update racuna a nije zavrsen : suma - 100, Id edit - 1, details - 11
+19.04.2017 14:34:15 | Kucanje racuna - error : suma - 100, Id edit - 0, details - 11
+19.04.2017 14:34:22 | Kucanje racuna - error : suma - 140, Id edit - 0, details - 11
+19.04.2017 14:34:28 | Kucanje racuna - error : suma - 140, Id edit - 0, details - 11
+19.04.2017 14:34:31 | Kucanje racuna - error : suma - 140, Id edit - 0, details - 11
+19.04.2017 14:59:37 | Kucanje racuna - error : suma - 200, Id edit - 0, details - 11

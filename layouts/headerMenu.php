@@ -1,4 +1,7 @@
 <?php
+if ($session->checkSessionTime() == true) {
+    $session->logout();
+}
 
 if (!$session->isLoggedIn()) {
     redirectTo("login.php");
