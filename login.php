@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
     if ($currworker) {
         if (password_verify($password, $currworker->password)) {
             $session->login($currworker);
-            $session->setSessionTime(time());
+            $session->setSessionTime();
             unset($password, $currworker, $username);
             redirectTo("index.php");
 

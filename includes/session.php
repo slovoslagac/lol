@@ -25,12 +25,18 @@ class session
         $this->sessionTime = $_SESSION["time"] = time();
     }
 
-    public function getSessionTime(){
-        return $_SESSION["time"];
+    public function getSessionTime()
+    {
+        if(!isset($_SESSION["time"])) {
+            return time();
+        } else {
+            return $_SESSION["time"];
+        }
     }
 
-    public function checkSessionTime(){
-        if ($this->getSessionTime() < time() - $this->sessionExpire) {
+    public function checkSessionTime()
+    {
+        if ($this->getSessionTime()  < time() - $this->sessionExpire) {
             return true;
         } else {
             return false;
@@ -39,9 +45,12 @@ class session
 
     public function isLoggedIn()
     {
-        $this->setSessionTime();
-        return $this->loggedin;
-
+        if ($this->checkSessionTime() == true) {
+            $this->logout();
+        } else {
+            $this->setSessionTime();
+            return $this->loggedin;
+        }
     }
 
 
@@ -72,8 +81,6 @@ class session
             $this->loggedin = false;
         }
     }
-
-
 
 
 }

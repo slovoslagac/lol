@@ -19,10 +19,12 @@ CREATE TABLE IF NOT EXISTS `lol`.`billsrows` (
   `numProducts` INT(2) NULL DEFAULT NULL,
   `sellingproductpriceid` INT(5) NULL DEFAULT NULL,
   `price` FLOAT(6,2) NULL DEFAULT NULL,
+  `sellingproductid` int(5) DEFAULT NULL,
   INDEX `billsindex` (`id` ASC))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
 
 
 

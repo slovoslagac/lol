@@ -17,7 +17,7 @@ $allProducts = $sellproduct->getAllSellingProducts();
 $bill = new bill();
 $lastBill = $bill->getLastBill();
 $tmpBillsDetails = $bill->getLastBillsByUserDetails(3, $session->userid);
-
+$billForEdit = 0;
 
 
 if ($lastBill != '') {
@@ -30,7 +30,7 @@ $data = array();
 
 if (isset($_POST['payment'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0 ) {
+    if ($sumBillError > 0 and $billForEdit == 0) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -67,85 +67,20 @@ if (isset($_POST['payment'])) {
                     }
                 }
             } catch (Exception $e) {
-                logAction("Kucanje racuna - error", "suma - $sumBillError, details - $session->userid, addBill - $session->userid, $discountuserid, $billSum, $pricetype", 'error.txt');
+                logAction("Kucanje racuna - error", "suma - $sumBillError, Id edit - $billForEdit, details - $session->userid, addBill - $session->userid, $discountuserid, $billSum, $pricetype", 'error.txt');
             }
 
             unset($discountuserid, $billSum, $pricetype);
             header("Location:$currentpage");
         } else {
             echo "<script type='text/javascript'>alert('Morate sačekati minimum 5 sekundi između 2 uzastopna računa!')</script>";
-            logAction("Kucanje racuna - prebrzo kucanje racuna", "suma - $sumBillError, details - $session->userid", 'billTransactions.txt');
+            logAction("Kucanje racuna - prebrzo kucanje racuna", "suma - $sumBillError, Id edit - $billForEdit, details - $session->userid", 'billTransactions.txt');
         }
     } else {
-        logAction("Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen", "suma - $sumBillError, details - $session->userid", 'billTransactions.txt');
+        logAction("Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen", "suma - $sumBillError, Id edit - $billForEdit, details - $session->userid", 'billTransactions.txt');
     }
 }
 
-
-if (isset($_POST['paymentEdit'])) {
-    $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0 ) {
-        $chekingLastBill = $bill->getLastBill();
-        $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
-        $now = time();
-        if ($now - $chekingLastBillTime > 5) {
-            $billIdForEdit = $_POST["billId"];
-            $tmpdata = explode(' - ', $_POST['selectuser']);
-            $user = new user();
-            $billSum = $sumBillError;
-            if ($tmpdata[0] != '') {
-                $discountuser = $user->getUserByUsername($tmpdata[0]);
-                $discountuserid = $discountuser->id;
-                $pricetype = $tmpdata[1];
-            } else {
-                $discountuserid = 0;
-                $pricetype = 'normal';
-            }
-            try {
-
-                $bill->updateBillById($billIdForEdit, $discountuserid, $billSum, $pricetype);
-                logAction("Editovanje racuna - edit racuna", "$billIdForEdit, $discountuserid, $billSum, $pricetype", 'billTransactions.txt');
-                switch ($pricetype) {
-                    case 'normal':
-                        $data = $allProductsRegular;
-                        break;
-                    case 'popust';
-                        $data = $allProductsPopust;
-                        break;
-                };
-                $tmpbillrow = new billrows();
-                $tmpbillrow->deleteRowsById($billIdForEdit);
-                foreach ($data as $item) {
-                    if (isset($_POST['na' . $item->id])) {
-
-                        $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id], $item->sppid, $item->value, $item->id);
-
-                    }
-                }
-                unset($tmpbillrow);
-            } catch (Exception $e) {
-                logAction("Editovanje racuna - error", "suma - $sumBillError, details - $session->userid, addBill - $session->userid, $discountuserid, $billSum, $pricetype", 'error.txt');
-            }
-
-            unset($discountuserid, $billSum, $pricetype);
-//            header("Location:$currentpage");
-        } else {
-            echo "<script type='text/javascript'>alert('Morate sačekati minimum 5 sekundi između 2 uzastopna računa!')</script>";
-            logAction("Editovanje racuna - prebrzo kucanje racuna", "suma - $sumBillError, details - $session->userid", 'billTransactions.txt');
-        }
-    } else {
-        logAction("Editovanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen", "suma - $sumBillError, details - $session->userid", 'billTransactions.txt');
-    }
-}
-
-if(isset($_POST["paymentDelete"])){
-    $billIdForDelete =  $_POST["billId"];
-    $billRowsDelete = new billrows();
-    $billRowsDelete->deleteRowsById($billIdForDelete);
-    $bill->deleteBillById($billIdForDelete);
-    unset($billIdForDelete, $billIdForDelete);
-    header("Location:$currentpage");
-}
 
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" xmlns="http://www.w3.org/1999/html"/>
@@ -153,7 +88,7 @@ if(isset($_POST["paymentDelete"])){
 
     <div class="cash-register register">
 
-        <div class="cash-content clearfix" oncontextmenu="return false">
+        <div class="cash-content clearfix" oncontextmenu="return true">
             <?php $tmptype = '';
             foreach ($allProductsRegular as $item) {
                 if ($tmptype != $item->producttype) {
@@ -187,7 +122,7 @@ if(isset($_POST["paymentDelete"])){
     </div> <!-- /account-container -->
     <div class="bill">
         <div class="bill-header">
-            Račun #<strong id="billNumber"><?php echo $maxBillID; ?></strong><input type="hidden" name="billId" id="billId"/>
+            Račun #<?php echo $maxBillID; ?>
             <span><?php echo "$currentWorker->name $currentWorker->lastname" ?></span>
         </div>
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
@@ -205,7 +140,6 @@ if(isset($_POST["paymentDelete"])){
         <div>
             <button class="hide" name="paymentEdit" id="paymentEdit" type="submit">Sačuvaj</button>
             <button class="hide" name="paymentCancel" id="paymentCancel" type="submit">Otkaži</button>
-            <button class="hide" name="paymentDelete" id="paymentDelete" type="submit">Obriši</button>
         </div>
     </div>
 
@@ -247,8 +181,7 @@ include $footerMenuLayout;
                 echo "]},";
             };
             $tmpbilldetailid = $item->billid;
-            ($item->username != '' )? $type = $item->username.' - '.$item->pricetype : $type = '';
-            echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid},";
+            echo "{id: $item->billid, type: '$item->username - $item->pricetype', billdata:[{num: $item->amount, id: $item->productid},";
         } else {
             echo "{num: $item->amount, id: $item->productid},";
         }
@@ -271,8 +204,9 @@ include $footerMenuLayout;
     }
 
     function add_product(val) {
-        var code = val;
-        var price = parseInt(document.getElementById('price' + code).innerText);
+
+        var code = parseInt(val);
+        var price = document.getElementById('price' + code).innerText;
         var articlename = document.getElementById('articlename' + code).innerText;
         if (productsID.indexOf(code) > -1) {
             addArticle(code);
@@ -340,13 +274,18 @@ include $footerMenuLayout;
         for (var k = 0; k < la; k++) {
             var tmpobject = pricesNormal[k];
             var tmpindex = productsID.indexOf(String(tmpobject.id));
+            console.log(tmpindex);
             if (tmpindex > -1) {
                 var numArt = parseInt(document.getElementById('numarticle' + tmpobject.id).innerText);
+                console.log('numarticle' + tmpobject.id);
                 var priceArt = parseInt(tmpobject.price);
                 tmpSum = tmpSum + numArt * priceArt;
+
             }
+
         }
         return tmpSum;
+
     }
 
 
@@ -375,66 +314,37 @@ include $footerMenuLayout;
                     document.getElementById('checkprice' + idnorm).innerText = String(pricenorm);
                 }
             }
-        } else {
-            length = $(pricesNormal).toArray().length;
-            for (var j = 0; j < length; j++) {
-                var objectnormal = pricesNormal[j];
-                var idnorm = objectnormal.id;
-                var pricenorm = objectnormal.price;
-                document.getElementById('price' + idnorm).innerText = String(pricenorm) + ' Din';
-                if (document.getElementById('checkprice' + idnorm) !== null) {
-                    document.getElementById('checkprice' + idnorm).innerText = String(pricenorm);
-                }
-            }
         }
         calculateSum();
     }
 
 
     function editBill(val) {
-
-        resetBill();
-
         document.getElementById("payment").setAttribute("class", "hide");
         document.getElementById("paymentEdit").setAttribute("class", "button btn btn-primary btn-large pay");
         document.getElementById("paymentCancel").setAttribute("class", "button btn btn-primary btn-small pay");
-        document.getElementById("paymentDelete").setAttribute("class", "button btn btn-primary btn-small pay");
-
-
+        console.log(billDetails);
         for (var l = 0; l < 3; l++) {
             var billobject = billDetails[l];
             if (billobject.id == val) {
                 document.getElementById("selectuser").value = billobject.type;
-                document.getElementById("billId").setAttribute("value",  billobject.id);
-                document.getElementById("billNumber").innerText =  billobject.id;
                 var tmpDetails = billobject.billdata;
                 for (var p = 0; p < tmpDetails.length; p++) {
                     var tmpproduct = tmpDetails[p];
-                    var tmpproductid = tmpproduct.id.toString();
-                    add_product(tmpproductid);
+                    add_product(tmpproduct.id);
                     if (tmpproduct.num > 1) {
                         var s = 1;
                         while (s < tmpproduct.num) {
-                            addArticle(tmpproductid)
+                            addArticle(tmpproduct.id)
                             s++
                         }
                     }
                 }
             }
         }
-        recalculate()
 
+        console.log(productsID);
     }
-
-    function resetBill() {
-        for(var t =0; t < productsID.length; t++){
-            var val = productsID[t];
-            document.getElementById('checkproduct' + val).remove();
-        }
-        productsID =[];
-    }
-
-
 
 
 </script>

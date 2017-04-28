@@ -160,3 +160,12 @@ Stack trace:
 19.04.2017 14:34:28 | Kucanje racuna - error : suma - 140, Id edit - 0, details - 11
 19.04.2017 14:34:31 | Kucanje racuna - error : suma - 140, Id edit - 0, details - 11
 19.04.2017 14:59:37 | Kucanje racuna - error : suma - 200, Id edit - 0, details - 11
+28.04.2017 16:00:15 | Kucanje racuna - error : suma - 50, details - 11, addBill - 11, 1, 50, popust
+28.04.2017 16:00:30 | Kucanje racuna - error : suma - 360, details - 11, addBill - 11, 1, 360, popust
+28.04.2017 16:00:55 | Kucanje racuna - error : suma - 840, details - 11, addBill - 11, 1, 840, popust
+28.04.2017 16:03:41 | Kucanje racuna - error : suma - 300, details - 11, addBill - 11, 1, 300, popust
+28.04.2017 16:03:54 | Kucanje racuna - error : suma - 360, details - 11, addBill - 11, 1, 360, popust
+28.04.2017 16:05:20 | Kucanje racuna - error : suma - 200, details - 11, addBill - 11, 0, 200, normal
+28.04.2017 16:11:49 | Editovanje racuna - error : suma - 980, details - 11, addBill - 11, 0, 980, normal
+28.04.2017 16:15:30 | Editovanje racuna - error : suma - 1120, details - 11, addBill - 11, 0, 1120, normal
+28.04.2017 16:18:57 | Editovanje racuna - error : suma - 490, details - 11, addBill - 11, 0, 490, normal

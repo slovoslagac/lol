@@ -1,0 +1,6 @@
+27.04.2017 10:32:29 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - , Id edit - 0, details - 11
+27.04.2017 14:56:31 | Kucanje racuna - prebrzo kucanje racuna : suma - 100, Id edit - 0, details - 11
+28.04.2017 10:12:44 | Kucanje racuna - prebrzo kucanje racuna : suma - 690, Id edit - 0, details - 11
+28.04.2017 16:15:30 | Editovanje racuna - edit racuna : 5 sec
+28.04.2017 16:19:49 | Editovanje racuna - edit racuna : 15, 0, 1500, normal
+28.04.2017 16:20:05 | Editovanje racuna - edit racuna : 15, 0, 350, normal
