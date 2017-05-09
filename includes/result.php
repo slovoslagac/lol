@@ -26,7 +26,7 @@ group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1 limit :
         return $result;
     }
 
-    public function getSumResult()
+    public function getSumResult($limit = 10000)
     {
         global $conn;
         $sql = $conn->prepare("select uname, ulastname, uusername , sum(value) value, 0 used_points
@@ -41,7 +41,8 @@ where urh.userid = u.id
 and urh.heroid = h.id
 group by h.name, u.name, u.lastname, u.arenausername order by 5 desc,2,1) a) b
 group by uname, ulastname, uusername
-order by 4 desc, 1");
+order by 4 desc, 1 limit :lt");
+        $sql->bindParam(':lt',$limit);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;

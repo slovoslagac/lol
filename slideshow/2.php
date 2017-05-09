@@ -2,7 +2,7 @@
 include(join(DIRECTORY_SEPARATOR, array('..', 'includes', 'init.php')));
 
 $result = new result();
-$allresults = $result->getSumResultByHero(40);
+$allresults = $result->getSumResult(40);
 
 ?>
 
@@ -48,7 +48,7 @@ $allresults = $result->getSumResultByHero(40);
             <div class="lol_row">
                 <div class="lol_rb"><?php echo $i ?></div>
                 <div class="lol_name"><?php echo substr($item->uusername,0,12) ?></div>
-                <div class="lol_champion"><?php echo $item->heroname ?></div>
+                <div class="lol_champion"></div>
                 <div class="lol_win"><?php echo $item->value ?></div>
             </div>
 
