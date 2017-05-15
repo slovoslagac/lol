@@ -47,7 +47,23 @@ $tableId = 'tabReservations';
                                 <option value="<?php echo $item->arenausername ?>"></option>
                             <?php } ?>
                         </datalist>
-                        <input type="text" id="user_pc" name="pc" value="" placeholder="11,12,13,14" class="login" required/>
+                        <div class="field">
+                            <fieldset>
+                                <legend>Broj računara</legend>
+                                <?php
+                                for ($k = 1; $k < 34; $k++) {
+                                    $rest = fmod($k, $step);
+                                    ?>
+                                    <input type="checkbox" name="cmp[]" value="<?php echo $k ?>">
+                                    <small><?php echo $k ?></small>
+
+
+                                    <?php
+                                }
+                                ?>
+                            </fieldset>
+                        </div> <!-- /field -->
+
                     </div>
                     <div class="modal-footer">
                         <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
@@ -103,17 +119,18 @@ $tableId = 'tabReservations';
             $rest = fmod($countItems, $step);
             $numOfRows = $step - $rest;
             if ($rest > 0) {
-            for ($k = 1; $k <= $numOfRows; $k++) { ?>
-                <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                for ($k = 1; $k <= $numOfRows; $k++) { ?>
+                    <tr id="add<?php echo "$tableId$k" ?>" <?php echo ($numPages > 1) ? "class=\"hide\"" : "" ?>>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
 
 
-            <?php } }?>
+                <?php }
+            } ?>
             </tbody>
         </table>
     </div>

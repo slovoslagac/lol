@@ -1,19 +1,19 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
-
-
-if (!$session->isLoggedIn()) {
-    redirectTo("login.php");
-}
-
-if (isset($_POST["logout"])) {
-    echo "Izlogovali smo se <br>";
-    $session->logout();
-    header("Location:index.php");
-}
-
-$wrk = new worker();
-$currentWorker = $wrk->getWorkerById($session->userid);
+//
+//
+//if (!$session->isLoggedIn()) {
+//    redirectTo("login.php");
+//}
+//
+//if (isset($_POST["logout"])) {
+//    echo "Izlogovali smo se <br>";
+//    $session->logout();
+//    header("Location:index.php");
+//}
+//
+//$wrk = new worker();
+//$currentWorker = $wrk->getWorkerById($session->userid);
 
 
 if (isset($_POST["saveInfo"])) {
@@ -27,8 +27,7 @@ $dateNow = new DateTime();
 $dateNow = $dateNow->format("Y-m-d");
 
 
-
-$currentpage =  basename($_SERVER["SCRIPT_FILENAME"]);
+$currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
 ?>
 <div class="main">
@@ -64,26 +63,33 @@ include $menuLayout;
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
+
                             <ul class="news-items">
 
                                 <?php
                                 foreach ($allInfo as $item) { ?>
 
                                     <li>
-                                        <div class="news-item-date"><span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span>
+
+                                        <div class="news-item-date">
+                                            <span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span>
                                         </div>
-                                        <div class="news-item-detail"><a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title"
-                                                                         target="_blank"><?php echo $item->tittle; ?></a>
+                                        <div class="news-item-detail">
+                                            <a href="#" class="news-item-title" target="_blank"><?php echo $item->tittle; ?></a>
                                             <p class="news-item-preview"><?php echo $item->text; ?></p>
                                         </div>
+                                        <form action="current_info.php" method="post">
+                                        <input class="text-center btn" type="submit" value="promeni">
+                                        <input type="hidden" value="<?php echo $item->id?>" name="infoNumber">
+                                        </form>
                                     </li>
-
 
                                     <?php
                                 }
                                 unset($allInfo, $info); ?>
 
                             </ul>
+
                         </div>
                         <!-- /widget-content -->
 

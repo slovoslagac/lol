@@ -99,10 +99,15 @@ if (isset($_POST['cancelation'])) {
 
 if (isset($_POST["makeReservation"])) {
     try {
+        $cmpArray = array();
+        foreach ($_POST['cmp'] as $cmp) {
+            array_push($cmpArray, $cmp);
+        }
+        $currentCmpArray = implode(',', $cmpArray);
         $selectedUser = $u->getUserByUsername($_POST["user"]);
         $selectedUserId = $selectedUser->id;
         $res = new reservation();
-        $res->addReservation($_POST["datetime"], $_POST["pc"], $selectedUserId, $session->userid);
+        $res->addReservation($_POST["datetime"], $currentCmpArray, $selectedUserId, $session->userid);
         unset($res);
         header("Location:index.php#reservations");
     } catch (Exception $e) {
@@ -136,13 +141,14 @@ include $menuLayout;
                         <div class="widget-content">
                             <ul class="news-items">
                                 <?php $info = new info();
-                                $allInfo = $info->getAllInformations(0, 3);
+                                $allInfo = $info->getAllInformations(0, 4);
                                 foreach ($allInfo as $item) { ?>
                                     <li>
-
-                                        <div class="news-item-date"><span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span>
+                                        <div class="news-item-date">
+                                            <span class="news-item-day"><?php echo $item->tmpdate; ?></span> <span class="news-item-month"><?php echo $item->month; ?></span>
                                         </div>
-                                        <div class="news-item-detail"><a href="http://www.egrappler.com/thursday-roundup-40/" class="news-item-title" target="_blank"><?php echo $item->tittle; ?></a>
+                                        <div class="news-item-detail">
+                                            <a href="#" class="news-item-title" target="_blank"><?php echo $item->tittle; ?></a>
                                             <p class="news-item-preview"><?php echo $item->text; ?></p>
                                         </div>
 
@@ -163,7 +169,8 @@ include $menuLayout;
                     <?php
                     include $tableBonusHours;
 
-                    include $tableCompetitionByHero; ?>
+                    $tableType = 2;
+                    include $tableCompetitionByUser; ?>
 
                 </div>
 

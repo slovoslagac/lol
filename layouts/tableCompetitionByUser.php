@@ -7,6 +7,7 @@ $numPages = ceil($countItems / $step);
 $tableId = 'tabSum';
 
 
+
 ?>
 <div class="widget widget-table action-table">
     <div class="widget-header"><i class="icon-trophy"></i>
@@ -22,33 +23,52 @@ $tableId = 'tabSum';
                 </a>
             <?php } ?>
         </h3>
-
     </div>
     <!-- /widget-header -->
     <div class="widget-content">
         <table class="table table-striped table-bordered">
             <thead>
-            <tr>
-                <th width="20"> RB</th>
-                <th> Username</th>
-                <th width="40"> Uk. Poena</th>
-                <th width="40"> Preostalo poena</th>
-                <th width="40"></th>
-            </tr>
+            <?php if ($tableType == 1) { ?>
+                <tr>
+                    <th width="20"> RB</th>
+                    <th> Username</th>
+                    <th width="40"> Uk. Poena</th>
+                    <th width="40"> Preostalo poena</th>
+                    <th width="40"></th>
+                </tr>
+            <?php } elseif ($tableType == 2) { ?>
+                <tr>
+                    <th width="20"> RB</th>
+                    <th>Arena Username</th>
+                    <th width="40"> LOL Username</th>
+                    <th width="40"> Poeni</th>
+                </tr>
+            <?php } ?>
             </thead>
             <tbody>
             <?php
             $i = 1;
-
-            foreach ($allresults as $item) { ?>
-                <tr id="<?php echo "$tableId$i" ?>">
-                    <td class="center"><?php echo $i ?></td>
-                    <td><?php echo $item->uusername ?></td>
-                    <td class="center"><?php echo $item->value ?></td>
-                    <td class="center"><?php echo $item->value - $item->used_points ?></td>
-                    <td class="center"><a href="#vracanje" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
-                </tr>
-                <?php $i++;
+            foreach ($allresults as $item) {
+                if ($tableType == 1) {
+                    ?>
+                    <tr id="<?php echo "$tableId$i" ?>">
+                        <td class="center"><?php echo $i ?></td>
+                        <td><?php echo $item->uusername ?></td>
+                        <td class="center"><?php echo $item->value ?></td>
+                        <td class="center"><?php echo $item->value - $item->used_points ?></td>
+                        <td class="center"><a href="#vracanje" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
+                    </tr>
+                    <?php $i++;
+                } elseif ($tableType == 2) {
+                    ?>
+                    <tr id="<?php echo "$tableId$i" ?>">
+                        <td class="center"><?php echo $i ?></td>
+                        <td><?php echo $item->uusername ?></td>
+                        <td class="center"><?php echo $item->sumname ?></td>
+                        <td class="center"><?php echo $item->value ?></td>
+                    </tr>
+                    <?php $i++;
+                }
             }
             $rest = fmod($countItems, $step);
             $numOfRows = $step - $rest;
@@ -59,19 +79,14 @@ $tableId = 'tabSum';
                         <td></td>
                         <td></td>
                         <td></td>
+                        <?php if ($tableType == 1) {?>
                         <td></td>
-
+                        <?php } ?>
                     </tr>
-
-
                 <?php }
             }
             unset($result, $allresults, $countItems, $numPages, $tableId); ?>
             </tbody>
-
         </table>
-
-
     </div>
-
 </div>

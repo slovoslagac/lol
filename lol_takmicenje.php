@@ -11,8 +11,9 @@ include $menuLayout;
         <div class="container">
             <div class="row">
                 <div class="span6">
-
-                    <?php include $tableCompetitionByUser; ?>
+                    <?php
+                    $tableType = 1;
+                     include $tableCompetitionByUser; ?>
                 </div>
 
 

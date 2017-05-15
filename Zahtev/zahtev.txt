@@ -1,11 +1,18 @@
-verzija 1.0
+novo
 
-next
--proveravati vreme unesene pobede
--Doraditi poruku kad se brise sto ne moze da se obrise.
--Uvesti lowercase controlu da li u bazi ima podataka.
-
+Rezervacije da sredimo format datuma (da bude dan-mjesec-godina) i vrijeme (da ne bude AM-PM)
+Rezervacije formular da stavimo checkbox-ove za kompjutere, umjesto text polja (jer mi rade retardi)
+Doraditi poruku kad se brise sto ne moze da se obrise.
 Da izbaci gresku na logovanju da je promasena lozinka
+
+
+current version
+Tabela LOL takmičenje da prikazuje u 3 kolone - Arena Username, LOL Username, ukupan broj pobjeda
+Informacije - nemam opciju da izbrišem ili editujem neku informaciju
+
+
+
+
 
 
 
@@ -14,6 +21,7 @@ reseno
 -Zabrana da se unosi datum i vreme posle trenutnog.
 -Ispis korisnika da se prikaze rank i pozicija umesto id-a.
 -sumu dugovanja po korisniku
-
+-Uvesti lowercase controlu da li u bazi ima podataka.
+-proveravati vreme unesene pobede
 
 
