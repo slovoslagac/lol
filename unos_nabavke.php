@@ -2,21 +2,6 @@
 
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-
-if (!$session->isLoggedIn()) {
-    redirectTo("login.php");
-}
-
-if (isset($_POST["logout"])) {
-    echo "Izlogovali smo se <br>";
-    $session->logout();
-    header("Location:index.php");
-}
-
-
-$wrk = new worker();
-$currentWorker = $wrk->getWorkerById($session->userid);
-
 $prd = new products();
 $allprd = $prd->getAllProducts();
 $countprd = count($allprd);
@@ -27,7 +12,7 @@ if(isset($_POST["saveDellivery"]) != ''){
     $formatDate = $date->format("Y-m-d");
     if ($suplierid > 0) {
         $ord = new orders();
-        $ord->addOrder($formatDate,$suplierid);
+        $ord->addOrder($formatDate,$suplierid,$session->userid);
         $maxOrder = $ord->getMaxId();
         print_r($maxOrder);
         unset($ord);

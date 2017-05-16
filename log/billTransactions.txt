@@ -4,3 +4,4 @@
 28.04.2017 16:15:30 | Editovanje racuna - edit racuna : 5 sec
 28.04.2017 16:19:49 | Editovanje racuna - edit racuna : 15, 0, 1500, normal
 28.04.2017 16:20:05 | Editovanje racuna - edit racuna : 15, 0, 350, normal
+16.05.2017 14:10:33 | Editovanje racuna - edit racuna : 20, 1, 750, popust

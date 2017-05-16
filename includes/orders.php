@@ -17,12 +17,13 @@ class orders
         return $result;
     }
 
-    public function addOrder($date, $id)
+    public function addOrder($date, $id, $wrk)
     {
         global $conn;
-        $sql = $conn->prepare("insert into orders (date, supplierid) values (:dt, :sp)");
+        $sql = $conn->prepare("insert into orders (date, supplierid, workerid) values (:dt, :sp, :wr)");
         $sql->bindParam(':dt', $date);
         $sql->bindParam(':sp', $id);
+        $sql->bindParam(':wr', $wrk);
         $sql->execute();
     }
 }
