@@ -14,11 +14,11 @@ if(isset($_POST["saveDellivery"]) != ''){
         $ord = new orders();
         $ord->addOrder($formatDate,$suplierid,$session->userid);
         $maxOrder = $ord->getMaxId();
-        print_r($maxOrder);
-        unset($ord);
-        header("Location:unos_nabavke.php");
+        print($maxOrder->id);
+        unset($ord,$suplierid);
+//        header("Location:unos_nabavke.php");
     }
-    unset($suplierid);
+
 //    echo $suplierid;
 //    header("Location:unos_nabavke.php");
 //    for ($j=1; $j <= $countprd; $j++){
@@ -45,8 +45,8 @@ include $menuLayout;
 
             <h1>Unos nabavke</h1>
 
-            <select id="selectSupplier" name="selectSupplier" >
-                <option value="0"></option>
+            <select id="selectSupplier" name="selectSupplier" required>
+                <option></option>
                 <?php $sup = new suppliers(); $allsuppliers = $sup->getAllSuppliers(); foreach ($allsuppliers as $item) {
                     ?>
                     <option

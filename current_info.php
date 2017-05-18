@@ -51,8 +51,7 @@ if(isset($_POST['editInfo'])) {
                 Naslov:
                 <input type="text" name="tittle" placeholder="Naslov" required value="<?php echo $currentInformation->tittle ?>"/><br/>
                 Tekst :
-                <input type="text" name="infoText" value="<?php echo $currentInformation->text ?>" placeholder="Text vesti" required max="1000" autofocus/><br/><br/><br/>
-
+                <input type="text" name="infoText" value="<?php echo $currentInformation->text ?>" placeholder="Text vesti" required max="1000" style="width: 500px; height: 200px" autofocus /><br/><br/><br/>
                 <input type="submit" class="btn" name="deleteInfo" value="Obriši"/>
                 <input class="btn btn-primary" type="submit" name="editInfo" value="Izmeni informaciju"/>
 
