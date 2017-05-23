@@ -1,4 +1,16 @@
-novo
+u tabeli offers id 65->69 1,3,6,10,20.
+te idijeve treba dodati u financialoffers userid i offerid
+
+
+potvrda za artikle.
+
+verzija 1.0
+
+next
+-proveravati vreme unesene pobede
+-Doraditi poruku kad se brise sto ne moze da se obrise.
+-Uvesti lowercase controlu da li u bazi ima podataka.
+>>>>>>> Stashed changes
 
 Rezervacije da sredimo format datuma (da bude dan-mjesec-godina) i vrijeme (da ne bude AM-PM)
 Rezervacije formular da stavimo checkbox-ove za kompjutere, umjesto text polja (jer mi rade retardi)
@@ -23,5 +35,10 @@ reseno
 -sumu dugovanja po korisniku
 -Uvesti lowercase controlu da li u bazi ima podataka.
 -proveravati vreme unesene pobede
+
+
+
+
+
 
 
