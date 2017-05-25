@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/init.php" afterPath="$PROJECT_DIR$/includes/init.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/error.txt" afterPath="$PROJECT_DIR$/log/error.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/resultLog.txt" afterPath="$PROJECT_DIR$/log/resultLog.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/workerLogin.txt" afterPath="$PROJECT_DIR$/log/workerLogin.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/unos_nabavke.php" afterPath="$PROJECT_DIR$/unos_nabavke.php" />
-    </list>
+    <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="" />
     <ignored path="lol.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -275,12 +269,12 @@
       <workItem from="1490304400828" duration="4847000" />
       <workItem from="1490376101349" duration="7618000" />
       <workItem from="1495573403925" duration="98000" />
-      <workItem from="1495738911500" duration="3943000" />
+      <workItem from="1495738911500" duration="4000000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24535000" />
+    <option name="totallyTimeSpent" value="24592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
