@@ -169,3 +169,8 @@ Stack trace:
 28.04.2017 16:11:49 | Editovanje racuna - error : suma - 980, details - 11, addBill - 11, 0, 980, normal
 28.04.2017 16:15:30 | Editovanje racuna - error : suma - 1120, details - 11, addBill - 11, 0, 1120, normal
 28.04.2017 16:18:57 | Editovanje racuna - error : suma - 490, details - 11, addBill - 11, 0, 490, normal
+25.05.2017 22:51:20 | Neuspelo dodavanje korisnika : userid = 5 --- exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'arenausername' cannot be null' in C:\www\lol\includes\user.php:142
+Stack trace:
+#0 C:\www\lol\includes\user.php(142): PDOStatement->execute()
+#1 C:\www\lol\lol_unos.php(23): user->addUser('Zika', 'Nikolic', NULL, 'Ljakse', '1', '2', '555333', 1, NULL)
+#2 {main}
