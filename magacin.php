@@ -16,6 +16,7 @@ include $menuLayout;
               <h3>Magacin - Mart 2017.</h3>
               <div class="controls">
                     <!-- Button to trigger modal -->
+                <a href="unos_artikala.php" role="button" class="btn">Sredi artikle</a>
                     <a href="unos_nabavke.php" role="button" class="btn">Dodaj nabavku</a>
                 </div> <!-- /controls -->
             </div>

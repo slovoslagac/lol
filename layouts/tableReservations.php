@@ -41,8 +41,8 @@ $tableId = 'tabReservations';
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <div class="modal-body">
                         <input type="datetime-local" name="datetime" min="<?php echo $now ?>" value="<?php echo $now ?>" required/><br/>
-                        <input type="text" list="user" name="user">
-                        <datalist id="user" required>
+                        <input type="text" list="user" name="user" required>
+                        <datalist id="user">
                             <?php foreach ($allusers as $item) { ?>
                                 <option value="<?php echo $item->arenausername ?>"></option>
                             <?php } ?>
