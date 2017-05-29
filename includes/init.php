@@ -41,6 +41,7 @@ require INC_PATH . DS . 'sellingproduct.php';
 require INC_PATH . DS . 'bill.php';
 require INC_PATH . DS . 'billrows.php';
 require INC_PATH . DS . 'supplies.php';
+require INC_PATH . DS . 'producttypes.php';
 
 
 //Layouts
