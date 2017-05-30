@@ -3682,6 +3682,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endCo
 
 .center {
     text-align:center !important;
+	padding-left:11px;
 }
 
 .controls {

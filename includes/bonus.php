@@ -54,6 +54,15 @@ FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(sta
 
         return $resultArray;
     }
+
+    public function getMonthlyBonusObjects($month){
+        global $conn;
+        $sql = $conn->prepare("select * from bonushours where monthNum = :mt");
+        $sql->bindParam(':mt',$month);
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
     
 
 }

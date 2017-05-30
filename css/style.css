@@ -37,6 +37,7 @@ textarea {
 
 .table td {
 	vertical-align: middle;
+    height:20px;
 }
 
 .table-bordered th {
@@ -350,22 +351,13 @@ textarea {
 	
 	height: 40px;
 	line-height: 40px;
+	background: #00ba8b !important;
+
 	
-	background: #f9f6f1;
-	background:-moz-linear-gradient(top, #f9f6f1 0%, #f2efea 100%); /* FF3.6+ */
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f6f1), color-stop(100%,#f2efea)); /* Chrome,Safari4+ */
-	background:-webkit-linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* Chrome10+,Safari5.1+ */
-	background:-o-linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* Opera11.10+ */
-	background:-ms-linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* IE10+ */
-	background:linear-gradient(top, #f9f6f1 0%,#f2efea 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f6f1', endColorstr='#f2efea');
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f6f1', endColorstr='#f2efea')";
-	
-	
+	color:#fff;
 	border: 1px solid #d6d6d6;
 	
 	
-	-webkit-background-clip: padding-box;
 }	
 	
 	.widget-header h3 {
@@ -379,10 +371,10 @@ textarea {
 		
 		font-size: 14px;
 		font-weight: 800;
-		color: #525252;
+		color: #fff;
 		line-height: 18px;
 		
-		text-shadow: 1px 1px 2px rgba(255,255,255,.5);
+		text-shadow: 1px 1px 2px rgba(0,0,0,.5);
 	}
 	
 		.widget-header [class^="icon-"], .widget-header [class*=" icon-"] {
@@ -1281,3 +1273,4 @@ color: #333;
 	}
 	
 }
+
