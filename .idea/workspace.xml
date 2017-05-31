@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CalculateFinancialOffers.php" afterPath="$PROJECT_DIR$/CalculateFinancialOffers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/zahtev.txt" afterPath="$PROJECT_DIR$/Zahtev/zahtev.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/bonus.php" afterPath="$PROJECT_DIR$/includes/bonus.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/financialoffers.php" afterPath="$PROJECT_DIR$/includes/financialoffers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/init.php" afterPath="$PROJECT_DIR$/includes/init.php" />
-    </list>
+    <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="" />
     <ignored path="lol.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -379,7 +372,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1034" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18923241" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
