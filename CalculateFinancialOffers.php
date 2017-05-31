@@ -8,18 +8,16 @@
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 $newbonus = new bonus();
-$MonthlyBonusList = $newbonus->getMonthlyBonusObjects(3);
-$i=1;
+$MonthlyBonusList = $newbonus->getMonthlyBonusObjects(5);
+$i = 1;
 $allFinancialOffers = array();
 
 
-foreach($MonthlyBonusList as $item){
-    if($item->numHours > 0) {
-    $tmpOffer = new financialoffers($item->SLuserId, $item->numHours);
-    array_push($allFinancialOffers, $tmpOffer);
-}}
-
-
-foreach($allFinancialOffers as $item) {
-    echo "$item->userid - $item->numHours($item->numMinutes) - $item->bonusId<br>";
+foreach ($MonthlyBonusList as $item) {
+    if ($item->numHours > 0) {
+        $tmpOffer = new financialoffers($item->SLuserId, $item->numHours);
+        $tmpOffer->insertOffer();
+    }
 }
+
+

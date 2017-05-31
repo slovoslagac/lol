@@ -2,6 +2,9 @@ u tabeli offers id 65->69 1,3,6,10,20.
 te idijeve treba dodati u financialoffers userid i offerid
 
 
+update trenutnog ranka;
+
+
 potvrda za artikle.
 
 verzija 1.0

@@ -43,7 +43,7 @@ FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(sta
 
     public function getMonthlyBonus($month){
         global $conn;
-        $sql = $conn->prepare("select * from bonushours where monthNum = :mt");
+        $sql = $conn->prepare("select * from bonushours where monthNum = :mt ");
         $sql->bindParam(':mt',$month);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
@@ -57,7 +57,7 @@ FROM statisticsmain JOIN users ON statisticsmain.UserID=users.Id WHERE MONTH(sta
 
     public function getMonthlyBonusObjects($month){
         global $conn;
-        $sql = $conn->prepare("select * from bonushours where monthNum = :mt");
+        $sql = $conn->prepare("select * from bonushours where monthNum = :mt order by numHours desc");
         $sql->bindParam(':mt',$month);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);

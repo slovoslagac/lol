@@ -55,4 +55,10 @@ $tableBonusHours = LAYOUT_PATH.DS.'tableBonusHours.php';
 $tableBonusHoursNPByMonth = LAYOUT_PATH.DS.'tableBonusHoursNoPagingByMonth.php';
 $tableReservations = LAYOUT_PATH.DS.'tableReservations.php';
 $tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
+
 //Logs
+
+
+//Variables
+
+$appEmployeeId = 38;
