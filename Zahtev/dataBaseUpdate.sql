@@ -1,3 +1,21 @@
+-----Ver 1.3--------
+
+CREATE TABLE IF NOT EXISTS `lol`.`transactionallog` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `monthid` INT(9) NULL DEFAULT NULL,
+  `logtype` INT(5) NULL DEFAULT NULL,
+  `comment` VARCHAR(100) NULL DEFAULT NULL,
+  `tstamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX `logindex` (`id` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+
+ALTER TABLE `lol`.`transactionallog`
+ADD UNIQUE INDEX `loguniq` (`monthid` ASC, `logtype` ASC);
+
+
 -----Ver 1.2--------
 -----------
 CREATE TABLE IF NOT EXISTS `lol`.`bills` (

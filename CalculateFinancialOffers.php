@@ -7,17 +7,29 @@
  */
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-$newbonus = new bonus();
-$MonthlyBonusList = $newbonus->getMonthlyBonusObjects(5);
-$i = 1;
-$allFinancialOffers = array();
+$curentMonth = 5;
+
+$tmpLog = new transactionallog($curentMonth, 1);
+$tmpLogData = $tmpLog->checkMonthLog();
+
+if($tmpLogData != '') {
+    echo "Vec su uneti podaci za taj mesec!!!";
+} else {
+    $tmpLog->addMonthLog();
+    $newbonus = new bonus();
+    $MonthlyBonusList = $newbonus->getMonthlyBonusObjects($curentMonth);
+    $i = 1;
+    $allFinancialOffers = array();
 
 
-foreach ($MonthlyBonusList as $item) {
-    if ($item->numHours > 0) {
-        $tmpOffer = new financialoffers($item->SLuserId, $item->numHours);
-        $tmpOffer->insertOffer();
+    foreach ($MonthlyBonusList as $item) {
+        if ($item->numHours > 0) {
+            $tmpOffer = new financialoffers($item->SLuserId, $item->numHours);
+            $tmpOffer->insertOffer();
+        }
     }
 }
+
+
 
 
