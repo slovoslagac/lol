@@ -1,19 +1,49 @@
 -----Ver 1.3--------
+ALTER TABLE `lol`.`suppliers`
+DROP FOREIGN KEY `wrkidflinf00`;
 
-CREATE TABLE IF NOT EXISTS `lol`.`transactionallog` (
-  `id` INT(5) NOT NULL AUTO_INCREMENT,
-  `monthid` INT(9) NULL DEFAULT NULL,
-  `logtype` INT(5) NULL DEFAULT NULL,
-  `comment` VARCHAR(100) NULL DEFAULT NULL,
-  `tstamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  INDEX `logindex` (`id` ASC))
+ALTER TABLE `lol`.`suppliers`
+DROP COLUMN `workerid`,
+DROP INDEX `wrkidfkey_idx` ;
+
+
+ALTER TABLE `lol`.`billsrows`
+ADD INDEX `billfkid_idx` (`billrid` ASC);
+
+CREATE TABLE IF NOT EXISTS `lol`.`sellingproductdetails` (
+  `id` INT(5) NOT NULL,
+  `quantity` INT(2) NULL DEFAULT NULL,
+  `productid` INT(5) NULL DEFAULT NULL,
+  `selingproductid` INT(5) NULL DEFAULT NULL,
+  INDEX `selporind` (`id` ASC),
+  INDEX `fkproduct_idx` (`productid` ASC),
+  INDEX `fksellprodid_idx` (`selingproductid` ASC),
+  CONSTRAINT `fkproduct`
+    FOREIGN KEY (`productid`)
+    REFERENCES `lol`.`products` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fksellprodid`
+    FOREIGN KEY (`selingproductid`)
+    REFERENCES `lol`.`sellingproducts` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+DROP TABLE IF EXISTS `lol`.`supplies_status` ;
+
+ALTER TABLE `lol`.`billsrows`
+ADD CONSTRAINT `billfkid`
+  FOREIGN KEY (`billrid`)
+  REFERENCES `lol`.`bills` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 
 
 
-ALTER TABLE `lol`.`transactionallog`
-ADD UNIQUE INDEX `loguniq` (`monthid` ASC, `logtype` ASC);
+
 
 
 -----Ver 1.2--------
@@ -30,6 +60,10 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
+
+ALTER TABLE `lol`.`transactionallog`
+ADD UNIQUE INDEX `loguniq` (`monthid` ASC, `logtype` ASC);
+
 -----------------------------
 CREATE TABLE IF NOT EXISTS `lol`.`billsrows` (
   `id` INT(5) NOT NULL AUTO_INCREMENT,
@@ -44,7 +78,15 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 
-
+CREATE TABLE IF NOT EXISTS `lol`.`transactionallog` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `monthid` INT(9) NULL DEFAULT NULL,
+  `logtype` INT(5) NULL DEFAULT NULL,
+  `comment` VARCHAR(100) NULL DEFAULT NULL,
+  `tstamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX `logindex` (`id` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
 
