@@ -44,6 +44,8 @@ require INC_PATH . DS . 'supplies.php';
 require INC_PATH . DS . 'producttypes.php';
 require INC_PATH . DS . 'financialoffers.php';
 require INC_PATH . DS . 'transactionallog.php';
+require INC_PATH . DS . 'spPrice.php';
+require INC_PATH . DS . 'spDetails.php';
 
 
 //Layouts

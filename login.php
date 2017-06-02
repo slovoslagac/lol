@@ -92,7 +92,7 @@ if (isset($_POST["submit"])) {
                 <div class="field">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" value="" placeholder="Vaš e-mail"
-                           class="login username-field"/>
+                           class="login username-field" autofocus/>
                 </div> <!-- /field -->
 
                 <div class="field">

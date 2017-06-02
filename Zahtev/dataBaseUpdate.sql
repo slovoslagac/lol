@@ -10,7 +10,7 @@ DROP INDEX `wrkidfkey_idx` ;
 ALTER TABLE `lol`.`billsrows`
 ADD INDEX `billfkid_idx` (`billrid` ASC);
 
-CREATE TABLE IF NOT EXISTS `lol`.`sellingproductdetails` (
+CREATE TABLE IF NOT EXISTS `lol`.`sellingproductsdetails` (
   `id` INT(5) NOT NULL,
   `quantity` INT(2) NULL DEFAULT NULL,
   `productid` INT(5) NULL DEFAULT NULL,
@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `lol`.`sellingproductdetails` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
 
 DROP TABLE IF EXISTS `lol`.`supplies_status` ;
 

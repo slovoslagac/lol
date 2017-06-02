@@ -47,7 +47,8 @@ if (isset($_POST['payment'])) {
                 $discountuserid = 0;
                 $pricetype = 'normal';
             }
-            try {
+			
+           try {
                 $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype);
                 $tmplastbill = $bill->getLastBill();
                 $tmpid = $tmplastbill->id;
@@ -101,6 +102,7 @@ if (isset($_POST['paymentEdit'])) {
                 $discountuserid = 0;
                 $pricetype = 'normal';
             }
+
             try {
 
                 $bill->updateBillById($billIdForEdit, $discountuserid, $billSum, $pricetype);
@@ -128,7 +130,7 @@ if (isset($_POST['paymentEdit'])) {
             }
 
             unset($discountuserid, $billSum, $pricetype);
-//            header("Location:$currentpage");
+            header("Location:$currentpage");
         } else {
             echo "<script type='text/javascript'>alert('Morate sačekati minimum 5 sekundi između 2 uzastopna računa!')</script>";
             logAction("Editovanje racuna - prebrzo kucanje racuna", "suma - $sumBillError, details - $session->userid", 'billTransactions.txt');
@@ -193,8 +195,8 @@ if(isset($_POST["paymentDelete"])){
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
         <input type="text" name="selectuser" placeholder="Anonymus" list="allusers" id="selectuser" oninput="recalculate()">
         <datalist id="allusers">
-            <option value="proske - popust"></option>
-            <option value="Preletacevic - normal"></option>
+            <option value="damir@kokeza.com - popust"></option>
+            <option value="dado@gmail.com - normal"></option>
         </datalist>
         <div id="billBody">
         </div>
@@ -241,19 +243,25 @@ include $footerMenuLayout;
         echo "{id: $item->id , name: '$item->name' , price: $item->value},";
     }?>];
 
-    var billDetails = [<?php $tmpbilldetailid = 0; foreach ($tmpBillsDetails as $item) {
-        if ($tmpbilldetailid != $item->billid) {
-            if ($tmpbilldetailid > 0) {
-                echo "]},";
-            };
-            $tmpbilldetailid = $item->billid;
-            ($item->username != '' )? $type = $item->username.' - '.$item->pricetype : $type = '';
-            echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid},";
-        } else {
-            echo "{num: $item->amount, id: $item->productid},";
-        }
+    var billDetails = [<?php
+            $tmpbilldetailid = 0;
+            foreach ($tmpBillsDetails as $item) {
+                if ($tmpbilldetailid != $item->billid) {
+                    if ($tmpbilldetailid > 0) {
+                        echo "]},";
+                    };
+                    $tmpbilldetailid = $item->billid;
+                    ($item->username != '') ? $type = $item->username . ' - ' . $item->pricetype : $type = '';
+                    echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid},";
+                } else {
+                    echo "{num: $item->amount, id: $item->productid},";
+                }
 
-    } echo "]}";?>];
+            }
+            echo ($tmpbilldetailid > 0) ?  "]}" : "";
+
+
+        ?>];
 
 
     var product = 0;

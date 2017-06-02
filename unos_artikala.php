@@ -8,7 +8,8 @@ $allProductTypes = $tmptype->getAllProductTypes();
 $tmpproduct = new products();
 $allProducts = $tmpproduct->getAllProducts();
 $maxArticles = 5;
-$arlticleList = array();
+$articleList = array();
+$articleQuantities = array();
 
 if (isset($_POST["addArticle"])) {
     $newName = $_POST["productName"];
@@ -20,14 +21,42 @@ if (isset($_POST["addArticle"])) {
     header("Location:unos_artikala.php");
 }
 
-if(isset($_POST["createArticle"])){
-    for($j=1; $j<= $maxArticles; $j++){
-        if($_POST["item$j"] != ''){
-            $arlticleList[$_POST['item'.$j]] = $_POST['item'.$j.'quantity'] ;
+if (isset($_POST["createArticle"])) {
+    for ($j = 1; $j <= $maxArticles; $j++) {
+        if ($_POST["item$j"] != '') {
+            array_push($articleList, $_POST["item$j"]);
+            $articleQuantities[$_POST['item' . $j]] = $_POST['item' . $j . 'quantity'];
         }
     }
 
-    print_r($arlticleList);
+    if (count($articleList) > 0) {
+        $selingArticleDetail = new spDetails();
+        try {
+            $currentTime = round(microtime(true) * 1000);
+            $currentName = $_POST["name"];
+            $currentType = $_POST["articleType"];
+            $normalPrice = $_POST["price"];
+            $discountPrice = $_POST["discount_price"];
+            $currentProduct = new sellingproduct($currentName, $currentType);
+            $currentProduct->addNewSellingProduct();
+            $newSellingProduct = $currentProduct->getSellingProductByName();
+            $articleId = $newSellingProduct->id;
+            $tmpPrice = new spPrice();
+            $tmpPrice->addselingproductprice($articleId, $normalPrice, 'normal');
+            $tmpPrice->addselingproductprice($articleId, $discountPrice, 'popust');
+        } catch (Exception $e) {
+            logAction("Dodavanje novih artikala za prodaju cene i artikal - error", "userid = $session->userid --- $e | $currentName - $currentType - $normalPrice - $discountPrice", 'error.txt');
+        }
+
+        try {
+            foreach($articleList as $article){
+                $selingArticleDetail->addSPdetail($articleQuantities[$article],$article, $articleId);
+            }
+        } catch (Exception $e) {
+            logAction("Dodavanje novih artikala detalji - error", "userid = $session->userid --- $e | $articleList \n $articleQuantities", 'error.txt');
+        }
+
+    }
 }
 
 $currentpage = 'magacin.php';
@@ -82,24 +111,35 @@ include $menuLayout;
                 <div
                 ">
                 <div class="span12">
-                    <input type="text" name="name" placeholder="Naziv" required>
+                    <input type="text" name="name" placeholder="Naziv" required autofocus>
+                    <select class="span2" name="articleType">
+                        <?php
+                        foreach ($allProductTypes as $item) {
+                            ?>
+                            <option value="<?php echo $item->id ?>"><?php echo $item->name ?></option>
+                            <?php
+                        }
+                        ?>
+
+                    </select>
                 </div>
                 <div class="span12">
                     <input type="number" step="0.01" name="price" placeholder="Cena" required>
                     <input type="number" step="0.01" name="discount_price" placeholder="Cena sa popustom" required>
                 </div>
                 <br>
-                <div class="span4">
+
+                <div class="span6">
                     <?php for ($i = 1; $i <= $maxArticles; $i++) { ?>
 
-                        <select name="item<?php echo $i ?>">
+                        <select name="item<?php echo $i ?>" class="span3">
                             <option value=""></option>
                             <?php foreach ($allProducts as $item) { ?>
-                                <option value="<?php echo $item->id ?>"><?php echo "$item->productname ($item->producttype)" ?></option>
+                                <option value="<?php echo $item->id ?>"><?php echo "$item->productname" ?></option>
                             <?php } ?>
                         </select>
 
-                        <input type="number" name="item<?php echo $i ?>quantity" value="1">
+                        <input class="span1" type="number" name="item<?php echo $i ?>quantity" value="1">
                         <?php
                     } ?>
                 </div>
