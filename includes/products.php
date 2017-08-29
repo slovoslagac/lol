@@ -38,4 +38,14 @@ where p.typeid = pt.id order by 2, 1");
     }
 
 
+    public function checkProduct(){
+        global $conn;
+        $sql = $conn->prepare("select * from products where name = :nm and typeid = :tp");
+        $sql->bindParam(":nm", $this->name);
+        $sql->bindParam(":tp", $this->type);
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
 }

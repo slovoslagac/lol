@@ -16,7 +16,9 @@ if (isset($_POST["addArticle"])) {
     $newId = $_POST["producttype"];
     settype($newId, "integer");
     $newArticle = new products($newName, $newId);
-    $newArticle->addNewProduct();
+    if ($newArticle->checkProduct() == '') {
+        $newArticle->addNewProduct();
+    }
     unset($newArticle);
     header("Location:unos_artikala.php");
 }
@@ -49,8 +51,8 @@ if (isset($_POST["createArticle"])) {
         }
 
         try {
-            foreach($articleList as $article){
-                $selingArticleDetail->addSPdetail($articleQuantities[$article],$article, $articleId);
+            foreach ($articleList as $article) {
+                $selingArticleDetail->addSPdetail($articleQuantities[$article], $article, $articleId);
             }
         } catch (Exception $e) {
             logAction("Dodavanje novih artikala detalji - error", "userid = $session->userid --- $e | $articleList \n $articleQuantities", 'error.txt');
@@ -62,7 +64,6 @@ if (isset($_POST["createArticle"])) {
 $currentpage = 'magacin.php';
 include $menuLayout;
 ?>
-
 <div class="span9 pull-left">
     <div class="order-container register">
 
@@ -150,8 +151,8 @@ include $menuLayout;
         </form>
 
     </div> <!-- /content -->
-
 </div>
+
 
 </div> <!-- /account-container -->
 
