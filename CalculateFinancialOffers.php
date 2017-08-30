@@ -7,9 +7,9 @@
  */
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-$curentMonth = 5;
+$month = 5;
 
-$tmpLog = new transactionallog($curentMonth, 1);
+$tmpLog = new transactionallog($month, 1);
 $tmpLogData = $tmpLog->checkMonthLog();
 
 if($tmpLogData != '') {
@@ -17,7 +17,7 @@ if($tmpLogData != '') {
 } else {
     $tmpLog->addMonthLog();
     $newbonus = new bonus();
-    $MonthlyBonusList = $newbonus->getMonthlyBonusObjects($curentMonth);
+    $MonthlyBonusList = $newbonus->getMonthlyBonusObjects($month);
     $i = 1;
     $allFinancialOffers = array();
 

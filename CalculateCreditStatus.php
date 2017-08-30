@@ -3,9 +3,10 @@
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 
-$currentDate = new dateTime();
-$currentMonth = $currentDate->format('n');
-$month = $currentMonth -1;
+//$currentDate = new dateTime();
+//$currentMonth = $currentDate->format('n');
+//$month = $currentMonth -1;
+$month = 3;
 
 $user = new user();
 $bonus = new bonus;

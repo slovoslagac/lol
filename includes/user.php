@@ -160,17 +160,13 @@ order by r.order,3 limit :lt");
 
     public function resetCreditStatus($val = 0, $ar = '') {
         global $conn;
-
         if($ar == '') {
             $sql = $conn->prepare("Update users set creditstatus = :vl where usertype = 1");
         } else {
-            $sql = $conn->prepare("Update users set creditstatus = :vl and SluserId in ($ar) and usertype = 1");
+            $sql = $conn->prepare("Update users set creditstatus = :vl where SluserId in ($ar) and usertype = 1");
         }
-        $sql->bindParam(':vl', $val);
-
-
+        $sql->bindParam(":vl", $val);
         $sql->execute();
-        var_dump($sql);
     }
 
 

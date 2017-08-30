@@ -1,0 +1,6 @@
+30.08.2017 14:42:37 | Obracunavam bonus za mesec : 3
+30.08.2017 14:42:37 | Obracunavam status credita za :  mesec
+30.08.2017 14:42:38 | Dodajem bonus sate na osnovu obracuna za  :  mesec
+30.08.2017 14:43:12 | Obracunavam bonus za mesec : 3
+30.08.2017 14:43:40 | Obracunavam status credita za : 3 mesec
+30.08.2017 14:43:41 | Dodajem bonus sate na osnovu obracuna za  : 3 mesec
