@@ -1,3 +1,22 @@
+-----Ver 1.4--------
+
+
+CREATE TABLE IF NOT EXISTS `lol`.`shifts` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `starttime` DATETIME NOT NULL,
+  `endtime` DATETIME NULL DEFAULT NULL,
+  `status` INT(1) NOT NULL,
+  `userstart` INT(9) NULL DEFAULT NULL,
+  `userend` INT(9) NULL DEFAULT NULL,
+  INDEX `uniqueshift` (`id` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+
+
+
+
 -----Ver 1.3--------
 ALTER TABLE `lol`.`suppliers`
 DROP FOREIGN KEY `wrkidflinf00`;

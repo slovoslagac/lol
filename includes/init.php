@@ -46,6 +46,7 @@ require INC_PATH . DS . 'financialoffers.php';
 require INC_PATH . DS . 'transactionallog.php';
 require INC_PATH . DS . 'spPrice.php';
 require INC_PATH . DS . 'spDetails.php';
+require INC_PATH . DS . 'shift.php';
 
 
 //Layouts
