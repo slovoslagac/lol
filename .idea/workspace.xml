@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30acb569-c260-484e-b479-a22f369adba3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" afterPath="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/init.php" afterPath="$PROJECT_DIR$/includes/init.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/shift.php" afterPath="$PROJECT_DIR$/includes/shift.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/workerLogin.txt" afterPath="$PROJECT_DIR$/log/workerLogin.txt" />
     </list>
     <ignored path="lol.iws" />
@@ -27,22 +25,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="shift.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/user.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-21.192308">
+              <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+              <folding>
+                <marker date="1504096703060" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
+                <marker date="1504096703060" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
+                <marker date="1504096703060" expanded="true" signature="1307:1600" placeholder="SELECT u.nam... users" />
+                <marker date="1504096703060" expanded="true" signature="1855:1917" placeholder="Insert into users... " />
+                <marker date="1504096703060" expanded="true" signature="2178:2259" placeholder="Insert into users... " />
+                <marker date="1504096703060" expanded="true" signature="3537:3699" placeholder="insert into users... " />
+                <marker date="1504096703060" expanded="true" signature="4365:4519" placeholder="update users... " />
+                <marker date="1504096703060" expanded="true" signature="5125:5179" placeholder="Update users... " />
+                <marker date="1504096703060" expanded="true" signature="5235:5311" placeholder="Update users... " />
+                <marker date="1504096703060" expanded="true" signature="5507:5539" placeholder="delete from " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shift.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/shift.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.23820755">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <marker date="1506001777545" expanded="true" signature="306:370" placeholder="select * fro... shifts" />
+                <marker date="1506001777545" expanded="true" signature="572:636" placeholder="select * fro... shifts" />
+                <marker date="1506001777545" expanded="true" signature="837:910" placeholder="insert into shifts... " />
+                <marker date="1506001777545" expanded="true" signature="1089:1166" placeholder="update shift... " />
+                <marker date="1506001777545" expanded="true" signature="1095:1166" placeholder="insert into shifts... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dataBaseUpdate.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql">
+      <file leaf-file-name="tests.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3109756">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-8.5">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding>
+                <element signature="e#6#86#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,7 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/layouts/tableCredits.php" />
         <option value="$PROJECT_DIR$/includes/credit.php" />
         <option value="$PROJECT_DIR$/layouts/headerMenu.php" />
         <option value="$PROJECT_DIR$/includes/session.php" />
@@ -112,8 +148,9 @@
         <option value="$PROJECT_DIR$/log/monthlyCalculation.txt" />
         <option value="$PROJECT_DIR$/MonthlyScheduler.php" />
         <option value="$PROJECT_DIR$/includes/init.php" />
-        <option value="$PROJECT_DIR$/includes/shift.php" />
         <option value="$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql" />
+        <option value="$PROJECT_DIR$/tests.php" />
+        <option value="$PROJECT_DIR$/includes/shift.php" />
       </list>
     </option>
   </component>
@@ -283,7 +320,7 @@
     <option name="totallyTimeSpent" value="24592000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1034" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1034" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.118336886" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -340,13 +377,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/includes/supplies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -515,13 +545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06014151">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/magacin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -671,25 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61955243">
-          <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
-          <folding>
-            <marker date="1504096703060" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
-            <marker date="1504096703060" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
-            <marker date="1504096703060" expanded="true" signature="1307:1600" placeholder="SELECT u.nam... users" />
-            <marker date="1504096703060" expanded="true" signature="1855:1917" placeholder="Insert into users... " />
-            <marker date="1504096703060" expanded="true" signature="2178:2259" placeholder="Insert into users... " />
-            <marker date="1504096703060" expanded="true" signature="3537:3699" placeholder="insert into users... " />
-            <marker date="1504096703060" expanded="true" signature="4365:4519" placeholder="update users... " />
-            <marker date="1504096703060" expanded="true" signature="5125:5179" placeholder="Update users... " />
-            <marker date="1504096703060" expanded="true" signature="5235:5311" placeholder="Update users... " />
-            <marker date="1504096703060" expanded="true" signature="5507:5539" placeholder="delete from " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/log/monthlyCalculation.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.038857143">
@@ -717,19 +721,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shift.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Zahtev/dataBaseUpdate.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3109756">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.192308">
+          <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+          <folding>
+            <marker date="1504096703060" expanded="true" signature="358:628" placeholder="SELECT u.nam... users" />
+            <marker date="1504096703060" expanded="true" signature="832:1088" placeholder="SELECT u.nam... users" />
+            <marker date="1504096703060" expanded="true" signature="1307:1600" placeholder="SELECT u.nam... users" />
+            <marker date="1504096703060" expanded="true" signature="1855:1917" placeholder="Insert into users... " />
+            <marker date="1504096703060" expanded="true" signature="2178:2259" placeholder="Insert into users... " />
+            <marker date="1504096703060" expanded="true" signature="3537:3699" placeholder="insert into users... " />
+            <marker date="1504096703060" expanded="true" signature="4365:4519" placeholder="update users... " />
+            <marker date="1504096703060" expanded="true" signature="5125:5179" placeholder="Update users... " />
+            <marker date="1504096703060" expanded="true" signature="5235:5311" placeholder="Update users... " />
+            <marker date="1504096703060" expanded="true" signature="5507:5539" placeholder="delete from " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.5">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shift.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23820755">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1506001777545" expanded="true" signature="306:370" placeholder="select * fro... shifts" />
+            <marker date="1506001777545" expanded="true" signature="572:636" placeholder="select * fro... shifts" />
+            <marker date="1506001777545" expanded="true" signature="837:910" placeholder="insert into shifts... " />
+            <marker date="1506001777545" expanded="true" signature="1089:1166" placeholder="update shift... " />
+            <marker date="1506001777545" expanded="true" signature="1095:1166" placeholder="insert into shifts... " />
+          </folding>
         </state>
       </provider>
     </entry>

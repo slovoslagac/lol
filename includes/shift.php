@@ -16,7 +16,35 @@ class shift
     {
     }
 
-    public function startShift(){
-
+    public function getCurrentShift(){
+        global $conn;
+        $sql = $conn->prepare("select * from shifts where status = 1 order by starttime limit 1");
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
+
+    public function getLastClosedShift(){
+        global $conn;
+        $sql = $conn->prepare("select * from shifts where status = 2 order by starttime limit 1");
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    public function startShift($userid){
+        global $conn;
+        $sql = $conn->prepare("insert into shifts (starttime, status, userstart) values (now(), 1, :uid)");
+        $sql->bindParam("uid", $userid);
+        $sql->execute();
+    }
+
+    public function endShift($userid, $shiftid){
+        global $conn;
+        $sql = $conn->prepare("update shifts set status = 2, endtime = now(), userend = :uid where id = :sid");
+        $sql->bindParam("uid", $userid);
+        $sql->bindParam("sid", $shiftid);
+        $sql->execute();
+    }
+
 }
