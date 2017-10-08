@@ -3,15 +3,27 @@ if (!$session->isLoggedIn()) {
     redirectTo("login.php");
 }
 
+$currentShift = new shift();
+$currentShiftDetails = $currentShift->getCurrentShift();
 
-if (isset($_POST["logout"])) {
-    echo "Izlogovali smo se <br>";
-    $session->logout();
-    header("Location:index.php");
+
+$disabledPages = array("start_shift.php", "end_shift.php");
+$currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
+
+if($currentShiftDetails== "" and  !in_array($currentpage, $disabledPages) ) {
+    redirectTo("start_shift.php");
 }
 
+
+//Izbaciti u narednim verzijama mislim da se ne koristi :) 6.10.2017
+//if (isset($_POST["logout"])) {
+//    echo "Izlogovali smo se <br>";
+//    $session->logout();
+//    header("Location:index.php");
+//}
+
 $link1 = "index.php";
-$link2 = "kraj_smene.php";
+$link2 = "end_shift.php";
 $link3 = "lol_klub.php";
 $link4 = "lol_takmicenje.php";
 $link5 = "lucky_numbers.html";
@@ -23,7 +35,7 @@ $link9 = "kasa.php";
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 $admin = $wrk->getAdmin();
-$availableForms = array($link1, $link3, $link4, 'login.php', 'lol_unos.php', 'unos_rezultata.php');
+$availableForms = array($link1, $link2, $link3, $link4, 'login.php', 'lol_unos.php', 'unos_rezultata.php', 'start_shift.php');
 $currentForm = basename($_SERVER["SCRIPT_FILENAME"]);
 
 if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $availableForms))) {
@@ -94,7 +106,9 @@ if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $ava
 
                     <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1 ?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
                     <li <?php echo ($link9 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link9 ?>"><i class="icon-shopping-cart"></i><span>Prodaja</span> </a></li>
+                    <?php if ($currentShiftDetails == "") { } elseif ($currentShiftDetails->userstart == $currentWorker->id) {?>
                     <li <?php echo ($link2 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link2 ?>"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
+                        <?php } ?>
                     <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3 ?>"><i class="icon-group"></i><span>LOL klub</span> </a></li>
                     <li <?php echo ($link4 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link4 ?>"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
                     <li <?php echo ($link6 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link6 ?>"><i class="icon-time"></i><span>Bonus sati</span> </a></li>

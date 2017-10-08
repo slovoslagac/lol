@@ -10,13 +10,13 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 $tmpShift = new shift();
 
-$tmpShift->endShift(1,1);
+$tmpShift->endShift(1,8);
 
 
-if ($tmpShift->getCurrentShift() != '') {
-} else {
-    $tmpShift->startShift(1);
-}
+//if ($tmpShift->getCurrentShift() != '') {
+//} else {
+//    $tmpShift->startShift(3);
+//}
 var_dump($tmpShift->getCurrentShift());
 echo "<br>";
 $currentShift = $tmpShift->getLastClosedShift();

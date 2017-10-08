@@ -37,14 +37,17 @@ class shift
         $sql = $conn->prepare("insert into shifts (starttime, status, userstart) values (now(), 1, :uid)");
         $sql->bindParam("uid", $userid);
         $sql->execute();
+        logAction("Shift start ---------------------", "userid = $userid ", 'shiftDetails.txt');
     }
 
     public function endShift($userid, $shiftid){
         global $conn;
-        $sql = $conn->prepare("update shifts set status = 2, endtime = now(), userend = :uid where id = :sid");
+        $sql = $conn->prepare("update shifts set status = 2, endtime = now(), userend = :uid where id = :sid and status = 1 and userstart = :ust");
         $sql->bindParam("uid", $userid);
         $sql->bindParam("sid", $shiftid);
+        $sql->bindParam("ust", $userid);
         $sql->execute();
+        logAction("Shift end", "userid = $userid", 'shiftDetails.txt');
     }
 
 }

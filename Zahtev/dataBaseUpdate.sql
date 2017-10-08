@@ -14,7 +14,39 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
 
+ALTER TABLE `lol`.`bills`
+ADD COLUMN `type` INT(3) NULL DEFAULT NULL COMMENT '1 - regular bill\n2 - shift start\n3 - shift end\n4 - shift bill' AFTER `pricetype`;
 
+ALTER TABLE `lol`.`shifts`
+ADD UNIQUE INDEX `id_UNIQUE` (`id` ASC);
+
+
+CREATE TABLE IF NOT EXISTS `lol`.`shiftbill` (
+  `id` INT(9) NOT NULL,
+  `shiftid` INT(5) NULL DEFAULT NULL,
+  `billid` INT(5) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `sbshiftid_idx` (`shiftid` ASC),
+  INDEX `sbbillsid_idx` (`billid` ASC),
+  CONSTRAINT `sbshiftid`
+    FOREIGN KEY (`shiftid`)
+    REFERENCES `lol`.`shifts` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `sbbillsid`
+    FOREIGN KEY (`billid`)
+    REFERENCES `lol`.`bills` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+ALTER TABLE `lol`.`shiftbill`
+CHANGE COLUMN `id` `id` INT(9) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `lol`.`shiftbill`
+ADD UNIQUE INDEX `sbunique` (`shiftid` ASC, `billid` ASC);
 
 
 -----Ver 1.3--------

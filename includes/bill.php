@@ -10,18 +10,19 @@ class bill
 {
     public $id;
 
-    public function getLastBillsByUser($limit = 3, $wrk = '')
+    public function getLastBillsByUser($limit = 3, $wrk = '', $type = 1)
     {
         global $conn;
-        $sql = $conn->prepare("select * from bills where workerid = :us order by tstamp desc limit :lt");
+        $sql = $conn->prepare("select * from bills where workerid = :us and type = :tp order by tstamp desc limit :lt");
         $sql->bindParam(":lt", $limit);
         $sql->bindParam(":us", $wrk);
+        $sql->bindParam(":tp", $type);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 
-    public function getLastBillsByUserDetails($limit = 3, $wrk = '')
+    public function getLastBillsByUserDetails($limit = 3, $wrk = '', $type = 1)
     {
         global $conn;
         $sql = $conn->prepare("select a.billid, a.pricetype, a.amount , a.productid, u.arenausername username
@@ -33,6 +34,7 @@ from
 select *
 from bills
 where workerid = :wk
+and type = :tp
 order by tstamp desc
 limit :lt) b,
 billsrows br
@@ -40,29 +42,32 @@ where br.billrid = b.id ) a
 left join users u on u.id = a.userid");
         $sql->bindParam(":lt", $limit);
         $sql->bindParam(":wk", $wrk);
+        $sql->bindParam(":tp", $type);
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 
-    public function getLastBill($limit = 1)
+    public function getLastBill($limit = 1, $type = 1)
     {
         global $conn;
-        $sql = $conn->prepare("select * from bills order by id desc limit :lt");
+        $sql = $conn->prepare("select * from bills where type = :tp order by id desc limit :lt");
         $sql->bindParam(":lt", $limit);
+        $sql->bindParam(":tp", $type);
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_OBJ);
         return $result;
     }
 
-    public function addBill($wrkid, $usrid, $bils, $prty)
+    public function addBill($wrkid, $usrid, $bils, $prty, $type = 1)
     {
         global $conn;
-        $sql = $conn->prepare("insert into bills ( workerid, userid, billsum, pricetype) values (:wr, :us, :bs, :pt)");
+        $sql = $conn->prepare("insert into bills ( workerid, userid, billsum, pricetype, type ) values (:wr, :us, :bs, :pt, :tp)");
         $sql->bindParam(':wr', $wrkid);
         $sql->bindParam(':us', $usrid);
         $sql->bindParam(':bs', $bils);
         $sql->bindParam(':pt', $prty);
+        $sql->bindParam(":tp", $type);
         $sql->execute();
     }
 
@@ -74,13 +79,13 @@ left join users u on u.id = a.userid");
         $sql->execute();
     }
 
-    public function updateBillById($id, $userid, $sum, $type){
+    public function updateBillById($id, $userid, $sum, $prtype){
         global  $conn;
         $sql= $conn->prepare("update bills set userid = :us, billsum = :sm, pricetype = :tp where id = :id;");
         $sql->bindParam(":id",$id);
         $sql->bindParam(":sm",$sum);
         $sql->bindParam(":us",$userid);
-        $sql->bindParam(":tp",$type);
+        $sql->bindParam(":tp",$prtype);
         $sql->execute();
     }
 }

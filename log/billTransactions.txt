@@ -5,3 +5,6 @@
 28.04.2017 16:19:49 | Editovanje racuna - edit racuna : 15, 0, 1500, normal
 28.04.2017 16:20:05 | Editovanje racuna - edit racuna : 15, 0, 350, normal
 16.05.2017 14:10:33 | Editovanje racuna - edit racuna : 20, 1, 750, popust
+08.10.2017 21:29:31 | Editovanje racuna - edit racuna : 6, 0, 90, normal
+08.10.2017 21:29:59 | Editovanje racuna - edit racuna : 7, , 210, popust
+08.10.2017 21:30:08 | Editovanje racuna - edit racuna : 7, , 270, normal

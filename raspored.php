@@ -48,7 +48,7 @@
     <div class="container">
       <ul class="mainnav">
         <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-        <li><a href="kraj_smene.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a> </li>
+        <li><a href="end_shift.php"><i class="icon-list-alt"></i><span>Kraj smene</span> </a> </li>
         <li><a href="lol_klub.html"><i class="icon-group"></i><span>LOL klub</span> </a></li>
         <li><a href="lol_takmicenje.php"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a> </li>
         <li class="active"><a href="raspored.php"><i class="icon-calendar"></i><span>Raspored</span> </a> </li>
