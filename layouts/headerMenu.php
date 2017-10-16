@@ -100,7 +100,6 @@ if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $ava
                 <?php if ($currentWorker->workertypeid != $admin->id) { ?>
                     <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1 ?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
                     <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3 ?>"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-                    <li <?php echo ($link4 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link4 ?>"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
 
                 <?php } else { ?>
 
