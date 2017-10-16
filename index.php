@@ -167,10 +167,10 @@ include $menuLayout;
 
 
                     <?php
-                    include $tableBonusHours;
+//                    include $tableBonusHours;
 
-                    $tableType = 2;
-                    include $tableCompetitionByUser; ?>
+//                    $tableType = 2;
+//                    include $tableCompetitionByUser; ?>
 
                 </div>
 

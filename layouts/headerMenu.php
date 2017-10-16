@@ -25,7 +25,7 @@ if($currentShiftDetails== "" and  !in_array($currentpage, $disabledPages) ) {
 $link1 = "index.php";
 $link2 = "end_shift.php";
 $link3 = "lol_klub.php";
-$link4 = "lol_takmicenje.php";
+//$link4 = "lol_takmicenje.php";
 $link5 = "lucky_numbers.html";
 $link6 = "bonus_sati.php";
 $link7 = "magacin.php";
@@ -35,7 +35,7 @@ $link9 = "kasa.php";
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 $admin = $wrk->getAdmin();
-$availableForms = array($link1, $link2, $link3, $link4, 'login.php', 'lol_unos.php', 'unos_rezultata.php', 'start_shift.php');
+$availableForms = array($link1, $link2, $link3, 'login.php', 'lol_unos.php', 'unos_rezultata.php', 'start_shift.php');
 $currentForm = basename($_SERVER["SCRIPT_FILENAME"]);
 
 if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $availableForms))) {
@@ -110,7 +110,6 @@ if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $ava
                     <li <?php echo ($link2 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link2 ?>"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
                         <?php } ?>
                     <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3 ?>"><i class="icon-group"></i><span>LOL klub</span> </a></li>
-                    <li <?php echo ($link4 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link4 ?>"><i class="icon-trophy"></i><span>LOL takmičenje</span> </a></li>
                     <li <?php echo ($link6 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link6 ?>"><i class="icon-time"></i><span>Bonus sati</span> </a></li>
                     <li <?php echo ($link7 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link7 ?>"><i class="icon-truck"></i><span>Magacin</span> </a></li>
                     <li <?php echo ($link8 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link8 ?>"><i class="icon-truck"></i><span>Informacije</span> </a></li>
