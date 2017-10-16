@@ -176,7 +176,9 @@ if(isset($_POST["paymentDelete"])){
                 <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>');">
 
                     <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
-                    <img src="img/products/cc03.png">
+                    <?php $filename = str_replace(' ', '-', $item->name);  $path = 'img/products/' ; if(file_exists($path.$filename.'.png') == 1) {} else {$filename = "default";} ; ?>
+
+                    <img src="<?php echo $path.$filename?>.png">
                     <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
 
                 </div>

@@ -4,6 +4,8 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 $product = new products();
 $allProducts = $product->getAllProducts();
 
+$allStocks = getstockstatus();
+
 
 $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
@@ -19,7 +21,7 @@ include $menuLayout;
                             <h3>Magacin - Mart 2017.</h3>
                             <div class="controls">
                                 <!-- Button to trigger modal -->
-                                <a href="unos_artikala.php" role="button" class="btn">Sredi artikle</a>
+                                <a href="unos_artikala.php" role="button" class="btn">Kreiraj artikle</a>
                                 <a href="unos_nabavke.php" role="button" class="btn">Dodaj nabavku</a>
                             </div> <!-- /controls -->
                         </div>
@@ -31,97 +33,36 @@ include $menuLayout;
                                     <th> Artikal</th>
                                     <th width="100"> Pr. Cijena</th>
                                     <th width="100"> Početak mjeseca</th>
-                                    <th width="100"> Nabavka</th>
-                                    <th width="100"> Prodaja</th>
+                                    <th width="100"> Nabavka mjesecna</th>
+                                    <th width="100"> Prodaja mjesecna</th>
                                     <th width="100"> Trenutna količina</th>
-                                    <th width="100"> Razlika</th>
+                                    <th width="100"> Prodaja ukupna</th>
                                     <th width="100"> Nabavna cijena</th>
                                     <th width="100"> Zarada</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($allProducts as $item) { ?>
+                                <?php $tmpsum = 0; foreach ($allStocks as $item) { ?>
                                     <tr>
-                                        <td><?php echo $item->productname ?></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><?php echo $item->name ?></td>
+                                        <td class="center"><?php echo ($item->sale_amount != "")? number_format($item->sale_sumprice / $item->sale_amount, 0,',', '.') : 0 ; ?></td>
+                                        <td class="center"><?php echo ($item->amount_sm != '') ? $item->amount_sm : 0 ?></td>
+                                        <td class="center"><?php echo ($item->amount_cm != '') ? $item->amount_cm : 0 ?></td>
+                                        <td class="center"><?php echo ($item->sale_amount_cm != '') ? $item->sale_amount_cm : 0?></td>
+                                        <td class="center"><?php echo $item->amount - $item->sale_amount ?></td>
+                                        <td class="center"><?php echo ($item->sale_amount != '') ? $item->sale_amount : 0 ?></td>
+                                        <td class="center"><?php echo number_format($item->current_price, 2,',', '.') ?></td>
+                                        <td class="center"><?php $currentsum = $item->sale_sumprice - $item->sumprice; $tmpsum = $tmpsum + $currentsum; echo number_format($currentsum, 0,',', '.') ?></td>
                                     </tr>
                                 <?php } ?>
+                                <tr>
+                                    <td colspan="8"></td>
+                                    <td class="center"><?php echo number_format($tmpsum,0,',', '.')?></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <br>
-                        <div class="widget-content">
-                            <table class="table table-striped table-bordered">
-                                <thead>
-                                <tr>
-                                    <th> Artikal</th>
-                                    <th width="100"> Pr. Cijena</th>
-                                    <th width="100"> Početak mjeseca</th>
-                                    <th width="100"> Nabavka</th>
-                                    <th width="100"> Prodaja</th>
-                                    <th width="100"> Trenutna količina</th>
-                                    <th width="100"> Razlika</th>
-                                    <th width="100"> Nabavna cijena</th>
-                                    <th width="100"> Zarada</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td> Bravo flašica 0,5</td>
-                                    <td> 100 Din</td>
-                                    <td> 100</td>
-                                    <td> 50</td>
-                                    <td> 25</td>
-                                    <td> 122</td>
-                                    <td> 3 <i class="icon-warning-sign"></i></td>
-                                    <td> 50 Din</td>
-                                    <td> 1250 Din</td>
-                                </tr>
-                                <tr>
-                                    <td> Bravo flašica 0,5</td>
-                                    <td> 100 Din</td>
-                                    <td> 100</td>
-                                    <td> 50</td>
-                                    <td> 25</td>
-                                    <td> 122</td>
-                                    <td> 3</td>
-                                    <td> 50 Din</td>
-                                    <td> 1250 Din</td>
-                                </tr>
-                                <tr>
-                                    <td> Bravo flašica 0,5</td>
-                                    <td> 100 Din</td>
-                                    <td> 100</td>
-                                    <td> 50</td>
-                                    <td> 25</td>
-                                    <td> 122</td>
-                                    <td> 3</td>
-                                    <td> 50 Din</td>
-                                    <td> 1250 Din</td>
-                                </tr>
-                                <tr>
-                                    <td> Bravo flašica 0,5</td>
-                                    <td> 100 Din</td>
-                                    <td> 100</td>
-                                    <td> 50</td>
-                                    <td> 25</td>
-                                    <td> 122</td>
-                                    <td> 3</td>
-                                    <td> 50 Din</td>
-                                    <td> 1250 Din</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /widget-content -->
                     </div>
                     <!-- /widget -->
 
