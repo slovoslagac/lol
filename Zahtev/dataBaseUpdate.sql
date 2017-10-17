@@ -1,3 +1,12 @@
+-----Ver 1.5--------
+ALTER TABLE `lol`.`bills`
+ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `lol`.`billsrows`
+ADD PRIMARY KEY (`id`);
+
+
 -----Ver 1.4--------
 
 

@@ -19,7 +19,6 @@ $lastBill = $bill->getLastBill();
 $tmpBillsDetails = $bill->getLastBillsByUserDetails(3, $session->userid);
 
 
-
 if ($lastBill != '') {
     $maxBillID = $lastBill->id + 1;
 } else {
@@ -30,7 +29,7 @@ $data = array();
 
 if (isset($_POST['payment'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0 ) {
+    if ($sumBillError > 0) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -47,8 +46,8 @@ if (isset($_POST['payment'])) {
                 $discountuserid = 0;
                 $pricetype = 'normal';
             }
-			
-           try {
+
+            try {
                 $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype);
                 $tmplastbill = $bill->getLastBill();
                 $tmpid = $tmplastbill->id;
@@ -85,7 +84,7 @@ if (isset($_POST['payment'])) {
 
 if (isset($_POST['paymentEdit'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0 ) {
+    if ($sumBillError > 0) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -140,8 +139,8 @@ if (isset($_POST['paymentEdit'])) {
     }
 }
 
-if(isset($_POST["paymentDelete"])){
-    $billIdForDelete =  $_POST["billId"];
+if (isset($_POST["paymentDelete"])) {
+    $billIdForDelete = $_POST["billId"];
     $billRowsDelete = new billrows();
     $billRowsDelete->deleteRowsById($billIdForDelete);
     $bill->deleteBillById($billIdForDelete);
@@ -156,34 +155,55 @@ if(isset($_POST["paymentDelete"])){
     <div class="cash-register register">
 
         <div class="cash-content clearfix" oncontextmenu="return false">
+            <h3>Playstation</h3>
             <?php $tmptype = '';
             foreach ($allProductsRegular as $item) {
-                if ($tmptype != $item->producttype) {
-                    $tmptype = $item->producttype;
-                    switch ($item->producttype) {
-                        case 1:
-                            echo "<h3>Hrana</h3>";
-                            break;
-                        case 2:
-                            echo "<h3>Grickalice</h3>";
-                            break;
-                        case 3:
-                            echo "<h3>Piće</h3>";
-                            break;
+                if ($item->producttype == $sonyTypeID) { ?>
+                    <div class="sony sony_free">
+                        <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
+                        <div class="ivplayers"><img src="img/playstation/4players.png"></div>
+                        <img src="img/playstation/ps1.png">
+                        <label id="status<?php echo $item->id ?>">&nbsp</label>
+                        <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name?></div>
+                        <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 15, 2);">+15</p>
+                        <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 30, 2);">+30</p>
+                        <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 60, 2);">+1h</p>
+                        <p>N</p>
+                        <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
+                    </div>
+                <?php } else {
+                    if ($tmptype != $item->producttype) {
+                        $tmptype = $item->producttype;
+                        switch ($item->producttype) {
+                            case 1:
+                                echo "<h3>Hrana</h3>";
+                                break;
+                            case 2:
+                                echo "<h3>Grickalice</h3>";
+                                break;
+                            case 3:
+                                echo "<h3>Piće</h3>";
+                                break;
+                        }
                     }
-                }
-                ?>
-                <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>');">
+                    ?>
+                    <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, 1);">
 
-                    <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
-                    <?php $filename = str_replace(' ', '-', $item->name);  $path = 'img/products/' ; if(file_exists($path.$filename.'.png') == 1) {} else {$filename = "default";} ; ?>
+                        <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
+                        <?php $filename = str_replace(' ', '-', $item->name);
+                        $path = 'img/products/';
+                        if (file_exists($path . $filename . '.png') == 1) {
+                        } else {
+                            $filename = "default";
+                        }; ?>
 
-                    <img src="<?php echo $path.$filename?>.png">
-                    <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
+                        <img src="<?php echo $path . $filename ?>.png">
+                        <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
 
-                </div>
+                    </div>
 
-            <?php } ?>
+                <?php }
+            } ?>
 
 
         </div> <!-- /content -->
@@ -246,21 +266,21 @@ include $footerMenuLayout;
     }?>];
 
     var billDetails = [<?php
-            $tmpbilldetailid = 0;
-            foreach ($tmpBillsDetails as $item) {
-                if ($tmpbilldetailid != $item->billid) {
-                    if ($tmpbilldetailid > 0) {
-                        echo "]},";
-                    };
-                    $tmpbilldetailid = $item->billid;
-                    ($item->username != '') ? $type = $item->username . ' - ' . $item->pricetype : $type = '';
-                    echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid},";
-                } else {
-                    echo "{num: $item->amount, id: $item->productid},";
-                }
-
+        $tmpbilldetailid = 0;
+        foreach ($tmpBillsDetails as $item) {
+            if ($tmpbilldetailid != $item->billid) {
+                if ($tmpbilldetailid > 0) {
+                    echo "]},";
+                };
+                $tmpbilldetailid = $item->billid;
+                ($item->username != '') ? $type = $item->username . ' - ' . $item->pricetype : $type = '';
+                echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid},";
+            } else {
+                echo "{num: $item->amount, id: $item->productid},";
             }
-            echo ($tmpbilldetailid > 0) ?  "]}" : "";
+
+        }
+        echo ($tmpbilldetailid > 0) ? "]}" : "";
 
 
         ?>];
@@ -272,46 +292,50 @@ include $footerMenuLayout;
     var popust = 0;
 
 
-    function articles(event, val) {
+    function articles(event, val, amount, type) {
         if (event.button == 0) {
-            add_product(val);
+            add_product(val, amount, type);
         } else if (event.button == 2) {
-            removeArticle(val);
+            removeArticle(val, amount, type);
         }
     }
 
-    function add_product(val) {
+    function add_product(val, amount, type) {
         var code = val;
         var price = parseInt(document.getElementById('price' + code).innerText);
         var articlename = document.getElementById('articlename' + code).innerText;
         if (productsID.indexOf(code) > -1) {
-            addArticle(code);
+            addArticle(code, amount);
         }
         else {
             productsID.push(code);
             var objTo = document.getElementById('billBody');
             var divadd = document.createElement("div");
             divadd.setAttribute("id", "checkproduct" + code);
-            divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><strong id="numarticle' + code + '">1</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ')"></i><i class="icon-minus" onclick="removeArticle(' + code + ')"></i></div></div>';
+            if (type == 1) {
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ', 1, 1)"></i><i class="icon-minus" onclick="removeArticle(' + code + ', 1, 1)"></i></div></div>';
+            } else {
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ', 1, 2)"></i><i class="icon-minus" onclick="removeArticle(' + code + ', 1, 2)"></i></div></div>';
+            }
             objTo.appendChild(divadd)
-            product++;
+            product = product + amount;
         }
         calculateSum();
     }
 
 
-    function addArticle(val) {
+    function addArticle(val, amount) {
         var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal++;
+        currVal = currVal + amount;
         document.getElementById('numarticle' + val).innerText = String(currVal);
         document.getElementById('na' + val).setAttribute("value", currVal);
         calculateSum();
     }
 
-    function removeArticle(val) {
+    function removeArticle(val, amount) {
         var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal--;
-        if (currVal == 0) {
+        currVal = currVal - amount;
+        if (currVal <= 0) {
             document.getElementById('checkproduct' + val).remove();
             productsID.splice(productsID.indexOf(String(val)), 1);
             product--;
@@ -369,9 +393,14 @@ include $footerMenuLayout;
                 var object = pricesPopust[i];
                 var id = object.id;
                 var price = object.price;
-                document.getElementById('price' + id).innerText = String(price) + ' Din';
-                if (document.getElementById('checkprice' + id) !== null) {
-                    document.getElementById('checkprice' + id).innerText = String(price);
+                var x = document.getElementById('type' + id).value;
+                var type = document.getElementById('type' + id).value;
+                console.log (id, type, x);
+                 if (document.getElementById('type' + id).value == "1") {
+                    document.getElementById('price' + id).innerText = String(price) + ' Din';
+                    if (document.getElementById('checkprice' + id) !== null) {
+                        document.getElementById('checkprice' + id).innerText = String(price);
+                    }
                 }
             }
         } else if (val == 'normal') {
@@ -415,20 +444,14 @@ include $footerMenuLayout;
             var billobject = billDetails[l];
             if (billobject.id == val) {
                 document.getElementById("selectuser").value = billobject.type;
-                document.getElementById("billId").setAttribute("value",  billobject.id);
-                document.getElementById("billNumber").innerText =  billobject.id;
+                document.getElementById("billId").setAttribute("value", billobject.id);
+                document.getElementById("billNumber").innerText = billobject.id;
                 var tmpDetails = billobject.billdata;
                 for (var p = 0; p < tmpDetails.length; p++) {
                     var tmpproduct = tmpDetails[p];
                     var tmpproductid = tmpproduct.id.toString();
-                    add_product(tmpproductid);
-                    if (tmpproduct.num > 1) {
-                        var s = 1;
-                        while (s < tmpproduct.num) {
-                            addArticle(tmpproductid)
-                            s++
-                        }
-                    }
+                    add_product(tmpproductid, tmpproduct.num);
+
                 }
             }
         }
@@ -437,14 +460,12 @@ include $footerMenuLayout;
     }
 
     function resetBill() {
-        for(var t =0; t < productsID.length; t++){
+        for (var t = 0; t < productsID.length; t++) {
             var val = productsID[t];
             document.getElementById('checkproduct' + val).remove();
         }
-        productsID =[];
+        productsID = [];
     }
-
-
 
 
 </script>
@@ -455,6 +476,36 @@ include $footerMenuLayout;
     }
 </script>
 
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("Oct 17, 2017 18:28:55").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get todays date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var hours = Math.floor(distance / (1000 * 60 * 60)); if(hours < 10) {hours = '0' + hours};
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); if(minutes < 10) {minutes = '0' + minutes};
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000); if(seconds < 10) {seconds = '0' + seconds};
+
+        // Output the result in an element with id="demo"
+        document.getElementById("status5").innerHTML = hours + ":" + minutes + ":" + seconds;
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("status5").innerHTML = "EXPIRED";
+        } else if(distance < 300000) {
+            document.getElementById("status5").style.color = "red";
+        }
+    }, 1000);
+</script>
 
 </body>
 

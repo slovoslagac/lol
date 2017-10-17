@@ -67,4 +67,5 @@ $tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
 //Variables
 
 $appEmployeeId = 38;
+$sonyTypeID = 6;
 

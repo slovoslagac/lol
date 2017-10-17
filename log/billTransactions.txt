@@ -8,3 +8,6 @@
 08.10.2017 21:29:31 | Editovanje racuna - edit racuna : 6, 0, 90, normal
 08.10.2017 21:29:59 | Editovanje racuna - edit racuna : 7, , 210, popust
 08.10.2017 21:30:08 | Editovanje racuna - edit racuna : 7, , 270, normal
+17.10.2017 12:56:40 | Editovanje racuna - edit racuna : 5, 0, 150, normal
+17.10.2017 14:00:45 | Editovanje racuna - edit racuna : 8, 0, 700, normal
+17.10.2017 15:38:31 | Editovanje racuna - edit racuna : 10, 0, 540, normal
