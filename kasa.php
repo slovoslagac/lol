@@ -11,12 +11,13 @@ $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
 
 $sellproduct = new sellingproduct();
-$allProductsRegular = $sellproduct->getAllSellingProductsByType('normal');
-$allProductsPopust = $sellproduct->getAllSellingProductsByType('popust');
+$allProductsRegular = $sellproduct->getAllSellingProductsByPriceType('normal');
+$allProductsPopust = $sellproduct->getAllSellingProductsByPriceType('popust');
 $allProducts = $sellproduct->getAllSellingProducts();
 $bill = new bill();
 $lastBill = $bill->getLastBill();
 $tmpBillsDetails = $bill->getLastBillsByUserDetails(3, $session->userid);
+
 
 
 if ($lastBill != '') {
@@ -29,7 +30,7 @@ $data = array();
 
 if (isset($_POST['payment'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0) {
+    if ($sumBillError > 0 ) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -84,7 +85,7 @@ if (isset($_POST['payment'])) {
 
 if (isset($_POST['paymentEdit'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0) {
+    if ($sumBillError > 0 ) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -139,8 +140,8 @@ if (isset($_POST['paymentEdit'])) {
     }
 }
 
-if (isset($_POST["paymentDelete"])) {
-    $billIdForDelete = $_POST["billId"];
+if(isset($_POST["paymentDelete"])){
+    $billIdForDelete =  $_POST["billId"];
     $billRowsDelete = new billrows();
     $billRowsDelete->deleteRowsById($billIdForDelete);
     $bill->deleteBillById($billIdForDelete);
@@ -153,57 +154,66 @@ if (isset($_POST["paymentDelete"])) {
 <div class="register-round">
 
     <div class="cash-register register">
-
-        <div class="cash-content clearfix" oncontextmenu="return false">
+        <div class="playstation" clearfix>
             <h3>Playstation</h3>
+            <div class="sony sony_free">
+                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
+                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
+                <img src="img/playstation/ps1.png">
+                <label>slobodan</label>
+                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
+            </div>
+            <div class="sony sony_free">
+                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
+                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
+                <img src="img/playstation/ps2.png">
+                <label>slobodan</label>
+                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
+            </div>
+            <div class="sony sony_soon">
+                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
+                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
+                <img src="img/playstation/ps3.png">
+                <label>00:09:21</label>
+                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
+            </div>
+            <div class="sony sony_active">
+                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
+                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
+                <img src="img/playstation/ps4.png">
+                <label>01:45:37</label>
+                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
+            </div>
+        </div>
+        <div class="cash-content clearfix" oncontextmenu="return false">
             <?php $tmptype = '';
             foreach ($allProductsRegular as $item) {
-                if ($item->producttype == $sonyTypeID) { ?>
-                    <div class="sony sony_free">
-                        <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
-                        <div class="ivplayers"><img src="img/playstation/4players.png"></div>
-                        <img src="img/playstation/ps1.png">
-                        <label id="status<?php echo $item->id ?>">&nbsp</label>
-                        <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name?></div>
-                        <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 15, 2);">+15</p>
-                        <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 30, 2);">+30</p>
-                        <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 60, 2);">+1h</p>
-                        <p>N</p>
-                        <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
-                    </div>
-                <?php } else {
-                    if ($tmptype != $item->producttype) {
-                        $tmptype = $item->producttype;
-                        switch ($item->producttype) {
-                            case 1:
-                                echo "<h3>Hrana</h3>";
-                                break;
-                            case 2:
-                                echo "<h3>Grickalice</h3>";
-                                break;
-                            case 3:
-                                echo "<h3>Piće</h3>";
-                                break;
-                        }
+                if ($tmptype != $item->producttype) {
+                    $tmptype = $item->producttype;
+                    switch ($item->producttype) {
+                        case 1:
+                            echo "<h3>Hrana</h3>";
+                            break;
+                        case 2:
+                            echo "<h3>Grickalice</h3>";
+                            break;
+                        case 3:
+                            echo "<h3>Piće</h3>";
+                            break;
                     }
-                    ?>
-                    <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, 1);">
+                }
+                ?>
+                <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>');">
 
-                        <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
-                        <?php $filename = str_replace(' ', '-', $item->name);
-                        $path = 'img/products/';
-                        if (file_exists($path . $filename . '.png') == 1) {
-                        } else {
-                            $filename = "default";
-                        }; ?>
+                    <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
+                    <?php $filename = str_replace(' ', '-', $item->name);  $path = 'img/products/' ; if(file_exists($path.$filename.'.png') == 1) {} else {$filename = "default";} ; ?>
 
-                        <img src="<?php echo $path . $filename ?>.png">
-                        <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
+                    <img src="<?php echo $path.$filename?>.png">
+                    <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
 
-                    </div>
+                </div>
 
-                <?php }
-            } ?>
+            <?php } ?>
 
 
         </div> <!-- /content -->
@@ -220,6 +230,9 @@ if (isset($_POST["paymentDelete"])) {
             <option value="damir@kokeza.com - popust"></option>
             <option value="dado@gmail.com - normal"></option>
         </datalist>
+        <div id="billBody">
+        </div>
+        <div class="bill-discount">Sati <input type="number" id="sl" onchange="calculateSum()"></div>
         <div id="billBody">
         </div>
         <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
@@ -280,7 +293,7 @@ include $footerMenuLayout;
             }
 
         }
-        echo ($tmpbilldetailid > 0) ? "]}" : "";
+        echo ($tmpbilldetailid > 0) ?  "]}" : "";
 
 
         ?>];
@@ -292,50 +305,46 @@ include $footerMenuLayout;
     var popust = 0;
 
 
-    function articles(event, val, amount, type) {
+    function articles(event, val) {
         if (event.button == 0) {
-            add_product(val, amount, type);
+            add_product(val);
         } else if (event.button == 2) {
-            removeArticle(val, amount, type);
+            removeArticle(val);
         }
     }
 
-    function add_product(val, amount, type) {
+    function add_product(val) {
         var code = val;
         var price = parseInt(document.getElementById('price' + code).innerText);
         var articlename = document.getElementById('articlename' + code).innerText;
         if (productsID.indexOf(code) > -1) {
-            addArticle(code, amount);
+            addArticle(code);
         }
         else {
             productsID.push(code);
             var objTo = document.getElementById('billBody');
             var divadd = document.createElement("div");
             divadd.setAttribute("id", "checkproduct" + code);
-            if (type == 1) {
-                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ', 1, 1)"></i><i class="icon-minus" onclick="removeArticle(' + code + ', 1, 1)"></i></div></div>';
-            } else {
-                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ', 1, 2)"></i><i class="icon-minus" onclick="removeArticle(' + code + ', 1, 2)"></i></div></div>';
-            }
+            divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><strong id="numarticle' + code + '">1</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ')"></i><i class="icon-minus" onclick="removeArticle(' + code + ')"></i></div></div>';
             objTo.appendChild(divadd)
-            product = product + amount;
+            product++;
         }
         calculateSum();
     }
 
 
-    function addArticle(val, amount) {
+    function addArticle(val) {
         var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal = currVal + amount;
+        currVal++;
         document.getElementById('numarticle' + val).innerText = String(currVal);
         document.getElementById('na' + val).setAttribute("value", currVal);
         calculateSum();
     }
 
-    function removeArticle(val, amount) {
+    function removeArticle(val) {
         var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal = currVal - amount;
-        if (currVal <= 0) {
+        currVal--;
+        if (currVal == 0) {
             document.getElementById('checkproduct' + val).remove();
             productsID.splice(productsID.indexOf(String(val)), 1);
             product--;
@@ -351,6 +360,9 @@ include $footerMenuLayout;
     function calculateSum() {
         var Sum = 0;
         var lengthArray = $(productsID).toArray().length;
+        var sl = parseInt(document.getElementById('sl').value);
+        console.log(sl);
+        Sum = Sum + sl;
         if (lengthArray > 0) {
 
             for (var k = 0; k < lengthArray; k++) {
@@ -371,6 +383,8 @@ include $footerMenuLayout;
     function testSumCalculation() {
         var tmpSum = 0;
         var la = $(pricesNormal).toArray().length;
+        var sl = parseInt(document.getElementById('sl').value);
+        tmpSum = tmpSum + sl;
         for (var k = 0; k < la; k++) {
             var tmpobject = pricesNormal[k];
             var tmpindex = productsID.indexOf(String(tmpobject.id));
@@ -393,14 +407,9 @@ include $footerMenuLayout;
                 var object = pricesPopust[i];
                 var id = object.id;
                 var price = object.price;
-                var x = document.getElementById('type' + id).value;
-                var type = document.getElementById('type' + id).value;
-                console.log (id, type, x);
-                 if (document.getElementById('type' + id).value == "1") {
-                    document.getElementById('price' + id).innerText = String(price) + ' Din';
-                    if (document.getElementById('checkprice' + id) !== null) {
-                        document.getElementById('checkprice' + id).innerText = String(price);
-                    }
+                document.getElementById('price' + id).innerText = String(price) + ' Din';
+                if (document.getElementById('checkprice' + id) !== null) {
+                    document.getElementById('checkprice' + id).innerText = String(price);
                 }
             }
         } else if (val == 'normal') {
@@ -444,14 +453,20 @@ include $footerMenuLayout;
             var billobject = billDetails[l];
             if (billobject.id == val) {
                 document.getElementById("selectuser").value = billobject.type;
-                document.getElementById("billId").setAttribute("value", billobject.id);
-                document.getElementById("billNumber").innerText = billobject.id;
+                document.getElementById("billId").setAttribute("value",  billobject.id);
+                document.getElementById("billNumber").innerText =  billobject.id;
                 var tmpDetails = billobject.billdata;
                 for (var p = 0; p < tmpDetails.length; p++) {
                     var tmpproduct = tmpDetails[p];
                     var tmpproductid = tmpproduct.id.toString();
-                    add_product(tmpproductid, tmpproduct.num);
-
+                    add_product(tmpproductid);
+                    if (tmpproduct.num > 1) {
+                        var s = 1;
+                        while (s < tmpproduct.num) {
+                            addArticle(tmpproductid)
+                            s++
+                        }
+                    }
                 }
             }
         }
@@ -460,12 +475,14 @@ include $footerMenuLayout;
     }
 
     function resetBill() {
-        for (var t = 0; t < productsID.length; t++) {
+        for(var t =0; t < productsID.length; t++){
             var val = productsID[t];
             document.getElementById('checkproduct' + val).remove();
         }
-        productsID = [];
+        productsID =[];
     }
+
+
 
 
 </script>
@@ -476,36 +493,6 @@ include $footerMenuLayout;
     }
 </script>
 
-<script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Oct 17, 2017 18:28:55").getTime();
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-
-        // Get todays date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now an the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var hours = Math.floor(distance / (1000 * 60 * 60)); if(hours < 10) {hours = '0' + hours};
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); if(minutes < 10) {minutes = '0' + minutes};
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000); if(seconds < 10) {seconds = '0' + seconds};
-
-        // Output the result in an element with id="demo"
-        document.getElementById("status5").innerHTML = hours + ":" + minutes + ":" + seconds;
-
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("status5").innerHTML = "EXPIRED";
-        } else if(distance < 300000) {
-            document.getElementById("status5").style.color = "red";
-        }
-    }, 1000);
-</script>
 
 </body>
 

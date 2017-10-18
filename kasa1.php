@@ -11,8 +11,8 @@ $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
 
 $sellproduct = new sellingproduct();
-$allProductsRegular = $sellproduct->getAllSellingProductsByType('normal');
-$allProductsPopust = $sellproduct->getAllSellingProductsByType('popust');
+$allProductsRegular = $sellproduct->getAllSellingProductsByPriceType('normal');
+$allProductsPopust = $sellproduct->getAllSellingProductsByPriceType('popust');
 $allProducts = $sellproduct->getAllSellingProducts();
 $bill = new bill();
 $lastBill = $bill->getLastBill();

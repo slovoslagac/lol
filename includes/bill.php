@@ -25,10 +25,10 @@ class bill
     public function getLastBillsByUserDetails($limit = 3, $wrk = '', $type = 1)
     {
         global $conn;
-        $sql = $conn->prepare("select a.billid, a.pricetype, a.amount , a.productid, u.arenausername username
+        $sql = $conn->prepare("select a.billid, a.pricetype, a.amount , a.productid, u.arenausername username, a.type
 from
 (
-select b.id billid, b.pricetype pricetype, br.numProducts amount , br.sellingproductid productid, b.userid
+select b.id billid, b.pricetype pricetype, br.numProducts amount , br.sellingproductid productid, b.userid, br.type
 from
 (
 select *

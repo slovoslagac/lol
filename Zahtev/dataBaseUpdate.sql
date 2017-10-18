@@ -6,6 +6,9 @@ ADD PRIMARY KEY (`id`);
 ALTER TABLE `lol`.`billsrows`
 ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `lol`.`billsrows`
+ADD COLUMN `type` INT(2) NULL DEFAULT NULL AFTER `sellingproductid`;
+
 
 -----Ver 1.4--------
 

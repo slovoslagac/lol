@@ -11,3 +11,12 @@
 17.10.2017 12:56:40 | Editovanje racuna - edit racuna : 5, 0, 150, normal
 17.10.2017 14:00:45 | Editovanje racuna - edit racuna : 8, 0, 700, normal
 17.10.2017 15:38:31 | Editovanje racuna - edit racuna : 10, 0, 540, normal
+18.10.2017 10:41:37 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - , details - 11
+18.10.2017 10:42:15 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - , details - 11
+18.10.2017 12:38:23 | Editovanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - 0, details - 11
+18.10.2017 12:38:36 | Editovanje racuna - edit racuna : 14, 0, 60, normal
+18.10.2017 15:46:28 | Editovanje racuna - edit racuna : , 0, 400, normal
+18.10.2017 16:36:51 | Editovanje racuna - edit racuna : 20, 0, 940, normal
+18.10.2017 16:40:43 | Editovanje racuna - edit racuna : 23, 0, 1440, normal
+18.10.2017 16:43:17 | Editovanje racuna - edit racuna : 24, 0, 1200, normal
+18.10.2017 16:44:31 | Editovanje racuna - edit racuna : 25, 0, 1440, normal
