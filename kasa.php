@@ -117,6 +117,7 @@ if (isset($_POST['paymentEdit'])) {
                 };
                 $tmpbillrow = new billrows();
                 $tmpbillrow->deleteRowsById($billIdForEdit);
+                var_dump($data);
                 foreach ($data as $item) {
                     if (isset($_POST['na' . $item->id])) {
 

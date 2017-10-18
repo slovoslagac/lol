@@ -123,12 +123,13 @@ if (isset($_POST['paymentEdit'])) {
                     for ($j=0; $j<=$numSony ; $j++){
                         if (isset($_POST['na' . $item->id . '_' . $j])) {
                             $tmpbillrow = new billrows();
-                            $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id . '_'. $j], $item->sppid, $item->value, $item->id, $j);
+                            $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id . '_'. $j], $item->sppid, $item->value, $item->id, $j); $tmpval = $_POST['na' . $item->id . '_'. $j];
+                            logAction("", "$billIdForEdit, $tmpval, $item->sppid, $item->value, $item->id, $j", 'test.txt');
                             unset($tmpbillrow);
                         }
                     }
                 }
-                unset($tmpbillrow);
+
             } catch (Exception $e) {
                 logAction("Editovanje racuna - error", "suma - $sumBillError, details - $session->userid, addBill - $session->userid, $discountuserid, $billSum, $pricetype", 'error.txt');
             }
@@ -159,7 +160,7 @@ if (isset($_POST["paymentDelete"])) {
 
     <div class="cash-register register">
 
-        <div class="cash-content clearfix" oncontextmenu="return true">
+        <div class="cash-content clearfix" oncontextmenu="return false">
             <h3>Playstation</h3>
             <?php for ($i = 1; $i <= $numSony; $i++) { ?>
                 <div class="sony sony_free">
@@ -345,8 +346,7 @@ include $footerMenuLayout;
         var price = parseInt(document.getElementById('price' + val).innerText);
         var articlename = document.getElementById('articlename' + val).innerText;
         if (productsID.indexOf(code) > -1) {
-            console.log(productsID);
-            addArticle(code, amount, type);
+            addArticle(val, amount, type);
         }
         else {
             productsID.push(code);
@@ -354,9 +354,9 @@ include $footerMenuLayout;
             var divadd = document.createElement("div");
             divadd.setAttribute("id", "checkproduct" + code);
             if (type == 0) {
-                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ', 1, 1)"></i><i class="icon-minus" onclick="removeArticle(' + code + ', 1, 1)"></i></div></div>';
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="'+amount+'"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, '+type+')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, '+type+')"></i></div></div>';
             } else {
-                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x (#' + type + ') ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ', 1, 2)"></i><i class="icon-minus" onclick="removeArticle(' + code + ', 1, 2)"></i></div></div>';
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="'+amount+'"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x (#' + type + ') ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, '+type+')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, '+type+')"></i></div></div>';
             }
             objTo.appendChild(divadd)
             product = product + amount;
@@ -366,26 +366,28 @@ include $footerMenuLayout;
 
 
     function addArticle(val, amount, type) {
-        var code = val + '_' + type;
-        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        console.log(currVal);
+        var code = val+'_'+type;
+        var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
+        console.log('blabla' + code, amount, type, currVal);
         currVal = currVal + amount;
-        document.getElementById('numarticle' + val).innerText = String(currVal);
-        document.getElementById('na' + val).setAttribute("value", currVal);
+        console.log('blabla' + code, amount, type, currVal);
+        document.getElementById('numarticle' + code).innerText = String(currVal);
+        document.getElementById('na' + code).setAttribute("value", String(currVal));
         calculateSum();
     }
 
-    function removeArticle(val, amount) {
-        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
+    function removeArticle(val, amount, type) {
+        var code = val+'_'+type;
+        var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
         currVal = currVal - amount;
         if (currVal <= 0) {
-            document.getElementById('checkproduct' + val).remove();
+            document.getElementById('checkproduct' + code).remove();
             productsID.splice(productsID.indexOf(String(val)), 1);
             product--;
         }
         else {
-            document.getElementById('numarticle' + val).innerText = String(currVal);
-            document.getElementById('na' + val).setAttribute("value", currVal);
+            document.getElementById('numarticle' + code).innerText = String(currVal);
+            document.getElementById('na' + code).setAttribute("value", currVal);
         }
         calculateSum();
     }
@@ -419,7 +421,6 @@ include $footerMenuLayout;
                 var tmpindex = productsID.indexOf(String(tmpobject.id + '_' + j));
                 if (tmpindex > -1) {
                     var numArt = parseInt(document.getElementById('numarticle' + tmpobject.id + '_' + j).innerText);
-                    console.log(tmpindex, la, tmpobject.id, numArt);
                     var priceArt = parseInt(tmpobject.price);
                     tmpSum = tmpSum + numArt * priceArt;
                 }
@@ -492,7 +493,7 @@ include $footerMenuLayout;
                     var tmpproduct = tmpDetails[p];
                     var tmpproductid = tmpproduct.id.toString();
                     var tmpproducttype = tmpproduct.typepr;
-                    console.log(tmpproducttype);
+                    console.log(tmpproductid, tmpproduct.num, tmpproducttype, tmpproduct);
                     add_product(tmpproductid, tmpproduct.num, tmpproducttype);
 
                 }

@@ -20,3 +20,23 @@
 18.10.2017 16:40:43 | Editovanje racuna - edit racuna : 23, 0, 1440, normal
 18.10.2017 16:43:17 | Editovanje racuna - edit racuna : 24, 0, 1200, normal
 18.10.2017 16:44:31 | Editovanje racuna - edit racuna : 25, 0, 1440, normal
+19.10.2017 00:16:47 | Editovanje racuna - edit racuna : 46, 0, 3674, normal
+19.10.2017 00:16:52 | Editovanje racuna - edit racuna : 46, 0, 4172, normal
+19.10.2017 00:17:03 | Editovanje racuna - edit racuna : 46, 0, 510, normal
+19.10.2017 00:18:25 | Editovanje racuna - edit racuna : 47, 0, 980, normal
+19.10.2017 00:25:50 | Editovanje racuna - prebrzo kucanje racuna : suma - 300, details - 1
+19.10.2017 00:25:57 | Editovanje racuna - edit racuna : 49, 0, 300, normal
+19.10.2017 00:26:19 | Editovanje racuna - edit racuna : 48, 0, 240, normal
+19.10.2017 00:26:31 | Editovanje racuna - edit racuna : 48, 0, 440, normal
+19.10.2017 00:26:55 | Editovanje racuna - edit racuna : 49, 0, 600, normal
+19.10.2017 00:29:41 | Editovanje racuna - edit racuna : 50, 0, 400, normal
+19.10.2017 00:30:38 | Editovanje racuna - edit racuna : 50, 0, 300, normal
+19.10.2017 00:31:27 | Editovanje racuna - edit racuna : 50, 0, 600, normal
+19.10.2017 00:33:11 | Editovanje racuna - edit racuna : 50, 0, 500, normal
+19.10.2017 00:33:23 | Editovanje racuna - edit racuna : 50, 0, 900, normal
+19.10.2017 00:33:36 | Editovanje racuna - edit racuna : 50, 0, 900, normal
+19.10.2017 00:38:36 | Editovanje racuna - edit racuna : 52, 0, 90, normal
+19.10.2017 00:49:46 | Editovanje racuna - edit racuna : 53, 0, 550, normal
+19.10.2017 00:49:54 | Editovanje racuna - edit racuna : 53, 0, 400, normal
+19.10.2017 00:59:41 | Editovanje racuna - edit racuna : 54, 0, 1200, normal
+19.10.2017 00:59:49 | Editovanje racuna - edit racuna : 54, 0, 4200, normal
