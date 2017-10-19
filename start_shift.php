@@ -79,13 +79,13 @@ if (isset($_POST["save_shift"])) {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($allsellproducts as $item) { ?>
+                                    <?php foreach ($allsellproducts as $item) { if ($item->producttype != $sonyTypeID) {?>
                                         <tr>
                                             <td><?php echo $item->name ?></td>
                                             <td class="center" width="80"><input type="number" name="<?php echo "$item->id" ?>" required></td>
 
                                         </tr>
-                                    <?php } ?>
+                                    <?php } }?>
                                     </tbody>
                                 </table>
 

@@ -40,3 +40,4 @@
 19.10.2017 00:49:54 | Editovanje racuna - edit racuna : 53, 0, 400, normal
 19.10.2017 00:59:41 | Editovanje racuna - edit racuna : 54, 0, 1200, normal
 19.10.2017 00:59:49 | Editovanje racuna - edit racuna : 54, 0, 4200, normal
+19.10.2017 08:14:41 | Editovanje racuna - edit racuna : 26, 0, 11100, normal

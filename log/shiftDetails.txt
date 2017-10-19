@@ -71,3 +71,36 @@
 09.10.2017 01:19:52 | Shift start --------------------- : userid = 1 
 09.10.2017 01:19:52 | Shfit start section created : userid = 1 ; billid = 38
 09.10.2017 01:19:52 | Shfit & bill connection created : shiftid = 36 ; billid = 38
+19.10.2017 10:44:46 | Shift start --------------------- : userid = 11 
+19.10.2017 10:44:46 | Shfit start section created : userid = 11 ; billid = 35
+19.10.2017 10:44:46 | Shfit & bill connection created : shiftid = 6 ; billid = 35
+19.10.2017 10:45:14 | Shfit end section created : userid = 11 ; billid = 36
+19.10.2017 10:45:14 | Shfit & bill connection created : shiftid = 6 ; billid = 36
+19.10.2017 10:45:14 | Shift end : userid = 11
+19.10.2017 10:47:43 | Shift start --------------------- : userid = 11 
+19.10.2017 10:47:43 | Shfit start section created : userid = 11 ; billid = 37
+19.10.2017 10:47:43 | Shfit & bill connection created : shiftid = 7 ; billid = 37
+19.10.2017 10:47:49 | Shfit end section created : userid = 11 ; billid = 38
+19.10.2017 10:47:49 | Shfit & bill connection created : shiftid = 7 ; billid = 38
+19.10.2017 10:47:49 | Shift end : userid = 11
+19.10.2017 10:47:56 | Shift start --------------------- : userid = 11 
+19.10.2017 10:47:56 | Shfit start section created : userid = 11 ; billid = 39
+19.10.2017 10:47:56 | Shfit & bill connection created : shiftid = 8 ; billid = 39
+19.10.2017 10:48:07 | Shfit end section created : userid = 11 ; billid = 40
+19.10.2017 10:48:07 | Shfit & bill connection created : shiftid = 8 ; billid = 40
+19.10.2017 10:48:07 | Shift end : userid = 11
+19.10.2017 10:48:14 | Shift start --------------------- : userid = 11 
+19.10.2017 10:48:14 | Shfit start section created : userid = 11 ; billid = 41
+19.10.2017 10:48:14 | Shfit & bill connection created : shiftid = 9 ; billid = 41
+19.10.2017 10:48:20 | Shfit end section created : userid = 11 ; billid = 42
+19.10.2017 10:48:20 | Shfit & bill connection created : shiftid = 9 ; billid = 42
+19.10.2017 10:48:21 | Shift end : userid = 11
+19.10.2017 10:48:25 | Shift start --------------------- : userid = 11 
+19.10.2017 10:48:25 | Shfit start section created : userid = 11 ; billid = 43
+19.10.2017 10:48:25 | Shfit & bill connection created : shiftid = 10 ; billid = 43
+19.10.2017 10:48:30 | Shfit end section created : userid = 11 ; billid = 44
+19.10.2017 10:48:30 | Shfit & bill connection created : shiftid = 10 ; billid = 44
+19.10.2017 10:48:30 | Shift end : userid = 11
+19.10.2017 13:46:23 | Shift start --------------------- : userid = 11 
+19.10.2017 13:46:23 | Shfit start section created : userid = 11 ; billid = 45
+19.10.2017 13:46:23 | Shfit & bill connection created : shiftid = 11 ; billid = 45

@@ -9,6 +9,9 @@ ADD PRIMARY KEY (`id`);
 ALTER TABLE `lol`.`billsrows`
 ADD COLUMN `type` INT(2) NULL DEFAULT NULL AFTER `sellingproductid`;
 
+ALTER TABLE `lol`.`bills`
+CHANGE COLUMN `billsum` `billsum` FLOAT(10,2) NULL DEFAULT NULL ;
+
 
 -----Ver 1.4--------
 

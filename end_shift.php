@@ -37,7 +37,7 @@ if (isset($_POST["save_shift"])) {
             logAction("Shfit & bill connection created", "shiftid = $shiftId ; billid = $tmplastbill->id", 'shiftDetails.txt');
             $tmpsb->addshiftbill($shiftId, $tmplastbill->id);
             foreach ($allproductids as $id) {
-                if ($_POST[$id] > 0) {
+                if ($_POST[$id] != '') {
                     $tmpbillrow = new billrows();
                     $tmpbillrow->addBillRow($tmplastbill->id, $_POST[$id], $productpricesid[$id], $productprices[$id], $id);
                     unset($tmpbillrow);
@@ -78,13 +78,13 @@ if (isset($_POST["save_shift"])) {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($allsellproducts as $item) { ?>
+                                    <?php foreach ($allsellproducts as $item) { if ($item->producttype != $sonyTypeID) {?>
                                         <tr>
                                             <td><?php echo $item->name ?></td>
                                             <td class="center" width="80"><input type="number" name="<?php echo "$item->id" ?>" required></td>
 
                                         </tr>
-                                    <?php } ?>
+                                    <?php } }?>
                                     </tbody>
                                 </table>
 

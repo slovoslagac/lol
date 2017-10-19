@@ -48,6 +48,7 @@ require INC_PATH . DS . 'spPrice.php';
 require INC_PATH . DS . 'spDetails.php';
 require INC_PATH . DS . 'shift.php';
 require INC_PATH . DS . 'shiftbill.php';
+require INC_PATH . DS . 'slackfunctions.php';
 
 
 //Layouts
@@ -69,4 +70,9 @@ $tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
 $appEmployeeId = 38;
 $sonyTypeID = 6;
 $numSony = 4;
+
+
+//Slack
+$financialChanel = 'https://hooks.slack.com/services/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';
+$errorChanel = 'https://hooks.slack.com/services/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';
 

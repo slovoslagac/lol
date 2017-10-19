@@ -168,7 +168,7 @@ if (isset($_POST["paymentDelete"])) {
                     <div class="iiplayers plactive"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
                     <div class="ivplayers"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
                     <img src="img/playstation/ps<?php echo $i ?>.png">
-                    <label id="status5">slobodan</label>
+                    <label id="sony<?php echo $i ; ?>">slobodan</label>
                     <?php foreach ($allProductsSony as $item) {
                         if (strpos($item->name, '2') and (strpos($item->name, '3h')) === false) {
                             ?>
@@ -261,6 +261,9 @@ if (isset($_POST["paymentDelete"])) {
             <option value="damir@kokeza.com - popust"></option>
             <option value="dado@gmail.com - normal"></option>
         </datalist>
+        <div id="billBody">
+        </div>
+        <div class="bill-discount">Sati<span ><input type="number" id="hours" onchange="calculateSum()">Din</span></div>
         <div id="billBody">
         </div>
         <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
@@ -404,7 +407,10 @@ include $footerMenuLayout;
                 Sum = Sum + numArt * priceArt;
             }
         }
-        document.getElementById('sum').innerText = String(Sum) + ' Din';
+        var hourval = parseInt(document.getElementById("hours").value);
+        if(hourval > 0 ){hourval = hourval} else {hourval = 0};
+        tmpSum = Sum + hourval;
+        document.getElementById('sum').innerText = String(tmpSum) + ' Din';
         document.getElementById('billSum').setAttribute("value", String(Sum));
         var normalAmount = testSumCalculation();
 
@@ -521,46 +527,51 @@ include $footerMenuLayout;
 </script>
 
 <script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("Oct 17, 2017 18:28:55").getTime();
+    var countDownDate = new Date("Oct 19, 2017 18:28:55").getTime();
 
-    // Update the count down every 1 second
-    var x = setInterval(function () {
+    function countdowntimer (id, countDate) {
+        // Set the date we're counting down to
 
-        // Get todays date and time
-        var now = new Date().getTime();
 
-        // Find the distance between now an the count down date
-        var distance = countDownDate - now;
+        // Update the count down every 1 second
+        var x = setInterval(function () {
 
-        // Time calculations for days, hours, minutes and seconds
-        var hours = Math.floor(distance / (1000 * 60 * 60));
-        if (hours < 10) {
-            hours = '0' + hours
-        }
-        ;
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        if (minutes < 10) {
-            minutes = '0' + minutes
-        }
-        ;
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        if (seconds < 10) {
-            seconds = '0' + seconds;
-        }
-        ;
+            // Get todays date and time
+            var now = new Date().getTime();
 
-        // Output the result in an element with id="demo"
-        document.getElementById("status5").innerHTML = hours + ":" + minutes + ":" + seconds;
+            // Find the distance between now an the count down date
+            var distance = countDate - now;
 
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("status5").innerHTML = "EXPIRED";
-        } else if (distance < 300000) {
-            document.getElementById("status5").style.color = "red";
-        }
-    }, 1000);
+            // Time calculations for days, hours, minutes and seconds
+            var hours = Math.floor(distance / (1000 * 60 * 60));
+            if (hours < 10) {
+                hours = '0' + hours
+            }
+            ;
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            if (minutes < 10) {
+                minutes = '0' + minutes
+            }
+            ;
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            ;
+
+            // Output the result in an element with id="demo"
+            document.getElementById(id).innerHTML = hours + ":" + minutes + ":" + seconds;
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById(id).innerHTML = "EXPIRED";
+            } else if (distance < 300000) {
+                document.getElementById(id).style.color = "red";
+            }
+        }, 1000);
+    }
+    countdowntimer('sony1',countDownDate);
 </script>
 
 <script>

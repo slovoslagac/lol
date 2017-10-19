@@ -14,10 +14,10 @@ $sellproduct = new sellingproduct();
 $allProductsRegular = $sellproduct->getAllSellingProductsByPriceType('normal');
 $allProductsPopust = $sellproduct->getAllSellingProductsByPriceType('popust');
 $allProducts = $sellproduct->getAllSellingProducts();
+$allProductsSony = $sellproduct->getAllSellingProductsByType('normal', $sonyTypeID);
 $bill = new bill();
 $lastBill = $bill->getLastBill();
 $tmpBillsDetails = $bill->getLastBillsByUserDetails(3, $session->userid);
-
 
 
 if ($lastBill != '') {
@@ -30,7 +30,7 @@ $data = array();
 
 if (isset($_POST['payment'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0 ) {
+    if ($sumBillError > 0) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -61,10 +61,20 @@ if (isset($_POST['payment'])) {
                         break;
                 };
                 foreach ($data as $item) {
-                    if (isset($_POST['na' . $item->id])) {
-                        $tmpbillrow = new billrows();
-                        $tmpbillrow->addBillRow($tmpid, $_POST['na' . $item->id], $item->sppid, $item->value, $item->id);
-                        unset($tmpbillrow);
+                    for ($j=0; $j<=$numSony ; $j++){
+                        if (isset($_POST['na' . $item->id . '_' . $j])) {
+                            $tmpbillrow = new billrows();
+                            $sonyval = $_POST['na' . $item->id . '_'. $j];
+                            $tmpbillrow->addBillRow($tmpid, $sonyval, $item->sppid, $item->value, $item->id, $j);
+
+                            if ($item->producttype == $sonyTypeID)
+                            {
+                                $slackmessage = "Uplaceno je $item->name na  # $j u ukupnom trajanju od - $sonyval min/puta na racunu broj $tmpid";
+                                logAction("Dodavanje sonija", "Uplaceno je $item->name na sony # $j u ukupnom trajanju od - $sonyval", 'slack.txt');
+                                sendSlackInfo($slackmessage, $financialChanel);
+                            }
+                            unset($tmpbillrow);
+                        }
                     }
                 }
             } catch (Exception $e) {
@@ -85,7 +95,7 @@ if (isset($_POST['payment'])) {
 
 if (isset($_POST['paymentEdit'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0 ) {
+    if ($sumBillError > 0) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -117,15 +127,17 @@ if (isset($_POST['paymentEdit'])) {
                 };
                 $tmpbillrow = new billrows();
                 $tmpbillrow->deleteRowsById($billIdForEdit);
-                var_dump($data);
                 foreach ($data as $item) {
-                    if (isset($_POST['na' . $item->id])) {
-
-                        $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id], $item->sppid, $item->value, $item->id);
-
+                    for ($j=0; $j<=$numSony ; $j++){
+                        if (isset($_POST['na' . $item->id . '_' . $j])) {
+                            $tmpbillrow = new billrows();
+                            $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id . '_'. $j], $item->sppid, $item->value, $item->id, $j); $tmpval = $_POST['na' . $item->id . '_'. $j];
+                            logAction("", "$billIdForEdit, $tmpval, $item->sppid, $item->value, $item->id, $j", 'test.txt');
+                            unset($tmpbillrow);
+                        }
                     }
                 }
-                unset($tmpbillrow);
+
             } catch (Exception $e) {
                 logAction("Editovanje racuna - error", "suma - $sumBillError, details - $session->userid, addBill - $session->userid, $discountuserid, $billSum, $pricetype", 'error.txt');
             }
@@ -141,8 +153,8 @@ if (isset($_POST['paymentEdit'])) {
     }
 }
 
-if(isset($_POST["paymentDelete"])){
-    $billIdForDelete =  $_POST["billId"];
+if (isset($_POST["paymentDelete"])) {
+    $billIdForDelete = $_POST["billId"];
     $billRowsDelete = new billrows();
     $billRowsDelete->deleteRowsById($billIdForDelete);
     $bill->deleteBillById($billIdForDelete);
@@ -155,66 +167,92 @@ if(isset($_POST["paymentDelete"])){
 <div class="register-round">
 
     <div class="cash-register register">
-        <div class="playstation" clearfix>
-            <h3>Playstation</h3>
-            <div class="sony sony_free">
-                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
-                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
-                <img src="img/playstation/ps1.png">
-                <label>slobodan</label>
-                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
-            </div>
-            <div class="sony sony_free">
-                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
-                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
-                <img src="img/playstation/ps2.png">
-                <label>slobodan</label>
-                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
-            </div>
-            <div class="sony sony_soon">
-                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
-                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
-                <img src="img/playstation/ps3.png">
-                <label>00:09:21</label>
-                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
-            </div>
-            <div class="sony sony_active">
-                <div class="iiplayers plactive"><img src="img/playstation/2players.png"></div>
-                <div class="ivplayers"><img src="img/playstation/4players.png"></div>
-                <img src="img/playstation/ps4.png">
-                <label>01:45:37</label>
-                <p>+15</p><p>+30</p><p>+1h</p><p>N</p>
-            </div>
-        </div>
+
         <div class="cash-content clearfix" oncontextmenu="return false">
-            <?php $tmptype = '';
-            foreach ($allProductsRegular as $item) {
-                if ($tmptype != $item->producttype) {
-                    $tmptype = $item->producttype;
-                    switch ($item->producttype) {
-                        case 1:
-                            echo "<h3>Hrana</h3>";
-                            break;
-                        case 2:
-                            echo "<h3>Grickalice</h3>";
-                            break;
-                        case 3:
-                            echo "<h3>Piće</h3>";
-                            break;
-                    }
-                }
-                ?>
-                <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>');">
+            <h3>Playstation</h3>
+            <?php for ($i = 1; $i <= $numSony; $i++) { ?>
+                <div class="sony sony_free">
+                    <input type="hidden" value="2" id="numplayers">
+                    <div class="iiplayers plactive"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
+                    <div class="ivplayers"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
+                    <img src="img/playstation/ps<?php echo $i ?>.png">
+                    <label id="sony<?php echo $i ; ?>">slobodan</label>
+                    <?php foreach ($allProductsSony as $item) {
+                        if (strpos($item->name, '2') and (strpos($item->name, '3h')) === false) {
+                            ?>
+                            <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></div>
+                            <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
 
-                    <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
-                    <?php $filename = str_replace(' ', '-', $item->name);  $path = 'img/products/' ; if(file_exists($path.$filename.'.png') == 1) {} else {$filename = "default";} ; ?>
+                            <div id="2playersbox<?php echo $i ?>">
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 15, <?php echo $i ?>);">+15</p>
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 60, <?php echo $i ?>);">+1h</p>
+                            </div>
+                            <?php
+                        } elseif (strpos($item->name, '2') and (strpos($item->name, '3h'))) { ?>
+                            <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></div>
+                            <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
 
-                    <img src="<?php echo $path.$filename?>.png">
-                    <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
+                            <div id="2playersboxbonus<?php echo $i ?>">
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, <?php echo $i ?>);">+3h</p>
+                            </div>
+                            <?php
+                        } elseif (strpos($item->name, '4') and (strpos($item->name, '3h')) === false) { ?>
+                            <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></div>
+                            <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
+                            <div id="4playersbox<?php echo $i ?>" style="display: none">
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 15, <?php echo $i ?>);">+15</p>
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 60, <?php echo $i ?>);">+1h</p>
+                            </div>
+                            <?php
+                        } elseif (strpos($item->name, '4') and (strpos($item->name, '3h'))) { ?>
+                            <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></div>
+                            <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
 
+                            <div id="4playersboxbonus<?php echo $i ?>" style="display: none">
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, <?php echo $i ?>);">+3h</p>
+                            </div>
+                            <?php
+                        }
+
+                    } ?>
                 </div>
+            <?php }
 
-            <?php } ?>
+            $tmptype = '';
+            foreach ($allProductsRegular as $item) {
+                if ($item->producttype != $sonyTypeID) {
+                    if ($tmptype != $item->producttype) {
+                        $tmptype = $item->producttype;
+                        switch ($item->producttype) {
+                            case 1:
+                                echo "<h3>Hrana</h3>";
+                                break;
+                            case 2:
+                                echo "<h3>Grickalice</h3>";
+                                break;
+                            case 3:
+                                echo "<h3>Piće</h3>";
+                                break;
+                        }
+                    }
+                    ?>
+                    <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, 0);">
+
+                        <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
+                        <?php $filename = str_replace(' ', '-', $item->name);
+                        $path = 'img/products/';
+                        if (file_exists($path . $filename . '.png') == 1) {
+                        } else {
+                            $filename = "default";
+                        }; ?>
+
+                        <img src="<?php echo $path . $filename ?>.png">
+                        <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
+
+                    </div>
+
+                <?php }
+            } ?>
 
 
         </div> <!-- /content -->
@@ -227,13 +265,13 @@ if(isset($_POST["paymentDelete"])){
         </div>
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
         <input type="text" name="selectuser" placeholder="Anonymus" list="allusers" id="selectuser" oninput="recalculate()">
-        <datalist id="allusers">
-            <option value="damir@kokeza.com - popust"></option>
-            <option value="dado@gmail.com - normal"></option>
-        </datalist>
+<!--        <datalist id="allusers">-->
+<!--            <option value="damir@kokeza.com - popust"></option>-->
+<!--            <option value="dado@gmail.com - normal"></option>-->
+<!--        </datalist>-->
         <div id="billBody">
         </div>
-        <div class="bill-discount">Sati <input type="number" id="sl" onchange="calculateSum()"></div>
+        <div class="bill-discount">Sati<span ><input type="number" id="hours" onchange="calculateSum()">Din</span></div>
         <div id="billBody">
         </div>
         <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
@@ -288,13 +326,13 @@ include $footerMenuLayout;
                 };
                 $tmpbilldetailid = $item->billid;
                 ($item->username != '') ? $type = $item->username . ' - ' . $item->pricetype : $type = '';
-                echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid},";
+                echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid, typepr: $item->type},";
             } else {
-                echo "{num: $item->amount, id: $item->productid},";
+                echo "{num: $item->amount, id: $item->productid, typepr: $item->type},";
             }
 
         }
-        echo ($tmpbilldetailid > 0) ?  "]}" : "";
+        echo ($tmpbilldetailid > 0) ? "]}" : "";
 
 
         ?>];
@@ -306,53 +344,61 @@ include $footerMenuLayout;
     var popust = 0;
 
 
-    function articles(event, val) {
+    function articles(event, val, amount, type) {
         if (event.button == 0) {
-            add_product(val);
+            add_product(val, amount, type);
         } else if (event.button == 2) {
-            removeArticle(val);
+            removeArticle(val, amount, type);
         }
     }
 
-    function add_product(val) {
-        var code = val;
-        var price = parseInt(document.getElementById('price' + code).innerText);
-        var articlename = document.getElementById('articlename' + code).innerText;
+    function add_product(val, amount, type) {
+        var code = val + '_' + type;
+        var price = parseInt(document.getElementById('price' + val).innerText);
+        var articlename = document.getElementById('articlename' + val).innerText;
         if (productsID.indexOf(code) > -1) {
-            addArticle(code);
+            addArticle(val, amount, type);
         }
         else {
             productsID.push(code);
             var objTo = document.getElementById('billBody');
             var divadd = document.createElement("div");
             divadd.setAttribute("id", "checkproduct" + code);
-            divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="1"><strong id="numarticle' + code + '">1</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + code + ')"></i><i class="icon-minus" onclick="removeArticle(' + code + ')"></i></div></div>';
+            if (type == 0) {
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="'+amount+'"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, '+type+')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, '+type+')"></i></div></div>';
+            } else {
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="'+amount+'"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x (#' + type + ') ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, '+type+')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, '+type+')"></i></div></div>';
+            }
             objTo.appendChild(divadd)
-            product++;
+            product = product + amount;
         }
         calculateSum();
     }
 
 
-    function addArticle(val) {
-        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal++;
-        document.getElementById('numarticle' + val).innerText = String(currVal);
-        document.getElementById('na' + val).setAttribute("value", currVal);
+    function addArticle(val, amount, type) {
+        var code = val+'_'+type;
+        var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
+        console.log('blabla' + code, amount, type, currVal);
+        currVal = currVal + amount;
+        console.log('blabla' + code, amount, type, currVal);
+        document.getElementById('numarticle' + code).innerText = String(currVal);
+        document.getElementById('na' + code).setAttribute("value", String(currVal));
         calculateSum();
     }
 
-    function removeArticle(val) {
-        var currVal = parseInt(document.getElementById('numarticle' + val).innerText);
-        currVal--;
-        if (currVal == 0) {
-            document.getElementById('checkproduct' + val).remove();
+    function removeArticle(val, amount, type) {
+        var code = val+'_'+type;
+        var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
+        currVal = currVal - amount;
+        if (currVal <= 0) {
+            document.getElementById('checkproduct' + code).remove();
             productsID.splice(productsID.indexOf(String(val)), 1);
             product--;
         }
         else {
-            document.getElementById('numarticle' + val).innerText = String(currVal);
-            document.getElementById('na' + val).setAttribute("value", currVal);
+            document.getElementById('numarticle' + code).innerText = String(currVal);
+            document.getElementById('na' + code).setAttribute("value", currVal);
         }
         calculateSum();
     }
@@ -361,11 +407,7 @@ include $footerMenuLayout;
     function calculateSum() {
         var Sum = 0;
         var lengthArray = $(productsID).toArray().length;
-        var sl = parseInt(document.getElementById('sl').value);
-        console.log(sl);
-        Sum = Sum + sl;
         if (lengthArray > 0) {
-
             for (var k = 0; k < lengthArray; k++) {
                 var articleId = productsID[k];
                 var numArt = parseInt(document.getElementById('numarticle' + articleId).innerText);
@@ -373,7 +415,10 @@ include $footerMenuLayout;
                 Sum = Sum + numArt * priceArt;
             }
         }
-        document.getElementById('sum').innerText = String(Sum) + ' Din';
+        var hourval = parseInt(document.getElementById("hours").value);
+        if(hourval > 0 ){hourval = hourval} else {hourval = 0};
+        tmpSum = Sum + hourval;
+        document.getElementById('sum').innerText = String(tmpSum) + ' Din';
         document.getElementById('billSum').setAttribute("value", String(Sum));
         var normalAmount = testSumCalculation();
 
@@ -384,15 +429,15 @@ include $footerMenuLayout;
     function testSumCalculation() {
         var tmpSum = 0;
         var la = $(pricesNormal).toArray().length;
-        var sl = parseInt(document.getElementById('sl').value);
-        tmpSum = tmpSum + sl;
         for (var k = 0; k < la; k++) {
             var tmpobject = pricesNormal[k];
-            var tmpindex = productsID.indexOf(String(tmpobject.id));
-            if (tmpindex > -1) {
-                var numArt = parseInt(document.getElementById('numarticle' + tmpobject.id).innerText);
-                var priceArt = parseInt(tmpobject.price);
-                tmpSum = tmpSum + numArt * priceArt;
+            for (var j = 0; j < 5; j++) {
+                var tmpindex = productsID.indexOf(String(tmpobject.id + '_' + j));
+                if (tmpindex > -1) {
+                    var numArt = parseInt(document.getElementById('numarticle' + tmpobject.id + '_' + j).innerText);
+                    var priceArt = parseInt(tmpobject.price);
+                    tmpSum = tmpSum + numArt * priceArt;
+                }
             }
         }
         return tmpSum;
@@ -412,6 +457,7 @@ include $footerMenuLayout;
                 if (document.getElementById('checkprice' + id) !== null) {
                     document.getElementById('checkprice' + id).innerText = String(price);
                 }
+
             }
         } else if (val == 'normal') {
             length = $(pricesNormal).toArray().length;
@@ -454,20 +500,16 @@ include $footerMenuLayout;
             var billobject = billDetails[l];
             if (billobject.id == val) {
                 document.getElementById("selectuser").value = billobject.type;
-                document.getElementById("billId").setAttribute("value",  billobject.id);
-                document.getElementById("billNumber").innerText =  billobject.id;
+                document.getElementById("billId").setAttribute("value", billobject.id);
+                document.getElementById("billNumber").innerText = billobject.id;
                 var tmpDetails = billobject.billdata;
                 for (var p = 0; p < tmpDetails.length; p++) {
                     var tmpproduct = tmpDetails[p];
                     var tmpproductid = tmpproduct.id.toString();
-                    add_product(tmpproductid);
-                    if (tmpproduct.num > 1) {
-                        var s = 1;
-                        while (s < tmpproduct.num) {
-                            addArticle(tmpproductid)
-                            s++
-                        }
-                    }
+                    var tmpproducttype = tmpproduct.typepr;
+                    console.log(tmpproductid, tmpproduct.num, tmpproducttype, tmpproduct);
+                    add_product(tmpproductid, tmpproduct.num, tmpproducttype);
+
                 }
             }
         }
@@ -476,14 +518,12 @@ include $footerMenuLayout;
     }
 
     function resetBill() {
-        for(var t =0; t < productsID.length; t++){
+        for (var t = 0; t < productsID.length; t++) {
             var val = productsID[t];
             document.getElementById('checkproduct' + val).remove();
         }
-        productsID =[];
+        productsID = [];
     }
-
-
 
 
 </script>
@@ -494,6 +534,71 @@ include $footerMenuLayout;
     }
 </script>
 
+<script>
+    var countDownDate = new Date("Oct 19, 2017 18:28:55").getTime();
+
+    function countdowntimer (id, countDate) {
+        // Set the date we're counting down to
+
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var hours = Math.floor(distance / (1000 * 60 * 60));
+            if (hours < 10) {
+                hours = '0' + hours
+            }
+            ;
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            if (minutes < 10) {
+                minutes = '0' + minutes
+            }
+            ;
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            ;
+
+            // Output the result in an element with id="demo"
+            document.getElementById(id).innerHTML = hours + ":" + minutes + ":" + seconds;
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById(id).innerHTML = "EXPIRED";
+            } else if (distance < 300000) {
+                document.getElementById(id).style.color = "red";
+            }
+        }, 1000);
+    }
+    countdowntimer('sony1',countDownDate);
+</script>
+
+<script>
+    function changeplayernum(val, num) {
+        document.getElementById("numplayers").setAttribute("value", val);
+        if (val == 2) {
+            document.getElementById('2playersbox' + num).style.display = 'block';
+            document.getElementById('2playersboxbonus' + num).style.display = 'block';
+            document.getElementById('4playersbox' + num).style.display = 'none';
+            document.getElementById('4playersboxbonus' + num).style.display = 'none';
+        } else {
+            document.getElementById('2playersbox' + num).style.display = 'none';
+            document.getElementById('2playersboxbonus' + num).style.display = 'none';
+            document.getElementById('4playersbox' + num).style.display = 'block';
+            document.getElementById('4playersboxbonus' + num).style.display = 'block';
+
+        }
+    }
+</script>
 
 </body>
 
