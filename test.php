@@ -1,10 +1,11 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-$currentName = 'Coca12';
-$currentType = 1;
-$currentProduct = new sellingproduct($currentName, $currentType);
-$currentProduct->addNewSellingProduct();
-$currentProduct->getSellingProductByName();
-
-var_dump($currentProduct);
+for ($i = 1; $i<= $numSony; $i++) {
+    $tmpSony = getSonyTime($i);
+    foreach($tmpSony as $item) {
+    var_dump($item);
+    echo"<br>";
+    echo strtotime($item->tstamp) + $item->value;
+    echo"<br>";
+}}

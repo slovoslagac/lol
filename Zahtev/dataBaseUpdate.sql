@@ -12,6 +12,17 @@ ADD COLUMN `type` INT(2) NULL DEFAULT NULL AFTER `sellingproductid`;
 ALTER TABLE `lol`.`bills`
 CHANGE COLUMN `billsum` `billsum` FLOAT(10,2) NULL DEFAULT NULL ;
 
+CREATE TABLE `sonystats` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `expiretime` datetime NOT NULL,
+  `tstamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `sonynum` int(2) NOT NULL,
+  UNIQUE KEY `uniqsony` (`sonynum`),
+  KEY `porind` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
 
 -----Ver 1.4--------
 

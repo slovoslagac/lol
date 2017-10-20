@@ -15,6 +15,8 @@ $allProductsRegular = $sellproduct->getAllSellingProductsByPriceType('normal');
 $allProductsPopust = $sellproduct->getAllSellingProductsByPriceType('popust');
 $allProducts = $sellproduct->getAllSellingProducts();
 $allProductsSony = $sellproduct->getAllSellingProductsByType('normal', $sonyTypeID);
+
+
 $bill = new bill();
 $lastBill = $bill->getLastBill();
 $tmpBillsDetails = $bill->getLastBillsByUserDetails(3, $session->userid);
@@ -61,14 +63,13 @@ if (isset($_POST['payment'])) {
                         break;
                 };
                 foreach ($data as $item) {
-                    for ($j=0; $j<=$numSony ; $j++){
+                    for ($j = 0; $j <= $numSony; $j++) {
                         if (isset($_POST['na' . $item->id . '_' . $j])) {
                             $tmpbillrow = new billrows();
-                            $sonyval = $_POST['na' . $item->id . '_'. $j];
+                            $sonyval = $_POST['na' . $item->id . '_' . $j];
                             $tmpbillrow->addBillRow($tmpid, $sonyval, $item->sppid, $item->value, $item->id, $j);
 
-                            if ($item->producttype == $sonyTypeID)
-                            {
+                            if ($item->producttype == $sonyTypeID) {
                                 $slackmessage = "Uplaceno je $item->name na  # $j u ukupnom trajanju od - $sonyval min/puta na racunu broj $tmpid";
                                 logAction("Dodavanje sonija", "Uplaceno je $item->name na sony # $j u ukupnom trajanju od - $sonyval", 'slack.txt');
                                 sendSlackInfo($slackmessage, $financialChanel);
@@ -128,10 +129,11 @@ if (isset($_POST['paymentEdit'])) {
                 $tmpbillrow = new billrows();
                 $tmpbillrow->deleteRowsById($billIdForEdit);
                 foreach ($data as $item) {
-                    for ($j=0; $j<=$numSony ; $j++){
+                    for ($j = 0; $j <= $numSony; $j++) {
                         if (isset($_POST['na' . $item->id . '_' . $j])) {
                             $tmpbillrow = new billrows();
-                            $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id . '_'. $j], $item->sppid, $item->value, $item->id, $j); $tmpval = $_POST['na' . $item->id . '_'. $j];
+                            $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id . '_' . $j], $item->sppid, $item->value, $item->id, $j);
+                            $tmpval = $_POST['na' . $item->id . '_' . $j];
                             logAction("", "$billIdForEdit, $tmpval, $item->sppid, $item->value, $item->id, $j", 'test.txt');
                             unset($tmpbillrow);
                         }
@@ -176,7 +178,7 @@ if (isset($_POST["paymentDelete"])) {
                     <div class="iiplayers plactive"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
                     <div class="ivplayers"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
                     <img src="img/playstation/ps<?php echo $i ?>.png">
-                    <label id="sony<?php echo $i ; ?>">slobodan</label>
+                    <label id="sony<?php echo $i; ?>">&nbsp</label>
                     <?php foreach ($allProductsSony as $item) {
                         if (strpos($item->name, '2') and (strpos($item->name, '3h')) === false) {
                             ?>
@@ -265,13 +267,13 @@ if (isset($_POST["paymentDelete"])) {
         </div>
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
         <input type="text" name="selectuser" placeholder="Anonymus" list="allusers" id="selectuser" oninput="recalculate()">
-<!--        <datalist id="allusers">-->
-<!--            <option value="damir@kokeza.com - popust"></option>-->
-<!--            <option value="dado@gmail.com - normal"></option>-->
-<!--        </datalist>-->
+        <!--        <datalist id="allusers">-->
+        <!--            <option value="damir@kokeza.com - popust"></option>-->
+        <!--            <option value="dado@gmail.com - normal"></option>-->
+        <!--        </datalist>-->
         <div id="billBody">
         </div>
-        <div class="bill-discount">Sati<span ><input type="number" id="hours" onchange="calculateSum()">Din</span></div>
+        <div class="bill-discount">Sati<span><input type="number" id="hours" onchange="calculateSum()">Din</span></div>
         <div id="billBody">
         </div>
         <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
@@ -319,20 +321,23 @@ include $footerMenuLayout;
 
     var billDetails = [<?php
         $tmpbilldetailid = 0;
+
         foreach ($tmpBillsDetails as $item) {
             if ($tmpbilldetailid != $item->billid) {
                 if ($tmpbilldetailid > 0) {
-                    echo "]},";
+                    echo "], deletestatus : $billdeletestatus, },";
                 };
+                $billdeletestatus = 0;
                 $tmpbilldetailid = $item->billid;
                 ($item->username != '') ? $type = $item->username . ' - ' . $item->pricetype : $type = '';
                 echo "{id: $item->billid, type: '$type', billdata:[{num: $item->amount, id: $item->productid, typepr: $item->type},";
             } else {
                 echo "{num: $item->amount, id: $item->productid, typepr: $item->type},";
             }
-
+            if ($item->sptype == $sonyTypeID and $item->timediff > 300) { $billdeletestatus = 1;
+            }
         }
-        echo ($tmpbilldetailid > 0) ? "]}" : "";
+        echo ($tmpbilldetailid > 0) ? "], deletestatus : $billdeletestatus,}" : "";
 
 
         ?>];
@@ -365,9 +370,9 @@ include $footerMenuLayout;
             var divadd = document.createElement("div");
             divadd.setAttribute("id", "checkproduct" + code);
             if (type == 0) {
-                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="'+amount+'"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, '+type+')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, '+type+')"></i></div></div>';
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="' + amount + '"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, ' + type + ')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, ' + type + ')"></i></div></div>';
             } else {
-                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="'+amount+'"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x (#' + type + ') ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, '+type+')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, '+type+')"></i></div></div>';
+                divadd.innerHTML = '<div class="bill-row" id="article' + code + '" ><input type="hidden" name="na' + code + '" id="na' + code + '" value="' + amount + '"><input type="hidden" name = "type' + code + '" id = "type' + code + '" value="' + type + '"><strong id="numarticle' + code + '">' + amount + '</strong></input><strong> x (#' + type + ') ' + articlename + '</strong><span id="checkprice' + code + '">' + price + '</span><div class="plusminus"><i class="icon-plus" onclick="addArticle(' + val + ', 1, ' + type + ')"></i><i class="icon-minus" onclick="removeArticle(' + val + ', 1, ' + type + ')"></i></div></div>';
             }
             objTo.appendChild(divadd)
             product = product + amount;
@@ -377,7 +382,7 @@ include $footerMenuLayout;
 
 
     function addArticle(val, amount, type) {
-        var code = val+'_'+type;
+        var code = val + '_' + type;
         var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
         console.log('blabla' + code, amount, type, currVal);
         currVal = currVal + amount;
@@ -388,7 +393,7 @@ include $footerMenuLayout;
     }
 
     function removeArticle(val, amount, type) {
-        var code = val+'_'+type;
+        var code = val + '_' + type;
         var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
         currVal = currVal - amount;
         if (currVal <= 0) {
@@ -416,7 +421,12 @@ include $footerMenuLayout;
             }
         }
         var hourval = parseInt(document.getElementById("hours").value);
-        if(hourval > 0 ){hourval = hourval} else {hourval = 0};
+        if (hourval > 0) {
+            hourval = hourval
+        } else {
+            hourval = 0
+        }
+        ;
         tmpSum = Sum + hourval;
         document.getElementById('sum').innerText = String(tmpSum) + ' Din';
         document.getElementById('billSum').setAttribute("value", String(Sum));
@@ -489,12 +499,13 @@ include $footerMenuLayout;
     function editBill(val) {
 
         resetBill();
+        console.log(billDetails);
+
 
         document.getElementById("payment").setAttribute("class", "hide");
         document.getElementById("paymentEdit").setAttribute("class", "button btn btn-primary btn-large pay");
         document.getElementById("paymentCancel").setAttribute("class", "button btn btn-primary btn-small pay");
         document.getElementById("paymentDelete").setAttribute("class", "button btn btn-primary btn-small pay");
-
 
         for (var l = 0; l < 3; l++) {
             var billobject = billDetails[l];
@@ -502,17 +513,28 @@ include $footerMenuLayout;
                 document.getElementById("selectuser").value = billobject.type;
                 document.getElementById("billId").setAttribute("value", billobject.id);
                 document.getElementById("billNumber").innerText = billobject.id;
+                deletestatus = billobject.deletestatus;
+                console.log(deletestatus,billobject.deletestatus);
                 var tmpDetails = billobject.billdata;
                 for (var p = 0; p < tmpDetails.length; p++) {
                     var tmpproduct = tmpDetails[p];
                     var tmpproductid = tmpproduct.id.toString();
                     var tmpproducttype = tmpproduct.typepr;
-                    console.log(tmpproductid, tmpproduct.num, tmpproducttype, tmpproduct);
                     add_product(tmpproductid, tmpproduct.num, tmpproducttype);
 
                 }
             }
         }
+
+        console.log(deletestatus);
+
+
+        if (deletestatus == '1') {
+            document.getElementById("paymentDelete").style.display = 'none';
+        } else if (deletestatus == '0') {
+            document.getElementById("paymentDelete").style.display = 'block';
+        }
+
         recalculate()
 
     }
@@ -535,9 +557,10 @@ include $footerMenuLayout;
 </script>
 
 <script>
-    var countDownDate = new Date("Oct 19, 2017 18:28:55").getTime();
 
-    function countdowntimer (id, countDate) {
+
+
+    function countdowntimer(id, countDate) {
         // Set the date we're counting down to
 
 
@@ -573,13 +596,20 @@ include $footerMenuLayout;
             // If the count down is over, write some text
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById(id).innerHTML = "EXPIRED";
+                document.getElementById(id).innerHTML = "slobodan";
             } else if (distance < 300000) {
                 document.getElementById(id).style.color = "red";
             }
         }, 1000);
     }
-    countdowntimer('sony1',countDownDate);
+
+    for( j=1; j<=4; j++) {
+        console.log('sony'+j, 'countDownDate' + j);
+        var cd = 'countDownDate' + j;
+        cd = new Date("Oct 20, 2017 18:28:55").getTime();
+        countdowntimer('sony'+j, cd);
+
+    }
 </script>
 
 <script>

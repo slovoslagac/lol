@@ -112,3 +112,23 @@ order by 3,2");
     $result = $sql->fetchAll(PDO::FETCH_OBJ);
     return $result;
 }
+
+
+
+function getSonyTime ($type) {
+    global $conn;
+    $sql = $conn->prepare("select br.numProducts, br.sellingproductid, b.tstamp, b.type, sp.name,
+case when name like '%3h%' then br.numProducts * 180 else br.numProducts end value
+from billsrows br, sellingproducts sp, bills b
+where br.sellingproductid = sp.id
+and br.billrid = b.id
+and sp.typeid = 6
+and br.type = :tp
+and b.tstamp > now() - interval 1 day
+order by 4, 3") ;
+    $sql->bindParam(":tp", $type);
+    $sql->execute();
+    $result = $sql->fetchAll(PDO::FETCH_OBJ);
+    return $result;
+
+}

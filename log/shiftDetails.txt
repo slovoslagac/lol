@@ -104,3 +104,6 @@
 19.10.2017 13:46:23 | Shift start --------------------- : userid = 11 
 19.10.2017 13:46:23 | Shfit start section created : userid = 11 ; billid = 45
 19.10.2017 13:46:23 | Shfit & bill connection created : shiftid = 11 ; billid = 45
+20.10.2017 17:13:40 | Shift end : userid = 1
+20.10.2017 17:14:14 | Shift end : userid = 1
+20.10.2017 17:14:15 | Shift end : userid = 1

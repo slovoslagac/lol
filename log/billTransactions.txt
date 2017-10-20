@@ -41,3 +41,13 @@
 19.10.2017 00:59:41 | Editovanje racuna - edit racuna : 54, 0, 1200, normal
 19.10.2017 00:59:49 | Editovanje racuna - edit racuna : 54, 0, 4200, normal
 19.10.2017 08:14:41 | Editovanje racuna - edit racuna : 26, 0, 11100, normal
+20.10.2017 11:07:21 | Editovanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - 0, details - 11
+20.10.2017 11:37:45 | Kucanje racuna - prebrzo kucanje racuna : suma - 120, details - 11
+20.10.2017 11:37:45 | Kucanje racuna - prebrzo kucanje racuna : suma - 120, details - 11
+20.10.2017 11:37:45 | Kucanje racuna - prebrzo kucanje racuna : suma - 120, details - 11
+20.10.2017 14:00:54 | Editovanje racuna - edit racuna : 50, 0, 290, normal
+20.10.2017 14:01:21 | Editovanje racuna - edit racuna : 49, 0, 760, normal
+20.10.2017 14:12:54 | Editovanje racuna - edit racuna : 51, 0, 450, normal
+20.10.2017 14:14:02 | Editovanje racuna - edit racuna : 50, 0, 290, normal
+20.10.2017 14:18:03 | Editovanje racuna - edit racuna : 49, 0, 520, normal
+20.10.2017 14:18:12 | Editovanje racuna - edit racuna : 50, 0, 440, normal

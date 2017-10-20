@@ -25,10 +25,10 @@ class bill
     public function getLastBillsByUserDetails($limit = 3, $wrk = '', $type = 1)
     {
         global $conn;
-        $sql = $conn->prepare("select a.billid, a.pricetype, a.amount , a.productid, u.arenausername username, a.type
+        $sql = $conn->prepare("select a.billid, a.pricetype, a.amount , a.productid, u.arenausername username, a.type, now() - a.tstamp timediff, a.tstamp, a.sptype
 from
 (
-select b.id billid, b.pricetype pricetype, br.numProducts amount , br.sellingproductid productid, b.userid, br.type
+select b.id billid, b.pricetype pricetype, br.numProducts amount , br.sellingproductid productid, b.userid, br.type, b.tstamp, sp.typeid as sptype
 from
 (
 select *
@@ -37,8 +37,9 @@ where workerid = :wk
 and type = :tp
 order by tstamp desc
 limit :lt) b,
-billsrows br
-where br.billrid = b.id ) a
+billsrows br, sellingproducts sp
+where br.billrid = b.id
+and br.sellingproductid = sp.id ) a
 left join users u on u.id = a.userid");
         $sql->bindParam(":lt", $limit);
         $sql->bindParam(":wk", $wrk);
