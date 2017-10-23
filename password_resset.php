@@ -5,7 +5,7 @@
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 if ($session->isLoggedIn()) {
-redirectTo("index.php");
+redirectTo("kasa.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -28,7 +28,7 @@ print_r($session);
 //            $session
 //            if($session->isLoggedIn() == true) {echo "To je to";} else { echo "Opet je false";};
 unset($password, $currworker, $username);
-redirectTo("index.php");
+redirectTo("kasa.php");
 //
 //        } else {
 //            echo "lozinka je pogresna pokusajte ponovo";

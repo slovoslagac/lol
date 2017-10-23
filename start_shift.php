@@ -48,7 +48,7 @@ if (isset($_POST["save_shift"])) {
         }
 
 
-        redirectTo("index.php");
+        redirectTo("kasa.php");
     }
 
 

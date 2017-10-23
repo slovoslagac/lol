@@ -15,7 +15,7 @@ $allProductsRegular = $sellproduct->getAllSellingProductsByPriceType('normal');
 $allProductsPopust = $sellproduct->getAllSellingProductsByPriceType('popust');
 $allProducts = $sellproduct->getAllSellingProducts();
 $allProductsSony = $sellproduct->getAllSellingProductsByType('normal', $sonyTypeID);
-
+$sonyDetails = getSonyStatus();
 
 $bill = new bill();
 $lastBill = $bill->getLastBill();
@@ -71,7 +71,7 @@ if (isset($_POST['payment'])) {
 
                             if ($item->producttype == $sonyTypeID) {
                                 $slackmessage = "Uplaceno je $item->name na  # $j u ukupnom trajanju od - $sonyval min/puta na racunu broj $tmpid";
-                                logAction("Dodavanje sonija", "Uplaceno je $item->name na sony # $j u ukupnom trajanju od - $sonyval", 'slack.txt');
+                                logAction("Dodavanje sonija", "Uplaceno je $item->name na sony # $j u ukupnom trajanju od - $sonyval veza racun broj $tmpid", 'slack.txt');
                                 sendSlackInfo($slackmessage, $financialChanel);
                             }
                             unset($tmpbillrow);
@@ -132,9 +132,15 @@ if (isset($_POST['paymentEdit'])) {
                     for ($j = 0; $j <= $numSony; $j++) {
                         if (isset($_POST['na' . $item->id . '_' . $j])) {
                             $tmpbillrow = new billrows();
-                            $tmpbillrow->addBillRow($billIdForEdit, $_POST['na' . $item->id . '_' . $j], $item->sppid, $item->value, $item->id, $j);
+                            $sonyval = $_POST['na' . $item->id . '_' . $j];
+                            $tmpbillrow->addBillRow($billIdForEdit, $sonyval, $item->sppid, $item->value, $item->id, $j);
                             $tmpval = $_POST['na' . $item->id . '_' . $j];
-                            logAction("", "$billIdForEdit, $tmpval, $item->sppid, $item->value, $item->id, $j", 'test.txt');
+                            if ($item->producttype == $sonyTypeID) {
+                                $slackmessage = "Promenjeno je  $item->name na  # $j u ukupnom trajanju od - $sonyval min/puta na racunu broj $billIdForEdit";
+                                logAction("Dodavanje sonija", "Uplaceno je $item->name na sony # $j u ukupnom trajanju od - $sonyval veza racun broj $billIdForEdit", 'slack.txt');
+                                sendSlackInfo($slackmessage, $financialChanel);
+                            }
+
                             unset($tmpbillrow);
                         }
                     }
@@ -172,11 +178,11 @@ if (isset($_POST["paymentDelete"])) {
 
         <div class="cash-content clearfix" oncontextmenu="return false">
             <h3>Playstation</h3>
-            <?php for ($i = 1; $i <= $numSony; $i++) { ?>
-                <div class="sony sony_free">
+            <?php for ($i = 1; $i <= $numSony; $i++) { $sonyTime = new DateTime( $sonyDetails[$i]); ($sonyTime > $currentDate) ? $diff = date_diff($sonyTime, $currentDate) : $diff = null; ($diff != null)? $sonydiff = $diff->h*60 + $diff->i : $sonydiff = 0;  ?>
+                <div class="<?php echo ($sonydiff > 0 )? ($sonydiff > 15) ? "sony sony_active" : "sony sony_soon" : "sony sony_free"?>" id="sony<?php echo $i ?>status">
                     <input type="hidden" value="2" id="numplayers">
-                    <div class="iiplayers plactive"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
-                    <div class="ivplayers"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
+                    <div class="iiplayers plactive" id="2player<?php echo $i ?>"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
+                    <div class="ivplayers" id="4player<?php echo $i ?>"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
                     <img src="img/playstation/ps<?php echo $i ?>.png">
                     <label id="sony<?php echo $i; ?>">&nbsp</label>
                     <?php foreach ($allProductsSony as $item) {
@@ -273,7 +279,7 @@ if (isset($_POST["paymentDelete"])) {
         <!--        </datalist>-->
         <div id="billBody">
         </div>
-        <div class="bill-discount">Sati<span><input type="number" id="hours" onchange="calculateSum()">Din</span></div>
+        <div class="bill-sl">Sati<span><input type="number" id="hours" style="width:200px; margin-right:5px;" onchange="calculateSum()">Din</span></div>
         <div id="billBody">
         </div>
         <div class="bill-discount">POPUST <span id="discount">0 Din</span></div>
@@ -309,8 +315,88 @@ if (isset($_POST["paymentDelete"])) {
 <?php
 include $footerMenuLayout;
 ?>
-
 <script>
+    var sonydetails = [
+        <?php
+        for ($t = 1; $t <= $numSony; $t++) {
+            if ($sonyDetails[$t] != null) {
+                echo "{ id : $t, date : '$sonyDetails[$t]' } ,";
+            }
+        } ?>];
+
+    var countDownDate = new Date("Oct 23, 2017 12:25:38").getTime();
+
+    function countdowntimer(id, countDate) {
+        // Set the date we're counting down to
+
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var hours = Math.floor(distance / (1000 * 60 * 60));
+            if (hours < 10) {
+                hours = '0' + hours
+            }
+            ;
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            if (minutes < 10) {
+                minutes = '0' + minutes
+            }
+            ;
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (seconds < 10) {
+                seconds = '0' + seconds;
+            }
+            ;
+
+            // Output the result in an element with id="demo"
+            document.getElementById(id).innerHTML = hours + ":" + minutes + ":" + seconds;
+
+            // If the count down is over, write some text
+            var classid = id + 'status';
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById(id).innerHTML = "slobodan";
+                document.getElementById(classid).setAttribute("class", "sony sony_free");
+            } else if (distance < 900000) {
+                document.getElementById(classid).setAttribute("class", "sony sony_soon");
+            } else {
+                document.getElementById(classid).setAttribute("class", "sony sony_active");
+
+            }
+        }, 1000);
+    }
+    var tmplength = $(sonydetails).toArray().length;
+    for (var j = 1; j <= 4; j++) {
+        var tmpcd = null;
+        var cd = null;
+        for(var p = 0; p< tmplength; p ++){
+            var tmpobject = sonydetails[p];
+            if (tmpobject.id == j){
+                var cd = tmpobject.date;
+
+            }
+        }
+        tmpcd = new Date(cd).getTime();
+
+        if (tmpcd != null) {
+
+            countdowntimer('sony' + j, tmpcd);
+        }
+    }
+
+
+</script>
+<script>
+
+
 
     var pricesNormal = [<?php foreach ($allProductsRegular as $item) {
         echo "{id: $item->id , name: '$item->name' , price: $item->value},";
@@ -334,7 +420,8 @@ include $footerMenuLayout;
             } else {
                 echo "{num: $item->amount, id: $item->productid, typepr: $item->type},";
             }
-            if ($item->sptype == $sonyTypeID and $item->timediff > 300) { $billdeletestatus = 1;
+            if ($item->sptype == $sonyTypeID and $item->timediff > 300) {
+                $billdeletestatus = 1;
             }
         }
         echo ($tmpbilldetailid > 0) ? "], deletestatus : $billdeletestatus,}" : "";
@@ -514,7 +601,7 @@ include $footerMenuLayout;
                 document.getElementById("billId").setAttribute("value", billobject.id);
                 document.getElementById("billNumber").innerText = billobject.id;
                 deletestatus = billobject.deletestatus;
-                console.log(deletestatus,billobject.deletestatus);
+                console.log(deletestatus, billobject.deletestatus);
                 var tmpDetails = billobject.billdata;
                 for (var p = 0; p < tmpDetails.length; p++) {
                     var tmpproduct = tmpDetails[p];
@@ -556,61 +643,7 @@ include $footerMenuLayout;
     }
 </script>
 
-<script>
 
-
-
-    function countdowntimer(id, countDate) {
-        // Set the date we're counting down to
-
-
-        // Update the count down every 1 second
-        var x = setInterval(function () {
-
-            // Get todays date and time
-            var now = new Date().getTime();
-
-            // Find the distance between now an the count down date
-            var distance = countDate - now;
-
-            // Time calculations for days, hours, minutes and seconds
-            var hours = Math.floor(distance / (1000 * 60 * 60));
-            if (hours < 10) {
-                hours = '0' + hours
-            }
-            ;
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            if (minutes < 10) {
-                minutes = '0' + minutes
-            }
-            ;
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            if (seconds < 10) {
-                seconds = '0' + seconds;
-            }
-            ;
-
-            // Output the result in an element with id="demo"
-            document.getElementById(id).innerHTML = hours + ":" + minutes + ":" + seconds;
-
-            // If the count down is over, write some text
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById(id).innerHTML = "slobodan";
-            } else if (distance < 300000) {
-                document.getElementById(id).style.color = "red";
-            }
-        }, 1000);
-    }
-
-    for( j=1; j<=4; j++) {
-        console.log('sony'+j, 'countDownDate' + j);
-        var cd = 'countDownDate' + j;
-        cd = new Date("Oct 20, 2017 18:28:55").getTime();
-        countdowntimer('sony'+j, cd);
-
-    }
-</script>
 
 <script>
     function changeplayernum(val, num) {
@@ -620,11 +653,15 @@ include $footerMenuLayout;
             document.getElementById('2playersboxbonus' + num).style.display = 'block';
             document.getElementById('4playersbox' + num).style.display = 'none';
             document.getElementById('4playersboxbonus' + num).style.display = 'none';
+            document.getElementById('2player'+ num).setAttribute("class", "iiplayers plactive");
+            document.getElementById('4player'+ num).setAttribute("class", "ivplayers");
         } else {
             document.getElementById('2playersbox' + num).style.display = 'none';
             document.getElementById('2playersboxbonus' + num).style.display = 'none';
             document.getElementById('4playersbox' + num).style.display = 'block';
             document.getElementById('4playersboxbonus' + num).style.display = 'block';
+            document.getElementById('2player'+ num).setAttribute("class", "iiplayers");
+            document.getElementById('4player'+ num).setAttribute("class", "ivplayers plactive");
 
         }
     }

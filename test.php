@@ -1,37 +1,42 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
+
+$SonyArray = array();
 $now = new DateTime();
-var_dump($now);
-echo "<br>";
+global $numSony;
 for ($i = 1; $i <= $numSony; $i++) {
+    echo " $i <br>";
     $tmpSony = getSonyTime($i);
-    $lasttime = '';
-    echo "$i<br>";
-
-
+    $lasttime = 0;
+    var_dump($tmpSony);
+    echo "<br>";
     foreach ($tmpSony as $item) {
-        var_dump($item);
-        echo "<br>";
-        var_dump($lasttime);
-        echo "<br>";
-
-
         $tmptime = new DateTime("$item->tstamp");
-        if ($lasttime == '') {$starttime = $tmptime; } else {($lasttime > $now) ? $starttime = $lasttime : $starttime = $now ;}
+        if ($lasttime == '') {
+            $starttime = $tmptime;
+        } else {
+            ($lasttime > $tmptime) ? $starttime = $lasttime : $starttime = $tmptime;
+        }
 
-        $timeaddval = 'PT'.$item->value.'M';
+        echo "$item->value, <br>";
+        $timeaddval = 'PT' . $item->value . 'M';
         $endtime = $starttime->add(new DateInterval($timeaddval));
-        var_dump($tmptime);
-        echo "<br>";
-        var_dump($starttime);
-        echo "<br>";
-        var_dump($endtime);
-        echo "<br>";
 
-        $lasttime = $endtime;
-        echo $lasttime->format('d.m.Y H:i:s') .'<br>'. $starttime->format('d.m.Y H:i:s') .'<br>'. $endtime->format('d.m.Y H:i:s');
+            $lasttime = $endtime;
 
-        echo "<br>";
+        echo "$timeaddval," . $endtime->format('M d, Y H:i:s');
+        "<br>";
     }
+
+    if ($lasttime != null) {
+        $SonyArray[$i] = $lasttime->format('M d, Y H:i:s');
+    }
+
+    echo "<br>";
 }
+
+//    return $SonyArray;
+
+echo "<br>";
+print_r($SonyArray);

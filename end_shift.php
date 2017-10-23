@@ -49,7 +49,7 @@ if (isset($_POST["save_shift"])) {
 
 
         $tmpShift->endShift($userid, $shiftId);
-        redirectTo("index.php");
+        redirectTo("kasa.php");
     }
     foreach ($allproductids as $id) {
     }

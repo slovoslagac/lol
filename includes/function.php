@@ -132,3 +132,35 @@ order by 4, 3") ;
     return $result;
 
 }
+
+
+function getSonyStatus(){
+    $SonyArray = array();
+    global $numSony;
+    for ($i = 1; $i <= $numSony; $i++) {
+        $tmpSony = getSonyTime($i);
+        $lasttime = 0;
+
+        foreach ($tmpSony as $item) {
+            $tmptime = new DateTime("$item->tstamp");
+            if ($lasttime == '') {
+                $starttime = $tmptime;
+            } else {
+                ($lasttime > $tmptime) ? $starttime = $lasttime : $starttime = $tmptime;
+            }
+
+            $timeaddval = 'PT' . $item->value . 'M';
+            $endtime = $starttime->add(new DateInterval($timeaddval));
+            $lasttime = $endtime;
+        }
+
+        if ($lasttime != null ) {
+            $SonyArray[$i] = $lasttime->format('M d, Y H:i:s');
+        } else {
+            $SonyArray[$i] = null;
+        }
+
+    }
+
+    return $SonyArray;
+}

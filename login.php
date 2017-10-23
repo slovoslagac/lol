@@ -3,7 +3,7 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 
 if ($session->isLoggedIn()) {
-    redirectTo("index.php");
+    redirectTo("kasa.php");
 }
 
 if (isset($_POST["submit"])) {
@@ -18,7 +18,7 @@ if (isset($_POST["submit"])) {
             $session->login($currworker);
             $session->setSessionTime();
             unset($password, $currworker, $username);
-            redirectTo("index.php");
+            redirectTo("kasa.php");
 
         }
 

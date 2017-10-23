@@ -25,7 +25,7 @@ if (isset($_POST['userResults']) != '') {
             }
             $i++;
         }
-        redirectTo("index.php");
+        redirectTo("kasa.php");
 
 }
 

@@ -372,13 +372,13 @@ fieldset small {
 /* Cash register */
 
 .register-round {
-    width:1200px;
+    width:1900px;
     display:block;
-    margin:0 auto;
+    margin:0 10px;
 }
 
 .cash-register {
-	width: 830px; 
+	width: 1500px; 
 	display: block;
     float:left;
 	background: #f9f9f9;
@@ -391,10 +391,14 @@ fieldset small {
 
 .cash-register h3 {
     float:left;
-    width:800px;
+    width:1460px;
     line-height:30px;
     margin:5px;
     border-bottom:1px solid #ccc;
+    background:#ccc;
+    color:#000;
+    padding-left:10px;
+    border-radius:5px;
 }
 
 .bill {
@@ -493,6 +497,7 @@ fieldset small {
 
 .product-round:hover {
     background:#f3f3f3;
+    cursor:pointer;
 }
 
 .product-round label {
@@ -501,7 +506,8 @@ fieldset small {
     line-height:25px;
     font-weight:bold;
     margin:0px;
-    background:#d5d5d5;
+    background:#000;
+    color:#fff;
     border-radius:5px 5px 0 0;
 }
 
@@ -529,6 +535,19 @@ fieldset small {
 }
 
 .bill-discount span{
+    float:right;
+    text-align:right;
+    font-weight:bolder;
+}
+
+.bill-sl {
+    width:300px;
+    line-height: 50px;
+    border-top:1px solid #000;
+    padding:0 10px;
+}
+
+.bill-sl span{
     float:right;
     text-align:right;
     font-weight:bolder;
@@ -676,5 +695,6 @@ fieldset small {
 }
 
 .plactive {
+    background:#ccc;
     border:1px solid #555;
 }
