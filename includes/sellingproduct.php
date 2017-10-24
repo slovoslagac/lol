@@ -19,6 +19,30 @@ class sellingproduct
         $this->typeid = $type;
     }
 
+    public function getAllSellingProductsByPriceTypeCheckSum($type)
+    {
+        global $conn;
+        $sql = $conn->prepare("select a.name, spp.value, a.id id, a.producttype producttype, spp.id as sppid
+from
+(
+select sp.id, sp.name, sp.typeid producttype
+from sellingproducts sp, sellingproductsdetails spd
+where sp.id = spd.selingproductid
+and sp.typeid in (1,2,3)
+group by sp.id, sp.name, sp.typeid
+having count(*) = 1 ) a,
+sellingproductsprices spp
+where a.id = spp.selingproductid
+and spp.pricetype = :tp
+order by 4,1");
+        $sql->bindParam(':tp', $type);
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+
+    }
+
+
 
     public function getAllSellingProductsByPriceType($type)
     {

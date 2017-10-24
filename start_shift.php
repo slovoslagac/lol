@@ -2,7 +2,7 @@
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
 $sellproducts = new sellingproduct();
-$allsellproducts = $sellproducts->getAllSellingProductsByPriceType('normal');
+$allsellproducts = $sellproducts->getAllSellingProductsByPriceTypeCheckSum('normal');
 //var_dump($allsellproducts);
 $allproductids = array();
 $productprices = array();

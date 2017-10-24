@@ -22,6 +22,16 @@ $lastBill = $bill->getLastBill();
 $tmpBillsDetails = $bill->getLastBillsByUserDetails(3, $session->userid);
 
 
+$billstatus = 0;
+
+$newBillDetaill = array();
+
+if(isset($_SESSION['details'])) {
+    $newBillDetaill = $_SESSION['details'];
+    $billstatus = $_SESSION['billstatus'];
+    unset($_SESSION['details']);
+}
+
 if ($lastBill != '') {
     $maxBillID = $lastBill->id + 1;
 } else {
@@ -32,7 +42,7 @@ $data = array();
 
 if (isset($_POST['payment'])) {
     $sumBillError = $_POST['billSum'];
-    if ($sumBillError > 0) {
+    if ($sumBillError != 0) {
         $chekingLastBill = $bill->getLastBill();
         $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
         $now = time();
@@ -178,8 +188,11 @@ if (isset($_POST["paymentDelete"])) {
 
         <div class="cash-content clearfix" oncontextmenu="return false">
             <h3>Playstation</h3>
-            <?php for ($i = 1; $i <= $numSony; $i++) { $sonyTime = new DateTime( $sonyDetails[$i]); ($sonyTime > $currentDate) ? $diff = date_diff($sonyTime, $currentDate) : $diff = null; ($diff != null)? $sonydiff = $diff->h*60 + $diff->i : $sonydiff = 0;  ?>
-                <div class="<?php echo ($sonydiff > 0 )? ($sonydiff > 15) ? "sony sony_active" : "sony sony_soon" : "sony sony_free"?>" id="sony<?php echo $i ?>status">
+            <?php for ($i = 1; $i <= $numSony; $i++) {
+                $sonyTime = new DateTime($sonyDetails[$i]);
+                ($sonyTime > $currentDate) ? $diff = date_diff($sonyTime, $currentDate) : $diff = null;
+                ($diff != null) ? $sonydiff = $diff->h * 60 + $diff->i : $sonydiff = 0; ?>
+                <div class="<?php echo ($sonydiff > 0) ? ($sonydiff > 15) ? "sony sony_active" : "sony sony_soon" : "sony sony_free" ?>" id="sony<?php echo $i ?>status">
                     <input type="hidden" value="2" id="numplayers">
                     <div class="iiplayers plactive" id="2player<?php echo $i ?>"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
                     <div class="ivplayers" id="4player<?php echo $i ?>"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
@@ -377,9 +390,9 @@ include $footerMenuLayout;
     for (var j = 1; j <= 4; j++) {
         var tmpcd = null;
         var cd = null;
-        for(var p = 0; p< tmplength; p ++){
+        for (var p = 0; p < tmplength; p++) {
             var tmpobject = sonydetails[p];
-            if (tmpobject.id == j){
+            if (tmpobject.id == j) {
                 var cd = tmpobject.date;
 
             }
@@ -395,7 +408,6 @@ include $footerMenuLayout;
 
 </script>
 <script>
-
 
 
     var pricesNormal = [<?php foreach ($allProductsRegular as $item) {
@@ -440,6 +452,7 @@ include $footerMenuLayout;
         if (event.button == 0) {
             add_product(val, amount, type);
         } else if (event.button == 2) {
+            add_product(val, 0, type);
             removeArticle(val, amount, type);
         }
     }
@@ -471,9 +484,7 @@ include $footerMenuLayout;
     function addArticle(val, amount, type) {
         var code = val + '_' + type;
         var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
-        console.log('blabla' + code, amount, type, currVal);
         currVal = currVal + amount;
-        console.log('blabla' + code, amount, type, currVal);
         document.getElementById('numarticle' + code).innerText = String(currVal);
         document.getElementById('na' + code).setAttribute("value", String(currVal));
         calculateSum();
@@ -483,7 +494,7 @@ include $footerMenuLayout;
         var code = val + '_' + type;
         var currVal = parseInt(document.getElementById('numarticle' + code).innerText);
         currVal = currVal - amount;
-        if (currVal <= 0) {
+        if (currVal <= <?php echo $billstatus ?>) {
             document.getElementById('checkproduct' + code).remove();
             productsID.splice(productsID.indexOf(String(val)), 1);
             product--;
@@ -644,7 +655,6 @@ include $footerMenuLayout;
 </script>
 
 
-
 <script>
     function changeplayernum(val, num) {
         document.getElementById("numplayers").setAttribute("value", val);
@@ -653,16 +663,39 @@ include $footerMenuLayout;
             document.getElementById('2playersboxbonus' + num).style.display = 'block';
             document.getElementById('4playersbox' + num).style.display = 'none';
             document.getElementById('4playersboxbonus' + num).style.display = 'none';
-            document.getElementById('2player'+ num).setAttribute("class", "iiplayers plactive");
-            document.getElementById('4player'+ num).setAttribute("class", "ivplayers");
+            document.getElementById('2player' + num).setAttribute("class", "iiplayers plactive");
+            document.getElementById('4player' + num).setAttribute("class", "ivplayers");
         } else {
             document.getElementById('2playersbox' + num).style.display = 'none';
             document.getElementById('2playersboxbonus' + num).style.display = 'none';
             document.getElementById('4playersbox' + num).style.display = 'block';
             document.getElementById('4playersboxbonus' + num).style.display = 'block';
-            document.getElementById('2player'+ num).setAttribute("class", "iiplayers");
-            document.getElementById('4player'+ num).setAttribute("class", "ivplayers plactive");
+            document.getElementById('2player' + num).setAttribute("class", "iiplayers");
+            document.getElementById('4player' + num).setAttribute("class", "ivplayers plactive");
 
+        }
+    }
+</script>
+
+
+<script>
+
+    var newbillDetails = [<?php
+        foreach ($newBillDetaill as $item) {
+            $num = $item['num'];
+            $id = $item['id'];
+            $type = $item['type'];
+            echo "{num: $num, id: $id, typepr: $type},";
+
+        }
+        ?>];
+
+    var numofarticals = $(newbillDetails).toArray().length;
+    console.log(numofarticals);
+    if (numofarticals > 0) {
+        for (var k = 0; k < numofarticals; k++) {
+            var tmpproduct = newbillDetails[k];
+            add_product(tmpproduct.id, tmpproduct.num, tmpproduct.typepr);
         }
     }
 </script>

@@ -1,3 +1,10 @@
+-----Ver 1.6--------
+
+
+ALTER TABLE `lol`.`billsrows`
+CHANGE COLUMN `numProducts` `numProducts` DECIMAL(5,0) NULL DEFAULT NULL ;
+
+
 -----Ver 1.5--------
 ALTER TABLE `lol`.`bills`
 ADD PRIMARY KEY (`id`);

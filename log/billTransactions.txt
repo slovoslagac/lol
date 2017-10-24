@@ -59,3 +59,5 @@
 23.10.2017 14:48:27 | Kucanje racuna - prebrzo kucanje racuna : suma - 30, details - 11
 23.10.2017 16:22:13 | Editovanje racuna - edit racuna : 67, 0, 2030, normal
 23.10.2017 16:22:55 | Editovanje racuna - edit racuna : 67, 0, 30, normal
+24.10.2017 14:06:12 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - -400, details - 11
+24.10.2017 14:20:53 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - -400, details - 11
