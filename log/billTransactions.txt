@@ -61,3 +61,8 @@
 23.10.2017 16:22:55 | Editovanje racuna - edit racuna : 67, 0, 30, normal
 24.10.2017 14:06:12 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - -400, details - 11
 24.10.2017 14:20:53 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - -400, details - 11
+27.10.2017 13:48:08 | Editovanje racuna - edit racuna : 77, 0, 987.5, normal
+27.10.2017 14:00:46 | Editovanje racuna - edit racuna : 81, 0, 2287.5, normal
+27.10.2017 14:01:46 | Editovanje racuna - edit racuna : 81, 0, 1287.5, normal
+27.10.2017 14:05:34 | Editovanje racuna - edit racuna : 82, 0, 2437.5, normal
+27.10.2017 14:06:10 | Editovanje racuna - edit racuna : 81, 0, 1412.5, normal

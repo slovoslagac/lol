@@ -2,7 +2,7 @@
 
 
 ALTER TABLE `lol`.`billsrows`
-CHANGE COLUMN `numProducts` `numProducts` DECIMAL(5,0) NULL DEFAULT NULL ;
+CHANGE COLUMN `numProducts` `numProducts` DECIMAL(6,2) NULL DEFAULT NULL ;
 
 
 -----Ver 1.5--------

@@ -118,7 +118,7 @@ order by 3,2");
 function getSonyTime ($type) {
     global $conn;
     $sql = $conn->prepare("select br.numProducts, br.sellingproductid, b.tstamp, b.type, sp.name,
-case when name like '%3h%' then br.numProducts * 180 else br.numProducts end value
+case when name like '%3h%' then format(br.numProducts * 180,0) else format(br.numProducts*60,0) end value
 from billsrows br, sellingproducts sp, bills b
 where br.sellingproductid = sp.id
 and br.billrid = b.id
