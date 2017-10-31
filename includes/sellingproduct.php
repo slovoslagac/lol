@@ -22,7 +22,7 @@ class sellingproduct
     public function getAllSellingProductsByPriceTypeCheckSum($type)
     {
         global $conn;
-        $sql = $conn->prepare("select a.name, spp.value, a.id id, a.producttype producttype, spp.id as sppid
+        $sql = $conn->prepare("select a.name, spp.value, a.id id, a.producttype producttype, spp.id as sppid, spd.productid
 from
 (
 select sp.id, sp.name, sp.typeid producttype
@@ -31,8 +31,9 @@ where sp.id = spd.selingproductid
 and sp.typeid in (1,2,3)
 group by sp.id, sp.name, sp.typeid
 having count(*) = 1 ) a,
-sellingproductsprices spp
+sellingproductsprices spp, sellingproductsdetails spd
 where a.id = spp.selingproductid
+and a.id = spd.selingproductid
 and spp.pricetype = :tp
 order by 4,1");
         $sql->bindParam(':tp', $type);

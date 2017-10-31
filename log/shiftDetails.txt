@@ -131,3 +131,11 @@
 24.10.2017 13:46:29 | Shift start --------------------- : userid = 11 
 24.10.2017 13:46:29 | Shfit start section created : userid = 11 ; billid = 75
 24.10.2017 13:46:29 | Shfit & bill connection created : shiftid = 15 ; billid = 75
+31.10.2017 09:46:15 | Shfit end section created : userid = 11 ; billid = 83
+31.10.2017 09:46:15 | Shfit & bill connection created : shiftid = 15 ; billid = 83
+31.10.2017 09:46:16 | Shift end : userid = 11
+31.10.2017 10:26:07 | Shift start --------------------- : userid = 11 
+31.10.2017 10:26:07 | Shfit start section created : userid = 11 ; billid = 84
+31.10.2017 10:26:07 | Shfit & bill connection created : shiftid = 16 ; billid = 84
+31.10.2017 13:01:13 | Shfit end section created : userid = 11 ; billid = 85
+31.10.2017 13:01:13 | Shfit & bill connection created : shiftid = 16 ; billid = 85
