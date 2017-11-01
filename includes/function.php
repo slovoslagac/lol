@@ -103,7 +103,7 @@ case when month(b.tstamp) = EXTRACT(month FROM (NOW())) and year(b.tstamp) = ext
 case when month(b.tstamp) = EXTRACT(month FROM (NOW())) and year(b.tstamp) = extract(year from(now())) then br.numProducts* br.price else 0 end sum_price_cm
 from billsrows br, bills b, sellingproductsdetails sd
 where br.billrid =b.id
-and b.type = 1
+and b.type in (1,4)
 and br.sellingproductid = sd.selingproductid ) b
 group by b.productid) p
 on s.productid = p.productid
@@ -118,13 +118,13 @@ order by 3,2");
 function getSonyTime ($type) {
     global $conn;
     $sql = $conn->prepare("select br.numProducts, br.sellingproductid, b.tstamp, b.type, sp.name,
-case when name like '%3h%' then format(br.numProducts * 180,0) else format(br.numProducts*60,0) end value
+case when name like '%3h%' then format(br.numProducts * 180,0) else format(br.numProducts * 60,0) end value
 from billsrows br, sellingproducts sp, bills b
 where br.sellingproductid = sp.id
 and br.billrid = b.id
 and sp.typeid = 6
 and br.type = :tp
-and b.tstamp > now() - interval 1 day
+and b.tstamp > now() - interval 5 day
 order by 4, 3") ;
     $sql->bindParam(":tp", $type);
     $sql->execute();
@@ -157,10 +157,27 @@ function getSonyStatus(){
         if ($lasttime != null ) {
             $SonyArray[$i] = $lasttime->format('M d, Y H:i:s');
         } else {
-            $SonyArray[$i] = null;
+            $SonyArray[$i] = 0;
         }
 
     }
 
     return $SonyArray;
+}
+
+function getMoneyFlow ($id) {
+    global $conn;
+    $sql = $conn->prepare("select pt.id, pt.name, sum(b.billsum) sum
+from billsrows br, bills b, sellingproducts sp, producttype pt
+where b.id = br.billrid
+and sp.id = br.sellingproductid
+and sp.typeid = pt.id
+and b.type in (1,4)
+and b.id > :id
+group by pt.id, pt.name
+order by 2");
+    $sql->bindParam(":id",$id);
+    $sql->execute();
+    $result = $sql->fetchAll(PDO::FETCH_OBJ);
+    return $result;
 }

@@ -19,10 +19,10 @@ array_push($tmparray, array('num' => -1, "id" => 9, "type" => 0));
 array_push($tmparray, array('num' => 6, "id" => 10, "type" => 0));
 
 
-$_SESSION['details'] = $tmparray;
-$_SESSION['billstatus'] = -1000;
+$_POST['details'] = $tmparray;
+$_POST['billstatus'] = -1000;
 
-redirectTo("kasa.php");
+redirectTo("test3.php");
 ?>
 
 

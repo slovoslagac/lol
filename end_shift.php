@@ -66,7 +66,7 @@ if (isset($_POST["kasa"])) {
     foreach($allsellproducts as $item){
 
         echo $_POST['diff'.$item->id]."<br>";
-        if($_POST['diff'.$item->id] > 0  ) {
+        if($_POST['diff'.$item->id] != 0  ) {
             array_push($tmparray, array('num' => $_POST['diff'.$item->id], "id" => $item->id, "type" => 0));
         }
     }
@@ -74,6 +74,8 @@ if (isset($_POST["kasa"])) {
 //    var_dump($tmparray);
     $_SESSION['details'] = $tmparray;
     $_SESSION['billstatus'] = -1000;
+    $_SESSION['page'] = 'pazar.php';
+    $_SESSION['billtype'] = 4;
 
     redirectTo("kasa.php");
 }

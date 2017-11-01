@@ -13,11 +13,11 @@ $tmpShift = new shift();
 $tmpShift->endShift(1,1);
 
 
-if ($tmpShift->getCurrentShift() != '') {
-} else {
-    $tmpShift->startShift(1);
-}
-var_dump($tmpShift->getCurrentShift());
-echo "<br>";
-$currentShift = $tmpShift->getLastClosedShift();
-var_dump($currentShift);
+//if ($tmpShift->getCurrentShift() != '') {
+//} else {
+//    $tmpShift->startShift(1);
+//}
+//var_dump($tmpShift->getCurrentShift());
+//echo "<br>";
+//$currentShift = $tmpShift->getLastClosedShift();
+//var_dump($currentShift);

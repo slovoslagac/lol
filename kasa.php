@@ -23,13 +23,14 @@ $tmpBillsDetails = $bill->getLastBillsByUserDetails(3, $session->userid);
 
 
 $billstatus = 0;
-
 $newBillDetaill = array();
+
+
 
 if(isset($_SESSION['details'])) {
     $newBillDetaill = $_SESSION['details'];
     $billstatus = $_SESSION['billstatus'];
-    unset($_SESSION['details']);
+    unset($_SESSION['details'],  $_SESSION['billstatus']);
 }
 
 if ($lastBill != '') {
@@ -37,6 +38,7 @@ if ($lastBill != '') {
 } else {
     $maxBillID = 1;
 }
+
 $data = array();
 
 
@@ -60,10 +62,19 @@ if (isset($_POST['payment'])) {
                 $pricetype = 'normal';
             }
 
+
             try {
-                $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype);
-                $tmplastbill = $bill->getLastBill();
+                    if ($_SESSION['billtype'] != '') {
+                        $tmpbilltype = $_SESSION['billtype']; unset($_SESSION['billtype']);
+                    } else {
+                        $tmpbilltype = 1;
+                    }
+                    $bill->addBill($session->userid, $discountuserid, $billSum, $pricetype, $tmpbilltype);
+                    $tmplastbill = $bill->getLastBill(1,$tmpbilltype);
+
+
                 $tmpid = $tmplastbill->id;
+                logAction("Dodavanje racuna ", "$tmpid, $discountuserid, $billSum, $pricetype", 'billTransactions.txt');
                 switch ($pricetype) {
                     case 'normal':
                         $data = $allProductsRegular;
@@ -99,7 +110,15 @@ if (isset($_POST['payment'])) {
             }
 
             unset($discountuserid, $billSum, $pricetype);
-            header("Location:$currentpage");
+            if ($_SESSION['page'] != '') {
+                $tmppage=$_SESSION['page'];unset($_SESSION['page']);
+                logAction("Aditional chek added", "userid = $session->userid; billid = $tmpid", 'shiftDetails.txt');
+            } else {
+                $tmppage=$currentpage;
+            }
+
+            header("Location:$tmppage");
+
         } else {
             echo "<script type='text/javascript'>alert('Morate sačekati minimum 5 sekundi između 2 uzastopna računa!')</script>";
             logAction("Kucanje racuna - prebrzo kucanje racuna", "suma - $sumBillError, details - $session->userid", 'billTransactions.txt');
@@ -510,6 +529,8 @@ include $footerMenuLayout;
 
         }
         ?>];
+
+    console.log(newbillDetails);
 
     var numofarticals = $(newbillDetails).toArray().length;
     console.log(numofarticals);

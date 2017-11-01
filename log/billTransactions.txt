@@ -66,3 +66,136 @@
 27.10.2017 14:01:46 | Editovanje racuna - edit racuna : 81, 0, 1287.5, normal
 27.10.2017 14:05:34 | Editovanje racuna - edit racuna : 82, 0, 2437.5, normal
 27.10.2017 14:06:10 | Editovanje racuna - edit racuna : 81, 0, 1412.5, normal
+31.10.2017 18:59:50 | Editovanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - 0, details - 1
+31.10.2017 19:08:29 | Dodavanje racuna  : 68, 0, -1400, normal
+31.10.2017 19:11:02 | Dodavanje racuna  : 68, 0, -2100, normal
+31.10.2017 19:12:39 | Dodavanje racuna  : 68, 0, 1000, normal
+31.10.2017 19:16:25 | Dodavanje racuna  : 71, 0, 2100, normal,1
+31.10.2017 19:21:06 | Dodavanje racuna  : 72, 0, 2100, normal,1
+31.10.2017 19:26:41 | Dodavanje racuna test 1 : 1
+31.10.2017 19:26:41 | Dodavanje racuna test2 : 1
+31.10.2017 19:26:41 | Dodavanje racuna  : 73, 0, 21100, normal,1
+31.10.2017 19:27:57 | Dodavanje racuna test 1 : 4
+31.10.2017 19:27:57 | Dodavanje racuna test2 : 4
+31.10.2017 19:27:57 | Dodavanje racuna  : 74, 0, 700, normal,4
+31.10.2017 19:28:46 | Dodavanje racuna test 1 : 4
+31.10.2017 19:28:46 | Dodavanje racuna test2 : 4
+31.10.2017 19:28:46 | Dodavanje racuna  : 75, 0, 100, normal,4
+31.10.2017 19:29:17 | Dodavanje racuna test 1 : 4
+31.10.2017 19:29:17 | Dodavanje racuna test2 : 4
+31.10.2017 19:29:17 | Dodavanje racuna  : 76, 0, -2100, normal,4
+31.10.2017 19:29:20 | Dodavanje racuna test 1 : 4
+31.10.2017 19:29:20 | Dodavanje racuna test2 : 4
+31.10.2017 19:29:20 | Dodavanje racuna  : 77, 0, -2100, normal,4
+31.10.2017 19:31:36 | Dodavanje racuna test 1 : 4
+31.10.2017 19:31:36 | Dodavanje racuna test2 : 4
+31.10.2017 19:31:36 | Dodavanje racuna  : 78, 0, -8000, normal,4
+31.10.2017 19:35:36 | Dodavanje racuna test 1 : 1
+31.10.2017 19:35:36 | Dodavanje racuna test2 : 1
+31.10.2017 19:35:36 | Dodavanje racuna  : 79, 0, -2100, normal,1
+31.10.2017 19:36:27 | Dodavanje racuna test 1 : 1
+31.10.2017 19:36:27 | Dodavanje racuna test2 : 1
+31.10.2017 19:36:27 | Dodavanje racuna  : 80, 0, -2500, normal,1
+31.10.2017 19:47:42 | Dodavanje racuna test 1 : 1
+31.10.2017 19:47:42 | Dodavanje racuna test2 : 1
+31.10.2017 19:47:42 | Dodavanje racuna  : 81, 0, 100, normal,1
+31.10.2017 19:54:31 | Dodavanje racuna test 1 : 
+31.10.2017 19:54:31 | Dodavanje racuna test2 : 4
+31.10.2017 19:54:31 | Dodavanje racuna  : 82, 0, 1500, normal,4
+31.10.2017 19:54:40 | Dodavanje racuna test 1 : 
+31.10.2017 19:54:40 | Dodavanje racuna test2 : 4
+31.10.2017 19:54:40 | Dodavanje racuna  : 83, 0, 1000, normal,4
+31.10.2017 19:55:53 | Dodavanje racuna test 1 : 
+31.10.2017 19:55:53 | Dodavanje racuna test2 : 4
+31.10.2017 19:55:53 | Dodavanje racuna  : 84, 0, 1500, normal,4
+31.10.2017 19:55:59 | Dodavanje racuna test 1 : 
+31.10.2017 19:55:59 | Dodavanje racuna test2 : 4
+31.10.2017 19:55:59 | Dodavanje racuna  : 85, 0, 1000, normal,4
+31.10.2017 20:07:38 | Dodavanje racuna test 1 : 
+31.10.2017 20:07:38 | Dodavanje racuna test2 : 4
+31.10.2017 20:07:38 | Dodavanje racuna  : 86, 0, 500, normal,4
+31.10.2017 20:20:42 | Dodavanje racuna test 1 : 1
+31.10.2017 20:20:42 | Dodavanje racuna test2 : 1
+31.10.2017 20:20:42 | Dodavanje racuna  : 87, 0, 200, normal,1
+31.10.2017 20:26:32 | Dodavanje racuna test 1 : 4
+31.10.2017 20:26:32 | Dodavanje racuna test2 : 4
+31.10.2017 20:26:32 | Dodavanje racuna  : 88, 0, -2100, normal,4
+31.10.2017 20:26:40 | Dodavanje racuna test 1 : 4
+31.10.2017 20:26:40 | Dodavanje racuna test2 : 4
+31.10.2017 20:26:40 | Dodavanje racuna  : 89, 0, 400, normal,4
+31.10.2017 20:27:12 | Dodavanje racuna test 1 : 1
+31.10.2017 20:27:12 | Dodavanje racuna test2 : 1
+31.10.2017 20:27:12 | Dodavanje racuna  : 90, 0, 300, normal,1
+31.10.2017 20:27:25 | Dodavanje racuna test 1 : 1
+31.10.2017 20:27:25 | Dodavanje racuna test2 : 1
+31.10.2017 20:27:25 | Dodavanje racuna  : 91, 0, -2100, normal,1
+31.10.2017 20:39:24 | Dodavanje racuna test 1 : 
+31.10.2017 20:39:24 | Dodavanje racuna test2 : 
+31.10.2017 20:39:24 | Dodavanje racuna  : 92, 0, -1400, normal,
+31.10.2017 20:40:44 | Dodavanje racuna test 1 : 4
+31.10.2017 20:40:44 | Dodavanje racuna test2 : 4
+31.10.2017 20:40:44 | Dodavanje racuna  : 93, 0, 500, normal,4
+31.10.2017 20:41:02 | Dodavanje racuna test 1 : 4
+31.10.2017 20:41:02 | Dodavanje racuna test2 : 4
+31.10.2017 20:41:02 | Dodavanje racuna  : 94, 0, -1400, normal,4
+31.10.2017 20:41:19 | Dodavanje racuna test 1 : 4
+31.10.2017 20:41:19 | Dodavanje racuna test2 : 4
+31.10.2017 20:41:19 | Dodavanje racuna  : 95, 0, 300, normal,4
+31.10.2017 20:41:51 | Dodavanje racuna test 1 : 4
+31.10.2017 20:41:51 | Dodavanje racuna test2 : 
+31.10.2017 20:41:51 | Dodavanje racuna  : 96, 0, 300, normal,
+31.10.2017 20:42:11 | Dodavanje racuna test 1 : 4
+31.10.2017 20:42:11 | Dodavanje racuna test2 : 
+31.10.2017 20:42:11 | Dodavanje racuna  : 97, 0, 400, normal,
+31.10.2017 20:42:50 | Dodavanje racuna test 1 : 
+31.10.2017 20:42:50 | Dodavanje racuna test2 : 
+31.10.2017 20:42:50 | Dodavanje racuna  : 98, 0, 300, normal,
+31.10.2017 20:43:04 | Dodavanje racuna test 1 : 
+31.10.2017 20:43:04 | Dodavanje racuna test2 : 
+31.10.2017 20:43:04 | Dodavanje racuna  : 99, 0, -1400, normal,
+31.10.2017 20:43:47 | Dodavanje racuna test 1 : 
+31.10.2017 20:43:47 | Dodavanje racuna test2 : 
+31.10.2017 20:43:47 | Dodavanje racuna  : 100, 0, 400, normal,
+31.10.2017 20:43:58 | Dodavanje racuna test 1 : 
+31.10.2017 20:43:58 | Dodavanje racuna test2 : 
+31.10.2017 20:43:58 | Dodavanje racuna  : 101, 0, -700, normal,
+31.10.2017 20:44:40 | Dodavanje racuna test 1 : 
+31.10.2017 20:44:40 | Dodavanje racuna test2 : 
+31.10.2017 20:44:40 | Dodavanje racuna  : 102, 0, 400, normal,
+31.10.2017 20:44:56 | Dodavanje racuna test 1 : 
+31.10.2017 20:44:56 | Dodavanje racuna test2 : 
+31.10.2017 20:44:56 | Dodavanje racuna  : 103, 0, 2500, normal,
+31.10.2017 20:50:26 | Dodavanje racuna test 1 : 
+31.10.2017 20:50:26 | Dodavanje racuna test2 : 
+31.10.2017 20:50:26 | Dodavanje racuna  : 104, 0, 500, normal,
+31.10.2017 20:50:42 | Dodavanje racuna test 1 : 
+31.10.2017 20:50:42 | Dodavanje racuna test2 : 
+31.10.2017 20:50:42 | Dodavanje racuna  : 105, 0, -1000, normal,
+31.10.2017 20:51:29 | Dodavanje racuna test 1 : 
+31.10.2017 20:51:29 | Dodavanje racuna test2 : 
+31.10.2017 20:51:29 | Dodavanje racuna  : 106, 0, -1500, normal,
+31.10.2017 20:54:44 | Dodavanje racuna test 1 : 
+31.10.2017 20:54:44 | Dodavanje racuna test2 : 
+31.10.2017 20:54:44 | Dodavanje racuna  : , 0, -12100, normal,
+31.10.2017 20:58:40 | Dodavanje racuna  : 108, 0, -1900, normal
+31.10.2017 21:02:02 | Dodavanje racuna  : 109, 0, 500, normal
+31.10.2017 21:02:11 | Dodavanje racuna  : 110, 0, -1000, normal
+31.10.2017 21:02:50 | Dodavanje racuna  : 111, 0, 300, normal
+31.10.2017 21:03:19 | Dodavanje racuna  : 112, 0, 210, normal
+31.10.2017 21:04:50 | Dodavanje racuna  : 113, 0, 100, normal
+31.10.2017 21:05:05 | Dodavanje racuna  : 114, 0, 140, normal
+31.10.2017 21:05:51 | Dodavanje racuna  : 115, 0, 100, normal
+31.10.2017 21:06:02 | Dodavanje racuna  : 116, 0, 210, normal
+31.10.2017 21:06:56 | Dodavanje racuna  : 117, 0, 210, normal
+31.10.2017 21:07:35 | Dodavanje racuna  : 118, 0, 400, normal
+31.10.2017 21:07:47 | Dodavanje racuna  : 119, 0, 400, normal
+31.10.2017 21:08:17 | Dodavanje racuna  : 120, 0, 150, normal
+31.10.2017 21:41:03 | Dodavanje racuna  : 121, 0, 200, normal
+31.10.2017 21:41:21 | Dodavanje racuna  : 122, 0, 100, normal
+31.10.2017 21:41:34 | Dodavanje racuna  : 123, 0, -750, normal
+31.10.2017 22:15:18 | Dodavanje racuna  : 128, 0, -770, normal
+31.10.2017 23:12:07 | Dodavanje racuna  : 3, 0, 500, normal
+31.10.2017 23:12:12 | Kucanje racuna - prebrzo kucanje racuna : suma - 500, details - 1
+31.10.2017 23:12:19 | Dodavanje racuna  : 4, 0, 500, normal
+31.10.2017 23:12:27 | Dodavanje racuna  : 5, 0, 800, normal
+31.10.2017 23:21:14 | Dodavanje racuna  : 6, 0, 300, normal
