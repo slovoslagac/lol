@@ -69,7 +69,7 @@ $tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
 
 $appEmployeeId = 38;
 $sonyTypeID = 6;
-$numSony = 4;
+$numSony = 5;
 
 
 //Slack

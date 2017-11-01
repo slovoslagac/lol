@@ -73,20 +73,37 @@ left join users u on u.id = a.userid");
     }
 
 
-    public function deleteBillById($id){
+    public function deleteBillById($id)
+    {
         global $conn;
         $sql = $conn->prepare("delete from bills where id = :id");
         $sql->bindParam(":id", $id);
         $sql->execute();
     }
 
-    public function updateBillById($id, $userid, $sum, $prtype){
-        global  $conn;
-        $sql= $conn->prepare("update bills set userid = :us, billsum = :sm, pricetype = :tp where id = :id;");
-        $sql->bindParam(":id",$id);
-        $sql->bindParam(":sm",$sum);
-        $sql->bindParam(":us",$userid);
-        $sql->bindParam(":tp",$prtype);
+    public function updateBillById($id, $userid, $sum, $prtype)
+    {
+        global $conn;
+        $sql = $conn->prepare("update bills set userid = :us, billsum = :sm, pricetype = :tp where id = :id;");
+        $sql->bindParam(":id", $id);
+        $sql->bindParam(":sm", $sum);
+        $sql->bindParam(":us", $userid);
+        $sql->bindParam(":tp", $prtype);
         $sql->execute();
     }
+
+    public function addBillDetails($billid, $safe, $deposit, $computers, $costs, $moneysum)
+    {
+        global $conn;
+        $sql = $conn->prepare("insert into billsdetails (billrid,safe,deposit,computers, costs,moneysum) VALUES (:id, :sa, :de, :cmp,:co, :mo)");
+        $sql->bindParam(":id", $billid);
+        $sql->bindParam(":sa", $safe);
+        $sql->bindParam(":de", $deposit);
+        $sql->bindParam(":cmp", $computers);
+        $sql->bindParam(":co", $costs);
+        $sql->bindParam(":mo", $moneysum);
+        $sql->execute();
+
+    }
+
 }

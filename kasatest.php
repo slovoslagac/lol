@@ -420,6 +420,7 @@ include $footerMenuLayout;
             var classid = id + 'status';
             var sonyinfo = 'info' + id;
             var sonytime = 'time' + id;
+            console.log(sonytime);
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById(id).innerHTML = "slobodan";
@@ -456,6 +457,7 @@ include $footerMenuLayout;
         tmpcd = new Date(cd).getTime();
 
         if (tmpcd != null) {
+            console.log(tmpcd);
             countdowntimer('sony' + j, tmpcd);
         }
     }

@@ -64,3 +64,10 @@
 27.10.2017 14:06:11 | Editovanje racuna : Izmena racuna Sony - 4 igraca - # 2 - 75 min, racun broj 81
 27.10.2017 14:06:12 | Editovanje racuna : Izmena racuna Sony - 4 igraca 3h - # 2 - 180 min, racun broj 81
 31.10.2017 23:12:27 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 2 - 240 min, racun broj - 5
+01.11.2017 10:19:10 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 2 - 120 min, racun broj - 2
+01.11.2017 11:14:14 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 3 - 15 min, racun broj - 10
+01.11.2017 12:13:11 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 5 - 75 min, racun broj - 4
+01.11.2017 12:17:35 | Editovanje racuna : Izmena racuna Sony - 2 igraca - # 5 - 135 min, racun broj 4
+01.11.2017 12:19:44 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 3 - 15 min, racun broj - 6
+01.11.2017 13:34:33 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 2 - 60 min, racun broj - 7
+01.11.2017 13:39:09 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 4 - 15 min, racun broj - 8

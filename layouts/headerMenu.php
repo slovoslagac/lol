@@ -35,7 +35,7 @@ $link9 = "kasa.php";
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 $admin = $wrk->getAdmin();
-$availableForms = array($link1, $link2, $link3, $link9, 'login.php', 'lol_unos.php', 'unos_rezultata.php', 'start_shift.php');
+$availableForms = array($link1, $link2, $link3, $link9, 'login.php', 'lol_unos.php', 'unos_rezultata.php', 'start_shift.php', 'pazar.php');
 $currentForm = basename($_SERVER["SCRIPT_FILENAME"]);
 
 if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $availableForms))) {

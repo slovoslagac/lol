@@ -8,7 +8,6 @@ include $menuLayout;
 
 $date = new DateTime();
 
-$smartlaunh = 1000;
 
 $userid = $currentWorker->id;
 $tmpShift = new shift();
@@ -29,7 +28,7 @@ foreach ($allsellproducts as $item) {
     $productpricesid[$item->id] = $item->sppid;
 };
 
-var_dump($allproductids);
+
 
 $currentvalues = array();
 $allStocks = getstockstatus();
@@ -37,7 +36,7 @@ foreach ($allStocks as $item) {
     $currentvalues[$item->productid] = $item->amount - $item->sale_amount;
 }
 echo "<br>";
-var_dump($allStocks);
+
 
 $sellproducts = new sellingproduct();
 $allsellproducts = $sellproducts->getAllSellingProductsByPriceTypeCheckSum('normal');
@@ -77,8 +76,12 @@ if (isset($_POST["save_shift"])) {
             logAction("Shfit & bill connection created", "shiftid = $shiftId ; billid = $tmplastbill->id", 'shiftDetails.txt');
             $tmpsb->addshiftbill($shiftId, $tmplastbill->id);
 
-            foreach ($allproductids as $id) {
-                $numofitems = (array_key_exists($id, $currentvalues)) ? $currentvalues[$id] : "0";
+            $safe = $_POST['money']; $deposit = $_POST['deposit']; $computers = $_POST['smartlaunch']; $costs= $_POST['otherdata']; $moneysum = $_POST['fs'];
+            $bill->addBillDetails($tmplastbill->id,$safe,$deposit,$computers,$costs, $moneysum );
+
+            foreach ($allsellproducts as $item) {
+                $id = $item->id;
+                $numofitems = (array_key_exists( $item->productid, $currentvalues)) ? $currentvalues[$item->productid] : "0";
                     $tmpbillrow = new billrows();
                     $tmpbillrow->addBillRow($tmplastbill->id, $numofitems, $productpricesid[$id], $productprices[$id], $id, 0);
                     unset($tmpbillrow);
@@ -101,13 +104,14 @@ if (isset($_POST["save_shift"])) {
         <div class="container">
             <div class="row">
                 <div class="span6">
+                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                     <div class="widget widget-table action-table">
                         <div class="widget-header"><i class="icon-time"></i>
                             <h3><?php echo date_format($date, 'd.m.Y') . " - $currentWorker->name - Pazar" ?></h3>
                         </div>
                         <!-- /widget-header -->
                         <div class="widget-content">
-                            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
@@ -123,7 +127,7 @@ if (isset($_POST["save_shift"])) {
                                     </tr>
                                     <tr>
                                         <td>Depozit</td>
-                                        <td id="deposit" name="deposit" value="">2.000 Din</td>
+                                        <td><input class="pazar" id="deposit" name="deposit" value="2000" onchange="calculatevalue()"/></td>
                                     </tr>
                                     <tr>
                                         <td>Novac bez depozita</td>
@@ -131,8 +135,7 @@ if (isset($_POST["save_shift"])) {
                                     </tr>
                                     <tr>
                                         <td>Kompjuteri</td>
-                                        <td><?php echo number_format($smartlaunh, 0, ',', '.') ?> Din</td>
-                                        <input type="hidden" id="smartlaunch" name="smartlaunch" value="<?php echo $smartlaunh ?>"
+                                        <td><input class="pazar" type="number" id="smartlaunch" name="smartlaunch" value="0" onchange="calculatevalue()"/></td>
                                     </tr>
                                     <?php $tmpsum = 0;
                                     foreach ($alldata as $item) {
@@ -151,7 +154,12 @@ if (isset($_POST["save_shift"])) {
                                     </tr>
                                     <tr>
                                         <td> Ukupno predato novca</td>
-                                        <td id="finalsum"></td>
+                                        <td><strong id="finalsum"></strong></td>
+                                        <input type="hidden" name="fs" id="fs" value=""/>
+                                    </tr>
+                                    <tr>
+                                        <td><div  id="diff" style="display: none;"><strong>Razlika</strong></div></td>
+                                        <td><div  id="diffval" style="display: none;"></div></td>
                                     </tr>
 
                                     </tbody>
@@ -209,19 +217,31 @@ include $footerMenuLayout;
         var sumcomp = parseInt(document.getElementById('smartlaunch').value);
         var sumother = parseInt(document.getElementById('otherdata').value);
         var cashmoney = parseInt(document.getElementById('money').value);
-        var deposit = parseInt(2000);
-        console.log(sumdata, sumcomp, sumother);
-        var finalsum = (sumcomp + sumdata + deposit - sumother);
+        var deposit = parseInt(document.getElementById('deposit').value);
 
+        var finalsum = (sumcomp + sumdata + deposit - sumother);
+        var diff = 0;
 
         document.getElementById('finalsum').innerText = (finalsum.toLocaleString('de-DE') + ' Din');
+        document.getElementById('fs').value = finalsum;
 
-        console.log(finalsum);
+
 
 
         if (cashmoney > 0) {
             var tmpsum = cashmoney - deposit;
             document.getElementById('depositeless').innerText = (tmpsum.toLocaleString('de-DE') + ' Din');
+            diff = cashmoney - finalsum;
+            document.getElementById('diffval').innerText = (diff.toLocaleString('de-DE') + ' Din');
+        }
+
+        if (diff != 0) {
+            document.getElementById('diff').style.display = 'block';
+            document.getElementById('diffval').style.display = 'block';
+
+        } else {
+            document.getElementById('diff').style.display = 'none';
+            document.getElementById('diffval').style.display = 'none';
         }
     }
 

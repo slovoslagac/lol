@@ -1,58 +1,52 @@
-31.10.2017 21:41:34 | Aditional chek added : userid = 1; billid = 123
-31.10.2017 21:51:28 | Shift end : userid = 36
-31.10.2017 21:51:58 | Shift end : userid = 1
-31.10.2017 22:02:38 | Shift start --------------------- : userid = 1 
-31.10.2017 22:02:38 | Shfit start section created : userid = 1 ; billid = 124
-31.10.2017 22:02:38 | Shfit & bill connection created : shiftid = 37 ; billid = 124
-31.10.2017 22:03:44 | Shift end : userid = 1
-31.10.2017 22:05:21 | Shift start --------------------- : userid = 1 
-31.10.2017 22:05:21 | Shfit start section created : userid = 1 ; billid = 125
-31.10.2017 22:05:21 | Shfit & bill connection created : shiftid = 38 ; billid = 125
-31.10.2017 22:11:22 | Shift end : userid = 1
-31.10.2017 22:11:36 | Shift start --------------------- : userid = 1 
-31.10.2017 22:11:36 | Shfit start section created : userid = 1 ; billid = 126
-31.10.2017 22:11:36 | Shfit & bill connection created : shiftid = 39 ; billid = 126
-31.10.2017 22:11:36 | Shfit start possible difference : Array
-31.10.2017 22:12:41 | Shift end : userid = 1
-31.10.2017 22:14:25 | Shift start --------------------- : userid = 1 
-31.10.2017 22:14:25 | Shfit start section created : userid = 1 ; billid = 127
-31.10.2017 22:14:25 | Shfit & bill connection created : shiftid = 40 ; billid = 127
-31.10.2017 22:14:25 | Shfit start possible difference : 10 = 69 ; 11 = 48 ; 12 = 65 ; 8 = -9 ; 9 = -25 ; 
-31.10.2017 22:15:18 | Aditional chek added : userid = 1; billid = 128
-31.10.2017 22:17:30 | Shift end : userid = 1
-31.10.2017 22:18:01 | Shift start --------------------- : userid = 1 
-31.10.2017 22:18:01 | Shfit start section created : userid = 1 ; billid = 129
-31.10.2017 22:18:01 | Shfit & bill connection created : shiftid = 41 ; billid = 129
-31.10.2017 22:18:01 | Shfit start possible difference : 10 = 0 ; 11 = 0 ; 12 = 0 ; 8 = 0 ; 9 = 0 ; 
-31.10.2017 22:20:43 | Shift end : userid = 1
-31.10.2017 22:27:16 | Shift start --------------------- : userid = 1 
-31.10.2017 22:27:16 | Shfit start section created : userid = 1 ; billid = 1
-31.10.2017 22:27:16 | Shfit & bill connection created : shiftid = 1 ; billid = 1
-31.10.2017 22:27:16 | Shfit start possible difference : 
-31.10.2017 22:27:29 | Shift end : userid = 1
-31.10.2017 22:27:40 | Shift start --------------------- : userid = 1 
-31.10.2017 22:27:40 | Shfit start section created : userid = 1 ; billid = 2
-31.10.2017 22:27:40 | Shfit & bill connection created : shiftid = 2 ; billid = 2
-31.10.2017 22:27:40 | Shfit start possible difference : 10 = 50 ; 8 = 25 ; 
-01.11.2017 00:52:07 | Shfit end section created : userid = 1 ; billid = 7
-01.11.2017 00:52:07 | Shfit & bill connection created : shiftid = 2 ; billid = 7
-01.11.2017 00:52:08 | Shift end : userid = 1
-01.11.2017 00:54:24 | Shfit end section created : userid = 1 ; billid = 8
-01.11.2017 00:54:24 | Shfit & bill connection created : shiftid = 2 ; billid = 8
-01.11.2017 00:56:17 | Shfit end section created : userid = 1 ; billid = 9
-01.11.2017 00:56:17 | Shfit & bill connection created : shiftid = 2 ; billid = 9
-01.11.2017 00:56:17 | Shift end : userid = 1
-01.11.2017 00:59:33 | Shift start --------------------- : userid = 1 
-01.11.2017 00:59:33 | Shfit start section created : userid = 1 ; billid = 10
-01.11.2017 00:59:33 | Shfit & bill connection created : shiftid = 3 ; billid = 10
-01.11.2017 00:59:33 | Shfit start possible difference : 
-01.11.2017 01:02:21 | Shfit end section created : userid = 1 ; billid = 11
-01.11.2017 01:02:21 | Shfit & bill connection created : shiftid = 3 ; billid = 11
-01.11.2017 01:02:21 | Shift end : userid = 1
-01.11.2017 01:05:06 | Shift start --------------------- : userid = 1 
-01.11.2017 01:05:06 | Shfit start section created : userid = 1 ; billid = 12
-01.11.2017 01:05:07 | Shfit & bill connection created : shiftid = 4 ; billid = 12
-01.11.2017 01:05:07 | Shfit start possible difference : 
-01.11.2017 01:14:56 | Shfit end section created : userid = 1 ; billid = 13
-01.11.2017 01:14:56 | Shfit & bill connection created : shiftid = 4 ; billid = 13
-01.11.2017 01:14:56 | Shift end : userid = 1
+01.11.2017 10:16:07 | Shift start --------------------- : userid = 11 
+01.11.2017 10:16:08 | Shfit start section created : userid = 11 ; billid = 1
+01.11.2017 10:16:08 | Shfit & bill connection created : shiftid = 1 ; billid = 1
+01.11.2017 10:16:10 | Shfit start possible difference : 
+01.11.2017 10:22:45 | Shfit end section created : userid = 11 ; billid = 5
+01.11.2017 10:22:45 | Shfit & bill connection created : shiftid = 1 ; billid = 5
+01.11.2017 10:22:46 | Shift end : userid = 11
+01.11.2017 10:35:42 | Shift start --------------------- : userid = 11 
+01.11.2017 10:35:42 | Shfit start section created : userid = 11 ; billid = 6
+01.11.2017 10:35:42 | Shfit & bill connection created : shiftid = 2 ; billid = 6
+01.11.2017 10:35:43 | Shfit start possible difference : 4 = 5 ; 
+01.11.2017 11:11:06 | Aditional chek added : userid = 11; billid = 7
+01.11.2017 11:11:25 | Shfit end section created : userid = 11 ; billid = 8
+01.11.2017 11:11:25 | Shfit & bill connection created : shiftid = 2 ; billid = 8
+01.11.2017 11:11:28 | Shift end : userid = 11
+01.11.2017 11:13:54 | Shift start --------------------- : userid = 11 
+01.11.2017 11:13:54 | Shfit start section created : userid = 11 ; billid = 9
+01.11.2017 11:13:54 | Shfit & bill connection created : shiftid = 3 ; billid = 9
+01.11.2017 11:13:55 | Shfit start possible difference : 
+01.11.2017 11:39:24 | Shfit end section created : userid = 11 ; billid = 11
+01.11.2017 11:39:24 | Shfit & bill connection created : shiftid = 3 ; billid = 11
+01.11.2017 11:39:25 | Shift end : userid = 11
+01.11.2017 11:39:54 | Shift start --------------------- : userid = 11 
+01.11.2017 11:39:55 | Shfit start section created : userid = 11 ; billid = 12
+01.11.2017 11:39:55 | Shfit & bill connection created : shiftid = 4 ; billid = 12
+01.11.2017 11:39:56 | Shfit start possible difference : 4 = 5 ; 
+01.11.2017 11:41:24 | Shfit end section created : userid = 11 ; billid = 14
+01.11.2017 11:41:24 | Shfit & bill connection created : shiftid = 4 ; billid = 14
+01.11.2017 11:41:28 | Shift end : userid = 11
+01.11.2017 11:42:59 | Shift start --------------------- : userid = 11 
+01.11.2017 11:42:59 | Shfit start section created : userid = 11 ; billid = 15
+01.11.2017 11:42:59 | Shfit & bill connection created : shiftid = 5 ; billid = 15
+01.11.2017 11:43:00 | Shfit start possible difference : 4 = 5 ; 
+01.11.2017 11:43:27 | Shfit end section created : userid = 11 ; billid = 17
+01.11.2017 11:43:27 | Shfit & bill connection created : shiftid = 5 ; billid = 17
+01.11.2017 11:43:28 | Shift end : userid = 11
+01.11.2017 11:43:34 | Shift start --------------------- : userid = 11 
+01.11.2017 11:43:34 | Shfit start section created : userid = 11 ; billid = 18
+01.11.2017 11:43:34 | Shfit & bill connection created : shiftid = 6 ; billid = 18
+01.11.2017 11:43:36 | Shfit start possible difference : 4 = 10 ; 
+01.11.2017 11:45:52 | Shift start --------------------- : userid = 11 
+01.11.2017 11:45:52 | Shfit start section created : userid = 11 ; billid = 1
+01.11.2017 11:45:52 | Shfit & bill connection created : shiftid = 1 ; billid = 1
+01.11.2017 11:45:53 | Shfit start possible difference : 16 = -3 ; 
+01.11.2017 11:46:24 | Aditional chek added : userid = 11; billid = 3
+01.11.2017 16:23:57 | Shfit end section created : userid = 11 ; billid = 9
+01.11.2017 16:23:57 | Shfit & bill connection created : shiftid = 1 ; billid = 9
+01.11.2017 16:23:58 | Shift end : userid = 11
+01.11.2017 16:55:36 | Shift start --------------------- : userid = 11 
+01.11.2017 16:55:36 | Shfit start section created : userid = 11 ; billid = 10
+01.11.2017 16:55:36 | Shfit & bill connection created : shiftid = 2 ; billid = 10
+01.11.2017 16:55:37 | Shfit start possible difference : 

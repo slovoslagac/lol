@@ -199,3 +199,16 @@
 31.10.2017 23:12:19 | Dodavanje racuna  : 4, 0, 500, normal
 31.10.2017 23:12:27 | Dodavanje racuna  : 5, 0, 800, normal
 31.10.2017 23:21:14 | Dodavanje racuna  : 6, 0, 300, normal
+01.11.2017 10:19:09 | Dodavanje racuna  : 2, 0, 400, normal
+01.11.2017 10:19:15 | Dodavanje racuna  : 3, 0, 500, normal
+01.11.2017 10:19:19 | Kucanje racuna - prebrzo kucanje racuna : suma - 350, details - 11
+01.11.2017 10:19:25 | Dodavanje racuna  : 4, 0, 350, normal
+01.11.2017 11:11:06 | Dodavanje racuna  : 7, 0, 1000, normal
+01.11.2017 11:14:14 | Dodavanje racuna  : 10, 0, 50, normal
+01.11.2017 11:46:24 | Dodavanje racuna  : 3, 0, 320, normal
+01.11.2017 12:13:11 | Dodavanje racuna  : 4, 0, 250, normal
+01.11.2017 12:17:35 | Editovanje racuna - edit racuna : 4, 0, 450, normal
+01.11.2017 12:19:19 | Dodavanje racuna  : 5, 0, 200, normal
+01.11.2017 12:19:44 | Dodavanje racuna  : 6, 0, 150, normal
+01.11.2017 13:34:33 | Dodavanje racuna  : 7, 0, 200, normal
+01.11.2017 13:39:09 | Dodavanje racuna  : 8, 0, 50, normal

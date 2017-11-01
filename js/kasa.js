@@ -40,7 +40,7 @@ function addArticle(val, amount, type) {
     var code = val + '_' + type;
     var currVal = parseFloat(document.getElementById('na' + code).value);
     var articlename = document.getElementById('articlename' + val).innerText;
-    console.log(currVal, val, amount, type);
+
     currVal = currVal + amount;
     if(type > 0 && articlename.indexOf('3h') == -1 ) {
         document.getElementById('numarticle' + code).innerText = String(currVal*60);
@@ -54,14 +54,17 @@ function addArticle(val, amount, type) {
 function removeArticle(val, amount, type) {
     var code = val + '_' + type;
     var currVal = document.getElementById('na' + code).value;
+    var articlename = document.getElementById('articlename' + val).innerText;
     currVal = currVal - amount;
-    if (currVal <= billstatus ) {
+    if (currVal <= billstatus || currVal == 0) {
         document.getElementById('checkproduct' + code).remove();
         productsID.splice(productsID.indexOf(String(val)), 1);
         product--;
     }
 else {
-        document.getElementById('numarticle' + code).innerText = String(currVal);
+        if(type > 0 && articlename.indexOf('3h') == -1 ) {document.getElementById('numarticle' + code).innerText = String(currVal*60);} else {
+        document.getElementById('numarticle' + code).innerText = String(currVal);}
+
         document.getElementById('na' + code).setAttribute("value", currVal);
     }
     calculateSum();
@@ -100,7 +103,7 @@ function testSumCalculation() {
     var la = $(pricesNormal).toArray().length;
     for (var k = 0; k < la; k++) {
         var tmpobject = pricesNormal[k];
-        for (var j = 0; j < 5; j++) {
+        for (var j = 0; j <= numSony; j++) {
             var tmpindex = productsID.indexOf(String(tmpobject.id + '_' + j));
             if (tmpindex > -1) {
                 var numArt = document.getElementById('na' + tmpobject.id + '_' + j).value;
@@ -158,7 +161,7 @@ function recalculate() {
 function editBill(val) {
     billstatus = 0;
     resetBill();
-    console.log(billDetails);
+
 
 
     document.getElementById("payment").setAttribute("class", "hide");
@@ -173,7 +176,6 @@ function editBill(val) {
             document.getElementById("billId").setAttribute("value", billobject.id);
             document.getElementById("billNumber").innerText = billobject.id;
             deletestatus = billobject.deletestatus;
-            console.log(deletestatus, billobject.deletestatus);
             var tmpDetails = billobject.billdata;
             for (var p = 0; p < tmpDetails.length; p++) {
                 var tmpproduct = tmpDetails[p];
@@ -185,7 +187,7 @@ function editBill(val) {
         }
     }
 
-    console.log(deletestatus);
+
 
 
     if (deletestatus == '1') {

@@ -45,15 +45,29 @@ if (isset($_POST["save_shift"])) {
             logAction("Shfit & bill connection created", "shiftid = $newShift->id ; billid = $tmplastbill->id", 'shiftDetails.txt');
             $tmpsb->addshiftbill($newShift->id, $tmplastbill->id);
             $tmpShiftDiff = '';
+            $tmpShiftDiffArray = array();
             foreach ($allproductids as $id) {
                 $diff = $_POST['diff'.$id];
                 $curr = $_POST[$id];
-                ($diff != 0) ? $tmpShiftDiff = $tmpShiftDiff. "$id = $diff ; " : "";
+                if($diff != 0) { $tmpShiftDiff = $tmpShiftDiff. "$id = $diff ; "; $tmpShiftDiffArray[$id] = $diff;} else { };
                     $tmpbillrow = new billrows();
                     $tmpbillrow->addBillRow($tmplastbill->id, $curr, $productpricesid[$id], $productprices[$id], $id, 0);
                     unset($tmpbillrow);
 
             }
+            if($tmpShiftDiffArray != '') {
+                $bill->addBill($session->userid, '', 0, 'normal', 4);
+                $tmplastbillnew = $bill->getLastBill(1, 4);
+                foreach($allproductids as $id) {
+                    if(array_key_exists($id,$tmpShiftDiffArray) ){
+                        $billrownew = new billrows();
+                        $billrownew->addBillRow($tmplastbillnew->id, $tmpShiftDiffArray[$id], $productpricesid[$id], $productprices[$id], $id, 0  );
+                    }
+
+                }
+            }
+
+
             logAction("Shfit start possible difference", "$tmpShiftDiff", 'shiftDetails.txt');
         }
         redirectTo("kasa.php");

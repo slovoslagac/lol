@@ -1,11 +1,33 @@
 -----Ver 1.6--------
+CREATE TABLE IF NOT EXISTS `lol`.`billsdetails` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `billrid` INT(5) NULL DEFAULT NULL,
+  `safe` DECIMAL(6,0) NULL DEFAULT NULL,
+  `deposit` DECIMAL(6,0) NULL DEFAULT NULL,
+  `computers` DECIMAL(6,0) NULL DEFAULT NULL,
+  `costs` decimal(6,0) DEFAULT NULL,
+  `moneysum` DECIMAL(6,0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `billsindex` (`id` ASC),
+  INDEX `billfkid_idx` (`billrid` ASC),
+  CONSTRAINT `billfkid0`
+    FOREIGN KEY (`billrid`)
+    REFERENCES `lol`.`bills` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci
+
+
+
+
+-----Ver 1.5--------
 
 
 ALTER TABLE `lol`.`billsrows`
 CHANGE COLUMN `numProducts` `numProducts` DECIMAL(6,2) NULL DEFAULT NULL ;
 
-
------Ver 1.5--------
 ALTER TABLE `lol`.`bills`
 ADD PRIMARY KEY (`id`);
 
