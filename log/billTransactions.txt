@@ -212,3 +212,19 @@
 01.11.2017 12:19:44 | Dodavanje racuna  : 6, 0, 150, normal
 01.11.2017 13:34:33 | Dodavanje racuna  : 7, 0, 200, normal
 01.11.2017 13:39:09 | Dodavanje racuna  : 8, 0, 50, normal
+02.11.2017 08:43:18 | Dodavanje racuna  : 25, 0, 200, normal
+02.11.2017 08:43:48 | Dodavanje racuna  : 26, 0, 400, normal
+02.11.2017 08:43:53 | Kucanje racuna - prebrzo kucanje racuna : suma - 50, details - 11
+02.11.2017 08:43:58 | Dodavanje racuna  : 27, 0, 50, normal
+02.11.2017 09:23:09 | Dodavanje racuna  : 31, 0, 1620, normal
+02.11.2017 09:30:28 | Dodavanje racuna  : 34, 0, 300, normal
+02.11.2017 11:44:18 | Dodavanje racuna  : 37, 0, 1000, normal
+02.11.2017 11:44:24 | Dodavanje racuna  : 38, 0, 500, normal
+02.11.2017 11:44:29 | Kucanje racuna - prebrzo kucanje racuna : suma - 160, details - 11
+02.11.2017 11:44:34 | Dodavanje racuna  : 39, 0, 400, normal
+02.11.2017 11:45:48 | Dodavanje racuna  : 42, 0, 400, normal
+02.11.2017 11:45:58 | Dodavanje racuna  : 43, 0, 700, normal
+02.11.2017 15:47:04 | Dodavanje racuna  : 46, 0, 1462.5, normal
+02.11.2017 15:47:14 | Dodavanje racuna  : 47, 0, 900, normal
+02.11.2017 15:47:18 | Kucanje racuna - prebrzo kucanje racuna : suma - 62.5, details - 11
+02.11.2017 15:47:24 | Dodavanje racuna  : 48, 0, 62.5, normal

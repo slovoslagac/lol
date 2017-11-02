@@ -55,7 +55,7 @@ if (isset($_POST["save_shift"])) {
                     unset($tmpbillrow);
 
             }
-            if($tmpShiftDiffArray != '') {
+            if(!empty($tmpShiftDiffArray)) {
                 $bill->addBill($session->userid, '', 0, 'normal', 4);
                 $tmplastbillnew = $bill->getLastBill(1, 4);
                 foreach($allproductids as $id) {

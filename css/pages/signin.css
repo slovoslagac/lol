@@ -695,6 +695,26 @@ fieldset small {
 }
 
 .plactive {
-    background:#ccc;
     border:1px solid #555;
+    background:#ff0;
+}
+
+.driver {
+    position:absolute;
+    right:4px;
+    top:40px;
+    width:26px;
+    height:26px;
+    text-align:center;
+    background:#eee;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:3px;
+}
+
+.driver img {
+    width:20px;
+    height:20px;
+    text-align:center;
+    margin:0px;
 }

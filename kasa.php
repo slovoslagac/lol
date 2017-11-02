@@ -230,6 +230,7 @@ if (isset($_POST["paymentDelete"])) {
                     <div class="iiplayers plactive" id="2player<?php echo $i ?>"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
                     <div class="ivplayers" id="4player<?php echo $i ?>"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
                     <img src="img/playstation/ps<?php echo $i ?>.png">
+                    <?php if ($i== 5) {?>        <div class="driver"><img src="img/playstation/driver.png"></div>    <?php }?>
                     <label id="sony<?php echo $i; ?>">&nbsp</label>
                     <?php foreach ($allProductsSony as $item) {
                         if (strpos($item->name, '2') and (strpos($item->name, '3h')) === false) {
@@ -520,7 +521,7 @@ include $footerMenuLayout;
 
 <script>
     function changeplayernum(val, num) {
-        document.getElementById("numplayers").setAttribute("value", val);
+//        document.getElementById("numplayers").setAttribute("value", val);
         if (val == 2) {
             document.getElementById('2playersbox' + num).style.display = 'block';
             document.getElementById('2playersboxbonus' + num).style.display = 'block';

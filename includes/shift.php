@@ -50,4 +50,16 @@ class shift
         logAction("Shift end", "userid = $userid", 'shiftDetails.txt');
     }
 
+    public function billidofcurrentShift($id){
+        global $conn;
+        $sql = $conn->prepare("select *
+from shifts s, shiftbill sb
+where s.id = :id
+and s.id = sb.shiftid");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+        $result = $sql->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
 }

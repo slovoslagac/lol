@@ -92,16 +92,17 @@ left join users u on u.id = a.userid");
         $sql->execute();
     }
 
-    public function addBillDetails($billid, $safe, $deposit, $computers, $costs, $moneysum)
+    public function addBillDetails($billid, $safe, $deposit, $computers, $costs, $moneysum, $comment)
     {
         global $conn;
-        $sql = $conn->prepare("insert into billsdetails (billrid,safe,deposit,computers, costs,moneysum) VALUES (:id, :sa, :de, :cmp,:co, :mo)");
+        $sql = $conn->prepare("insert into billsdetails (billrid,safe,deposit,computers, costs,moneysum, comment) VALUES (:id, :sa, :de, :cmp,:co, :mo, :cm)");
         $sql->bindParam(":id", $billid);
         $sql->bindParam(":sa", $safe);
         $sql->bindParam(":de", $deposit);
         $sql->bindParam(":cmp", $computers);
         $sql->bindParam(":co", $costs);
         $sql->bindParam(":mo", $moneysum);
+        $sql->bindParam(":cm", $comment);
         $sql->execute();
 
     }

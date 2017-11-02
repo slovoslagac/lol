@@ -14,7 +14,10 @@ $tmpShift = new shift();
 $currentShift = $tmpShift->getCurrentShift();
 $lastid = $currentShift->id;
 
-$alldata = getMoneyFlow($lastid);
+$billid = $tmpShift->billidofcurrentShift($lastid);
+
+
+$alldata = getMoneyFlow($billid->billid);
 
 
 $sellproducts = new sellingproduct();
@@ -27,7 +30,6 @@ foreach ($allsellproducts as $item) {
     $productprices[$item->id] = $item->value;
     $productpricesid[$item->id] = $item->sppid;
 };
-
 
 
 $currentvalues = array();
@@ -76,15 +78,20 @@ if (isset($_POST["save_shift"])) {
             logAction("Shfit & bill connection created", "shiftid = $shiftId ; billid = $tmplastbill->id", 'shiftDetails.txt');
             $tmpsb->addshiftbill($shiftId, $tmplastbill->id);
 
-            $safe = $_POST['money']; $deposit = $_POST['deposit']; $computers = $_POST['smartlaunch']; $costs= $_POST['otherdata']; $moneysum = $_POST['fs'];
-            $bill->addBillDetails($tmplastbill->id,$safe,$deposit,$computers,$costs, $moneysum );
+            $safe = $_POST['money'];
+            $deposit = $_POST['deposit'];
+            $computers = $_POST['smartlaunch'];
+            $costs = $_POST['otherdata'];
+            $moneysum = $_POST['fs'];
+            $comment = $_POST['comment'];
+            $bill->addBillDetails($tmplastbill->id, $safe, $deposit, $computers, $costs, $moneysum, $comment);
 
             foreach ($allsellproducts as $item) {
                 $id = $item->id;
-                $numofitems = (array_key_exists( $item->productid, $currentvalues)) ? $currentvalues[$item->productid] : "0";
-                    $tmpbillrow = new billrows();
-                    $tmpbillrow->addBillRow($tmplastbill->id, $numofitems, $productpricesid[$id], $productprices[$id], $id, 0);
-                    unset($tmpbillrow);
+                $numofitems = (array_key_exists($item->productid, $currentvalues)) ? $currentvalues[$item->productid] : "0";
+                $tmpbillrow = new billrows();
+                $tmpbillrow->addBillRow($tmplastbill->id, $numofitems, $productpricesid[$id], $productprices[$id], $id, 0);
+                unset($tmpbillrow);
 
             }
 
@@ -92,7 +99,7 @@ if (isset($_POST["save_shift"])) {
 
 
         $tmpShift->endShift($userid, $shiftId);
-        redirectTo("kasa.php");
+        redirectTo("logout.php");
     }
 
 }
@@ -105,12 +112,12 @@ if (isset($_POST["save_shift"])) {
             <div class="row">
                 <div class="span6">
                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-                    <div class="widget widget-table action-table">
-                        <div class="widget-header"><i class="icon-time"></i>
-                            <h3><?php echo date_format($date, 'd.m.Y') . " - $currentWorker->name - Pazar" ?></h3>
-                        </div>
-                        <!-- /widget-header -->
-                        <div class="widget-content">
+                        <div class="widget widget-table action-table">
+                            <div class="widget-header"><i class="icon-time"></i>
+                                <h3><?php echo date_format($date, 'd.m.Y') . " - $currentWorker->name - Pazar" ?></h3>
+                            </div>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
 
                                 <table class="table table-striped table-bordered">
                                     <thead>
@@ -122,7 +129,7 @@ if (isset($_POST["save_shift"])) {
                                     <tbody>
                                     <tr>
                                         <td> Ukupno novca u kasi</td>
-                                        <td><input type="number" id="money" name="money" value="0" placeholder="<?php echo number_format(2000, 2, ',', '.') . 'Din' ?>" class="pazar"
+                                        <td><input type="number" id="money" name="money" value="" placeholder="<?php echo number_format(2000, 2, ',', '.') . 'Din' ?>" class="pazar"
                                                    onchange="calculatevalue()"/></td>
                                     </tr>
                                     <tr>
@@ -135,7 +142,7 @@ if (isset($_POST["save_shift"])) {
                                     </tr>
                                     <tr>
                                         <td>Kompjuteri</td>
-                                        <td><input class="pazar" type="number" id="smartlaunch" name="smartlaunch" value="0" onchange="calculatevalue()"/></td>
+                                        <td><input class="pazar" type="number" id="smartlaunch" name="smartlaunch" value="" onchange="calculatevalue()"/></td>
                                     </tr>
                                     <?php $tmpsum = 0;
                                     foreach ($alldata as $item) {
@@ -150,7 +157,7 @@ if (isset($_POST["save_shift"])) {
                                     <input type="hidden" id="sum" name="sum" value="<?php echo $tmpsum ?>">
                                     <tr>
                                         <td> Ostalo</td>
-                                        <td><input type="number" id="otherdata" name="otherdata" value="0" placeholder="Ostali troškovi" class="pazar" onchange="calculatevalue()"/></td>
+                                        <td><input type="number" id="otherdata" name="otherdata" value="" placeholder="Ostali troškovi" class="pazar" onchange="calculatevalue()"/></td>
                                     </tr>
                                     <tr>
                                         <td> Ukupno predato novca</td>
@@ -158,15 +165,19 @@ if (isset($_POST["save_shift"])) {
                                         <input type="hidden" name="fs" id="fs" value=""/>
                                     </tr>
                                     <tr>
-                                        <td><div  id="diff" style="display: none;"><strong>Razlika</strong></div></td>
-                                        <td><div  id="diffval" style="display: none;"></div></td>
+                                        <td>
+                                            <div id="diff" style="display: none;"><strong>Razlika</strong></div>
+                                        </td>
+                                        <td>
+                                            <div id="diffval" style="display: none;"></div>
+                                        </td>
                                     </tr>
 
                                     </tbody>
                                 </table>
 
+                            </div>
                         </div>
-                    </div>
 
 
                 </div>
@@ -182,14 +193,15 @@ if (isset($_POST["save_shift"])) {
                                 <tbody>
                                 <tr>
                                     <td>
-                                        <textarea placeholder="Upisati objašnjenje ukoliko se pazar ne poklapa sa stanjem iz Smartlauncha" class="textarea"></textarea>
+                                        <textarea placeholder="Upisati objašnjenje ukoliko se pazar ne poklapa sa stanjem iz Smartlauncha" class="textarea" id="comment" name="comment"></textarea>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
 
                         </div>
-                        <button type="submit" class="btn btn-large btn-danger btn-right" name="save_shift" id="save_shift">Kraj smene i logout <i class="btn-icon-only icon-chevron-right"> </i></button>
+                        <button type="submit" class="btn btn-large btn-danger btn-right" name="save_shift" id="save_shift">Kraj smene i logout <i class="btn-icon-only icon-chevron-right"> </i>
+                        </button>
                     </div>
 
                     </form>
@@ -213,19 +225,22 @@ include $footerMenuLayout;
 
 <script>
     function calculatevalue() {
-        var sumdata = parseInt(document.getElementById('sum').value);
-        var sumcomp = parseInt(document.getElementById('smartlaunch').value);
-        var sumother = parseInt(document.getElementById('otherdata').value);
-        var cashmoney = parseInt(document.getElementById('money').value);
-        var deposit = parseInt(document.getElementById('deposit').value);
+        var sumdata = parseInt(document.getElementById('sum').value)  || 0;
+        var sumcomp = parseInt(document.getElementById('smartlaunch').value)  || 0;
+        var sumother = parseInt(document.getElementById('otherdata').value)  || 0;
+        var cashmoney = parseInt(document.getElementById('money').value)  || 0;
+        var deposit = parseInt(document.getElementById('deposit').value)  || 0;
+
+
+
 
         var finalsum = (sumcomp + sumdata + deposit - sumother);
+        console.log(sumdata,sumcomp,sumother,deposit);
+        if (finalsum == null) {  finalsum =  0 ; }
         var diff = 0;
-
+        console.log(finalsum);
         document.getElementById('finalsum').innerText = (finalsum.toLocaleString('de-DE') + ' Din');
         document.getElementById('fs').value = finalsum;
-
-
 
 
         if (cashmoney > 0) {

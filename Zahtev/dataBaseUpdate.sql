@@ -19,8 +19,11 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci
 
+ALTER TABLE `lol`.`billsdetails`
+ADD COLUMN `comment` TEXT NULL DEFAULT NULL AFTER `moneysum`;
 
-
+ALTER TABLE `lol`.`billsdetails`
+CHANGE COLUMN `moneysum` `moneysum` DECIMAL(9,0) NULL DEFAULT NULL ;
 
 -----Ver 1.5--------
 

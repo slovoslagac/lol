@@ -167,7 +167,7 @@ function getSonyStatus(){
 
 function getMoneyFlow ($id) {
     global $conn;
-    $sql = $conn->prepare("select pt.id, pt.name, sum(b.billsum) sum
+    $sql = $conn->prepare("select pt.id, pt.name, sum(numProducts * price) sum
 from billsrows br, bills b, sellingproducts sp, producttype pt
 where b.id = br.billrid
 and sp.id = br.sellingproductid
