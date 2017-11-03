@@ -79,3 +79,12 @@
 02.11.2017 15:47:14 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 1 - 120 min, racun broj - 47
 02.11.2017 15:47:14 | Dodavanje sonija : Uplaceno je Sony - 4 igraca - # 4 - 120 min, racun broj - 47
 02.11.2017 15:47:24 | Dodavanje sonija : Uplaceno je Sony - 4 igraca - # 5 - 15 min, racun broj - 48
+03.11.2017 10:22:56 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 2 - 60 min, racun broj - 61
+03.11.2017 10:22:56 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 3 - 60 min, racun broj - 61
+03.11.2017 10:22:56 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 4 - 75 min, racun broj - 61
+03.11.2017 10:22:56 | Dodavanje sonija : Uplaceno je Sony - 2 igraca 3h - # 4 - 180 min, racun broj - 61
+03.11.2017 10:22:56 | Dodavanje sonija : Uplaceno je Sony - 4 igraca - # 1 - 60 min, racun broj - 61
+03.11.2017 10:22:57 | Dodavanje sonija : Uplaceno je Sony - 4 igraca 3h - # 1 - 180 min, racun broj - 61
+03.11.2017 10:22:57 | Dodavanje sonija : Uplaceno je Sony - 4 igraca 3h - # 5 - 180 min, racun broj - 61
+03.11.2017 10:23:59 | Editovanje racuna : Izmena racuna Sony - 2 igraca - # 2 - 15 min, racun broj 61
+03.11.2017 13:10:45 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 2 - 360 min, racun broj - 65

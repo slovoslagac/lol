@@ -24,38 +24,6 @@ $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
 
 
-//if (isset($_POST["save_shift"])) {
-//    $userid = $currentWorker->id;
-//    $tmpShift = new shift();
-//    $currentShift = $tmpShift->getCurrentShift();
-//    if ($currentShift != '') {
-//        $shiftId = $currentShift->id;
-//
-//        $bill = new bill();
-//        $chekingLastBill = $bill->getLastBill(1, 3);
-//        $chekingLastBillTime = strtotime($chekingLastBill->tstamp);
-//        ($chekingLastBillTime != "") ? $chekingLastBillTime = $chekingLastBillTime : $chekingLastBillTime = 0;
-//        $now = time();
-//        if ($now - $chekingLastBillTime > 5) {
-//            $bill->addBill($session->userid, '', 0, 'normal', 3);
-//            $tmplastbill = $bill->getLastBill(1, 3);
-//            logAction("Shfit end section created", "userid = $userid ; billid = $tmplastbill->id", 'shiftDetails.txt');
-//            $tmpsb = new shiftbill();
-//            logAction("Shfit & bill connection created", "shiftid = $shiftId ; billid = $tmplastbill->id", 'shiftDetails.txt');
-//            $tmpsb->addshiftbill($shiftId, $tmplastbill->id);
-//
-//            redirectTo("pazar.php");
-//
-//        }
-//
-//
-//        $tmpShift->endShift($userid, $shiftId);
-//        redirectTo("kasa.php");
-//    }
-//    foreach ($allproductids as $id) {
-//    }
-//}
-
 if (isset($_POST["save_shift"])) {
 
     redirectTo("pazar.php");

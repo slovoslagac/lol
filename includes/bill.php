@@ -107,4 +107,18 @@ left join users u on u.id = a.userid");
 
     }
 
+     public function addBillSum($billid, $safe, $deposit, $computers, $costs, $moneysum, $wage )
+     {
+         global $conn;
+         $sql = $conn->prepare("insert into billsum(billrid, value, type) values (:id, :sa, 1), (:id, :de, 2),(:id, :cmp, 3),(:id, :co, 4),(:id, :mo, 5),(:id, :wg, 6),");
+         $sql->bindParam(":id", $billid);
+         $sql->bindParam(":sa", $safe);
+         $sql->bindParam(":de", $deposit);
+         $sql->bindParam(":cmp", $computers);
+         $sql->bindParam(":co", $costs);
+         $sql->bindParam(":mo", $moneysum);
+         $sql->bindParam(":wo", $wage);
+         $sql->execute();
+     }
+
 }

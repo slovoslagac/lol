@@ -228,3 +228,10 @@
 02.11.2017 15:47:14 | Dodavanje racuna  : 47, 0, 900, normal
 02.11.2017 15:47:18 | Kucanje racuna - prebrzo kucanje racuna : suma - 62.5, details - 11
 02.11.2017 15:47:24 | Dodavanje racuna  : 48, 0, 62.5, normal
+03.11.2017 10:22:56 | Dodavanje racuna  : 61, 0, 2600, normal
+03.11.2017 10:23:59 | Editovanje racuna - edit racuna : 61, 0, 50, normal
+03.11.2017 11:17:47 | Dodavanje racuna  : 62, 0, 1000, normal
+03.11.2017 13:10:45 | Dodavanje racuna  : 65, 0, 1200, normal
+03.11.2017 13:10:47 | Kucanje racuna - prebrzo kucanje racuna : suma - 100, details - 11
+03.11.2017 13:10:55 | Dodavanje racuna  : 66, 0, 1000, normal
+03.11.2017 13:11:07 | Dodavanje racuna  : 67, 0, 1700, normal

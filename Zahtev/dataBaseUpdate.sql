@@ -25,6 +25,40 @@ ADD COLUMN `comment` TEXT NULL DEFAULT NULL AFTER `moneysum`;
 ALTER TABLE `lol`.`billsdetails`
 CHANGE COLUMN `moneysum` `moneysum` DECIMAL(9,0) NULL DEFAULT NULL ;
 
+
+CREATE TABLE IF NOT EXISTS `lol`.`billssum` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `billrid` INT(5) NULL DEFAULT NULL,
+  `value` DECIMAL(9,0) NULL DEFAULT NULL,
+  `type` INT(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `billsindex` (`id` ASC),
+  INDEX `billfkid_idx` (`billrid` ASC),
+  CONSTRAINT `billfkid00`
+    FOREIGN KEY (`billrid`)
+    REFERENCES `lol`.`bills` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `lol`.`billscommentar` (
+  `id` INT(5) NOT NULL AUTO_INCREMENT,
+  `billrid` INT(5) NULL DEFAULT NULL,
+  `comment` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `billsindex` (`id` ASC),
+  INDEX `billfkid_idx` (`billrid` ASC),
+  CONSTRAINT `billfkid000`
+    FOREIGN KEY (`billrid`)
+    REFERENCES `lol`.`bills` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
 -----Ver 1.5--------
 
 

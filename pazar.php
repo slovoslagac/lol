@@ -129,16 +129,15 @@ if (isset($_POST["save_shift"])) {
                                     <tbody>
                                     <tr>
                                         <td> Ukupno novca u kasi</td>
-                                        <td><input type="number" id="money" name="money" value="" placeholder="<?php echo number_format(2000, 2, ',', '.') . 'Din' ?>" class="pazar"
-                                                   onchange="calculatevalue()"/></td>
+                                        <td id="money" ></td>
                                     </tr>
                                     <tr>
                                         <td>Depozit</td>
                                         <td><input class="pazar" id="deposit" name="deposit" value="2000" onchange="calculatevalue()"/></td>
                                     </tr>
                                     <tr>
-                                        <td>Novac bez depozita</td>
-                                        <td id="depositeless"></td>
+                                        <td>Dnevnica</td>
+                                        <td><input class="pazar" id="wage" name="wage" value="1000" onchange="calculatevalue()"/></td>
                                     </tr>
                                     <tr>
                                         <td>Kompjuteri</td>
@@ -228,36 +227,34 @@ include $footerMenuLayout;
         var sumdata = parseInt(document.getElementById('sum').value)  || 0;
         var sumcomp = parseInt(document.getElementById('smartlaunch').value)  || 0;
         var sumother = parseInt(document.getElementById('otherdata').value)  || 0;
-        var cashmoney = parseInt(document.getElementById('money').value)  || 0;
         var deposit = parseInt(document.getElementById('deposit').value)  || 0;
+        var wage = parseInt(document.getElementById('wage').value)  || 0;
+
+
+        var finalsum = sumcomp + sumdata  - sumother - wage || 0;
+        var cashmoney = finalsum + deposit + wage;
 
 
 
-
-        var finalsum = (sumcomp + sumdata + deposit - sumother);
-        console.log(sumdata,sumcomp,sumother,deposit);
-        if (finalsum == null) {  finalsum =  0 ; }
-        var diff = 0;
-        console.log(finalsum);
         document.getElementById('finalsum').innerText = (finalsum.toLocaleString('de-DE') + ' Din');
         document.getElementById('fs').value = finalsum;
 
+        document.getElementById('money').innerText = (cashmoney.toLocaleString('de-DE') + ' Din');
 
-        if (cashmoney > 0) {
-            var tmpsum = cashmoney - deposit;
-            document.getElementById('depositeless').innerText = (tmpsum.toLocaleString('de-DE') + ' Din');
-            diff = cashmoney - finalsum;
-            document.getElementById('diffval').innerText = (diff.toLocaleString('de-DE') + ' Din');
-        }
-
-        if (diff != 0) {
-            document.getElementById('diff').style.display = 'block';
-            document.getElementById('diffval').style.display = 'block';
-
+        if (sumother != 0) {
+            document.getElementById('comment').required = true;
         } else {
-            document.getElementById('diff').style.display = 'none';
-            document.getElementById('diffval').style.display = 'none';
+            document.getElementById('comment').required = false;
         }
+
+//        if (diff != 0) {
+//            document.getElementById('diff').style.display = 'block';
+//            document.getElementById('diffval').style.display = 'block';
+//
+//        } else {
+//            document.getElementById('diff').style.display = 'none';
+//            document.getElementById('diffval').style.display = 'none';
+//        }
     }
 
     calculatevalue();

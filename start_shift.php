@@ -75,10 +75,11 @@ if (isset($_POST["save_shift"])) {
 
 }
 
-if (isset($_POST["save_shift"])) {
-
-    redirectTo("pazar.php");
-}
+//Komentar 3.11.2017 izbrisati za metar dana ako ne pukne nigde :)
+//if (isset($_POST["save_shift"])) {
+//
+//    redirectTo("pazar.php");
+//}
 
 if (isset($_POST["kasa"])) {
     $tmparray = array();
