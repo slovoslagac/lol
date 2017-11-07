@@ -76,7 +76,7 @@ function monthName($val){
     return $monthArray[$val];
 }
 
-function getstockstatus(){
+function getstockstatus($type = 2){
     global $conn;
     $sql = $conn->prepare("select s.productid, s.name, s.typeid, s.amount, s.sumprice, s.current_price, s.amount_cm, s.price_cm,
 s.current_price_cm, s.amount + p.amount_cm - s.amount_cm - p.amount amount_sm, p.amount sale_amount, p.sum_price sale_sumprice, p.amount_cm sale_amount_cm, p.sum_price_cm sale_sum_price_cm
@@ -89,9 +89,11 @@ from
 select o.id, o.workerid, o.`timestamp`, o.supplierid, s.status, s.amount, s.productid, s.price * s.amount price, p.name, p.typeid,
 case when month(o.timestamp) = EXTRACT(month FROM (NOW())) and year(o.timestamp) = extract(year from(now())) then s.amount else 0 end amount_cm,
 case when month(o.timestamp) = EXTRACT(month FROM (NOW())) and year(o.timestamp) = extract(year from(now())) then s.amount*s.price else 0 end price_cm
-from orders o, supplies s, products p
+from orders o, supplies s, products p, suppliers sp
 where o.id = s.orderid
 and p.id = s.productid
+and o.supplierid = sp.id
+and sp.type = :tp
 ) a
 group by a.productid, a.name, a.typeid ) s
 left join
@@ -108,6 +110,7 @@ and br.sellingproductid = sd.selingproductid ) b
 group by b.productid) p
 on s.productid = p.productid
 order by 3,2");
+    $sql->bindParam(":tp", $type);
     $sql->execute();
     $result = $sql->fetchAll(PDO::FETCH_OBJ);
     return $result;

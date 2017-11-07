@@ -78,14 +78,16 @@ if (isset($_POST["save_shift"])) {
             logAction("Shfit & bill connection created", "shiftid = $shiftId ; billid = $tmplastbill->id", 'shiftDetails.txt');
             $tmpsb->addshiftbill($shiftId, $tmplastbill->id);
 
-            $safe = $_POST['money'];
+//            $safe = $_POST['money'] || 0;
             $deposit = $_POST['deposit'];
             $computers = $_POST['smartlaunch'];
             $costs = $_POST['otherdata'];
             $moneysum = $_POST['fs'];
             $comment = $_POST['comment'];
-            $bill->addBillDetails($tmplastbill->id, $safe, $deposit, $computers, $costs, $moneysum, $comment);
-
+            $wage = $_POST['wage'];
+            $safe = $moneysum + $deposit + $wage;
+//            $bill->addBillDetails($tmplastbill->id, $safe, $deposit, $computers, $costs, $moneysum, $comment);
+            $bill->addBillSum($tmplastbill->id, $safe, $deposit, $computers, $costs, $moneysum, $wage);
             foreach ($allsellproducts as $item) {
                 $id = $item->id;
                 $numofitems = (array_key_exists($item->productid, $currentvalues)) ? $currentvalues[$item->productid] : "0";
@@ -241,11 +243,7 @@ include $footerMenuLayout;
 
         document.getElementById('money').innerText = (cashmoney.toLocaleString('de-DE') + ' Din');
 
-        if (sumother != 0) {
-            document.getElementById('comment').required = true;
-        } else {
-            document.getElementById('comment').required = false;
-        }
+        document.getElementById('comment').required = sumother != 0;
 
 //        if (diff != 0) {
 //            document.getElementById('diff').style.display = 'block';

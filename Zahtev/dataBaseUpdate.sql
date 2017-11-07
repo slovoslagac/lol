@@ -59,6 +59,11 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
 
+
+ALTER TABLE `lol`.`suppliers`
+ADD COLUMN `type` INT(1) NULL DEFAULT NULL COMMENT '1 - spoljni izvor 2- interni magacin' AFTER `timestamp`
+
+
 -----Ver 1.5--------
 
 
