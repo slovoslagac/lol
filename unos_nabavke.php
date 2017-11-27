@@ -52,7 +52,7 @@ include $menuLayout;
 
             <h1>Unos nabavke</h1>
 
-            <select id="selectSupplier" name="selectSupplier" required>
+            <select id="selectSupplier" name="selectSupplier" onchange="checkWarehouse()" required>
                 <option></option>
                 <?php $sup = new suppliers();
                 $allsuppliers = $sup->getAllSuppliers();
@@ -83,8 +83,8 @@ include $menuLayout;
                         <div class="order">
                             <div class="item"><?php echo $item->productname ?></div>
                             <input type="hidden" name="item<?php echo $i ?>" id="item<?php echo $i ?>" value="<?php echo $item->id ?>">
-                            <input type="number" id="quantity<?php echo $i ?>" name="quantity<?php echo $i ?>" placeholder="kol" class="quantity"
-                                   onchange="calculateSum(<?php echo $i ?>)"/>
+                            <input type="number" id="quantity<?php echo $i ?>" name="quantity<?php echo $i ?>" placeholder="kol" class="quantity"  onchange="calculateSum(<?php echo $i ?>)"/>
+
                             <input type="number" step="0.01" id="order_price<?php echo $i ?>" name="order_price<?php echo $i ?>" placeholder="cena" class="order_price"
                                    onchange="calculateSum(<?php echo $i ?>)"/>
                             <div class="full_price" id="full_price<?php echo $i ?>"></div>
@@ -118,6 +118,58 @@ include $menuLayout;
 <?php
 include $footerMenuLayout;
 ?>
+
+
+<script>
+    function checkWarehouse(){
+        if(document.getElementById('selectSupplier').value == 5) {
+            $('.order_price').hide();
+            $('.full_price').hide();
+            $('.')
+        } else {
+            $('.order_price').show();
+            $('.full_price').show();
+        }
+    }
+</script>
+
+<script>
+    function calculateSum($val) {
+        var curramount = 'quantity' + $val;
+        var currentprice = 'order_price' + $val;
+        var currentcost = 'full_price' + $val;
+        var warehousetype = document.getElementById('selectSupplier').value;
+        var amount = document.getElementById(curramount).value;
+        var price = document.getElementById(currentprice).value;
+
+        var cost = amount * price;
+        console.log(cost);
+        if (amount > 0 && price > 0) {
+            document.getElementById(currentcost).innerHTML = cost.toLocaleString();
+        } else {
+            document.getElementById(currentcost).innerHTML = '';
+        }
+
+        if (amount > 0) {
+            document.getElementById(currentprice).required = true;
+        } else {
+            document.getElementById(currentprice).required = false;
+        }
+
+        if (price > 0) {
+            document.getElementById(curramount).required = true;
+        } else {
+            document.getElementById(curramount).required = false;
+        }
+
+    }
+
+
+    function Supplier() {
+
+    }
+</script>
+
 
 </body>
 

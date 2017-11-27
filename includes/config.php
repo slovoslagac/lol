@@ -19,6 +19,12 @@ $db_pass_old = "";
 $db_name_old = "smartlaunch";
 
 
+$db_server_cmp = "localhost";
+$db_user_cmp = "tournament";
+$db_pass_cmp = "t1";
+$db_name_cmp = "tournaments";
+
+
 
 
 

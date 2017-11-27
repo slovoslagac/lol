@@ -1,0 +1,24 @@
+26.11.2017 22:04:20 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:05:46 | Email vec postoji : 'username', ,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:05:58 | Email vec postoji : 'username', ,'phone', ,'email', lala@fo
+26.11.2017 22:06:44 | Email vec postoji : 'username', ,'phone', ,'email', 
+26.11.2017 22:06:58 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:07:05 | Email vec postoji : 'username', ,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:10:38 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:11:46 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:12:30 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:14:39 | Email vec postoji : 'username', miroslava.prodanovic@gmail.com,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:15:22 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:15:42 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:15:47 | Email vec postoji : 'username', Petar Prodanovic,'phone', ,'email', petar.prodanovic@gmail.com
+26.11.2017 22:16:01 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com
+26.11.2017 22:16:17 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com
+26.11.2017 22:18:08 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com
+26.11.2017 22:23:38 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com
+26.11.2017 22:26:00 | Email vec postoji : 'username', proske,'phone', 232232,'email', proske@car.rs
+26.11.2017 22:27:05 | Kreiranje novog tima : 'username', Mama,'phone', 333444,'email', miroslava.prodanovic@gmail.com
+26.11.2017 22:27:16 | Email vec postoji : 'username', proske,'phone', 123456,'email', petar.prodanovic@gmail.com
+26.11.2017 22:27:44 | Email vec postoji : 'username', proske,'phone', 123456,'email', petar.prodanovic@gmail.com
+26.11.2017 22:27:59 | Kreiranje novog tima : 'username', proske,'phone', 22255255,'email', prole@gmial.com
+26.11.2017 22:34:16 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com
+26.11.2017 22:38:57 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com

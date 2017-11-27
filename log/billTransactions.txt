@@ -235,3 +235,6 @@
 03.11.2017 13:10:47 | Kucanje racuna - prebrzo kucanje racuna : suma - 100, details - 11
 03.11.2017 13:10:55 | Dodavanje racuna  : 66, 0, 1000, normal
 03.11.2017 13:11:07 | Dodavanje racuna  : 67, 0, 1700, normal
+22.11.2017 15:32:40 | Dodavanje racuna  : 96, 0, 700, normal
+22.11.2017 15:42:05 | Dodavanje racuna  : 97, 0, 450, normal
+22.11.2017 15:45:42 | Dodavanje racuna  : 98, 0, 400, normal

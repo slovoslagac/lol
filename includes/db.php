@@ -29,4 +29,15 @@ try {
 }
 
 
+try {
+    $conn_cmp = new PDO("mysql:host=$db_server_cmp;dbname=$db_name_cmp", $db_user_cmp, $db_pass_cmp);
+    $conn_cmp->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn_cmp->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+} catch (PDOException $e) {
+    echo $db_server_cmp.'bla bla <br>';
+    echo "Error: " . $e->getMessage();
+}
+
+
 

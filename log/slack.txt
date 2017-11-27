@@ -88,3 +88,7 @@
 03.11.2017 10:22:57 | Dodavanje sonija : Uplaceno je Sony - 4 igraca 3h - # 5 - 180 min, racun broj - 61
 03.11.2017 10:23:59 | Editovanje racuna : Izmena racuna Sony - 2 igraca - # 2 - 15 min, racun broj 61
 03.11.2017 13:10:45 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 2 - 360 min, racun broj - 65
+22.11.2017 15:32:40 | Dodavanje sonija : Uplaceno je Sony - 2 igraca - # 3 - 60 min, racun broj - 96
+22.11.2017 15:32:40 | Dodavanje sonija : Uplaceno je Sony - 2 igraca 3h - # 5 - 180 min, racun broj - 96
+22.11.2017 15:42:05 | Dodavanje sonija : Uplaceno je Sony - volan - # 5 - 180 min, racun broj - 97
+22.11.2017 15:45:42 | Dodavanje sonija : Uplaceno je Sony - volan 3h - # 2 - 180 min, racun broj - 98

@@ -103,12 +103,12 @@ body {
 	background-color: #ffffff;
 }
 a {
-	color: #19bc9c;
+	color: #000;
+    font-weight: bold;
 	text-decoration: none;
 }
 a:hover {
 	color: #545454;
-	text-decoration: underline;
 }
 .row {
 	margin-left: -20px;

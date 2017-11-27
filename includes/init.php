@@ -49,6 +49,7 @@ require INC_PATH . DS . 'spDetails.php';
 require INC_PATH . DS . 'shift.php';
 require INC_PATH . DS . 'shiftbill.php';
 require INC_PATH . DS . 'slackfunctions.php';
+require INC_PATH . DS . 'cmp_team.php';
 
 
 //Layouts
@@ -69,7 +70,7 @@ $tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
 
 $appEmployeeId = 38;
 $sonyTypeID = 6;
-$numSony = 5;
+$numSony = 5; $sonyWheelAvailable = array(1,2,3,4,5);
 
 
 //Slack

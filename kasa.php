@@ -229,8 +229,8 @@ if (isset($_POST["paymentDelete"])) {
                     <input type="hidden" value="2" id="numplayers">
                     <div class="iiplayers plactive" id="2player<?php echo $i ?>"><img src="img/playstation/2players.png" onclick="changeplayernum(2, <?php echo $i ?>)"></div>
                     <div class="ivplayers" id="4player<?php echo $i ?>"><img src="img/playstation/4players.png" onclick="changeplayernum(4, <?php echo $i ?>)"></div>
+                    <?php if (in_array($i,$sonyWheelAvailable)) {?><div class="driver" id="driver<?php echo $i ?>"><img src="img/playstation/driver.png" onclick="changeplayernum(3, <?php echo $i ?>)"></div>    <?php }?>
                     <img src="img/playstation/ps<?php echo $i ?>.png">
-                    <?php if ($i== 5) {?>        <div class="driver"><img src="img/playstation/driver.png"></div>    <?php }?>
                     <label id="sony<?php echo $i; ?>">&nbsp</label>
                     <?php foreach ($allProductsSony as $item) {
                         if (strpos($item->name, '2') and (strpos($item->name, '3h')) === false) {
@@ -264,6 +264,22 @@ if (isset($_POST["paymentDelete"])) {
                             <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
 
                             <div id="4playersboxbonus<?php echo $i ?>" style="display: none">
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, <?php echo $i ?>);">+3h</p>
+                            </div>
+                            <?php
+                        } elseif (strpos($item->name, 'volan') and (strpos($item->name, '3h')) === false) { ?>
+                            <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></div>
+                            <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
+                            <div id="driverbox<?php echo $i ?>" style="display: none">
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 0.25, <?php echo $i ?>);">+15</p>
+                                <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, <?php echo $i ?>);">+1h</p>
+                            </div>
+                            <?php
+                        }elseif (strpos($item->name, 'volan') and (strpos($item->name, '3h'))) { ?>
+                            <div hidden id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></div>
+                            <p id="price<?php echo $item->id ?>" hidden><?php echo $item->value . ' Din' ?></p>
+
+                            <div id="driverboxbonus<?php echo $i ?>" style="display: none">
                                 <p id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, <?php echo $i ?>);">+3h</p>
                             </div>
                             <?php
@@ -527,15 +543,33 @@ include $footerMenuLayout;
             document.getElementById('2playersboxbonus' + num).style.display = 'block';
             document.getElementById('4playersbox' + num).style.display = 'none';
             document.getElementById('4playersboxbonus' + num).style.display = 'none';
+            document.getElementById('driverbox' + num).style.display = 'none';
+            document.getElementById('driverboxbonus' + num).style.display = 'none';
             document.getElementById('2player' + num).setAttribute("class", "iiplayers plactive");
             document.getElementById('4player' + num).setAttribute("class", "ivplayers");
-        } else {
+            document.getElementById('driver' + num).setAttribute("class", "driver");
+        } else if(val == 4) {
             document.getElementById('2playersbox' + num).style.display = 'none';
             document.getElementById('2playersboxbonus' + num).style.display = 'none';
             document.getElementById('4playersbox' + num).style.display = 'block';
             document.getElementById('4playersboxbonus' + num).style.display = 'block';
+            document.getElementById('driverbox' + num).style.display = 'none';
+            document.getElementById('driverboxbonus' + num).style.display = 'none';
             document.getElementById('2player' + num).setAttribute("class", "iiplayers");
             document.getElementById('4player' + num).setAttribute("class", "ivplayers plactive");
+            document.getElementById('driver' + num).setAttribute("class", "driver");
+
+        } else if (val == 3){
+            document.getElementById('2playersbox' + num).style.display = 'none';
+            document.getElementById('2playersboxbonus' + num).style.display = 'none';
+            document.getElementById('4playersbox' + num).style.display = 'none';
+            document.getElementById('4playersboxbonus' + num).style.display = 'none';
+            document.getElementById('driverbox' + num).style.display = 'block';
+            document.getElementById('driverboxbonus' + num).style.display = 'block';
+            document.getElementById('2player' + num).setAttribute("class", "iiplayers");
+            document.getElementById('4player' + num).setAttribute("class", "ivplayers");
+            document.getElementById('driver' + num).setAttribute("class", "driver plactive");
+
 
         }
     }

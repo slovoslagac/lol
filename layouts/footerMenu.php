@@ -265,39 +265,4 @@
 
 </script>
 
-<script>
-    function calculateSum($val) {
-        var curramount = 'quantity' + $val;
-        var currentprice = 'order_price' + $val;
-        var currentcost = 'full_price' + $val;
-        var amount = document.getElementById(curramount).value;
-        var price = document.getElementById(currentprice).value;
-
-        var cost = amount * price;
-        console.log(cost);
-        if (amount > 0 && price > 0) {
-            document.getElementById(currentcost).innerHTML = cost.toLocaleString();
-        } else {
-            document.getElementById(currentcost).innerHTML = '';
-        }
-
-        if (amount > 0) {
-            document.getElementById(currentprice).required = true;
-        } else {
-            document.getElementById(currentprice).required = false;
-        }
-
-        if (price > 0) {
-            document.getElementById(curramount).required = true;
-        } else {
-            document.getElementById(curramount).required = false;
-        }
-
-    }
-
-
-    function Supplier() {
-
-    }
-</script>
 

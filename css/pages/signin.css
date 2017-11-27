@@ -694,10 +694,7 @@ fieldset small {
     cursor:pointer;
 }
 
-.plactive {
-    border:1px solid #555;
-    background:#ff0;
-}
+
 
 .driver {
     position:absolute;
@@ -717,4 +714,9 @@ fieldset small {
     height:20px;
     text-align:center;
     margin:0px;
+}
+
+.plactive {
+    border:1px solid #555;
+    background:#ff0;
 }
