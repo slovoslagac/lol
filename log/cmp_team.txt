@@ -22,3 +22,11 @@
 26.11.2017 22:27:59 | Kreiranje novog tima : 'username', proske,'phone', 22255255,'email', prole@gmial.com
 26.11.2017 22:34:16 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com
 26.11.2017 22:38:57 | Email vec postoji : 'username', Petar Prodanovic,'phone', 123456,'email', petar.prodanovic@gmail.com
+29.11.2017 11:53:53 | Kreiranje novog tima : 'username', ,'phone', ,'email', 
+29.11.2017 12:19:05 | Kreiranje novog tima : 'username', ,'phone', ,'email', 
+29.11.2017 12:19:29 | Email vec postoji : 'username', ,'phone', ,'email', 
+29.11.2017 12:20:32 | Kreiranje novog tima : 'username', ,'phone', ,'email', 
+29.11.2017 12:21:01 | Kreiranje novog tima : 'username', ,'phone', ,'email', 
+29.11.2017 16:24:39 | Kreiranje novog tima : 'username', pera kvrzica,'phone', 44555666,'email', petar.prodanovic@gmail.com
+29.11.2017 16:41:01 | Kreiranje novog tima : 'username', zika pavlovic,'phone', 556688,'email', zika@cela.rs
+30.11.2017 13:04:23 | Kreiranje novog tima : 'username', Petar Prodanovic,'phone', 0653232388,'email', petar.prodanovic@gmail.com

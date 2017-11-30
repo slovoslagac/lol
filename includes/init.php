@@ -49,7 +49,13 @@ require INC_PATH . DS . 'spDetails.php';
 require INC_PATH . DS . 'shift.php';
 require INC_PATH . DS . 'shiftbill.php';
 require INC_PATH . DS . 'slackfunctions.php';
-require INC_PATH . DS . 'cmp_team.php';
+
+
+
+//torunament classes
+require INC_PATH . DS . 'cmp_player.php';
+require INC_PATH . DS . 'cmp_tournament_entry.php';
+require INC_PATH . DS . 'cmp_tournament.php';
 
 
 //Layouts

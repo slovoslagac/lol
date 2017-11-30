@@ -106,6 +106,7 @@
             </table>
                 
                 </div>
+                
             </div>
             
             <!-- Modal -->
@@ -118,9 +119,88 @@
                             <input type="name" placeholder="Ime i prezime"/><br />
                             <input type="phone" placeholder="Broj telefona" class="login" /><br />
                             <input type="email" placeholder="E-mail adresa" class="login" /> 
-                            <input type="file" id="files" name="files[]" multiple />
-
-                            
+                        </div>
+                        <div class="modal-header">
+                        <h3 id="myModalLabel">Odabir već registrovanog igrača</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="registrovani">
+                                <table>
+                                    <tr>
+                                        <th>Chk</th>
+                                        <th>Ime i prezime</th>
+                                        <th>E-mail</th>
+                                        <th>Broj telefona</th>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="check"></td>
+                                        <td class="regname">Damir Kokeza</td>
+                                        <td>chumpitas@gmail.com</td>
+                                        <th>069650900</th>
+                                    </tr>
+                                </table>
+                            </div>        
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
+                            <button class="btn btn-primary">Prijavi igrača na turnir</button>
+                        </div>
+                    </div>
+            
+        </div>
+        <div class="span12">
+            <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-user"></i>
+                <h3>Registrovani igrači</h3>
+                <div class="controls">
+                    <!-- Button to trigger modal -->
+                    <a href="novi_turnir.html" role="button" class="btn">Registruj novog igrača</a>
+                </div> <!-- /controls -->
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+            <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th class="center"> Ime i prezime </th>
+                    <th class="center"> Broj telefona </th>
+                      <th class="center"> E-mail </th>
+                      <th class="center"> Datum turnira </th>
+                      <th class="center"> Tim 1</th>
+                      <th class="center"> Tim 2</th>
+                      <th class="center"> Tim 3</th>
+                      <th class="center"> Tim 4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td> <a href="turnir_page.html">Fifa 18 - Mesečni turnri - Decembar (1/15) </a></td>
+                    <td class="center"> FIFA 18 </td>
+                      <td class="center"> PS4 </td>
+                      <td class="center"> 03.12.2017. 10:00 </td>
+                      <td class="center"> 21 </td>
+                      <td class="center"> <b>6.300 Din</b> </td>
+                      <td class="center"> <a href="#prijava" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-user"> </i></a> </td>
+                      <td class="center"><a href="#izmena" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i class="btn-icon-only icon-pencil"> </i></a></td>
+                  </tr>
+                    
+                </tbody>
+            </table>
+                
+                </div>
+                
+            </div>
+            
+            <!-- Modal -->
+                    <div id="prijava" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Registracija novog igrača za turnir FIFA 18</h3>
+                        </div>
+                        <div class="modal-body">
+                            <input type="name" placeholder="Ime i prezime"/><br />
+                            <input type="phone" placeholder="Broj telefona" class="login" /><br />
+                            <input type="email" placeholder="E-mail adresa" class="login" /> 
                         </div>
                         <div class="modal-header">
                         <h3 id="myModalLabel">Odabir već registrovanog igrača</h3>
@@ -134,7 +214,7 @@
                         </div>
                     </div>
             
-        </div>
+        </div>  
         <!-- /span6 --> 
       </div>
       <!-- /row --> 

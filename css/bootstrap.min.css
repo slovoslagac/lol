@@ -3689,3 +3689,20 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endCo
     float:right;
     margin-right:10px;
 }
+
+/* table */
+
+.registrovani {
+    width:100%;
+    height:200px;
+    overflow:scroll;
+    
+}
+
+.regname {
+    background:#ff0;
+}
+
+.check {
+    width:20px !important;
+}
