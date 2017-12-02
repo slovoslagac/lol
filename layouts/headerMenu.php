@@ -24,7 +24,7 @@ if($currentShiftDetails== "" and  !in_array($currentpage, $disabledPages) ) {
 
 $link1 = "index.php";
 $link2 = "end_shift.php";
-$link3 = "turniri.php";
+$link3 = "rezultati_turnira.php";
 //$link4 = "lol_takmicenje.php";
 $link5 = "lucky_numbers.html";
 //$link6 = "bonus_sati.php";
@@ -35,7 +35,7 @@ $link9 = "kasa.php";
 $wrk = new worker();
 $currentWorker = $wrk->getWorkerById($session->userid);
 $admin = $wrk->getAdmin();
-$availableForms = array($link1, $link2, $link3, $link9, 'login.php', 'lol_unos.php', 'unos_rezultata.php', 'start_shift.php', 'pazar.php', 'turniri.php');
+$availableForms = array($link1, $link2, $link3, $link9, 'login.php', 'lol_unos.php', 'unos_rezultata.php', 'start_shift.php', 'pazar.php');
 $currentForm = basename($_SERVER["SCRIPT_FILENAME"]);
 
 if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $availableForms))) {

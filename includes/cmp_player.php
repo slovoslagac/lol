@@ -8,9 +8,13 @@
  */
 class cmp_player
 {
-    protected $username;
-    protected $phone;
-    public $email;
+    private $username;
+    private $phone;
+    private $email;
+    private $year;
+    private $status = 0;
+    private $hash;
+
 
     public function setattribute($atr, $value){
         $this->$atr = $value;
@@ -25,12 +29,13 @@ class cmp_player
     public function addplayer()
     {
         global $conn_cmp;
-        $hash = md5(rand(0,1000));
-        $sql= $conn_cmp->prepare("insert into players(name, phone, email, passhash) values (:nm, :ph, :em, :hsh)");
+        $sql= $conn_cmp->prepare("insert into players(name, phone, email, passhash, born, status) values (:nm, :ph, :em, :hsh, :bn, :st)");
         $sql->bindParam(":nm", $this->username);
         $sql->bindParam(":ph", $this->phone);
         $sql->bindParam(":em", $this->email);
-        $sql->bindParam(":hsh", $hash);
+        $sql->bindParam(":bn", $this->year);
+        $sql->bindParam(":st", $this->status);
+        $sql->bindParam(":hsh", $this->hash);
         $sql->execute();
     }
 
@@ -59,5 +64,21 @@ class cmp_player
         $sql->execute();
         $result = $sql->fetch(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    public function updatestatus($type, $id){
+        global $conn_cmp;
+        $sql=$conn_cmp->prepare("update players set status = :st where id = :id");
+        $sql->bindParam(":st", $type);
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+    }
+
+    public function updatepassword($pass, $id){
+        global $conn_cmp;
+        $sql=$conn_cmp->prepare("update players set password = :pass where id = :id");
+        $sql->bindParam(":pass", $pass);
+        $sql->bindParam(":id", $id);
+        $sql->execute();
     }
 }

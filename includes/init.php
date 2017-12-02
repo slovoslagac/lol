@@ -56,6 +56,8 @@ require INC_PATH . DS . 'slackfunctions.php';
 require INC_PATH . DS . 'cmp_player.php';
 require INC_PATH . DS . 'cmp_tournament_entry.php';
 require INC_PATH . DS . 'cmp_tournament.php';
+require INC_PATH . DS . 'cmp_matches.php';
+require INC_PATH . DS . 'cmp_results.php';
 
 
 //Layouts
