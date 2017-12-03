@@ -11,12 +11,12 @@ class cmp_results
     function getMatchesFifa(){
         global $conn_cmp;
         $sql=$conn_cmp->prepare("select h.name home, v.name visitor, m.id as id
-from matches m, players h, players v
+from matches m
+left join players v on m.visitorparticipantid = v.id, players h
 where m.homeparticipantid = h.id
-and m.visitorparticipantid = v.id
 and m.tournamentid = 1
 and m.id not in (select matchid from results)
-order by m.matchtime, 1,2");
+order by m.roundid, m.matchtime, 1,2");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -43,6 +43,36 @@ order by m.matchtime, 1,2");
         $sql->bindParam(':h', $h);
         $sql->bindParam(':v', $v);
         $sql->execute();
+    }
+
+
+    function getMatcheslol(){
+        global $conn_cmp;
+        $sql=$conn_cmp->prepare("select h.name home, v.name visitor, m.id as id
+from matches m
+left join team v on m.visitorparticipantid = v.id,
+team h
+where m.homeparticipantid = h.id
+and m.tournamentid = 2
+and m.id not in (select matchid from results)
+order by m.roundid, m.matchtime, 1,2");
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    function getResultslol(){
+        global $conn_cmp;
+        $sql=$conn_cmp->prepare("select h.name home, v.name visitor, r.homeval hres, r.visitorval vres, m.id
+from matches m, team h, team v, results r
+where m.homeparticipantid = h.id
+and m.visitorparticipantid = v.id
+and m.tournamentid = 2
+and m.id = r.matchid
+order by m.matchtime, 1,2");
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $result;
     }
 
 }

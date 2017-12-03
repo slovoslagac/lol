@@ -76,7 +76,7 @@ function monthName($val){
     return $monthArray[$val];
 }
 
-function getstockstatus($type = 2){
+function getstockstatus($type = 1){
     global $conn;
     $sql = $conn->prepare("select s.productid, s.name, s.typeid, s.amount, s.sumprice, s.current_price, s.amount_cm, s.price_cm,
 s.current_price_cm, s.amount + p.amount_cm - s.amount_cm - p.amount amount_sm, p.amount sale_amount, p.sum_price sale_sumprice, p.amount_cm sale_amount_cm, p.sum_price_cm sale_sum_price_cm

@@ -244,3 +244,7 @@
 06.11.2017 14:08:10 | Shfit start section created : userid = 11 ; billid = 95
 06.11.2017 14:08:10 | Shfit & bill connection created : shiftid = 26 ; billid = 95
 06.11.2017 14:08:11 | Shfit start possible difference : 
+03.12.2017 09:08:33 | Shift start --------------------- : userid = 1 
+03.12.2017 09:08:33 | Shfit start section created : userid = 1 ; billid = 14
+03.12.2017 09:08:33 | Shfit & bill connection created : shiftid = 5 ; billid = 14
+03.12.2017 09:08:33 | Shfit start possible difference : 

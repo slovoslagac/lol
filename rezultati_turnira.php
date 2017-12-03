@@ -4,6 +4,8 @@ include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 $tmpresult = new cmp_results();
 $fifamatches = $tmpresult->getMatchesFifa();
 $fifaresults = $tmpresult->getResultsFifa();
+$lolmatches = $tmpresult->getMatcheslol();
+$lolresults = $tmpresult->getResultslol();
 
 
 if (isset($_POST['savefifa'])) {
@@ -16,9 +18,66 @@ if (isset($_POST['savefifa'])) {
     unset($tmprez);
 
     $tmpmatch = new cmp_matches();
-    $tmpmatch->getmatch($id, 1);
-    var_dump($tmpmatch);
+    $currentmatch = $tmpmatch->getmatch($id, 1);
+    $hometest = $tmpmatch->gethomematchupdate($currentmatch->matchid, 1);
+    $visitortest = $tmpmatch->getvisitormatchupdate($currentmatch->matchid, 1);
 
+    ($rez1 > $rez2) ? $team= $currentmatch->homeparticipantid : $team = $currentmatch->visitorparticipantid;
+
+    if($visitortest != '') {
+        $updatematch = new cmp_matches();
+        $matchid = $visitortest->matchid;
+        $updatematch->updatevisitormatch($matchid,1,$team);
+        unset($updatematch, $matchid);
+    } elseif ($hometest != '') {
+        $updatematch = new cmp_matches();
+        $matchid = $hometest->matchid;
+        $updatematch->updatehomematch($matchid,1,$team);
+        unset($updatematch, $matchid);
+    }
+
+//    var_dump($visitortest);
+//    var_dump($hometest);
+//    var_dump($currentmatch);
+
+    header("Refresh:0");
+
+}
+
+
+if (isset($_POST['savelol'])) {
+//    echo $_POST['result1'].'-'.$_POST['result2'];
+    $rez1 = $_POST['result1lol'];
+    $rez2 = $_POST['result2lol'];
+    $id = $_POST['lol'];
+    $tmprez = new cmp_results();
+    $tmprez->addresultfifa($id, $rez1, $rez2);
+    unset($tmprez);
+
+    $tmpmatch = new cmp_matches();
+    $currentmatch = $tmpmatch->getmatch($id, 2);
+    $hometest = $tmpmatch->gethomematchupdate($currentmatch->matchid, 2);
+    $visitortest = $tmpmatch->getvisitormatchupdate($currentmatch->matchid, 2);
+
+    ($rez1 > $rez2) ? $team= $currentmatch->homeparticipantid : $team = $currentmatch->visitorparticipantid;
+
+    if($visitortest != '') {
+        $updatematch = new cmp_matches();
+        $matchid = $visitortest->matchid;
+        $updatematch->updatevisitormatch($matchid,2,$team);
+        unset($updatematch, $matchid);
+    } elseif ($hometest != '') {
+        $updatematch = new cmp_matches();
+        $matchid = $hometest->matchid;
+        $updatematch->updatehomematch($matchid,2,$team);
+        unset($updatematch, $matchid);
+    }
+
+//    var_dump($visitortest);
+//    var_dump($hometest);
+//    var_dump($currentmatch);
+
+    header("Refresh:0");
 
 }
 
@@ -105,44 +164,16 @@ include $menuLayout;
                                 </thead>
                                 <tbody>
 
-                                <tr>
-                                    <td class="center" width="180"><b>Marko Vujović</b></td>
-                                    <td class="center" width="180"><b>Boško Talančevski</b></td>
-                                    <td class="center" width="80"> - : -</td>
-                                    <td class="center" width="80"><a href="#prijava_rezultata" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i
-                                                class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="center" width="180"><b>Marko Vujović</b></td>
-                                    <td class="center" width="180"><b>Boško Talančevski</b></td>
-                                    <td class="center" width="80"> - : -</td>
-                                    <td class="center" width="80"><a href="#prijava_rezultata" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i
-                                                class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="center" width="180"><b>Marko Vujović</b></td>
-                                    <td class="center" width="180"><b>Boško Talančevski</b></td>
-                                    <td class="center" width="80"> - : -</td>
-                                    <td class="center" width="80"><a href="#prijava_rezultata" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i
-                                                class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="center" width="180"><b>Marko Vujović</b></td>
-                                    <td class="center" width="180"><b>Boško Talančevski</b></td>
-                                    <td class="center" width="80"> - : -</td>
-                                    <td class="center" width="80"><a href="#prijava_rezultata" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i
-                                                class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="center" width="180"><b>Marko Vujović</b></td>
-                                    <td class="center" width="180"><b>Boško Talančevski</b></td>
-                                    <td class="center" width="80"> - : -</td>
-                                    <td class="center" width="80"><a href="#prijava_rezultata" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i
-                                                class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
+                                <?php foreach ($lolmatches as $item) { ?>
+                                    <tr>
+                                        <td class="center" width="180"><b><?php echo $item->home ?></b></td>
+                                        <td class="center" width="180"><b><?php echo $item->visitor ?></b></td>
+                                        <td class="center" width="80"> - : -</td>
+                                        <td class="center" width="80"><a href="#prijava_lol" role="button" class="btn btn-small btn-primary" data-toggle="modal"
+                                                                         onclick="addlol(<?php echo "$item->id,'$item->home','$item->visitor'" ?>)"><i class="btn-icon-only icon-pencil"> </i></a></td>
+                                    </tr>
+                                <?php } ?>
 
-
-                                </tbody>
                             </table>
 
                         </div>
@@ -150,22 +181,25 @@ include $menuLayout;
                     </div>
 
                     <!-- Modal -->
-                    <div id="prijava_rezultata" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div id="prijava_lol" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h3 id="myModalLabel">Unos rezultata meča</h3>
                         </div>
+                        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                         <div class="modal-body">
-                            <div class="team1">Marko Vujović</div>
+                            <div class="team1" id="lol1"></div>
                             <div class="vs">vs.</div>
-                            <div class="team2">Boško Talančevski</div>
-                            <div class="result1"><input type="number" name="result1"></div>
-                            <div class="result2"><input type="number" name="result2"></div>
+                            <div class="team2" id="lol2"></div>
+                            <input type="hidden" id="lol" name="lol">
+                            <div class="result1"><input type="number" name="result1lol" id="result1lol" onchange="checklol()"></div>
+                            <div class="result2"><input type="number" name="result2lol" id="result2lol" onchange="checklol()"></div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
-                            <button class="btn btn-primary">Potvrdi rezultat</button>
+                            <button class="btn btn-primary" name="savelol" id="savelol" style="visibility: hidden">Potvrdi rezultat</button>
                         </div>
+                            </form>
                     </div>
                 </div>
 
@@ -207,7 +241,7 @@ include $menuLayout;
                     </div>
 
                     <!-- Modal -->
-                    <div id="prijava_rezultata" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div id="" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h3 id="myModalLabel">Unos rezultata meča</h3>
@@ -242,13 +276,15 @@ include $menuLayout;
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="center" width="180"><b>Marko Vujović</b></td>
-                                    <td class="center" width="180"><b>Boško Talančevski</b></td>
-                                    <td class="center" width="80"> 2 : 0</td>
-                                    <td class="center" width="80"><a href="#prijava_rezultata" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i
-                                                class="btn-icon-only icon-pencil"> </i></a></td>
-                                </tr>
+                                <?php foreach ($lolresults as $item) { ?>
+                                    <tr>
+                                        <td class="center" width="180"><b><?php echo $item->home ?></b></td>
+                                        <td class="center" width="180"><b><?php echo $item->visitor ?></b></td>
+                                        <td class="center" width="80"> <?php echo $item->hres ?> : <?php echo $item->vres ?> </td>
+                                        <td class="center" width="80"><a href="#prijava_fifa" role="button" class="btn btn-small btn-primary" data-toggle="modal"><i
+                                                    class="btn-icon-only icon-pencil"> </i></a></td>
+                                    </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
 
@@ -257,7 +293,7 @@ include $menuLayout;
                     </div>
 
                     <!-- Modal -->
-                    <div id="prijava_rezultata" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div id="" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h3 id="myModalLabel">Unos rezultata meča</h3>
@@ -305,6 +341,25 @@ include $menuLayout;
             document.getElementById('savefifa').style.visibility = 'visible';
         } else {
             document.getElementById('savefifa').style.visibility = 'hidden';
+        }
+    }
+
+    function addlol(id, home, visitor) {
+        console.log(id);
+        document.getElementById('lol1').innerText = home;
+        document.getElementById('lol2').innerText = visitor;
+        document.getElementById('lol').setAttribute('value', id);
+
+    }
+
+    function checklol() {
+        var hr = document.getElementById('result1lol').value;
+        var vr = document.getElementById('result2lol').value;
+        console.log(hr, vr);
+        if (hr >= 0 && vr >= 0 && hr != '' && vr != '' && hr != vr) {
+            document.getElementById('savelol').style.visibility = 'visible';
+        } else {
+            document.getElementById('savelol').style.visibility = 'hidden';
         }
     }
 </script>
