@@ -75,4 +75,13 @@ class worker
         $result = $sql->fetch(PDO::FETCH_OBJ);
         return $result;
     }
+
+    public function updateWorkerPass($id, $pass)
+    {
+        global $conn;
+        $updateUser = $conn->prepare("update workers set password = :pass where id= :id");
+        $updateUser->bindParam(':pass', $pass);
+        $updateUser->bindParam(':id', $id);
+        $updateUser->execute();
+    }
 }

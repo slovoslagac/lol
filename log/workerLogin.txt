@@ -260,3 +260,6 @@
 02.12.2017 18:33:50 | Logout : userid = 11
 02.12.2017 18:33:54 | Login : userid = 11
 03.12.2017 09:07:44 | Login : userid = 1
+06.12.2017 12:23:24 | Logout : userid = 11
+06.12.2017 12:55:08 | Login : userid = 11
+06.12.2017 12:55:53 | Logout : userid = 11

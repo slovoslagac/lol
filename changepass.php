@@ -9,23 +9,17 @@ if ($session->isLoggedIn()) {
 if (isset($_POST["submit"])) {
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
-
+    $retype = trim($_POST["retype"]);
+    $crypt_password = crypt($password);
     $worker = new worker();
     $currworker = $worker->getWorkerByEmail($username);
 
-    if ($currworker) {
-        if (password_verify($password, $currworker->password)) {
-            $session->login($currworker);
-            $session->setSessionTime();
-            unset($password, $currworker, $username);
-            redirectTo("kasa.php");
-
-        } else {
-            logAction("Neuspelo logovanje - pogresna lozinka", "user:$username, pass :$password, realpass : $currworker->password, $currworker->name", "error.txt");
-        }
+    if ($retype == $password){
+        $worker->updateWorkerPass($currworker->id,$crypt_password);
+        unset($worker, $currworker);
 
     } else {
-        logAction("Neuspelo logovanje - ne postoji radnik sa tim username.", "user:$username, pass :$password, ", "error.txt");
+        logAction("Neuspelo logovanje - ne poklapaju se lozinke", "user:$username, pass :$password, retype : $retype", "error.txt");
     }
 }
 ?>
@@ -102,6 +96,11 @@ if (isset($_POST["submit"])) {
                 <div class="field">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" value="" placeholder="Lozinka"
+                           class="login password-field"/>
+                </div> <!-- /password -->
+                <div class="field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="retype" name="retype" value="" placeholder="Lozinka"
                            class="login password-field"/>
                 </div> <!-- /password -->
 
