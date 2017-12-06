@@ -117,25 +117,22 @@ textarea {
 */
 
 .subnavbar {
-    	margin-bottom: 2.5em;
+        float:left;
+        width:90px;
     }
-    
-.subnavbar-inner {
-	height: 60px;
-	background: #fff;
-	border-bottom: 1px solid #d6d6d6;
+
+.mainnav {
+    width:90px;
 }
 
-.subnavbar .container > ul {
+.subnavbar > ul {
 	display: inline-block;
-	
-	height: 80px;
 	padding: 0;
 	margin: 0;
 	
 }
 
-.subnavbar .container > ul > li {
+.subnavbar > ul > li {
 	float: left;
 	
 	min-width: 90px;
@@ -146,28 +143,27 @@ textarea {
 	text-align: center;
 	list-style: none;
 	
-	border-left: 1px solid #d9d9d9;
 	
 	
 }
 
-.subnavbar .container > ul > li > a {
+.subnavbar > ul > li > a {
 	display: block;
 	
 	height: 100%;
-	padding: 0 15px;
+	padding: 0 10px;
 	
 	font-size: 12px;
 	font-weight: bold;
 	color: #b2afaa;
 }
 
-.subnavbar .container > ul > li > a:hover {
-	color: #888;
+.subnavbar > ul > li > a:hover {
+	color: #fff;
 	text-decoration: none;
 }
 
-.subnavbar .container > ul > li > a > i {
+.subnavbar > ul > li > a > i {
 	display: inline-block;
 	
 	width: 24px;
@@ -177,16 +173,14 @@ textarea {
 	font-size: 20px;
 }
 
-.subnavbar .container > ul > li > a > span {
+.subnavbar > ul > li > a > span {
 	display: block;
 	
 }
 
 
-.subnavbar .container > ul > li.active > a {
-	
-	border-bottom:3px solid #ff7f74;
-	color: #383838;
+.subnavbar > ul > li.active > a {
+	color: #fff;
 }
     
 
@@ -252,7 +246,7 @@ textarea {
 */
 
 .main {
-	padding-bottom: 2em;
+	margin:10px 0 0 100px;
 }
 
 
@@ -1279,3 +1273,39 @@ color: #333;
     background:rgba(0,0,0,0.05) !important;
 }
 
+
+.left_menu {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:90px;
+    background:#4c2377;
+    border-radius:0 0 5px 0;
+    padding-bottom:10px;
+}
+
+.left_logo {
+    float:left;
+    width:90px;
+    height:90px;
+}
+
+.left_user {
+    float:left;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    font-weight:800;
+    font-size:24px;
+    color:#fcbb2f;
+    border-radius:10px;
+    margin:10px 20px;
+    background:#fcbb2f;
+    color:#4c2377;
+}
+
+.good_form {
+    margin:0px !important;
+    width:320px;
+}

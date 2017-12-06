@@ -177,3 +177,4 @@ Stack trace:
 06.12.2017 12:23:29 | Neuspelo logovanje : user:proske, pass :baba, realpass : $1$mp0.1L2.$wJz63WO7Mq.lYwignd.MU/, $Petar
 06.12.2017 12:26:35 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:zika, pass :stres, 
 06.12.2017 12:55:05 | Neuspelo logovanje - pogresna lozinka : user:proske, pass :proske21, realpass : $1$Vl5.4C1.$B90RD1kgN.iuAr79ofAG31, Petar
+06.12.2017 18:58:42 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:proske, pass :proske21, 

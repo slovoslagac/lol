@@ -507,7 +507,9 @@ pre code {
 	overflow-y: scroll;
 }
 form {
-	margin: 0 0 18px;
+    float:left;
+    width:1810px;
+	margin:10px 0 0 90px;
 }
 fieldset {
 	padding: 0;
@@ -3705,4 +3707,53 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endCo
 
 .check {
     width:20px !important;
+}
+
+/* result */
+
+.team1 {
+    float:left;
+    width:235px;
+    height:40px;
+    text-align: right;
+    font-weight: bolder;
+    font-size:20px;
+}
+
+.team2 {
+    float:left;
+    width:235px;
+    height:40px;
+    text-align: left;
+    font-weight: bolder;
+    font-size:20px;
+}
+
+.vs {
+    float:left;
+    width:60px;
+    height:40px;
+    text-align:center;
+}
+
+.result1 {
+    float:left;
+    width:100px;
+    height:30px;
+    padding-left:130px;
+}
+
+.result2 {
+    float:right;
+    width:100px;
+    height:30px;
+    padding-right:130px;
+}
+
+.result1 input, .result2 input{
+    width:80px;
+    height:30px;
+    text-align: center;
+    font-size:24px;
+    font-weight:bolder;
 }

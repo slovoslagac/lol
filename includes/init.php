@@ -78,7 +78,7 @@ $tableCredits = LAYOUT_PATH.DS.'tableCredits.php';
 
 $appEmployeeId = 38;
 $sonyTypeID = 6;
-$numSony = 5; $sonyWheelAvailable = array(1,2,3,4,5);
+$numSony = 5; $sonyWheelAvailable = array(5);
 
 
 //Slack

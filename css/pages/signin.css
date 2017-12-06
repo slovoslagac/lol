@@ -6,7 +6,7 @@ Bootstrap Admin Template by EGrappler.com
 
 
 /** Base Body Styles **/
-body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em 'Open Sans';}
+body{ background: url(../../img/body-bg.png); color:#000; font: 13px/1.7em 'Open Sans';background:#eee;}
 
 
 .account-container {
@@ -23,6 +23,7 @@ body{ background: url(../../img/body-bg.png); color:#838383; font: 13px/1.7em 'O
 	border-radius: 5px;
 
 	box-shadow:  0px 0px 2px #dadada, inset 0px -3px 0px #e6e6e6;
+    margin-top:20px;
 }
 
 .result-container {
@@ -378,7 +379,7 @@ fieldset small {
 }
 
 .cash-register {
-	width: 1500px; 
+	width: 1340px; 
 	display: block;
     float:left;
 	background: #f9f9f9;
@@ -391,7 +392,7 @@ fieldset small {
 
 .cash-register h3 {
     float:left;
-    width:1460px;
+    width:1300px;
     line-height:30px;
     margin:5px;
     border-bottom:1px solid #ccc;
@@ -402,7 +403,7 @@ fieldset small {
 }
 
 .bill {
-	width: 320px; 
+	width: 300px; 
 	display: block;
     float:left;
 	background: #f9f9f9;
@@ -417,7 +418,7 @@ fieldset small {
 }
 
 .bill-header {
-    width:320px;
+    width:300px;
     line-height:30px;
     border-bottom:1px solid #000;
     color:#000;
@@ -433,7 +434,7 @@ fieldset small {
 }
 
 .bill-date {
-    width:320px;
+    width:300px;
     line-height:20px;
     font-size:10px;
     color:#ccc;
@@ -444,13 +445,13 @@ fieldset small {
 }
 
 .bill input {
-    width:310px;
+    width:290px;
     margin-top:10px;
 }
 
 .bill-row {
     position:relative;
-    width:320px;
+    width:300px;
     line-height:50px;
     border-top:1px dashed #ccc;
 }
@@ -483,8 +484,8 @@ fieldset small {
 
 .product-round {
     float:left;
-    width: 150px; 
-    height:150px;
+    width: 120px; 
+    height:140px;
 	display: block;
 	background: #f9f9f9;
 	border: 1px solid #d5d5d5;
@@ -501,7 +502,7 @@ fieldset small {
 }
 
 .product-round label {
-    width:150px;
+    width:120px;
     text-align:center;
     line-height:25px;
     font-weight:bold;
@@ -509,26 +510,27 @@ fieldset small {
     background:#000;
     color:#fff;
     border-radius:5px 5px 0 0;
+    font-size:12px;
 }
 
 .product-round img {
     width:100px;
     height:100px;
     text-align:center;
-    margin:0 25px;
+    margin:0 10px;
 }
 
 .product-round p {
-    width:150px;
+    width:120px;
     text-align:center;
-    line-height:25px;
+    line-height:10px;
     font-weight:bolder;
     font-size:14px;
     color:#000;
 }
 
 .bill-discount {
-    width:300px;
+    width:280px;
     line-height: 30px;
     border-top:1px solid #000;
     padding:0 10px;
@@ -541,7 +543,7 @@ fieldset small {
 }
 
 .bill-sl {
-    width:300px;
+    width:280px;
     line-height: 50px;
     border-top:1px solid #000;
     padding:0 10px;
@@ -554,7 +556,7 @@ fieldset small {
 }
 
 .bill-sum {
-    width:300px;
+    width:280px;
     line-height:40px;
     font-size:18px;
     font-weight:bold;
@@ -570,11 +572,11 @@ fieldset small {
 }
 
 .pay {
-    width:320px;
+    width:300px;
 }
 
 .bills3 {
-    width:320px;
+    width:300px;
     border-bottom:1px dashed #ccc;
     line-height:30px;
 }

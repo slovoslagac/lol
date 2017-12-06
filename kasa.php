@@ -219,6 +219,44 @@ if (isset($_POST["paymentDelete"])) {
     <div class="cash-register register">
 
         <div class="cash-content clearfix" oncontextmenu="return false">
+
+            <?php $tmptype = '';
+            foreach ($allProductsRegular as $item) {
+                if ($item->producttype != $sonyTypeID) {
+                    if ($tmptype != $item->producttype) {
+                        $tmptype = $item->producttype;
+                        switch ($item->producttype) {
+                            case 1:
+                                echo "<h3>Hrana</h3>";
+                                break;
+                            case 2:
+                                echo "<h3>Grickalice</h3>";
+                                break;
+                            case 3:
+                                echo "<h3>Piće</h3>";
+                                break;
+                        }
+                    }
+                    ?>
+                    <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, 0);">
+
+                        <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
+                        <?php $filename = str_replace(' ', '-', $item->name);
+                        $path = 'img/products/';
+                        if (file_exists($path . $filename . '.png') == 1) {
+                        } else {
+                            $filename = "default";
+                        }; ?>
+
+                        <img src="<?php echo $path . $filename ?>.png">
+                        <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
+
+                    </div>
+
+                <?php }
+            } ?>
+
+
             <h3>Playstation</h3>
             <?php for ($i = 1; $i <= $numSony; $i++) {
                 ($sonyDetails[$i] != '') ? $sonyTime = new DateTime($sonyDetails[$i]) : $sonyTime = new DateTime();
@@ -287,43 +325,9 @@ if (isset($_POST["paymentDelete"])) {
 
                     } ?>
                 </div>
-            <?php }
+            <?php } ?>
 
-            $tmptype = '';
-            foreach ($allProductsRegular as $item) {
-                if ($item->producttype != $sonyTypeID) {
-                    if ($tmptype != $item->producttype) {
-                        $tmptype = $item->producttype;
-                        switch ($item->producttype) {
-                            case 1:
-                                echo "<h3>Hrana</h3>";
-                                break;
-                            case 2:
-                                echo "<h3>Grickalice</h3>";
-                                break;
-                            case 3:
-                                echo "<h3>Piće</h3>";
-                                break;
-                        }
-                    }
-                    ?>
-                    <div class="product-round" id="product<?php echo $item->id ?>" onmousedown="articles(event, '<?php echo $item->id ?>', 1, 0);">
 
-                        <label id="articlename<?php echo $item->id ?>"><?php echo $item->name ?></label>
-                        <?php $filename = str_replace(' ', '-', $item->name);
-                        $path = 'img/products/';
-                        if (file_exists($path . $filename . '.png') == 1) {
-                        } else {
-                            $filename = "default";
-                        }; ?>
-
-                        <img src="<?php echo $path . $filename ?>.png">
-                        <p id="price<?php echo $item->id ?>"><?php echo $item->value . ' Din' ?></p>
-
-                    </div>
-
-                <?php }
-            } ?>
 
 
         </div> <!-- /content -->

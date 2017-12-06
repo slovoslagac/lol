@@ -48,7 +48,7 @@ if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $ava
 <html lang="en">
 <head>
     <meta charset="utf8">
-    <title>eSports Arena</title>
+    <title>LevelUp!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -67,59 +67,32 @@ if ($currentWorker->workertypeid != $admin->id and !(in_array($currentForm, $ava
 
 </head>
 <body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a
-                class="brand" href="index.php">eSports Arena</a>
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                class="icon-user"></i><?php echo "$currentWorker->name $currentWorker->lastname" ?><b
-                                class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="profil.html">Profil</a></li>
-                            <li><a href="logout.php">Izloguj se</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-search pull-right">
-                    <input type="text" class="search-query" placeholder="Pretraži">
-                </form>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /navbar-inner -->
-</div>
-<div class="subnavbar">
-    <div class="subnavbar-inner">
-        <div class="container">
-            <ul class="mainnav">
-                <?php if ($currentWorker->workertypeid != $admin->id) { ?>
-                    <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1 ?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
-                    <li <?php echo ($link9 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link9 ?>"><i class="icon-shopping-cart"></i><span>Prodaja</span> </a></li>
-                    <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3 ?>"><i class="icon-trophy"></i><span>Turniri</span> </a></li>
-                    <?php if ($currentShiftDetails == "") { } elseif ($currentShiftDetails->userstart == $currentWorker->id) {?>
-                        <li <?php echo ($link2 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link2 ?>"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
-                    <?php } ?>
-
-                <?php } else { ?>
-
-                    <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1 ?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
-                    <li <?php echo ($link9 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link9 ?>"><i class="icon-shopping-cart"></i><span>Prodaja</span> </a></li>
-                    <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3 ?>"><i class="icon-trophy"></i><span>Turniri</span> </a></li>
-                    <?php if ($currentShiftDetails == "") { } elseif ($currentShiftDetails->userstart == $currentWorker->id) {?>
-                    <li <?php echo ($link2 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link2 ?>"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
+<div class="left_menu">
+    <div class="left_logo"><img src="img/logo.png"></div>
+    <div class="left_user"><a href="logout.php"><?php echo strtoupper(substr($currentWorker->name,0,1)), strtoupper(substr($currentWorker->lastname,0,1))?></a></div>
+    <div class="subnavbar">
+                <ul class="mainnav">
+                    <?php if ($currentWorker->workertypeid != $admin->id) { ?>
+                        <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1 ?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
+                        <li <?php echo ($link9 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link9 ?>"><i class="icon-shopping-cart"></i><span>Prodaja</span> </a></li>
+                        <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3 ?>"><i class="icon-trophy"></i><span>Turniri</span> </a></li>
+                        <?php if ($currentShiftDetails == "") { } elseif ($currentShiftDetails->userstart == $currentWorker->id) {?>
+                            <li <?php echo ($link2 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link2 ?>"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
                         <?php } ?>
-                    <li <?php echo ($link7 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link7 ?>"><i class="icon-truck"></i><span>Magacin</span> </a></li>
-                    <li <?php echo ($link8 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link8 ?>"><i class="icon-truck"></i><span>Informacije</span> </a></li>
 
-                <?php } ?>
-            </ul>
-        </div>
-        <!-- /container -->
-    </div>
+                    <?php } else { ?>
+
+                        <li <?php echo ($link1 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link1 ?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a></li>
+                        <li <?php echo ($link9 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link9 ?>"><i class="icon-shopping-cart"></i><span>Prodaja</span> </a></li>
+                        <li <?php echo ($link3 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link3 ?>"><i class="icon-trophy"></i><span>Turniri</span> </a></li>
+                        <?php if ($currentShiftDetails == "") { } elseif ($currentShiftDetails->userstart == $currentWorker->id) {?>
+                        <li <?php echo ($link2 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link2 ?>"><i class="icon-list-alt"></i><span>Kraj smene</span> </a></li>
+                            <?php } ?>
+                        <li <?php echo ($link7 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link7 ?>"><i class="icon-truck"></i><span>Magacin</span> </a></li>
+                        <li <?php echo ($link8 == $currentpage) ? "class=\"active\"" : "" ?>><a href="<?php echo $link8 ?>"><i class="icon-truck"></i><span>Informacije</span> </a></li>
+
+                    <?php } ?>
+                </ul>
     <!-- /subnavbar-inner -->
-</div>
+    </div>
+</div>    
