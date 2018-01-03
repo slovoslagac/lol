@@ -508,8 +508,8 @@ pre code {
 }
 form {
     float:left;
-    width:1810px;
-	margin:10px 0 0 90px;
+    width:1170px;
+	margin:0;
 }
 fieldset {
 	padding: 0;
@@ -3756,4 +3756,8 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endCo
     text-align: center;
     font-size:24px;
     font-weight:bolder;
+}
+
+.kasa {
+    margin:10px 0 0 90px;
 }
