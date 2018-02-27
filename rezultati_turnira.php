@@ -13,7 +13,7 @@ $oldmatches = array();
 
 
 foreach ($tournamentMatches as $item) {
-    if ($item->maxpoints != null) {
+    if ($item->positionroundone != '' || $item->positionroundtwo != '' || $item->positionroundthree != '') {
         array_push($oldmatches, $item);
     } else {
         array_push($newmatches, $item);
@@ -62,8 +62,8 @@ include $menuLayout;
                                         <tr>
                                             <td class="center" width="280"><b><?php echo $item->hometeamname ?></b></td>
                                             <td class="center" width="80">Partija #<?php echo $item->entrynumber ?></td>
-                                            <td class="center" width="80"><a href="#prijava_pubg" role="button" class="btn btn-small btn-primary" data-toggle="modal"
-                                                                             onclick="addfifa(<?php echo "$item->id,'$item->home','$item->visitor'" ?>)"><i class="btn-icon-only icon-pencil"> </i></a>
+                                            <td class="center" width="80"><a href="#update_pugb" role="button" class="btn btn-small btn-primary" data-toggle="modal"
+                                                                             onclick="updatepubg(<?php echo "$item->matchid,1,' $item->hometeamname #$item->entrynumber'" ?>)"><i class="btn-icon-only icon-pencil"> </i></a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -175,10 +175,10 @@ include $menuLayout;
                                 </div>
                                 <div class="col-3">
                                     <div class="result1">
-                                        <input type="number" name="position" id="position"></div>
+                                        <input type="number" name="position" id="position" max="100"></div>
                                 </div>
                                 <div class="col-3">
-                                    <div class="result1"><input type="number" name="killnumber" id="killnumber"></div>
+                                    <div class="result1"><input type="number" name="killnumber" id="killnumber" max="99"></div>
                                 </div>
                                 <input type="hidden" id="updatematchid" name="updatematchid">
                                 <input type="hidden" id="updateroundid" name="updateroundid">
