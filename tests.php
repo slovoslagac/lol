@@ -6,6 +6,13 @@
  * Time: 13:33
  */
 
-include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
-var_dump($_SESSION);
+
+$url = 'http://localhost/levelup/api/apiGetTournamentDetails.php?tournament=1';
+
+
+$tmpData = json_decode(file_get_contents($url));
+
+
+var_dump(($tmpData));
+

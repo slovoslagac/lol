@@ -262,3 +262,19 @@
 03.01.2018 08:27:32 | Shfit start section created : userid = 11 ; billid = 102
 03.01.2018 08:27:32 | Shfit & bill connection created : shiftid = 28 ; billid = 102
 03.01.2018 08:27:33 | Shfit start possible difference : 
+13.02.2018 08:40:47 | Aditional chek added : userid = 11; billid = 104
+13.02.2018 08:40:58 | Shfit end section created : userid = 11 ; billid = 105
+13.02.2018 08:40:58 | Shfit & bill connection created : shiftid = 28 ; billid = 105
+13.02.2018 08:40:59 | Shift end : userid = 11
+13.02.2018 09:32:54 | Shift start --------------------- : userid = 11 
+13.02.2018 09:32:54 | Shfit start section created : userid = 11 ; billid = 106
+13.02.2018 09:32:54 | Shfit & bill connection created : shiftid = 29 ; billid = 106
+13.02.2018 09:32:55 | Shfit start possible difference : 
+13.02.2018 09:33:16 | Aditional chek added : userid = 11; billid = 107
+13.02.2018 09:37:07 | Shfit end section created : userid = 11 ; billid = 108
+13.02.2018 09:37:07 | Shfit & bill connection created : shiftid = 29 ; billid = 108
+13.02.2018 09:37:07 | Shift end : userid = 11
+26.02.2018 11:54:08 | Shift start --------------------- : userid = 11 
+26.02.2018 11:54:08 | Shfit start section created : userid = 11 ; billid = 109
+26.02.2018 11:54:08 | Shfit & bill connection created : shiftid = 30 ; billid = 109
+26.02.2018 11:54:09 | Shfit start possible difference : 

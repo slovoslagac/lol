@@ -239,3 +239,5 @@
 22.11.2017 15:42:05 | Dodavanje racuna  : 97, 0, 450, normal
 22.11.2017 15:45:42 | Dodavanje racuna  : 98, 0, 400, normal
 03.01.2018 08:34:15 | Dodavanje racuna  : 103, 0, 400, normal
+13.02.2018 08:40:46 | Dodavanje racuna  : 104, 0, -5500, normal
+13.02.2018 09:33:16 | Dodavanje racuna  : 107, 0, -500, normal

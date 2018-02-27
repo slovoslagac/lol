@@ -213,7 +213,7 @@ if (isset($_POST["paymentDelete"])) {
 }
 
 ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" xmlns="http://www.w3.org/1999/html"/>
+<form method="post" class="kasa" action="<?php echo $_SERVER['PHP_SELF'] ?>" xmlns="http://www.w3.org/1999/html"/>
 <div class="register-round">
 
     <div class="cash-register register">
@@ -339,11 +339,11 @@ if (isset($_POST["paymentDelete"])) {
             <span><?php echo "$currentWorker->name $currentWorker->lastname" ?></span>
         </div>
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
-        <input type="text" name="selectuser" placeholder="Anonymus" list="allusers" id="selectuser" oninput="recalculate()">
-        <!--        <datalist id="allusers">-->
-        <!--            <option value="damir@kokeza.com - popust"></option>-->
-        <!--            <option value="dado@gmail.com - normal"></option>-->
-        <!--        </datalist>-->
+        <input type="text" name="selectuser" placeholder="Izaberi Coins ukoliko je kupovina za coine" list="allusers" id="selectuser" oninput="recalculate()">
+        <datalist id="allusers">
+            <option value="Coins - popust"></option>
+            <!--<option value="Kasa - normal"></option>-->
+        </datalist>
         <div id="billBody">
         </div>
         <div class="bill-sl">Sati<span><input type="number" id="hours" style="width:200px; margin-right:5px;" onchange="calculateSum()">Din</span></div>
@@ -386,6 +386,15 @@ if (isset($_POST["paymentDelete"])) {
             </div>
 
         <?php } ?>
+    </div>
+    <div class="bill">
+        <div class="bill-header">
+            PUBG Jackpot
+        </div>
+            <div class="bills3">
+                2.000 Din<span><a href="">reset</a></span>
+            </div>
+
     </div>
 </div>
 </div>
