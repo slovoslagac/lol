@@ -180,3 +180,7 @@ Stack trace:
 06.12.2017 18:58:42 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:proske, pass :proske21, 
 27.02.2018 18:33:23 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:proske, pass :proske21, 
 27.02.2018 18:33:27 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:proske, pass :p1, 
+02.03.2018 15:40:19 | Neuspelo logovanje - pogresna lozinka : user:proske, pass :p1, realpass : $1$5F5.oF3.$y9fJUVOvGQPx/9Bzp4MPT0, Petar
+02.03.2018 15:40:25 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:petar.prodanovic@gmail.com, pass :proske21, 
+02.03.2018 15:40:30 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:petar.prodanovic@gmail.com, pass :p1, 
+02.03.2018 15:40:36 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:petar.prodanovic@gmail.com, pass :proske21, 

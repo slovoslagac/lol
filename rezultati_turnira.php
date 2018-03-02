@@ -1,6 +1,9 @@
 <?php
 include(join(DIRECTORY_SEPARATOR, array('includes', 'init.php')));
 
+$currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
+include $menuLayout;
+
 //tournament_data
 $tournament_id = 1;
 $tournament_type = 1;
@@ -25,15 +28,14 @@ if (isset($_POST['updatepubg'])) {
     $roundid = $_POST['updateroundid'];
     $kill = $_POST['killnumber'];
     $position = $_POST['position'];
-
-    $url = "http://localhost/levelup/api/apiSetNewResult.php?matchid=$matchid&roundid=$roundid&position=$position&killnumber=$kill";
+    $workerid = $session->userid;
+    $url = "http://localhost/levelup/api/apiSetNewResult.php?matchid=$matchid&roundid=$roundid&position=$position&killnumber=$kill&worker=$workerid";
 
     file_get_contents($url);
     header("Refresh: 0;");
 }
 
-$currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
-include $menuLayout;
+
 ?>
 <div class="main">
     <div class="main-inner">
