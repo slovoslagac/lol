@@ -5,8 +5,8 @@ $currentpage = basename($_SERVER["SCRIPT_FILENAME"]);
 include $menuLayout;
 
 //tournament_data
-$tournament_id = 1;
-$tournament_type = 1;
+$tournament_id = 4;
+$tournament_type = 2;
 $matchurl = "http://localhost/levelup/api/apiGetMatchesbyTournament.php?tournament=$tournament_id";
 $tournamenturl = "http://localhost/levelup/api/apiGetTournamentDetails.php?tournament=$tournament_id";
 $tournamentMatches = json_decode(file_get_contents($matchurl));
@@ -65,7 +65,8 @@ if (isset($_POST['updatepubg'])) {
                                             <td class="center" width="280"><b><?php echo $item->hometeamname ?></b></td>
                                             <td class="center" width="80">Partija #<?php echo $item->entrynumber ?></td>
                                             <td class="center" width="80"><a href="#update_pugb" role="button" class="btn btn-small btn-primary" data-toggle="modal"
-                                                                             onclick="updatepubg(<?php echo "$item->matchid,1,' $item->hometeamname #$item->entrynumber'" ?>)"><i class="btn-icon-only icon-pencil"> </i></a>
+                                                                             onclick="updatepubg(<?php echo "$item->matchid,1,' $item->hometeamname #$item->entrynumber'" ?>)"><i
+                                                        class="btn-icon-only icon-pencil"> </i></a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -78,27 +79,42 @@ if (isset($_POST['updatepubg'])) {
 
                         </div>
 
-                        <!-- Modal -->
-                        <div id="prijava_pubg" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h3 id="myModalLabel">Unos rezultata meča</h3>
+                    </div>
+                <?php } elseif ($tournament_type == 2) { ?>
+                    <div class="span6">
+                        <div class="widget widget-table action-table">
+                            <div class="widget-header"><i class="icon-trophy"></i>
+                                <h3><?php echo $tournamentDetails->tournamentname . ' - ' . $tournamentDetails->starttime ?></h3>
                             </div>
-                            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-                                <div class="modal-body">
-                                    <div class="team1" id="fifa1"></div>
-                                    <div class="vs">vs.</div>
-                                    <div class="team2" id="fifa2"></div>
-                                    <input type="hidden" id="fifa" name="fifa">
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Poništi</button>
-                                    <button class="btn btn-primary" name="savefifa" id="savefifa" style="visibility: hidden">Potvrdi rezultat</button>
-                                </div>
-                            </form>
+                            <!-- /widget-header -->
+                            <div class="widget-content">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th class="center"> Tim 1</th>
+                                        <th class="center"> Tim 2</th>
+                                        <th class="center"> Rezultat</th>
+                                        <th class="center"> Unos</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($newmatches as $item) { ?>
+                                        <tr>
+                                            <td class="center" width="180"><b><?php echo $item->hometeamname ?></b></td>
+                                            <td class="center" width="180"><b><?php echo $item->visitorteamname ?></b></td>
+                                            <td class="center" width="80"><b><?php echo $item->val1.":". $item->val2 ?></b></td>
+                                            <td class="center" width="80"><a href="#update_pugb" role="button" class="btn btn-small btn-primary" data-toggle="modal"
+                                                                             onclick="updatepubg(<?php echo "$item->matchid,1,' $item->hometeamname #$item->entrynumber'" ?>)"><i
+                                                        class="btn-icon-only icon-pencil"> </i></a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
                 <?php } ?>
             </div>
 
@@ -117,7 +133,7 @@ if (isset($_POST['updatepubg'])) {
                                 <thead>
                                 <tr>
                                     <th class="center"> Igrač</th>
-                                    <th class="center"> Broj poena</th>
+                                    <th class="center"> Broj pozicije</th>
                                     <th class="center"> Broj kilova</th>
                                     <th class="center"> Unos</th>
                                 </tr>

@@ -184,3 +184,4 @@ Stack trace:
 02.03.2018 15:40:25 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:petar.prodanovic@gmail.com, pass :proske21, 
 02.03.2018 15:40:30 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:petar.prodanovic@gmail.com, pass :p1, 
 02.03.2018 15:40:36 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:petar.prodanovic@gmail.com, pass :proske21, 
+02.03.2018 23:03:29 | Neuspelo logovanje - ne postoji radnik sa tim username. : user:proske, pass :p1, 
