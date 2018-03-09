@@ -241,3 +241,8 @@
 03.01.2018 08:34:15 | Dodavanje racuna  : 103, 0, 400, normal
 13.02.2018 08:40:46 | Dodavanje racuna  : 104, 0, -5500, normal
 13.02.2018 09:33:16 | Dodavanje racuna  : 107, 0, -500, normal
+06.03.2018 13:45:50 | Kucanje racuna -  nema artikala ili je zapocet update racuna a nije zavrsen : suma - 0, details - 11
+06.03.2018 13:45:55 | Dodavanje racuna  : 110, 0, 170, normal
+06.03.2018 13:47:30 | Dodavanje racuna  : 111, , 50, popust
+06.03.2018 15:14:59 | Dodavanje racuna  : 112, , 70, popust
+06.03.2018 15:19:04 | Dodavanje racuna  : 113, , 60, popust

@@ -339,10 +339,10 @@ if (isset($_POST["paymentDelete"])) {
             <span><?php echo "$currentWorker->name $currentWorker->lastname" ?></span>
         </div>
         <div class="bill-date"><?php echo $currentMonth ?><span><?php echo $currentTime ?></span></div>
-        <input type="text" name="selectuser" placeholder="Izaberi Coins ukoliko je kupovina za coine" list="allusers" id="selectuser" oninput="recalculate()">
-        <datalist id="allusers">
+        <input type="text" name="selectuser" placeholder="Izaberi Coins ukoliko je kupovina za coine" list="allusers" id="selectuser" onchange="recalculate()">
+        <datalist id="allusers" >
             <option value="Coins - popust"></option>
-            <!--<option value="Kasa - normal"></option>-->
+            <option value="Kasa - normal"></option>
         </datalist>
         <div id="billBody">
         </div>
